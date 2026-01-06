@@ -87,6 +87,75 @@ const AffiliateManager: React.FC = () => {
         </div>
       </div>
 
+      {/* Financial Freedom Dashboard */}
+      <div className="glass-card p-6 rounded-3xl border border-green-500/20 bg-gradient-to-br from-green-500/5 to-cyan-500/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">Financial Freedom Dashboard</h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+            <p className="text-xs text-gray-500 mb-1">Progress to Goal</p>
+            <p className="text-2xl font-bold text-green-400">23.7%</p>
+            <p className="text-xs text-gray-400 mt-1">$1,184 / $5,000</p>
+          </div>
+          <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+            <p className="text-xs text-gray-500 mb-1">Income Diversification</p>
+            <p className="text-2xl font-bold text-cyan-400">8.5/10</p>
+            <p className="text-xs text-green-400 mt-1">✓ Good</p>
+          </div>
+          <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+            <p className="text-xs text-gray-500 mb-1">Passive Income %</p>
+            <p className="text-2xl font-bold text-purple-400">25%</p>
+            <p className="text-xs text-gray-400 mt-1">$292/month</p>
+          </div>
+          <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+            <p className="text-xs text-gray-500 mb-1">Time to Freedom</p>
+            <p className="text-2xl font-bold text-yellow-400">~16 mo</p>
+            <p className="text-xs text-gray-400 mt-1">At current rate</p>
+          </div>
+        </div>
+        <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+          <p className="text-xs font-bold text-cyan-400 mb-2">📈 Revenue Forecast</p>
+          <div className="grid grid-cols-3 gap-4 text-sm">
+            <div>
+              <p className="text-gray-400 mb-1">Next Month</p>
+              <p className="font-bold text-cyan-400">$1,350</p>
+              <p className="text-xs text-green-400">+14% projected</p>
+            </div>
+            <div>
+              <p className="text-gray-400 mb-1">3 Months</p>
+              <p className="font-bold text-purple-400">$1,680</p>
+              <p className="text-xs text-green-400">+42% projected</p>
+            </div>
+            <div>
+              <p className="text-gray-400 mb-1">6 Months</p>
+              <p className="font-bold text-green-400">$2,240</p>
+              <p className="text-xs text-green-400">+89% projected</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tax Preparation Tools */}
+      <div className="glass-card p-6 rounded-3xl border border-white/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">Tax Preparation Tools</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+            <h4 className="font-bold mb-2">Earnings Export</h4>
+            <p className="text-xs text-gray-400 mb-3">Download your earnings data for tax filing</p>
+            <button className="w-full py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-xs font-bold transition-all">
+              Export CSV
+            </button>
+          </div>
+          <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+            <h4 className="font-bold mb-2">Quarterly Tax Estimate</h4>
+            <p className="text-xs text-gray-400 mb-1">Estimated Q4 taxes:</p>
+            <p className="text-2xl font-bold text-yellow-400 mb-3">$1,420</p>
+            <button className="w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold transition-all">
+              View Details
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="glass-card p-6 rounded-3xl border border-white/5">
         <h3 className="text-xl font-bold mb-6">Performance Overview</h3>
         <div className="h-64 w-full" style={{ minHeight: '256px', minWidth: '0' }}>

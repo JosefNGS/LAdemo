@@ -8,14 +8,22 @@ const Academy: React.FC = () => {
     { id: '1', title: 'Affiliate Fundamentals', level: 'Beginner', progress: 100, duration: '2h', category: 'basics' },
     { id: '2', title: 'Advanced Conversion Tactics', level: 'Intermediate', progress: 65, duration: '4h', category: 'marketing' },
     { id: '3', title: 'MEV Bot Mastery', level: 'Advanced', progress: 0, duration: '6h', category: 'trading' },
+    { id: '8', title: 'XAB Bot Mastery (XRP)', level: 'Advanced', progress: 0, duration: '6h', category: 'trading' },
     { id: '4', title: 'Network Building Strategies', level: 'Intermediate', progress: 30, duration: '3h', category: 'marketing' },
     { id: '5', title: 'Tokenomics Deep Dive', level: 'Advanced', progress: 0, duration: '5h', category: 'trading' },
     { id: '6', title: 'Legal Compliance Guide', level: 'Beginner', progress: 0, duration: '1.5h', category: 'basics' },
+    { id: '7', title: 'What Are Airdrops?', level: 'Beginner', progress: 0, duration: '1.5h', category: 'basics' },
   ];
 
   const liveEvents = [
-    { id: '1', title: 'Weekly Q&A Session', date: 'Today, 3:00 PM UTC', attendees: 142, host: 'Agent Nexus-Admin' },
-    { id: '2', title: 'Advanced Strategies Workshop', date: 'Tomorrow, 2:00 PM UTC', attendees: 89, host: 'Agent Nexus-Expert' },
+    { id: '1', title: 'Weekly Q&A Session', date: 'Today, 3:00 PM UTC', attendees: 142, host: 'Agent Nexus-Admin', category: 'affiliate', icon: '💬' },
+    { id: '2', title: 'Advanced Strategies Workshop', date: 'Tomorrow, 2:00 PM UTC', attendees: 89, host: 'Agent Nexus-Expert', category: 'affiliate', icon: '📈' },
+    { id: '3', title: 'AI Content Generation Masterclass', date: 'Jan 15, 4:00 PM UTC', attendees: 234, host: 'AI Specialist', category: 'ai', icon: '🤖' },
+    { id: '4', title: 'Financial Freedom Blueprint', date: 'Jan 16, 1:00 PM UTC', attendees: 189, host: 'Finance Coach', category: 'financial', icon: '💰' },
+    { id: '5', title: 'Affiliate Link Optimization', date: 'Jan 17, 3:30 PM UTC', attendees: 156, host: 'Marketing Pro', category: 'affiliate', icon: '🔗' },
+    { id: '6', title: 'AI-Powered Market Analysis', date: 'Jan 18, 2:00 PM UTC', attendees: 201, host: 'Data Analyst', category: 'ai', icon: '📊' },
+    { id: '7', title: 'Building Passive Income Streams', date: 'Jan 19, 5:00 PM UTC', attendees: 178, host: 'Wealth Advisor', category: 'financial', icon: '💎' },
+    { id: '8', title: 'Social Media Affiliate Strategies', date: 'Jan 20, 3:00 PM UTC', attendees: 167, host: 'Social Media Expert', category: 'affiliate', icon: '📱' },
   ];
 
   const categories = [
@@ -35,27 +43,60 @@ const Academy: React.FC = () => {
       </div>
 
       <div className="glass-card p-6 rounded-3xl border border-white/5">
-        <h3 className="text-xl font-bold mb-4">Live Events</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {liveEvents.map((event) => (
-            <div key={event.id} className="p-5 bg-gradient-to-br from-purple-600/20 to-cyan-600/20 rounded-2xl border border-purple-500/30">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
-                <span className="text-xs font-bold text-red-400 uppercase">Live</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">{event.title}</h4>
-              <p className="text-gray-400 text-sm mb-3">{event.date}</p>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <ICONS.Friends />
-                  <span>{event.attendees} attending</span>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold">Live Events</h3>
+          <div className="flex gap-2">
+            <button className="px-3 py-1 bg-purple-600 text-white rounded-lg text-xs font-bold">All</button>
+            <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">AI</button>
+            <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">Financial</button>
+            <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">Affiliate</button>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {liveEvents.map((event) => {
+            const categoryColors = {
+              ai: 'from-cyan-600/20 to-blue-600/20 border-cyan-500/30',
+              financial: 'from-green-600/20 to-emerald-600/20 border-green-500/30',
+              affiliate: 'from-purple-600/20 to-pink-600/20 border-purple-500/30',
+            };
+            const categoryLabels = {
+              ai: 'AI Learning',
+              financial: 'Financial Freedom',
+              affiliate: 'Affiliate Marketing',
+            };
+            return (
+              <div key={event.id} className={`p-5 bg-gradient-to-br ${categoryColors[event.category as keyof typeof categoryColors]} rounded-2xl border`}>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+                    <span className="text-xs font-bold text-red-400 uppercase">Live</span>
+                  </div>
+                  <span className="text-2xl">{event.icon}</span>
                 </div>
-                <button className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-all">
-                  Join
-                </button>
+                <div className="mb-2">
+                  <span className={`px-2 py-1 rounded text-[10px] font-bold ${
+                    event.category === 'ai' ? 'bg-cyan-500/20 text-cyan-400' :
+                    event.category === 'financial' ? 'bg-green-500/20 text-green-400' :
+                    'bg-purple-500/20 text-purple-400'
+                  }`}>
+                    {categoryLabels[event.category as keyof typeof categoryLabels]}
+                  </span>
+                </div>
+                <h4 className="font-bold text-lg mb-2">{event.title}</h4>
+                <p className="text-gray-400 text-sm mb-1">{event.date}</p>
+                <p className="text-xs text-gray-500 mb-3">Host: {event.host}</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <ICONS.Friends />
+                    <span>{event.attendees} attending</span>
+                  </div>
+                  <button className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-all">
+                    Join
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -87,27 +128,31 @@ const Academy: React.FC = () => {
               color: 'from-purple-500 to-pink-500'
             },
           ].map((path, i) => (
-            <div key={i} className={`p-6 rounded-2xl border border-white/5 bg-gradient-to-br ${path.color} bg-opacity-10 hover:border-purple-500/30 transition-all cursor-pointer`}>
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-lg">{path.title}</h4>
-                <span className="px-2 py-1 bg-white/10 rounded text-xs font-bold">{path.duration}</span>
-              </div>
-              <p className="text-sm text-gray-400 mb-4">{path.description}</p>
-              <div className="mb-4">
-                <div className="flex items-center justify-between text-xs mb-2">
-                  <span className="text-gray-500">Progress</span>
-                  <span className="font-bold">{path.progress}%</span>
+            <div key={i} className={`p-6 rounded-2xl border border-white/5 bg-gradient-to-br ${path.color} bg-opacity-10 hover:border-purple-500/30 transition-all cursor-pointer relative overflow-hidden`}>
+              {/* Background overlay for better text contrast */}
+              <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-bold text-lg text-white">{path.title}</h4>
+                  <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-bold backdrop-blur-sm">{path.duration}</span>
                 </div>
-                <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
-                  <div 
-                    className={`h-full bg-gradient-to-r ${path.color} transition-all`}
-                    style={{ width: `${path.progress}%` }}
-                  />
+                <p className="text-sm text-white/90 mb-4 leading-relaxed">{path.description}</p>
+                <div className="mb-4">
+                  <div className="flex items-center justify-between text-xs mb-2">
+                    <span className="text-white/80 font-medium">Progress</span>
+                    <span className="font-bold text-white">{path.progress}%</span>
+                  </div>
+                  <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden border border-white/10">
+                    <div 
+                      className={`h-full bg-gradient-to-r ${path.color} transition-all`}
+                      style={{ width: `${path.progress}%` }}
+                    />
+                  </div>
                 </div>
+                <button className="w-full py-2.5 bg-white/20 hover:bg-white/30 text-white rounded-xl font-bold text-sm transition-all backdrop-blur-sm border border-white/20">
+                  Start Path
+                </button>
               </div>
-              <button className="w-full py-2 bg-white/10 hover:bg-white/20 rounded-xl font-bold text-sm transition-all">
-                Start Path
-              </button>
             </div>
           ))}
         </div>

@@ -39,7 +39,7 @@ Based on financial education research, effective platforms should:
 **Income Streams Overview**
 - Display all active income sources:
   - Affiliate commissions
-  - MEV bot staking returns
+  - MEV Bot & XAB Bot (XRP) staking returns
   - Sub-affiliate network earnings
   - Total passive income percentage vs. active income
 
@@ -109,7 +109,7 @@ Based on financial education research, effective platforms should:
 
 ---
 
-### 3. Earn (MEV Bot Lab)
+### 3. Earn (XAB Bot Lab)
 
 #### Current State
 - Bot listings and staking interface
@@ -246,7 +246,7 @@ Based on financial education research, effective platforms should:
 - Create:
   - "Beginner Affiliates" support group
   - "High Earners" mastermind
-  - "MEV Bot Traders" discussion
+  - "XAB Bot Traders" discussion
   - "Network Builders" community
 
 **Automated Financial Tips**

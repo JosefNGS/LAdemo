@@ -2,6 +2,9 @@
 
 Complete guide to all documentation files in the BitNexus project.
 
+**Last Updated**: January 2026  
+**Project Structure**: Frontend/Backend separation implemented
+
 ---
 
 ## 📚 Core Documentation
@@ -12,7 +15,7 @@ Complete guide to all documentation files in the BitNexus project.
 - Design system guidelines
 - Component library
 - Navigation structure
-- **Last Updated**: December 2024
+- **Last Updated**: January 2026
 
 ### [Product Presentation](./Product%20docs/PRODUCT_PRESENTATION.md)
 **Complete product overview and business case**
@@ -31,6 +34,25 @@ Complete guide to all documentation files in the BitNexus project.
 - Slide-by-slide guide
 - Presentation notes
 - Timing guide
+
+### [Pitch Deck](./Product%20docs/PITCH_DECK.md)
+**Complete investor & partner presentation**
+- Full slide content with speaker notes
+- Visual design guidelines
+- Delivery tips and timing
+- Q&A preparation
+- Ready-to-use presentation format
+
+### [Revenue Plan](./Product%20docs/REVENUE_PLAN.md)
+**Comprehensive monetization strategy & financial projections**
+- Revenue streams breakdown
+- Pricing strategy (Updated: Individual courses $199-$10,000, Self-paced courses $99-$9,999, Live events $499-$9,999)
+- 3-year financial projections
+- Cost structure analysis
+- Unit economics
+- Profitability analysis
+- **Last Updated**: January 2026
+- Growth milestones
 
 ---
 
@@ -127,16 +149,23 @@ Complete guide to all documentation files in the BitNexus project.
 
 ---
 
-## 🎯 Key Updates (December 2024)
+## 🎯 Key Updates
 
-### Dashboard Changes
+### January 2026 Updates
+- ✅ **Project Reorganization**: Separated into `frontend/` and `backend/` folders
+- ✅ **Forum Page**: Community forum with categories (Affiliate Marketing, MEV Bot Trading, XAB Bot Trading, Network Building, Financial Freedom, Support)
+- ✅ **Dashboard Tools Section**: Comprehensive tools (Link Shortener, QR Generator, Commission Calculator, UTM Builder, Link Tracker)
+- ✅ **MEV Bot Support**: Added MEV Bot Lab alongside XAB Bot Lab (XRP-specific)
+- ✅ **Enhanced Income Streams**: Larger, more prominent display
+- ✅ **Updated Course Pricing**: Mastery Certifications now $10,000 (was $299)
+- ✅ **Updated Documentation**: All docs reflect new structure and features
+
+### January 2026 Updates
 - ✅ Changed hero card from "Net NXC Assets" to "Affiliate Link Revenue"
 - ✅ Removed Deposit/Trade buttons
 - ✅ Added View Links/Generate Link buttons
 - ✅ Updated to show total affiliate earnings ($14,210.00 USD)
 - ✅ Added growth percentage indicator
-
-### New Features
 - ✅ Financial Freedom Progress Bar
 - ✅ Income Streams Widget
 - ✅ Quick Actions Section
@@ -144,12 +173,6 @@ Complete guide to all documentation files in the BitNexus project.
 - ✅ Goals page
 - ✅ Content Generator
 - ✅ Social media connections in Profile
-
-### Documentation Updates
-- ✅ Updated all docs to reflect affiliate revenue focus
-- ✅ Created CHANGELOG.md
-- ✅ Updated UI_DOCUMENTATION.md with new features
-- ✅ Updated README.md with complete feature list
 
 ---
 
@@ -159,7 +182,9 @@ Complete guide to all documentation files in the BitNexus project.
 docs/
 ├── UI_DOCUMENTATION.md              # Complete UI specs
 ├── PRODUCT_PRESENTATION.md          # Business case
-├── PRODUCT_PRESENTATION_SLIDES.md   # Pitch deck
+├── PRODUCT_PRESENTATION_SLIDES.md   # Pitch deck outline
+├── PITCH_DECK.md                    # Complete pitch deck
+├── REVENUE_PLAN.md                  # Monetization strategy
 ├── IMPLEMENTATION_PLAN.md           # Development roadmap
 ├── QUICK_WINS_FINANCIAL_FREEDOM.md  # Quick wins (all implemented)
 ├── FINANCIAL_FREEDOM_ENHANCEMENTS.md # Enhancement strategies
@@ -185,7 +210,9 @@ docs/
 
 ### For Product/Business
 - Read [PRODUCT_PRESENTATION.md](./Product%20docs/PRODUCT_PRESENTATION.md)
-- Use [PRODUCT_PRESENTATION_SLIDES.md](./Product%20docs/PRODUCT_PRESENTATION_SLIDES.md) for pitches
+- Use [PITCH_DECK.md](./Product%20docs/PITCH_DECK.md) for complete presentations
+- Reference [PRODUCT_PRESENTATION_SLIDES.md](./Product%20docs/PRODUCT_PRESENTATION_SLIDES.md) for outline
+- Review [REVENUE_PLAN.md](./Product%20docs/REVENUE_PLAN.md) for financial strategy
 - Review [QUICK_WINS_FINANCIAL_FREEDOM.md](./QUICK_WINS_FINANCIAL_FREEDOM.md)
 
 ### For Deployment
@@ -204,6 +231,6 @@ For questions or issues:
 
 ---
 
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **Maintained By**: BitNexus Development Team
 

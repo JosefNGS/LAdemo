@@ -1,10 +1,10 @@
 # BitNexus UI Documentation
 ## Complete Page Inventory & User Interface Guide
 
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **System**: BitNexus Command Center - AI-Powered Affiliate Marketing Platform  
-**Document Version**: 1.1  
-**Status**: Complete Page Inventory - Updated with Affiliate Revenue Focus
+**Document Version**: 1.2  
+**Status**: Complete Page Inventory - Updated with Forum, Tools, and Frontend/Backend Structure
 
 ---
 
@@ -85,7 +85,7 @@
   - "View Links" button - Opens affiliate manager
   - "Generate Link" button - Quick link generation
 - **Financial Freedom Progress Bar**: Shows current income, target, progress percentage, and estimated time to goal
-- **Income Streams Widget**: Breakdown of all income sources (affiliate commissions, MEV bot returns, sub-affiliate network, passive income %)
+- **Income Streams Widget**: Breakdown of all income sources (affiliate commissions, XAB bot returns, sub-affiliate network, passive income %)
 - **Quick Actions Section**: Daily checklist for boosting earnings
 - **Daily Tips**: Rotating tips for financial success
 - **4-Card Metric Grid**:
@@ -157,7 +157,8 @@
 **Purpose**: Showcasing passive income opportunities.
 
 **Features**:
-- **MEV Bot**: Setup guide for automated trading nodes
+- **MEV Bot Lab**: General trading bots for Ethereum and other chains (Maximum Extractable Value)
+- **XAB Bot Lab (XRP)**: XRP-specific trading bots optimized for XRP blockchain
 - **Opportunities**: Cards for:
   - Staking Rewards
   - Yield Farming
@@ -239,7 +240,37 @@
 
 ---
 
-### 12. Profile (`/profile`)
+### 12. Forum (`/forum`)
+
+**Purpose**: Community forum for discussions, knowledge sharing, and networking.
+
+**Features**:
+- **Category Sidebar**: 
+  - All Discussions
+  - Affiliate Marketing
+  - MEV Bot Trading
+  - XAB Bot Trading (XRP)
+  - Network Building
+  - Financial Freedom
+  - Support & Help
+- **Search Functionality**: Real-time search across all discussions
+- **Post Listings**: 
+  - Pinned posts (highlighted)
+  - Hot posts (trending)
+  - Category badges
+  - Author information
+  - Reply counts and views
+  - Last activity timestamps
+- **Quick Stats**: 
+  - Total Posts
+  - Active Members
+  - Today's Posts
+  - Online Now
+- **New Post Button**: Create new discussion threads
+
+---
+
+### 13. Profile (`/profile`)
 
 **Purpose**: User identity, privacy settings, and account management.
 

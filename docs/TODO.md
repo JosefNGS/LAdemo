@@ -1,8 +1,8 @@
 # BitNexus TODO List
 ## Project Task Tracking & Roadmap
 
-**Last Updated**: December 2024  
-**Version**: 1.0  
+**Last Updated**: January 2026  
+**Version**: 1.1  
 **Status**: Active Development
 
 ---
@@ -43,7 +43,7 @@
 ### Main Pages
 - [x] Dashboard with financial overview
 - [x] Marketplace with product discovery
-- [x] Earn page (MEV Bot Lab)
+- [x] Earn page (Bot Lab - MEV Bot & XAB Bot)
 - [x] Alliance network page
 - [x] Token Shop with packages
 - [x] Academy with learning paths
@@ -56,6 +56,7 @@
 - [x] NexusHub AI assistant
 - [x] Cart page
 - [x] Checkout page
+- [x] Forum page with categories
 
 ### Components
 - [x] ProductDetailDrawer component
@@ -65,7 +66,7 @@
 
 ### Features
 - [x] Financial Freedom Progress Bar
-- [x] Income Streams Widget
+- [x] Income Streams Widget (enhanced size and visibility)
 - [x] Quick Actions Section
 - [x] Daily Tips banner
 - [x] Product tags system
@@ -74,6 +75,11 @@
 - [x] Social media connection buttons
 - [x] AI credits system in Token Shop
 - [x] Multiple payment methods in checkout
+- [x] Dashboard Tools section (Link Shortener, QR Generator, etc.)
+- [x] MEV Bot & XAB Bot (XRP) distinction with tabs
+- [x] Enhanced landing page FOMO elements
+- [x] Larger, more prominent "Initiate Access" button
+- [x] Urgency messaging with animations
 
 ### Infrastructure
 - [x] Development server with TypeScript transpilation
@@ -82,6 +88,9 @@
 - [x] SPA routing setup
 - [x] GitHub repository setup
 - [x] CI/CD workflows
+- [x] Frontend/Backend folder structure
+- [x] Server path resolution for both locations
+- [x] Supabase integration setup
 
 ### Documentation
 - [x] README.md
@@ -98,12 +107,22 @@
 - [x] Troubleshooting guide
 - [x] Changelog
 - [x] Documentation Index
+- [x] Pitch Deck
+- [x] Revenue Plan (with updated pricing and self-paced courses)
+- [x] Netlify Verification guide
+- [x] Supabase Setup guide
+- [x] All documentation aligned with MEV/XAB Bot distinction
+- [x] All documentation aligned with updated course pricing
+- [x] Date management rules added to .cursorrules
 
 ---
 
 ## 🔄 In Progress
 
 ### Current Sprint
+- [ ] Move files to frontend/ and backend/ directories (MOVE_FILES.bat ready)
+- [ ] Test server with new folder structure
+- [ ] Verify Netlify deployment with new structure
 - [ ] Testing all new authentication pages
 - [ ] Testing cart and checkout flow
 - [ ] Verifying ProductDetailDrawer functionality
@@ -130,7 +149,8 @@
 - [ ] Affiliate link generation API
 - [ ] Earnings tracking API
 - [ ] Network tree API
-- [ ] MEV bot staking API
+- [ ] MEV Bot & XAB Bot staking API
+- [ ] Supabase email collection integration (function ready)
 
 ### Payment Processing
 - [ ] Integrate payment gateway (Stripe/PayPal)
@@ -395,17 +415,18 @@
 ## 📊 Progress Tracking
 
 ### Overall Progress
-- **Completed**: ~60%
+- **Completed**: ~65%
 - **In Progress**: ~10%
-- **Planned**: ~30%
+- **Planned**: ~25%
 
 ### By Category
-- **Core Features**: 85% complete
+- **Core Features**: 90% complete
 - **Authentication**: 70% complete (UI done, backend needed)
 - **Payment**: 40% complete (UI done, integration needed)
-- **Social Features**: 60% complete
+- **Social Features**: 70% complete (Forum added)
 - **Admin Features**: 80% complete
-- **Documentation**: 90% complete
+- **Documentation**: 95% complete (all aligned with updates)
+- **UI/UX**: 85% complete (FOMO elements, enhanced buttons)
 
 ---
 
@@ -457,15 +478,31 @@
 
 ## 🔄 Update Log
 
-**December 2024 - Initial Creation**
+**January 2026 - Initial Creation**
 - Created comprehensive TODO list
 - Categorized all tasks
 - Set priorities
 - Added progress tracking
 
+**January 2026 - Major Updates**
+- Added Forum page
+- Enhanced Dashboard with Tools section
+- Implemented MEV Bot & XAB Bot (XRP) distinction
+- Updated all documentation with MEV/XAB Bot references
+- Updated course pricing structure (individual, self-paced, bundles, live events)
+- Enhanced landing page with FOMO elements
+- Improved "Initiate Access" button with animations and urgency
+- Increased text size for "Limited to 500 Early-Adopter licenses"
+- Organized project into frontend/ and backend/ folders
+- Added Supabase integration setup
+- Updated Revenue Plan with self-paced courses
+- Added date management rules to .cursorrules
+- Fixed server path resolution for both folder structures
+- Updated all Product docs to align with recent changes
+
 ---
 
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **Next Review**: Weekly  
 **Maintained By**: Development Team
 

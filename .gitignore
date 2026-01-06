@@ -6,3 +6,7 @@ dist/
 .env.local
 .netlify/
 
+# Ensure src/ is tracked (not ignored)
+!src/
+!frontend/src/
+

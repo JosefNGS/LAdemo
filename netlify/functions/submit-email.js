@@ -12,7 +12,15 @@ exports.handler = async (event, context) => {
 
   try {
     // Parse the request body
-    const { email } = JSON.parse(event.body);
+    const { name, email, phone } = JSON.parse(event.body);
+
+    // Validate name
+    if (!name || name.trim().length < 2) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Valid name is required' })
+      };
+    }
 
     // Validate email
     if (!email || !email.includes('@')) {
@@ -31,6 +39,14 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Validate phone (basic validation)
+    if (!phone || phone.trim().length < 10) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Valid phone number is required' })
+      };
+    }
+
     // Here you would save to your database
     // For now, we'll use a simple approach with environment variables or a service
     
@@ -40,8 +56,10 @@ exports.handler = async (event, context) => {
     // Option 4: Send to an email service like SendGrid/Mailchimp
     
     // Example: Log to console (in production, replace with actual database save)
-    console.log('New email submission:', {
+    console.log('New signup submission:', {
+      name: name,
       email: email,
+      phone: phone,
       timestamp: new Date().toISOString(),
       ip: event.headers['x-forwarded-for'] || event.headers['client-ip'],
       userAgent: event.headers['user-agent']
@@ -57,7 +75,9 @@ exports.handler = async (event, context) => {
         'Authorization': `Bearer ${process.env.DATABASE_API_KEY}`
       },
       body: JSON.stringify({
+        name: name,
         email: email,
+        phone: phone,
         source: 'landing_page',
         timestamp: new Date().toISOString(),
         status: 'pending'
@@ -76,7 +96,8 @@ exports.handler = async (event, context) => {
       },
       body: JSON.stringify({
         success: true,
-        message: 'Email submitted successfully',
+        message: 'Signup submitted successfully! Check your email for next steps.',
+        name: name,
         email: email
       })
     };

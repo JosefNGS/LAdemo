@@ -24,8 +24,9 @@ This guide covers how to deploy the BitNexus Landing Page to Netlify.
    - Select your repository
 
 2. **Configure Build Settings**:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
+   - **Build command**: `npm run build` (runs from `frontend/` directory)
+   - **Publish directory**: `frontend/dist`
+   - **Functions directory**: `backend/netlify/functions`
    - These are already configured in `netlify.toml`, so Netlify should auto-detect them
 
 3. **Deploy**:
@@ -62,13 +63,16 @@ This guide covers how to deploy the BitNexus Landing Page to Netlify.
 
 The build process (`npm run build`) does the following:
 
-1. **Creates `dist/` directory** for production files
-2. **Copies static files** (index.html, favicon, etc.)
-3. **Transpiles TypeScript** files to JavaScript:
+1. **Changes to `frontend/` directory** and creates `dist/` directory for production files
+2. **Detects source files** - Checks both `frontend/src/` and root `src/` directory (works with current structure)
+3. **Copies static files** (index.html, docs.html, manifesto.html) - Checks both frontend and root locations
+4. **Transpiles TypeScript** files to JavaScript:
    - All `.tsx` and `.ts` files are compiled to `.js`
    - Files are bundled and minified
    - CDN dependencies (React, ReactDOM, Recharts) remain external
-4. **Outputs production-ready files** to `dist/`
+5. **Outputs production-ready files** to `frontend/dist/`
+
+**Note**: The build script automatically detects files in either location, so it works whether files are in `frontend/` or root directory.
 
 ---
 
@@ -123,7 +127,8 @@ The `netlify.toml` file contains:
 ```toml
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = "frontend/dist"
+  functions = "backend/netlify/functions"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -160,12 +165,12 @@ The `netlify.toml` file contains:
 ### Site Not Loading
 
 1. **Check Publish Directory**:
-   - Verify `dist/` folder is being created
-   - Check that `index.html` exists in `dist/`
+   - Verify `frontend/dist/` folder is being created
+   - Check that `index.html` exists in `frontend/dist/`
 
 2. **Check Redirects**:
    - Ensure `netlify.toml` has the SPA redirect rule
-   - Or create `_redirects` file in `dist/` with: `/* /index.html 200`
+   - Or create `_redirects` file in `frontend/dist/` with: `/* /index.html 200`
 
 ### TypeScript Files Not Loading
 
@@ -234,7 +239,7 @@ Before deploying, test the production build locally:
 npm run build
 
 # Serve the dist folder
-npx http-server dist -p 8000
+npx http-server frontend/dist -p 8000
 ```
 
 Visit `http://localhost:8000` to verify everything works.
@@ -244,7 +249,7 @@ Visit `http://localhost:8000` to verify everything works.
 ## File Structure After Build
 
 ```
-dist/
+frontend/dist/
 ├── index.html
 ├── src/
 │   ├── main.js (transpiled from main.tsx)

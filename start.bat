@@ -15,6 +15,7 @@ echo [*] TypeScript files will be transpiled on the fly
 echo [*] Opening browser...
 echo [*] Press Ctrl+C to stop the server
 echo.
+cd frontend
 node server.js 2>&1
 if errorlevel 1 (
     echo.
@@ -42,6 +43,7 @@ echo [*] Press Ctrl+C to stop the server
 echo.
 start http://localhost:8000
 timeout /t 2 /nobreak >nul
+cd frontend
 python -m http.server 8000
 goto :end
 
@@ -58,6 +60,7 @@ echo [*] Press Ctrl+C to stop the server
 echo.
 start http://localhost:8000
 timeout /t 2 /nobreak >nul
+cd frontend
 python2 -m SimpleHTTPServer 8000
 goto :end
 
@@ -74,6 +77,7 @@ echo [*] Press Ctrl+C to stop the server
 echo.
 start http://localhost:8000
 timeout /t 2 /nobreak >nul
+cd frontend
 npx --yes http-server -p 8000
 goto :end
 
@@ -90,6 +94,7 @@ echo [*] Press Ctrl+C to stop the server
 echo.
 start http://localhost:8000
 timeout /t 2 /nobreak >nul
+cd frontend
 php -S localhost:8000
 goto :end
 

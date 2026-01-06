@@ -48,6 +48,57 @@ const Friends: React.FC = () => {
         ))}
       </div>
 
+      {/* Collaboration Opportunities */}
+      <div className="glass-card p-6 rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">Collaboration Opportunities</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            { type: 'Joint Venture', partner: 'Agent Nexus-42', opportunity: 'Cross-promote products to combined audience of 500+', value: '$2,400 potential', icon: '🤝' },
+            { type: 'Skill Partnership', partner: 'Agent Nexus-88', opportunity: 'Your marketing + their content creation expertise', value: 'High synergy', icon: '💼' },
+            { type: 'Network Expansion', partner: 'Agent Nexus-15', opportunity: 'Mutual referrals for network growth', value: '+50 members', icon: '📈' },
+          ].map((opp, idx) => (
+            <div key={idx} className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">{opp.icon}</span>
+                <div className="flex-1">
+                  <h4 className="font-bold">{opp.type}</h4>
+                  <p className="text-xs text-gray-500">with {opp.partner}</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-400 mb-2">{opp.opportunity}</p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-cyan-400 font-bold">{opp.value}</span>
+                <button className="px-3 py-1 bg-purple-600/20 text-purple-400 hover:bg-purple-600/30 rounded-lg text-xs font-bold transition-all">
+                  Explore
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Network Value Visualization */}
+      <div className="glass-card p-6 rounded-3xl border border-white/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">Network Value Visualization</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 bg-white/5 rounded-xl">
+            <p className="text-xs text-gray-500 mb-1">Total Network Value</p>
+            <p className="text-2xl font-bold text-purple-400">$18,420</p>
+            <p className="text-xs text-gray-400 mt-1">From all connections</p>
+          </div>
+          <div className="p-4 bg-white/5 rounded-xl">
+            <p className="text-xs text-gray-500 mb-1">Network Growth Potential</p>
+            <p className="text-2xl font-bold text-cyan-400">+245%</p>
+            <p className="text-xs text-gray-400 mt-1">In next 6 months</p>
+          </div>
+          <div className="p-4 bg-white/5 rounded-xl">
+            <p className="text-xs text-gray-500 mb-1">Influence Score</p>
+            <p className="text-2xl font-bold text-green-400">8.7/10</p>
+            <p className="text-xs text-gray-400 mt-1">Top 15% globally</p>
+          </div>
+        </div>
+      </div>
+
       {activeTab === 'friends' && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {friends.map((friend) => (
@@ -64,16 +115,16 @@ const Friends: React.FC = () => {
                   <p className="text-gray-500 text-sm">{friend.tier} Tier</p>
                 </div>
               </div>
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-sm mb-3">
                 <span className="text-gray-500">{friend.mutual} mutual connections</span>
-                <div className="flex gap-2">
-                  <button className="px-3 py-1.5 bg-purple-600/20 text-purple-400 rounded-lg text-xs font-bold hover:bg-purple-600/30 transition-all">
-                    Message
-                  </button>
-                  <button className="px-3 py-1.5 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10 transition-all">
-                    View
-                  </button>
-                </div>
+              </div>
+              <div className="flex gap-2">
+                <button className="flex-1 px-3 py-1.5 bg-purple-600/20 text-purple-400 rounded-lg text-xs font-bold hover:bg-purple-600/30 transition-all">
+                  Message
+                </button>
+                <button className="flex-1 px-3 py-1.5 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10 transition-all">
+                  View
+                </button>
               </div>
             </div>
           ))}

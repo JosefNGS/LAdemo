@@ -1,7 +1,7 @@
 # BitNexus Complete UI Documentation
 ## Comprehensive Page-by-Page Guide
 
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **Version**: 2.0  
 **Status**: Complete - All Pages Documented
 
@@ -17,7 +17,7 @@
 3. [Main Application Pages](#3-main-application-pages)
    - [Dashboard](#31-dashboard)
    - [Marketplace](#32-marketplace)
-   - [Earn (MEV Bot Lab)](#33-earn-mev-bot-lab)
+   - [Earn (Bot Lab)](#33-earn-bot-lab)
    - [Alliance](#34-alliance)
    - [Token Shop](#35-token-shop)
    - [Academy](#36-academy)
@@ -462,17 +462,17 @@
 
 ---
 
-### 3.3 Earn (MEV Bot Lab)
+### 3.3 Earn (Bot Lab)
 
 **File**: `src/pages/Earn.tsx`  
 **Route**: `/earn`  
-**Purpose**: Passive income through MEV bot staking
+**Purpose**: Passive income through MEV Bot and XAB Bot (XRP) staking
 
 #### Contents
 
 **Header Section**:
-- **Title**: "MEV Bot Lab"
-- **Subtitle**: "Automated passive income through blockchain trading"
+- **Title**: "Bot Lab"
+- **Subtitle**: "MEV Bot & XAB Bot automated trading nodes for high-yield opportunities"
 
 **Staking Overview Card**:
 - **Total Staked**: 2,500 NXC
@@ -1866,6 +1866,6 @@ The platform provides a complete ecosystem for affiliate marketing, network buil
 ---
 
 **Document Version**: 2.0  
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **Maintained By**: BitNexus Development Team
 

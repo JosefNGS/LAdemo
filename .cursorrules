@@ -1,5 +1,38 @@
 # BitNexus Landing Page - Cursor Rules
 
+## ⚠️ CRITICAL RULES - READ FIRST
+
+### 🚫 NO DOCUMENTATION FILES IN ROOT DIRECTORY
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **ALL documentation files MUST be in the `docs/` folder**
+- **NO `.md` files in root directory** (except `README.md` which is required for GitHub)
+- **NO documentation files in root** - If found, move to `docs/` immediately
+- **Exception**: Only `README.md` is allowed in root (brief project overview only)
+
+**What Goes Where**:
+- ✅ `docs/` - ALL documentation files (`.md` files)
+- ✅ `docs/Product docs/` - Product documentation (Pitch Deck, Revenue Plan, Market Analysis, etc.)
+- ✅ `README.md` - Only this file in root (brief project overview)
+- ❌ **NO other `.md` files in root** - Move to `docs/` immediately
+
+**If you create a documentation file**:
+1. **ALWAYS** create it in `docs/` folder (or `docs/Product docs/` for product docs)
+2. **NEVER** create `.md` files in root directory
+3. **If you find docs in root**, move them to `docs/` immediately
+4. **Update any references** to moved files
+
+**Examples of files that MUST be in `docs/`**:
+- API_SETUP.md → `docs/API_SETUP.md`
+- DEPLOYMENT.md → `docs/DEPLOYMENT.md`
+- TROUBLESHOOTING.md → `docs/TROUBLESHOOTING.md`
+- Any product docs → `docs/Product docs/`
+- Any guides, setup files, troubleshooting → `docs/`
+- Any markdown documentation → `docs/`
+
+**This rule is CRITICAL and must be followed for all documentation files.**
+
+---
+
 ## Project Overview
 This is a React + TypeScript landing page with an interactive demo dashboard for BitNexus, a decentralized affiliate revenue platform.
 
@@ -15,26 +48,39 @@ This is a React + TypeScript landing page with an interactive demo dashboard for
 ## File Structure
 ```
 BitNexus Landing Page/
-├── index.html          # Main HTML with landing page & React setup
-├── start.bat           # Development server launcher (Windows)
-├── server.js           # Node.js dev server with TypeScript transpilation
-├── server.py           # Python dev server (fallback)
-├── README.md           # Project documentation
+├── frontend/           # Frontend application
+│   ├── index.html      # Main HTML with landing page & React setup
+│   ├── docs.html       # Documentation page
+│   ├── manifesto.html  # Manifesto page
+│   ├── src/            # React source code
+│   │   ├── pages/      # Page components (Dashboard, Marketplace, Alliance, Forum, etc.)
+│   │   ├── components/ # Reusable components (Layout, ProductDetailDrawer, etc.)
+│   │   ├── contexts/   # React contexts (CartContext)
+│   │   ├── services/   # API services and utilities
+│   │   ├── types.ts    # TypeScript type definitions
+│   │   ├── constants.tsx # Constants, icons, and shared data
+│   │   ├── App.tsx     # Main app component with routing
+│   │   └── main.tsx    # React entry point
+│   ├── public/         # Static assets (_redirects)
+│   ├── build.js        # Production build script
+│   ├── server.js       # Node.js dev server with TypeScript transpilation
+│   └── server.py       # Python dev server (fallback)
+├── backend/            # Backend services (or netlify/ in root)
+│   └── netlify/
+│       └── functions/  # Serverless functions (submit-email, etc.)
+├── netlify/            # Alternative: Functions in root (current structure)
+│   └── functions/      # Serverless functions
 ├── docs/               # Documentation folder
-│   ├── API_SETUP.md           # Gemini API configuration guide
-│   ├── PROJECT_STATUS.md      # Project status and overview
-│   ├── SETUP_CHECKLIST.md     # Setup verification checklist
-│   ├── TROUBLESHOOTING.md     # Troubleshooting guide
-│   └── VERIFICATION.md        # File verification checklist
-├── src/
-│   ├── pages/          # Page components (Dashboard, Marketplace, Alliance, etc.)
-│   ├── components/     # Reusable components (Layout, etc.)
-│   ├── services/       # API services and utilities
-│   ├── types.ts        # TypeScript type definitions
-│   ├── constants.tsx   # Constants, icons, and shared data
-│   ├── App.tsx         # Main app component with routing
-│   └── main.tsx        # React entry point
-└── .cursorrules        # This file
+│   ├── Product docs/   # Product documentation (Revenue Plan, Pitch Deck, etc.)
+│   ├── API_SETUP.md   # Gemini API configuration guide
+│   ├── PROJECT_STATUS.md # Project status and overview
+│   ├── DEPLOYMENT.md  # Netlify deployment guide
+│   └── ... (other docs)
+├── start.bat          # Development server launcher (Windows)
+├── package.json       # Node.js dependencies
+├── netlify.toml       # Netlify configuration
+├── README.md          # Project documentation
+└── .cursorrules       # This file
 ```
 
 ## Coding Standards
@@ -90,7 +136,7 @@ export default PageName;
 ```
 
 #### Icons
-- All icons are defined in `src/constants.tsx` as React components
+- All icons are defined in `frontend/src/constants.tsx` as React components
 - Use `<ICONS.IconName />` pattern
 - Icons return SVG elements
 
@@ -183,7 +229,7 @@ export default PageName;
 4. Check `docs/TROUBLESHOOTING.md` if server fails to start
 
 ### Adding a New Page
-1. Create file in `src/pages/PageName.tsx`
+1. Create file in `frontend/src/pages/PageName.tsx`
 2. Add route to `AppRoute` enum in `types.ts`
 3. Add navigation item in `Layout.tsx` if needed
 4. Add case in `App.tsx` renderContent switch
@@ -207,6 +253,7 @@ export default PageName;
 4. Service automatically falls back to mock responses if no key is set
 
 ## Anti-Patterns to Avoid
+- ❌ **CRITICAL**: Don't create documentation files in root directory (use `docs/` folder)
 - ❌ Don't use inline styles (use Tailwind classes)
 - ❌ Don't create components in wrong directories
 - ❌ Don't use `any` type (use proper TypeScript types)
@@ -215,7 +262,6 @@ export default PageName;
 - ❌ Don't create deeply nested components (max 3-4 levels)
 - ❌ Don't forget responsive design (mobile-first)
 - ❌ Don't commit API keys to version control
-- ❌ Don't put documentation files in root (use `docs/` folder)
 - ❌ Don't modify `server.js` without understanding esbuild bundling
 
 ## Design System Reference
@@ -264,6 +310,33 @@ export default PageName;
 - For production, use Netlify environment variables (set in Netlify dashboard)
 - See `docs/API_SETUP.md` for configuration details
 - Service falls back to mock responses if API key is not set
+
+## Documentation Date Management
+
+### Date Update Rules
+- **ALWAYS** check today's date before making any documentation changes
+- **ALWAYS** update date fields when modifying documentation files
+- Use the current date in the format: **Month Year** (e.g., "January 2026") - month and year only, no day
+- Update these fields when making changes:
+  - `**Last Updated**:` or `**Date**:` fields in markdown files
+  - `**Version**:` dates in version history
+  - Changelog entry dates
+  - Any timestamp or date references
+
+### Date Format Standards
+- **Documentation headers**: `**Last Updated**: January 2026` (month and year only, no day)
+- **Changelog entries**: `## [1.2.0] - January 2026`
+- **Version dates**: `**Date**: January 2026`
+- **Status dates**: Include current month and year (January 2026)
+
+### When to Update Dates
+- When adding new features or content
+- When updating existing documentation
+- When fixing errors or making corrections
+- When updating project status or completion status
+- When modifying pricing, features, or specifications
+
+**IMPORTANT**: Never leave outdated dates in documentation. Always verify and update to today's date.
 
 ## Notes
 - This project uses ES modules with on-the-fly TypeScript transpilation

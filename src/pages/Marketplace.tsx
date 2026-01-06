@@ -13,6 +13,7 @@ const mockProducts: ProductWithTags[] = [
   { id: '1', name: 'NXC Trading Masterclass', category: 'Academy', price: 150, commission: 25, image: 'https://picsum.photos/seed/nxc1/400/300', status: 'Active', tags: ['🎯 High Commission', '👶 Beginner Friendly'], avgMonthlyEarnings: 375, timeTo1K: 2.7 },
   { id: '2', name: 'Crypto Health Formula', category: 'Health', price: 85, commission: 40, image: 'https://picsum.photos/seed/nxc2/400/300', status: 'Active', tags: ['🔄 Recurring Income', '⚡ Quick Win', '🎯 High Commission'], avgMonthlyEarnings: 340, timeTo1K: 2.9 },
   { id: '3', name: 'MEV Bot Pro License', category: 'Automation', price: 500, commission: 10, image: 'https://picsum.photos/seed/nxc3/400/300', status: 'Active', tags: ['🔄 Recurring Income'], avgMonthlyEarnings: 500, timeTo1K: 2.0 },
+  { id: '7', name: 'XAB Bot Pro License (XRP)', category: 'Automation', price: 550, commission: 10, image: 'https://picsum.photos/seed/nxc7/400/300', status: 'Active', tags: ['🔄 Recurring Income', '⚡ Quick Win'], avgMonthlyEarnings: 550, timeTo1K: 1.8 },
   { id: '4', name: 'Elite Performance Apparel', category: 'Shop', price: 45, commission: 15, image: 'https://picsum.photos/seed/nxc4/400/300', status: 'Active', tags: ['⚡ Quick Win', '👶 Beginner Friendly'], avgMonthlyEarnings: 68, timeTo1K: 14.7 },
   { id: '5', name: 'Nexus Private Node', category: 'Tech', price: 1200, commission: 5, image: 'https://picsum.photos/seed/nxc5/400/300', status: 'Active', tags: [], avgMonthlyEarnings: 600, timeTo1K: 1.7 },
   { id: '6', name: 'Blockchain Marketing Kit', category: 'Marketing', price: 95, commission: 30, image: 'https://picsum.photos/seed/nxc6/400/300', status: 'Active', tags: ['🎯 High Commission', '⚡ Quick Win'], avgMonthlyEarnings: 285, timeTo1K: 3.5 },
@@ -76,6 +77,96 @@ const Marketplace: React.FC = () => {
             {c}
           </button>
         ))}
+      </div>
+
+      {/* Smart Recommendations */}
+      <div className="glass-card p-6 rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-cyan-500/5">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold font-display">🤖 AI-Powered Recommendations</h3>
+          <span className="px-3 py-1 bg-purple-600/20 text-purple-400 border border-purple-500/30 rounded-full text-xs font-bold">For You</span>
+        </div>
+        <p className="text-sm text-gray-400 mb-4">Based on your network and performance, we recommend promoting these products:</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {mockProducts.slice(0, 3).map(product => (
+            <div key={product.id} className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all">
+              <div className="flex items-center gap-3 mb-2">
+                <img src={product.image} alt={product.name} className="w-12 h-12 rounded-lg object-cover" />
+                <div className="flex-1">
+                  <h4 className="font-bold text-sm">{product.name}</h4>
+                  <p className="text-xs text-gray-500">{product.commission}% commission</p>
+                </div>
+              </div>
+              <div className="flex gap-2 mb-2">
+                {product.tags.slice(0, 2).map((tag, idx) => (
+                  <span key={idx} className="px-2 py-0.5 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded text-[10px] font-bold">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <button
+                onClick={() => {
+                  setSelectedProduct(product);
+                  setShowDrawer(true);
+                }}
+                className="w-full py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-xs font-bold transition-all"
+              >
+                View Details
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Commission Comparison Tool */}
+      <div className="glass-card p-6 rounded-3xl border border-white/5">
+        <h3 className="text-xl font-bold mb-4">Commission Comparison Tool</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-white/5">
+                <th className="text-left py-3 px-4 text-xs font-bold text-gray-500 uppercase">Product</th>
+                <th className="text-center py-3 px-4 text-xs font-bold text-gray-500 uppercase">Commission</th>
+                <th className="text-center py-3 px-4 text-xs font-bold text-gray-500 uppercase">Type</th>
+                <th className="text-center py-3 px-4 text-xs font-bold text-gray-500 uppercase">Avg Earnings</th>
+                <th className="text-center py-3 px-4 text-xs font-bold text-gray-500 uppercase">Demand</th>
+              </tr>
+            </thead>
+            <tbody>
+              {mockProducts.slice(0, 5).map((product, idx) => (
+                <tr key={product.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <td className="py-3 px-4">
+                    <div className="flex items-center gap-3">
+                      <img src={product.image} alt={product.name} className="w-10 h-10 rounded-lg object-cover" />
+                      <span className="font-bold text-sm">{product.name}</span>
+                    </div>
+                  </td>
+                  <td className="text-center py-3 px-4">
+                    <span className="font-bold text-green-400">{product.commission}%</span>
+                  </td>
+                  <td className="text-center py-3 px-4">
+                    <span className={`px-2 py-1 rounded text-xs font-bold ${
+                      product.tags.includes('🔄 Recurring Income') 
+                        ? 'bg-green-500/10 text-green-400 border border-green-500/20' 
+                        : 'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                    }`}>
+                      {product.tags.includes('🔄 Recurring Income') ? 'Recurring' : 'One-time'}
+                    </span>
+                  </td>
+                  <td className="text-center py-3 px-4">
+                    <span className="font-bold text-cyan-400">${product.avgMonthlyEarnings || 0}/mo</span>
+                  </td>
+                  <td className="text-center py-3 px-4">
+                    <div className="flex items-center justify-center gap-1">
+                      {[1,2,3,4,5].map(i => (
+                        <div key={i} className={`w-2 h-2 rounded-full ${i <= (idx % 3 + 3) ? 'bg-green-400' : 'bg-gray-700'}`}></div>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

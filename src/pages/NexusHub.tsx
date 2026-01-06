@@ -56,6 +56,28 @@ const NexusHub: React.FC<NexusHubProps> = ({ onClose }) => {
           </button>
         </div>
 
+        {/* Input Area - Moved to Top */}
+        <div className="p-6 border-b border-white/5">
+          <div className="flex gap-3">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+              placeholder="Ask for strategy, ROI tips, or ecosystem help..."
+              className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500/50 transition-colors"
+            />
+            <button 
+              onClick={handleSend}
+              disabled={isTyping}
+              className="p-3 bg-cyan-500 text-black rounded-xl hover:bg-cyan-400 transition-colors disabled:opacity-50"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12 14-7-7 14-2-7-5-2Z"/></svg>
+            </button>
+          </div>
+          <p className="text-[10px] text-center text-gray-600 mt-4 uppercase tracking-widest font-bold">Encrypted Communication Stream v3.1</p>
+        </div>
+
         {/* Chat Area */}
         <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6">
           {messages.map((m, i) => (
@@ -78,28 +100,6 @@ const NexusHub: React.FC<NexusHubProps> = ({ onClose }) => {
               </div>
             </div>
           )}
-        </div>
-
-        {/* Input Area */}
-        <div className="p-6 border-t border-white/5">
-          <div className="flex gap-3">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-              placeholder="Ask for strategy, ROI tips, or ecosystem help..."
-              className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500/50 transition-colors"
-            />
-            <button 
-              onClick={handleSend}
-              disabled={isTyping}
-              className="p-3 bg-cyan-500 text-black rounded-xl hover:bg-cyan-400 transition-colors disabled:opacity-50"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12 14-7-7 14-2-7-5-2Z"/></svg>
-            </button>
-          </div>
-          <p className="text-[10px] text-center text-gray-600 mt-4 uppercase tracking-widest font-bold">Encrypted Communication Stream v3.1</p>
         </div>
       </div>
     </div>

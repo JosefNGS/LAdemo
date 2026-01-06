@@ -29,6 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
     { id: AppRoute.DASHBOARD, label: 'Dashboard', icon: ICONS.Dashboard },
     { id: AppRoute.MARKETPLACE, label: 'Marketplace', icon: ICONS.Marketplace },
     { id: AppRoute.EARN, label: 'Earn', icon: ICONS.Earn },
+    { id: AppRoute.BOT_LAB, label: 'Bot Lab', icon: ICONS.Earn },
     { id: AppRoute.ALLIANCE, label: 'Alliance', icon: ICONS.Alliance },
     { id: AppRoute.SHOP, label: 'Token Shop', icon: ICONS.Shop },
   ];
@@ -36,6 +37,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
   const socialNav = [
     { id: AppRoute.CHAT, label: 'Chat', icon: ICONS.Chat },
     { id: AppRoute.FRIENDS, label: 'Friends', icon: ICONS.Friends },
+    { id: AppRoute.FORUM, label: 'Forum', icon: ICONS.Forum },
     { id: AppRoute.AFFILIATE, label: 'Affiliate Mgr', icon: ICONS.Affiliate },
     { id: AppRoute.CONTENT_GENERATOR, label: 'Content Generator', icon: ICONS.ContentGenerator },
     { id: AppRoute.GOALS, label: 'Goals', icon: ICONS.Dashboard },
@@ -126,6 +128,19 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
         >
           <ICONS.NexusAI />
           AI Command
+        </button>
+        <button 
+          onClick={() => {
+            // Reload page to return to landing page
+            window.location.reload();
+          }}
+          className="w-full mt-3 flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 border border-transparent hover:border-white/5 hover:text-cyan-400 transition-all"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span className="text-sm font-bold">Back to Landing</span>
         </button>
         <button 
           onClick={() => setActiveRoute(AppRoute.PROFILE)}

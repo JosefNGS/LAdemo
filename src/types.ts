@@ -2,6 +2,7 @@ export enum AppRoute {
   DASHBOARD = 'dashboard',
   MARKETPLACE = 'marketplace',
   EARN = 'earn',
+  BOT_LAB = 'bot-lab',
   ALLIANCE = 'alliance',
   SHOP = 'shop',
   PROFILE = 'profile',
@@ -19,7 +20,8 @@ export enum AppRoute {
   LOGIN = 'login',
   REGISTER = 'register',
   FORGOT_PASSWORD = 'forgot-password',
-  MANIFESTO = 'manifesto'
+  MANIFESTO = 'manifesto',
+  FORUM = 'forum'
 }
 
 export interface Product {

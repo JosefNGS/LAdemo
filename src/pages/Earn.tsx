@@ -1,172 +1,309 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ICONS } from '../constants';
+import { AppRoute } from '../types';
 
-const Earn: React.FC = () => {
-  const [stakeAmount, setStakeAmount] = useState(1000);
-  const [apyRate, setApyRate] = useState(12);
-  const nxcToUsd = 3.0;
+interface EarnProps {
+  setActiveRoute?: (route: AppRoute) => void;
+}
 
-  const calculateIncome = () => {
-    const monthlyRate = apyRate / 100 / 12;
-    const monthlyIncome = stakeAmount * monthlyRate * nxcToUsd;
-    const yearlyIncome = stakeAmount * (apyRate / 100) * nxcToUsd;
-    // Compound interest: A = P(1 + r/n)^(nt)
-    const fiveYearCompound = stakeAmount * Math.pow(1 + apyRate / 100, 5) * nxcToUsd;
-    return {
-      monthly: monthlyIncome.toFixed(2),
-      yearly: yearlyIncome.toFixed(2),
-      fiveYear: fiveYearCompound.toFixed(2)
-    };
-  };
-
-  const income = calculateIncome();
-
-  const mevBots = [
-    { id: 1, name: 'Arbitrage Bot Alpha', apy: 12.5, status: 'Active', balance: 1250, earnings: 156.25 },
-    { id: 2, name: 'Liquidity Pool Beta', apy: 8.3, status: 'Active', balance: 3200, earnings: 265.60 },
-    { id: 3, name: 'Flash Loan Gamma', apy: 15.2, status: 'Pending', balance: 0, earnings: 0 },
+const Earn: React.FC<EarnProps> = ({ setActiveRoute }) => {
+  // All income streams data
+  const incomeStreams = [
+    {
+      id: 'affiliate',
+      name: 'Affiliate Commissions',
+      amount: 892,
+      percentage: 75,
+      trend: +15.2,
+      icon: '💰',
+      color: 'purple',
+      description: 'Earnings from product sales through affiliate links',
+      monthlyGrowth: '+$120',
+      topProducts: [
+        { name: 'NXC Trading Masterclass', earnings: 375 },
+        { name: 'Crypto Health Formula', earnings: 340 },
+        { name: 'MEV Bot Pro License', earnings: 500 },
+      ]
+    },
+    {
+      id: 'bot',
+      name: 'MEV/XAB Bot Returns',
+      amount: 234,
+      percentage: 20,
+      trend: +8.5,
+      icon: '🤖',
+      color: 'cyan',
+      description: 'Passive income from automated trading bots',
+      monthlyGrowth: '+$45',
+      botDetails: [
+        { name: 'MEV Bot Alpha', earnings: 156.25 },
+        { name: 'XAB Bot (XRP)', earnings: 248.50 },
+      ]
+    },
+    {
+      id: 'network',
+      name: 'Sub-Affiliate Network',
+      amount: 58,
+      percentage: 5,
+      trend: +12.3,
+      icon: '🌐',
+      color: 'green',
+      description: 'Commissions from your referral network',
+      monthlyGrowth: '+$8',
+      networkStats: {
+        directReferrals: 12,
+        subAffiliates: 30,
+        totalNetwork: 42
+      }
+    },
+    {
+      id: 'content',
+      name: 'Content Monetization',
+      amount: 26,
+      percentage: 2,
+      trend: +25.0,
+      icon: '📝',
+      color: 'yellow',
+      description: 'Revenue from content generation and sharing',
+      monthlyGrowth: '+$5',
+      contentStats: {
+        postsGenerated: 45,
+        shares: 120,
+        engagement: 890
+      }
+    },
+    {
+      id: 'academy',
+      name: 'Academy Revenue',
+      amount: 0,
+      percentage: 0,
+      trend: 0,
+      icon: '🎓',
+      color: 'purple',
+      description: 'Earnings from course sales and referrals',
+      monthlyGrowth: '$0',
+      potential: 'Start promoting courses to unlock this income stream'
+    }
   ];
+
+  const totalIncome = incomeStreams.reduce((sum, stream) => sum + stream.amount, 0);
+  const passiveIncome = incomeStreams.filter(s => s.id === 'bot' || s.id === 'network').reduce((sum, s) => sum + s.amount, 0);
+  const passivePercentage = Math.round((passiveIncome / totalIncome) * 100);
 
   return (
     <div className="space-y-8">
+      {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold font-display">MEV Bot Lab</h2>
-          <p className="text-gray-500 text-sm">Automated trading nodes for high-yield opportunities</p>
+          <h2 className="text-3xl font-bold font-display">Earn</h2>
+          <p className="text-gray-500 text-sm">Complete overview of all your income streams</p>
         </div>
-        <button className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all">
-          Deploy New Bot
-        </button>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="glass-card p-6 rounded-3xl border border-white/5">
-          <p className="text-gray-400 text-sm font-medium">Total Staked</p>
-          <h3 className="text-3xl font-bold font-display mt-2">4,450.00 <span className="text-lg text-gray-500">NXC</span></h3>
-          <p className="text-green-400 text-sm mt-2">+421.85 NXC earned</p>
-        </div>
-        <div className="glass-card p-6 rounded-3xl border border-white/5">
-          <p className="text-gray-400 text-sm font-medium">Average APY</p>
-          <h3 className="text-3xl font-bold font-display mt-2">12.0%</h3>
-          <p className="text-cyan-400 text-sm mt-2">Across all active bots</p>
-        </div>
-        <div className="glass-card p-6 rounded-3xl border border-white/5">
-          <p className="text-gray-400 text-sm font-medium">Active Bots</p>
-          <h3 className="text-3xl font-bold font-display mt-2">2</h3>
-          <p className="text-gray-500 text-sm mt-2">1 pending activation</p>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => setActiveRoute?.(AppRoute.BOT_LAB)}
+            className="px-6 py-3 bg-purple-600/20 text-purple-400 border border-purple-500/30 rounded-xl font-bold hover:bg-purple-600/30 transition-all"
+          >
+            Bot Lab
+          </button>
+          <button 
+            onClick={() => setActiveRoute?.(AppRoute.MARKETPLACE)}
+            className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+          >
+            Find Products
+          </button>
         </div>
       </div>
 
-      {/* Passive Income Projection Calculator */}
-      <div className="glass-card p-6 rounded-3xl border border-white/5">
-        <h3 className="text-xl font-bold mb-4">Passive Income Projection Calculator</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <div>
-              <label className="text-sm font-bold text-gray-400 mb-2 block">Stake Amount (NXC)</label>
-              <input
-                type="number"
-                value={stakeAmount}
-                onChange={(e) => setStakeAmount(Number(e.target.value) || 0)}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-lg font-bold"
-              />
-            </div>
-            <div>
-              <label className="text-sm font-bold text-gray-400 mb-2 block">APY (%)</label>
-              <input
-                type="number"
-                value={apyRate}
-                onChange={(e) => setApyRate(Number(e.target.value) || 0)}
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-lg font-bold"
-              />
-            </div>
-            <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
-              <p className="text-xs text-gray-500 mb-1">NXC to USD Rate</p>
-              <p className="text-sm font-bold">1 NXC = $3.00 USD</p>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="p-5 bg-gradient-to-br from-green-500/20 to-cyan-500/20 rounded-2xl border border-green-500/30">
-              <p className="text-xs text-gray-400 mb-2">Monthly Passive Income</p>
-              <p className="text-3xl font-bold text-green-400">${income.monthly}</p>
-              <p className="text-xs text-gray-500 mt-1">Based on {apyRate}% APY</p>
-            </div>
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/5">
-              <p className="text-xs text-gray-400 mb-2">Yearly Passive Income</p>
-              <p className="text-2xl font-bold text-cyan-400">${income.yearly}</p>
-            </div>
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/5">
-              <p className="text-xs text-gray-400 mb-2">In 5 Years (Compound)</p>
-              <p className="text-2xl font-bold text-purple-400">${income.fiveYear}</p>
-              <p className="text-xs text-gray-500 mt-1">With reinvestment</p>
-            </div>
-          </div>
+      {/* Total Income Summary */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="glass-card p-6 rounded-3xl border border-white/5 col-span-1 md:col-span-2">
+          <p className="text-gray-400 text-sm font-medium mb-2">Total Monthly Income</p>
+          <h3 className="text-4xl font-bold font-display mb-2">${totalIncome.toLocaleString()}</h3>
+          <p className="text-green-400 text-sm">+18.5% from last month</p>
         </div>
-        <div className="mt-4 p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-          <p className="text-xs text-cyan-400 font-bold mb-1">💡 Pro Tip</p>
-          <p className="text-xs text-gray-400">
-            Staking 1,000 NXC at 12% APY generates $30/month passive income. To reach $500/month, stake ~16,667 NXC.
-          </p>
+        <div className="glass-card p-6 rounded-3xl border border-white/5">
+          <p className="text-gray-400 text-sm font-medium mb-2">Passive Income</p>
+          <h3 className="text-3xl font-bold text-green-400 mb-2">{passivePercentage}%</h3>
+          <p className="text-gray-500 text-sm">${passiveIncome}/month</p>
+        </div>
+        <div className="glass-card p-6 rounded-3xl border border-white/5">
+          <p className="text-gray-400 text-sm font-medium mb-2">Active Income</p>
+          <h3 className="text-3xl font-bold text-purple-400 mb-2">{100 - passivePercentage}%</h3>
+          <p className="text-gray-500 text-sm">${totalIncome - passiveIncome}/month</p>
         </div>
       </div>
 
-      <div className="glass-card p-6 rounded-3xl border border-white/5">
-        <h3 className="text-xl font-bold mb-6">My MEV Bots</h3>
-        <div className="space-y-4">
-          {mevBots.map((bot) => (
-            <div key={bot.id} className="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      {/* Income Streams */}
+      <div className="space-y-4">
+        <h3 className="text-xl font-bold">Income Streams</h3>
+        {incomeStreams.map((stream) => (
+          <div key={stream.id} className="glass-card p-6 rounded-3xl border border-white/5 hover:border-purple-500/30 transition-all">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex items-start gap-4 flex-1">
+                <div className={`w-12 h-12 rounded-2xl bg-${stream.color}-500/10 border border-${stream.color}-500/20 flex items-center justify-center text-2xl`}>
+                  {stream.icon}
+                </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h4 className="text-lg font-bold">{bot.name}</h4>
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      bot.status === 'Active' 
-                        ? 'bg-green-500/10 text-green-400 border border-green-500/20' 
-                        : 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                    }`}>
-                      {bot.status}
+                    <h4 className="text-lg font-bold">{stream.name}</h4>
+                    <span className={`px-3 py-1 rounded-full text-xs font-bold bg-${stream.color}-500/10 text-${stream.color}-400 border border-${stream.color}-500/20`}>
+                      {stream.percentage}% of income
                     </span>
                   </div>
-                  <div className="grid grid-cols-3 gap-4 mt-4">
-                    <div>
-                      <p className="text-gray-500 text-xs">APY</p>
-                      <p className="text-lg font-bold text-cyan-400">{bot.apy}%</p>
+                  <p className="text-sm text-gray-500 mb-3">{stream.description}</p>
+                  
+                  {/* Stream-specific details */}
+                  {stream.id === 'affiliate' && stream.topProducts && (
+                    <div className="mt-3 space-y-2">
+                      <p className="text-xs font-bold text-gray-400 uppercase">Top Products</p>
+                      {stream.topProducts.map((product, i) => (
+                        <div key={i} className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                          <span className="text-sm text-gray-300">{product.name}</span>
+                          <span className="text-sm font-bold text-green-400">${product.earnings}/mo</span>
+                        </div>
+                      ))}
                     </div>
-                    <div>
-                      <p className="text-gray-500 text-xs">Staked</p>
-                      <p className="text-lg font-bold">{bot.balance.toLocaleString()} NXC</p>
+                  )}
+                  
+                  {stream.id === 'bot' && stream.botDetails && (
+                    <div className="mt-3 space-y-2">
+                      <p className="text-xs font-bold text-gray-400 uppercase">Bot Earnings</p>
+                      {stream.botDetails.map((bot, i) => (
+                        <div key={i} className="flex items-center justify-between p-2 bg-white/5 rounded-lg">
+                          <span className="text-sm text-gray-300">{bot.name}</span>
+                          <span className="text-sm font-bold text-cyan-400">${bot.earnings}/mo</span>
+                        </div>
+                      ))}
                     </div>
-                    <div>
-                      <p className="text-gray-500 text-xs">Earnings</p>
-                      <p className="text-lg font-bold text-green-400">+{bot.earnings.toFixed(2)} NXC</p>
+                  )}
+                  
+                  {stream.id === 'network' && stream.networkStats && (
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      <div className="p-2 bg-white/5 rounded-lg text-center">
+                        <p className="text-xs text-gray-500">Direct</p>
+                        <p className="text-sm font-bold">{stream.networkStats.directReferrals}</p>
+                      </div>
+                      <div className="p-2 bg-white/5 rounded-lg text-center">
+                        <p className="text-xs text-gray-500">Sub-Affiliates</p>
+                        <p className="text-sm font-bold">{stream.networkStats.subAffiliates}</p>
+                      </div>
+                      <div className="p-2 bg-white/5 rounded-lg text-center">
+                        <p className="text-xs text-gray-500">Total Network</p>
+                        <p className="text-sm font-bold">{stream.networkStats.totalNetwork}</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm font-bold hover:bg-white/10 transition-all">
-                    Manage
-                  </button>
-                  {bot.status === 'Active' && (
-                    <button className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl text-sm font-bold transition-all">
-                      Withdraw
-                    </button>
+                  )}
+                  
+                  {stream.id === 'content' && stream.contentStats && (
+                    <div className="mt-3 grid grid-cols-3 gap-2">
+                      <div className="p-2 bg-white/5 rounded-lg text-center">
+                        <p className="text-xs text-gray-500">Posts</p>
+                        <p className="text-sm font-bold">{stream.contentStats.postsGenerated}</p>
+                      </div>
+                      <div className="p-2 bg-white/5 rounded-lg text-center">
+                        <p className="text-xs text-gray-500">Shares</p>
+                        <p className="text-sm font-bold">{stream.contentStats.shares}</p>
+                      </div>
+                      <div className="p-2 bg-white/5 rounded-lg text-center">
+                        <p className="text-xs text-gray-500">Engagement</p>
+                        <p className="text-sm font-bold">{stream.contentStats.engagement}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {stream.id === 'academy' && stream.potential && (
+                    <div className="mt-3 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                      <p className="text-xs text-yellow-400 font-bold mb-1">💡 Opportunity</p>
+                      <p className="text-xs text-gray-400">{stream.potential}</p>
+                    </div>
                   )}
                 </div>
+              </div>
+              
+              <div className="flex flex-col items-end gap-2">
+                <div className="text-right">
+                  <p className="text-3xl font-bold text-green-400">${stream.amount}</p>
+                  <p className="text-sm text-gray-500">per month</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className={`text-sm font-bold ${stream.trend > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                    {stream.trend > 0 ? '+' : ''}{stream.trend}%
+                  </span>
+                  <span className="text-xs text-gray-500">vs last month</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-xs text-gray-500">Growth</p>
+                  <p className="text-sm font-bold text-green-400">{stream.monthlyGrowth}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Income Breakdown Chart */}
+      <div className="glass-card p-6 rounded-3xl border border-white/5">
+        <h3 className="text-xl font-bold mb-4">Income Breakdown</h3>
+        <div className="space-y-3">
+          {incomeStreams.filter(s => s.amount > 0).map((stream) => (
+            <div key={stream.id} className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <div className="flex items-center gap-2">
+                  <span>{stream.icon}</span>
+                  <span className="font-medium">{stream.name}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-gray-500">{stream.percentage}%</span>
+                  <span className="font-bold">${stream.amount}</span>
+                </div>
+              </div>
+              <div className="w-full bg-white/5 rounded-full h-2 overflow-hidden">
+                <div 
+                  className={`h-full bg-gradient-to-r from-${stream.color}-500 to-${stream.color}-400 rounded-full transition-all`}
+                  style={{ width: `${stream.percentage}%` }}
+                />
               </div>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Quick Actions */}
       <div className="glass-card p-6 rounded-3xl border border-white/5">
-        <h3 className="text-xl font-bold mb-4">Available Bot Templates</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {['Arbitrage Scanner', 'Liquidity Sniffer', 'Flash Loan Executor', 'Front-Run Defender'].map((template) => (
-            <div key={template} className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer">
-              <h4 className="font-bold mb-2">{template}</h4>
-              <p className="text-gray-500 text-sm">Estimated APY: 10-15%</p>
+        <h3 className="text-xl font-bold mb-4">Boost Your Earnings</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <button 
+            onClick={() => setActiveRoute?.(AppRoute.MARKETPLACE)}
+            className="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all text-left"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <ICONS.Marketplace />
+              <h4 className="font-bold">Find Products</h4>
             </div>
-          ))}
+            <p className="text-sm text-gray-500">Discover high-commission products to promote</p>
+          </button>
+          
+          <button 
+            onClick={() => setActiveRoute?.(AppRoute.BOT_LAB)}
+            className="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all text-left"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <ICONS.Earn />
+              <h4 className="font-bold">Deploy Bots</h4>
+            </div>
+            <p className="text-sm text-gray-500">Start earning passive income with MEV/XAB bots</p>
+          </button>
+          
+          <button 
+            onClick={() => setActiveRoute?.(AppRoute.ALLIANCE)}
+            className="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/30 transition-all text-left"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <ICONS.Alliance />
+              <h4 className="font-bold">Build Network</h4>
+            </div>
+            <p className="text-sm text-gray-500">Grow your sub-affiliate network for passive commissions</p>
+          </button>
         </div>
       </div>
     </div>
@@ -174,4 +311,3 @@ const Earn: React.FC = () => {
 };
 
 export default Earn;
-

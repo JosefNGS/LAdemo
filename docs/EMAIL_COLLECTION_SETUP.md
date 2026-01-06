@@ -1,7 +1,7 @@
 # Email Collection Setup Guide
 ## Database Integration for Landing Page Email Signups
 
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **Status**: Implementation Guide
 
 ---
@@ -128,65 +128,30 @@ The landing page email collection form now saves emails to a database via a Netl
 
 ---
 
-### Option 3: Supabase
+### Option 3: Supabase (Recommended)
 
-**Pros**: Open source, PostgreSQL, generous free tier  
+**Pros**: Open source, PostgreSQL, generous free tier, real-time capabilities  
 **Cons**: Requires database setup
 
-#### Steps:
+#### Quick Setup:
 
-1. **Create Supabase Project**:
-   - Go to [Supabase.com](https://supabase.com)
-   - Create new project
-   - Wait for database to provision
+1. **Follow the complete guide**: See `docs/SUPABASE_SETUP.md` for detailed instructions
 
-2. **Create Table**:
-   ```sql
-   CREATE TABLE email_submissions (
-     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-     email TEXT NOT NULL,
-     source TEXT DEFAULT 'landing_page',
-     status TEXT DEFAULT 'pending',
-     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-     ip_address TEXT,
-     user_agent TEXT
-   );
-   ```
-
-3. **Get API Credentials**:
-   - Project Settings → API
-   - Copy `anon` key and project URL
-
-4. **Configure Netlify**:
-   - Add environment variables:
+2. **Quick Steps**:
+   - Create project at [supabase.com](https://supabase.com)
+   - Run SQL migration from `docs/supabase-migration.sql`
+   - Get API credentials from Project Settings → API
+   - Add environment variables to Netlify:
      - `SUPABASE_URL`: Your project URL
      - `SUPABASE_ANON_KEY`: Your anon key
+   - Use `netlify/functions/submit-email-supabase.js` (or rename to `submit-email.js`)
 
-5. **Create Function**:
-   ```javascript
-   const { createClient } = require('@supabase/supabase-js');
-   
-   const supabase = createClient(
-     process.env.SUPABASE_URL,
-     process.env.SUPABASE_ANON_KEY
-   );
-   
-   exports.handler = async (event, context) => {
-     // ... validation code ...
-     
-     const { data, error } = await supabase
-       .from('email_submissions')
-       .insert([{
-         email: email,
-         source: 'landing_page',
-         status: 'pending',
-         ip_address: event.headers['x-forwarded-for'],
-         user_agent: event.headers['user-agent']
-       }]);
-     
-     // ... return success ...
-   };
+3. **Install Dependencies**:
+   ```bash
+   npm install @supabase/supabase-js
    ```
+
+**For complete setup instructions, see `docs/SUPABASE_SETUP.md`**
 
 ---
 
@@ -317,6 +282,6 @@ For issues or questions:
 
 ---
 
-**Last Updated**: December 2024  
+**Last Updated**: January 2026  
 **Maintained By**: Development Team
 

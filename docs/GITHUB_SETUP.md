@@ -1,7 +1,7 @@
 # GitHub Repository Setup Guide
 
 ## Repository Information
-- **Repository**: [JosefNGS/LADEMO](https://github.com/JosefNGS/LADEMO)
+- **Repository**: [JosefNGS/LAdemo](https://github.com/JosefNGS/LAdemo)
 - **Status**: Currently empty (ready for initial push)
 
 ## Initial Setup Steps
@@ -26,7 +26,7 @@ git commit -m "feat: initial commit - BitNexus landing page and dashboard"
 
 ```bash
 # Add remote repository
-git remote add origin https://github.com/JosefNGS/LADEMO.git
+git remote add origin https://github.com/JosefNGS/LAdemo.git
 
 # Verify remote
 git remote -v
@@ -96,7 +96,7 @@ All GitHub configuration files are in the `.github/` directory:
 ## Workflow Status
 
 After pushing, you can check workflow status at:
-- **Actions**: https://github.com/JosefNGS/LADEMO/actions
+- **Actions**: https://github.com/JosefNGS/LAdemo/actions
 
 ## Next Steps
 
@@ -120,7 +120,7 @@ To protect the `main` branch:
 ## Repository Settings
 
 ### General Settings
-- **Repository name**: LADEMO
+- **Repository name**: LAdemo
 - **Description**: BitNexus - Decentralized Affiliate Revenue Platform
 - **Visibility**: Public (or Private, as preferred)
 - **Topics**: Add relevant topics like: `react`, `typescript`, `affiliate-marketing`, `crypto`, `blockchain`

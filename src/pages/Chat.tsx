@@ -51,6 +51,47 @@ const Chat: React.FC = () => {
         <p className="text-gray-500 text-sm">Real-time direct messaging with end-to-end NXC encryption</p>
       </div>
 
+      {/* Financial Freedom Chat Groups */}
+      <div className="glass-card p-6 rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-500/5 to-cyan-500/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">Financial Freedom Chat Groups</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { name: 'Beginner Affiliates', members: 234, description: 'Support group for new affiliates', icon: '👶', color: 'green' },
+            { name: 'High Earners', members: 89, description: 'Mastermind for top performers', icon: '💎', color: 'purple' },
+            { name: 'MEV Bot Traders', members: 189, description: 'Discussion on MEV trading strategies', icon: '🤖', color: 'purple' },
+            { name: 'XAB Bot Traders (XRP)', members: 156, description: 'XRP-specific bot trading discussions', icon: '🤖', color: 'cyan' },
+            { name: 'Network Builders', members: 201, description: 'Team building and recruitment tips', icon: '🌐', color: 'yellow' },
+          ].map((group) => (
+            <div key={group.name} className={`p-4 rounded-xl border border-${group.color}-500/20 bg-${group.color}-500/5 hover:border-${group.color}-500/40 transition-all cursor-pointer`}>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-2xl">{group.icon}</span>
+                <h4 className="font-bold text-sm">{group.name}</h4>
+              </div>
+              <p className="text-xs text-gray-400 mb-2">{group.description}</p>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-gray-500">{group.members} members</span>
+                <button className={`px-3 py-1 bg-${group.color}-600 hover:bg-${group.color}-500 rounded-lg font-bold transition-all`}>
+                  Join
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Automated Financial Tips */}
+      <div className="glass-card p-4 rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 mb-6">
+        <div className="flex items-start gap-3">
+          <div className="text-2xl">💡</div>
+          <div className="flex-1">
+            <p className="text-xs font-bold text-cyan-400 mb-1">Today's Financial Freedom Tip</p>
+            <p className="text-sm text-gray-300">
+              Focus on products with recurring commissions - they build sustainable passive income over time. Check the Marketplace for products tagged "Recurring Income".
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-12rem)]">
         {/* Chat List */}
         <div className="lg:col-span-1 glass-card rounded-3xl border border-white/5 p-4 overflow-y-auto">

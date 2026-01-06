@@ -11,10 +11,10 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
   const { addItem, getItemCount } = useCart();
 
   const packages = [
-    { id: '1', name: 'Starter Pack', amount: 50, price: 150, bonus: 0, popular: false },
-    { id: '2', name: 'Growth Pack', amount: 100, price: 280, bonus: 5, popular: true },
-    { id: '3', name: 'Pro Pack', amount: 250, price: 650, bonus: 15, popular: false },
-    { id: '4', name: 'Enterprise Pack', amount: 500, price: 1200, bonus: 35, popular: false },
+    { id: '1', name: 'Starter Pack', amount: 50, price: 150, bonus: 0, aiCredits: 25, popular: false },
+    { id: '2', name: 'Growth Pack', amount: 100, price: 280, bonus: 5, aiCredits: 50, popular: true },
+    { id: '3', name: 'Pro Pack', amount: 250, price: 650, bonus: 15, aiCredits: 125, popular: false },
+    { id: '4', name: 'Enterprise Pack', amount: 500, price: 1200, bonus: 35, aiCredits: 250, popular: false },
   ];
 
   const handleAddToCart = (pkg: typeof packages[0]) => {
@@ -88,6 +88,80 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
         ))}
       </div>
 
+      {/* ROI Calculator */}
+      <div className="glass-card p-6 rounded-3xl border border-white/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">ROI Calculator</h3>
+        <p className="text-sm text-gray-400 mb-4">Calculate expected returns from NXC token packages</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { name: 'Starter Pack', price: 50, apy: 10, years: 1 },
+            { name: 'Growth Pack', price: 250, apy: 12, years: 1 },
+            { name: 'Elite Pack', price: 500, apy: 15, years: 1 },
+          ].map((pack) => {
+            const nxcToUsd = 3.0;
+            const initialUsd = pack.price * nxcToUsd;
+            const yearlyReturn = initialUsd * (pack.apy / 100);
+            const fiveYearCompound = initialUsd * Math.pow(1 + pack.apy / 100, 5);
+            const breakEvenMonths = 12 / (pack.apy / 100);
+            
+            return (
+              <div key={pack.name} className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <h4 className="font-bold mb-3">{pack.name}</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Initial:</span>
+                    <span className="font-bold">${initialUsd.toFixed(0)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">1 Year Return:</span>
+                    <span className="font-bold text-green-400">${yearlyReturn.toFixed(0)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">5 Year (Compound):</span>
+                    <span className="font-bold text-cyan-400">${fiveYearCompound.toFixed(0)}</span>
+                  </div>
+                  <div className="pt-2 border-t border-white/5 flex justify-between">
+                    <span className="text-gray-400">Break-even:</span>
+                    <span className="font-bold text-purple-400">~{breakEvenMonths.toFixed(1)} months</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Financial Freedom Packages */}
+      <div className="glass-card p-6 rounded-3xl border border-green-500/20 bg-gradient-to-br from-green-500/5 to-cyan-500/5 mb-6">
+        <h3 className="text-xl font-bold mb-4">Financial Freedom Packages</h3>
+        <p className="text-sm text-gray-400 mb-4">Pre-configured bundles designed to help you reach specific income goals</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { name: 'Starter Freedom', goal: '$500/month', price: 250, description: 'Perfect for beginners starting their journey', color: 'green' },
+            { name: 'Moderate Freedom', goal: '$2,000/month', price: 1000, description: 'For those ready to scale their income', color: 'cyan' },
+            { name: 'Full Freedom', goal: '$5,000+/month', price: 2500, description: 'Complete financial independence package', color: 'purple' },
+          ].map((pkg) => (
+            <div key={pkg.name} className={`p-5 rounded-xl border border-${pkg.color}-500/30 bg-gradient-to-br from-${pkg.color}-500/10 to-transparent`}>
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-bold text-lg">{pkg.name}</h4>
+                <span className={`px-2 py-1 bg-${pkg.color}-500/20 text-${pkg.color}-400 border border-${pkg.color}-500/30 rounded text-xs font-bold`}>
+                  {pkg.goal}
+                </span>
+              </div>
+              <p className="text-sm text-gray-400 mb-3">{pkg.description}</p>
+              <div className="mb-3">
+                <p className="text-xs text-gray-500 mb-1">Package Value</p>
+                <p className="text-2xl font-bold">{pkg.price} NXC</p>
+                <p className="text-xs text-gray-500">≈ ${(pkg.price * 3).toFixed(0)} USD</p>
+              </div>
+              <button className={`w-full py-3 bg-${pkg.color}-600 hover:bg-${pkg.color}-500 rounded-xl font-bold transition-all`}>
+                Select Package
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="glass-card p-6 rounded-3xl border border-white/5">
         <h3 className="text-xl font-bold mb-4">Why Buy NXC?</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -112,7 +186,7 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
               <ICONS.Earn />
             </div>
             <h4 className="font-bold mb-2">Staking Rewards</h4>
-            <p className="text-gray-500 text-sm">Earn passive income through MEV bot staking</p>
+            <p className="text-gray-500 text-sm">Earn passive income through MEV and XAB bot staking</p>
           </div>
           <div className="p-4 bg-white/5 rounded-xl">
             <div className="w-12 h-12 rounded-xl bg-yellow-600/20 flex items-center justify-center mb-3">

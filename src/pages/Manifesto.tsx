@@ -92,7 +92,7 @@ const Manifesto: React.FC = () => {
                 </p>
                 <p className="text-base text-white/60 mt-4 leading-relaxed">
                   We're not here to help you "get rich quick." We're here to help you build sustainable, automated income streams that compound over time. 
-                  Through affiliate marketing, MEV bot staking, network building, and strategic product promotion, financial independence isn't a dream—it's an achievable reality.
+                  Through affiliate marketing, MEV and XAB bot staking, network building, and strategic product promotion, financial independence isn't a dream—it's an achievable reality.
                 </p>
               </div>
             </div>

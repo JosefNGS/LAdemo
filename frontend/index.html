@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BITNEXUS | Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexusPurple: '#7c3aed',
+                        techCyan: '#06b6d4',
+                        signalGreen: '#10b981',
+                        wealthGold: '#fbbf24',
+                        deepBg: '#030712',
+                        cardBg: '#111827',
+                    },
+                    fontFamily: {
+                        futuristic: ['Orbitron', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #030712; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .font-futuristic { font-family: 'Orbitron', sans-serif; }
+        .glow-cyan { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+        .glow-purple { box-shadow: 0 0 35px rgba(124, 58, 237, 0.4); }
+        .bg-grid {
+            background-image: linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .glass-card { background: #111827; border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(12px); }
+        .hidden { display: none; }
+        @keyframes pulse-nexus { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.3); } }
+        .animate-nexus { animation: pulse-nexus 3s infinite ease-in-out; }
+        .gradient-text {
+            background: linear-gradient(90deg, #06b6d4, #7c3aed, #06b6d4);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gradient-cyan-purple {
+            background: linear-gradient(to right, #06b6d4, #7c3aed, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+            animation: shimmer 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+        "recharts": "https://esm.sh/recharts@^3.6.0"
+      }
+    }
+    </script>
+</head>
+<body class="bg-grid">
+
+    <!-- LANDING PAGE VIEW -->
+    <div id="landing-view">
+        <header class="fixed top-0 w-full z-50 glass-card border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-black font-futuristic tracking-tighter">
+                    BIT<span class="text-techCyan">NEXUS</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="enterDemo()" class="px-6 py-2 bg-techCyan/10 border border-techCyan/30 text-techCyan text-[10px] font-bold font-futuristic hover:bg-techCyan hover:text-black transition-all uppercase tracking-widest">
+                        Try Demo
+                    </button>
+                    <a href="#genesis" class="hidden md:block px-6 py-2 bg-nexusPurple text-white text-[10px] font-bold font-futuristic uppercase tracking-widest rounded-sm">Join Launch</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero -->
+            <section class="min-h-screen flex flex-col items-center justify-center pt-32 px-6 text-center">
+                <div class="inline-block mb-6 px-4 py-1 border border-techCyan/30 rounded-full bg-techCyan/5">
+                    <span class="text-[10px] font-bold font-futuristic text-techCyan tracking-[0.3em] uppercase">Genesis Phase: Calibration in Progress</span>
+                </div>
+                <h1 class="text-5xl md:text-8xl font-black font-futuristic mb-8 uppercase italic leading-tight">
+                    The Future of <br/>
+                    <span class="gradient-text">Decentralized Revenue</span>
+                </h1>
+                
+                <p class="max-w-2xl text-white/60 text-lg md:text-xl mb-12 font-medium leading-relaxed">
+                    Stop chasing the market. Start architecting it. Join <span class="text-white font-bold">12,400+ pioneers</span> securing automated wealth through the world's first AI-powered sovereign affiliate ecosystem.
+                </p>
+
+                <!-- Countdown -->
+                <div id="countdown" class="flex justify-center gap-4 md:gap-10 mb-16">
+                    <div class="flex flex-col items-center">
+                        <span id="days" class="text-3xl md:text-7xl font-futuristic font-black">06</span>
+                        <span class="text-[8px] uppercase tracking-widest text-white/30 mt-2">Days</span>
+                    </div>
+                    <span class="text-2xl md:text-7xl font-futuristic text-nexusPurple animate-pulse">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="hours" class="text-3xl md:text-7xl font-futuristic font-black">22</span>
+                        <span class="text-[8px] uppercase tracking-widest text-white/30 mt-2">Hours</span>
+                    </div>
+                    <span class="text-2xl md:text-7xl font-futuristic text-nexusPurple animate-pulse">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="minutes" class="text-3xl md:text-7xl font-futuristic font-black">14</span>
+                        <span class="text-[8px] uppercase tracking-widest text-white/30 mt-2">Mins</span>
+                    </div>
+                    <span class="text-2xl md:text-7xl font-futuristic text-techCyan animate-pulse">:</span>
+                    <div class="flex flex-col items-center">
+                        <span id="seconds" class="text-3xl md:text-7xl font-futuristic font-black text-techCyan">00</span>
+                        <span class="text-[8px] uppercase tracking-widest text-techCyan/50 mt-2">Secs</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#genesis" class="px-12 py-5 bg-nexusPurple text-white font-black font-futuristic rounded-sm glow-purple uppercase tracking-widest text-sm transition-all hover:scale-105">
+                        Secure Genesis Spot
+                    </a>
+                    <button onclick="enterDemo()" class="px-12 py-5 border border-techCyan/50 text-techCyan font-black font-futuristic rounded-sm uppercase tracking-widest text-sm hover:bg-techCyan/10 transition-all">
+                        Live Demo Module
+                    </button>
+                </div>
+            </section>
+
+            <!-- Hype Section: Why Now? -->
+            <section id="genesis" class="py-32 px-6 bg-deepBg relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-nexusPurple to-transparent"></div>
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl md:text-6xl font-black font-futuristic mb-8 uppercase italic">Don't Get Left in the <span class="text-techCyan italic">Old Economy</span></h2>
+                    <p class="text-white/50 text-lg mb-12">The Nexus launch is a once-in-a-cycle event. Pre-registering grants you immediate access to Founder-tier commissions and early Node deployment rights.</p>
+                    
+                    <div class="relative inline-block mb-4">
+                        <button 
+                            id="open-signup-modal"
+                            class="relative bg-gradient-to-r from-techCyan via-cyan-400 to-techCyan text-black px-16 py-6 font-black font-futuristic text-lg md:text-xl uppercase tracking-widest hover:brightness-110 transition-all duration-300 shadow-2xl shadow-techCyan/60 rounded-xl animate-pulse-slow hover:scale-105 hover:shadow-techCyan/80 z-10 overflow-hidden"
+                            style="background-size: 200% auto; animation: shine 3s linear infinite;"
+                        >
+                            <span class="relative z-10 flex items-center gap-3">
+                                <span>⚡</span>
+                                <span>INITIATE ACCESS NOW</span>
+                                <span>⚡</span>
+                            </span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                        </button>
+                        <div class="absolute -inset-1 bg-gradient-to-r from-techCyan via-purple-500 to-techCyan rounded-xl blur-lg opacity-75 animate-pulse"></div>
+                    </div>
+                    <div class="mt-8 space-y-3">
+                        <p class="text-xl md:text-3xl text-white font-futuristic uppercase tracking-widest font-black leading-tight">
+                            <span class="text-red-400 animate-pulse">⚠️ URGENT:</span> Limited to 500 Early-Adopter licenses.
+                        </p>
+                        <p class="text-2xl md:text-5xl text-wealthGold font-black font-futuristic uppercase tracking-wider animate-pulse-slow">
+                            <span class="inline-block animate-bounce">🔥</span> ONLY <span class="text-4xl md:text-6xl">142</span> REMAINING <span class="inline-block animate-bounce">🔥</span>
+                        </p>
+                        <p class="text-sm md:text-base text-white/70 font-futuristic italic mt-4">
+                            ⏰ Spots are filling fast. Don't miss your chance at Founder-tier benefits.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Academy Modules (6 Courses) -->
+            <section id="courses" class="py-32 px-6">
+                <div class="max-w-7xl mx-auto text-center">
+                    <div class="flex flex-col items-center mb-16">
+                        <h2 class="text-4xl font-black font-futuristic uppercase mb-4 tracking-tighter italic">Academy Modules</h2>
+                        <div class="h-1 w-24 bg-techCyan"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Course 1: AI Dev -->
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-techCyan/50 transition group">
+                            <span class="text-[9px] font-bold text-techCyan border border-techCyan px-2 py-1 uppercase italic">University-Grade</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-techCyan transition">Next-Gen Dev with AI</h4>
+                            <p class="text-xs text-white/50 mb-6">Master Gemini, Mokka, and Cursor via "Vibe Coding." Build apps at the speed of thought.</p>
+                            <button class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-techCyan/30 transition">Enroll Draft</button>
+                        </div>
+                        <!-- Course 2: DeFi Wealth -->
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-wealthGold/50 transition group">
+                            <span class="text-[9px] font-bold text-wealthGold border border-wealthGold px-2 py-1 uppercase italic">Wealth Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-wealthGold transition">The DeFi Wealth Protocol</h4>
+                            <p class="text-xs text-white/50 mb-6">Liquidity provision and automated yield optimization. Create money that never sleeps.</p>
+                            <button class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-wealthGold/30 transition">Coming Soon</button>
+                        </div>
+                        <!-- Course 3: Financial Freedom -->
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-signalGreen/50 transition group">
+                            <span class="text-[9px] font-bold text-signalGreen border border-signalGreen px-2 py-1 uppercase italic">Sovereign Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-signalGreen transition">Sovereign Lifestyle</h4>
+                            <p class="text-xs text-white/50 mb-6">Designing a borderless life with total autonomy. The technical roadmap to freedom.</p>
+                            <button class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-signalGreen/30 transition">New Release</button>
+                        </div>
+                        <!-- Course 4: Algorithmic Revenue -->
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-nexusPurple/50 transition group">
+                            <span class="text-[9px] font-bold text-nexusPurple border border-nexusPurple px-2 py-1 uppercase italic">Algo Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-nexusPurple transition">Revenue Engine Bots</h4>
+                            <p class="text-xs text-white/50 mb-6">Build AI-driven trading bots across global markets. Deploy your digital workforce.</p>
+                            <button class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-nexusPurple/30 transition">Early Access</button>
+                        </div>
+                        <!-- Course 5: Affiliate Funnels -->
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-techCyan/50 transition group">
+                            <span class="text-[9px] font-bold text-techCyan border border-techCyan px-2 py-1 uppercase italic">Marketing Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-techCyan transition">High-Ticket Funnels</h4>
+                            <p class="text-xs text-white/50 mb-6">Enterprise-grade affiliate loops for recurring payouts. Scale from zero to sovereign.</p>
+                            <button class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-techCyan/30 transition">Open Now</button>
+                        </div>
+                        <!-- Course 6: AI Content -->
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-wealthGold/50 transition group">
+                            <span class="text-[9px] font-bold text-wealthGold border border-wealthGold px-2 py-1 uppercase italic">Traffic Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-wealthGold transition">Content Arbitrage</h4>
+                            <p class="text-xs text-white/50 mb-6">Weaponizing viral AI media for endless traffic. Dominate the attention economy.</p>
+                            <button class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-wealthGold/30 transition">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="py-20 border-t border-white/5 bg-black/40 text-center">
+            <div class="text-2xl font-black font-futuristic mb-8">BIT<span class="text-techCyan">NEXUS</span></div>
+            <div class="flex justify-center space-x-12 text-[10px] font-bold font-futuristic uppercase tracking-[0.3em] text-white/40 mb-12">
+                <a href="manifesto.html" class="hover:text-techCyan transition">Manifesto</a>
+                <a href="#" class="hover:text-techCyan transition">Twitter</a>
+                <a href="#" class="hover:text-techCyan transition">Discord</a>
+                <a href="docs.html" class="hover:text-techCyan transition">Docs</a>
+            </div>
+            <p class="text-[8px] uppercase tracking-[0.5em] text-white/20">The Future of Decentralized Revenue &copy; 2026</p>
+        </footer>
+    </div>
+
+    <!-- APP DEMO VIEW (React Dashboard) -->
+    <div id="app-view" class="hidden">
+        <div id="root"></div>
+    </div>
+
+    <!-- SIGNUP MODAL -->
+    <div id="signup-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-black font-futuristic text-gradient-cyan-purple">Initiate Access</h3>
+                <button id="close-signup-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="text-gray-400 text-sm mb-6">Enter your details to secure your Genesis spot. Limited to 500 Early-Adopter licenses.</p>
+            
+            <form id="signup-form" class="space-y-4">
+                <div>
+                    <label for="signup-name" class="block text-sm font-bold text-gray-400 mb-2">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="signup-name" 
+                        name="name"
+                        placeholder="John Doe" 
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm font-futuristic text-white placeholder:text-white/40 focus:outline-none focus:border-techCyan/50 transition"
+                    >
+                </div>
+                <div>
+                    <label for="signup-email" class="block text-sm font-bold text-gray-400 mb-2">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="signup-email" 
+                        name="email"
+                        placeholder="Enter your terminal email..." 
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm font-futuristic text-white placeholder:text-white/40 focus:outline-none focus:border-techCyan/50 transition"
+                    >
+                </div>
+                <div>
+                    <label for="signup-phone" class="block text-sm font-bold text-gray-400 mb-2">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="signup-phone" 
+                        name="phone"
+                        placeholder="+1 (555) 123-4567" 
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm font-futuristic text-white placeholder:text-white/40 focus:outline-none focus:border-techCyan/50 transition"
+                    >
+                </div>
+                <div id="signup-message" class="text-sm font-futuristic hidden"></div>
+                <button 
+                    type="submit"
+                    id="signup-submit"
+                    class="w-full bg-techCyan text-black px-8 py-4 font-black font-futuristic text-[12px] uppercase tracking-widest hover:brightness-110 transition shadow-lg shadow-techCyan/40 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    Submit Access Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- MODAL HANDLERS ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const openModalBtn = document.getElementById('open-signup-modal');
+            const closeModalBtn = document.getElementById('close-signup-modal');
+            const modal = document.getElementById('signup-modal');
+            const signupForm = document.getElementById('signup-form');
+            const submitButton = document.getElementById('signup-submit');
+            const messageDiv = document.getElementById('signup-message');
+
+            // Open modal
+            if (openModalBtn) {
+                openModalBtn.addEventListener('click', function() {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Close modal
+            function closeModal() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeModal);
+            }
+
+            // Close modal on overlay click
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+
+            // Close modal on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+            // --- SIGNUP FORM HANDLER ---
+            if (signupForm) {
+                signupForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('signup-name').value.trim();
+                    const email = document.getElementById('signup-email').value.trim();
+                    const phone = document.getElementById('signup-phone').value.trim();
+                    
+                    // Validation
+                    if (!name) {
+                        showMessage('Please enter your full name', 'error');
+                        return;
+                    }
+
+                    if (!email) {
+                        showMessage('Please enter your email address', 'error');
+                        return;
+                    }
+
+                    // Validate email format
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        showMessage('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    if (!phone) {
+                        showMessage('Please enter your phone number', 'error');
+                        return;
+                    }
+
+                    // Basic phone validation (allows various formats)
+                    const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+                    if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+                        showMessage('Please enter a valid phone number', 'error');
+                        return;
+                    }
+
+                    // Disable button and show loading
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Processing...';
+                    messageDiv.classList.add('hidden');
+
+                    try {
+                        // Submit to Netlify function
+                        const response = await fetch('/.netlify/functions/submit-email', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ 
+                                name: name,
+                                email: email,
+                                phone: phone
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok && data.success) {
+                            showMessage('✓ Access initiated! Check your email for next steps.', 'success');
+                            signupForm.reset();
+                            
+                            // Close modal after 2 seconds on success
+                            setTimeout(() => {
+                                closeModal();
+                            }, 2000);
+                            
+                            // Optional: Track conversion
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'signup_complete', {
+                                    'event_category': 'engagement',
+                                    'event_label': 'landing_page_modal'
+                                });
+                            }
+                        } else {
+                            showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        showMessage('Network error. Please check your connection and try again.', 'error');
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Submit Access Request';
+                    }
+                });
+            }
+
+            function showMessage(text, type) {
+                messageDiv.textContent = text;
+                messageDiv.classList.remove('hidden');
+                
+                if (type === 'success') {
+                    messageDiv.className = 'text-sm font-futuristic text-signalGreen';
+                } else {
+                    messageDiv.className = 'text-sm font-futuristic text-red-400';
+                }
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            }
+        });
+
+        // --- COUNTDOWN LOGIC ---
+        const launchDate = new Date("Jan 13, 2026 16:03:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerText = d.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = h.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = m.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- NAVIGATION LOGIC ---
+        let reactAppLoaded = false;
+        
+        async function enterDemo() {
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('app-view').classList.remove('hidden');
+            window.scrollTo(0,0);
+            
+            // Load React app if not already loaded
+            if (!reactAppLoaded) {
+                reactAppLoaded = true;
+                try {
+                    // Load the React app module
+                    // In production (Netlify), use .js files
+                    // In development, use .tsx files (server transpiles)
+                    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+                    const module = await import(isProduction ? './src/main.js' : './src/main.tsx');
+                } catch (error) {
+                    console.error('Failed to load React app:', error);
+                    // Fallback: show error message
+                    const root = document.getElementById('root');
+                    if (root) {
+                        root.innerHTML = '<div class="flex items-center justify-center min-h-screen text-white"><div class="text-center"><h2 class="text-2xl font-bold mb-4">Demo Loading Error</h2><p class="text-gray-500">TypeScript files require a transpiler.</p><p class="text-xs text-gray-400 mt-2">Please use a server with TypeScript support (esbuild, vite) or install Node.js and run: npx esbuild --serve</p><p class="text-xs text-gray-600 mt-4">Error: ' + error.message + '</p></div></div>';
+                    }
+                }
+            }
+        }
+
+        function exitDemo() {
+            document.getElementById('app-view').classList.add('hidden');
+            document.getElementById('landing-view').classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+        
+        // Make exitDemo available globally for React app
+        window.exitDemo = exitDemo;
+        
+        // Configure Gemini API Key (set your API key here or via environment)
+        // For production, use a secure method to inject this
+        // window.GEMINI_API_KEY = 'YOUR_GEMINI_API_KEY_HERE';
+    </script>
+</body>
+</html>
+
