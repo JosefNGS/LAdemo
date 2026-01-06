@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BITNEXUS | Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexusPurple: '#7c3aed',
+                        techCyan: '#06b6d4',
+                        signalGreen: '#10b981',
+                        wealthGold: '#fbbf24',
+                        deepBg: '#030712',
+                        cardBg: '#111827',
+                    },
+                    fontFamily: {
+                        futuristic: ['Orbitron', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #030712; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .font-futuristic { font-family: 'Orbitron', sans-serif; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .bg-grid {
+            background-image: linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #06b6d4;
+        }
+        pre {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-grid">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-card border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black font-futuristic tracking-tighter">
+                BIT<span class="text-techCyan">NEXUS</span>
+            </div>
+            <a 
+                href="index.html" 
+                class="px-6 py-2 bg-techCyan/10 border border-techCyan/30 text-techCyan text-[10px] font-bold font-futuristic hover:bg-techCyan hover:text-black transition-all uppercase tracking-widest"
+            >
+                ← Return
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-nexusPurple/10 via-transparent to-techCyan/10"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="inline-block mb-6 px-4 py-1 border border-techCyan/30 rounded-full bg-techCyan/5">
+                <span class="text-[10px] font-bold font-futuristic text-techCyan tracking-[0.3em] uppercase">Technical Documentation</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black font-futuristic mb-8 uppercase italic leading-tight">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-techCyan via-nexusPurple to-techCyan">Documentation</span>
+            </h1>
+            <p class="text-xl text-white/70 font-medium max-w-2xl mx-auto">
+                Complete guide to the BitNexus platform, API, and ecosystem
+            </p>
+        </div>
+    </section>
+
+    <!-- Documentation Content -->
+    <section class="py-12 px-6">
+        <div class="max-w-5xl mx-auto">
+            
+            <!-- Quick Navigation -->
+            <div class="glass-card p-6 rounded-2xl border border-white/5 mb-12">
+                <h3 class="text-xl font-bold font-futuristic mb-4 text-techCyan">Quick Navigation</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <a href="#getting-started" class="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition text-sm text-center">Getting Started</a>
+                    <a href="#features" class="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition text-sm text-center">Features</a>
+                    <a href="#api" class="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition text-sm text-center">API Reference</a>
+                    <a href="#guides" class="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition text-sm text-center">Guides</a>
+                </div>
+            </div>
+
+            <!-- Getting Started -->
+            <div id="getting-started" class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-techCyan to-nexusPurple flex items-center justify-center text-xl">🚀</span>
+                    Getting Started
+                </h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">What is BitNexus?</h3>
+                        <p class="text-white/80 leading-relaxed">
+                            BitNexus is a decentralized affiliate revenue platform powered by AI. It combines affiliate marketing, 
+                            MEV bot staking, network building, and automated revenue generation into a single ecosystem.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">Quick Start</h3>
+                        <ol class="list-decimal list-inside space-y-3 text-white/80">
+                            <li>Sign up for a Genesis account (limited to 500 early adopters)</li>
+                            <li>Purchase NXC tokens from the Token Shop</li>
+                            <li>Explore the Marketplace and select products to promote</li>
+                            <li>Generate affiliate links and start sharing</li>
+                            <li>Stake NXC in MEV bots for passive income</li>
+                            <li>Build your network through the Alliance system</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">System Requirements</h3>
+                        <ul class="list-disc list-inside space-y-2 text-white/80">
+                            <li>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                            <li>JavaScript enabled</li>
+                            <li>Internet connection</li>
+                            <li>Wallet for cryptocurrency transactions (optional)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div id="features" class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-nexusPurple to-techCyan flex items-center justify-center text-xl">⚡</span>
+                    Core Features
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-purple-400">Dashboard</h3>
+                        <p class="text-sm text-white/70">Real-time metrics, earnings tracking, and performance analytics</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">Marketplace</h3>
+                        <p class="text-sm text-white/70">Discover products, generate affiliate links, and track commissions</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-green-400">MEV Bot Lab</h3>
+                        <p class="text-sm text-white/70">Stake NXC tokens in automated trading bots for passive income</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Alliance Network</h3>
+                        <p class="text-sm text-white/70">Build and manage your MLM network with tier progression</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-purple-400">Content Generator</h3>
+                        <p class="text-sm text-white/70">AI-powered content creation for social media promotion</p>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">Academy</h3>
+                        <p class="text-sm text-white/70">Educational courses and live training sessions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Reference -->
+            <div id="api" class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-techCyan to-nexusPurple flex items-center justify-center text-xl">🔌</span>
+                    API Reference
+                </h2>
+                
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">Authentication</h3>
+                        <p class="text-white/80 mb-4">All API requests require authentication via API key or session token.</p>
+                        <pre><code>Authorization: Bearer YOUR_API_KEY</code></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">Base URL</h3>
+                        <pre><code>https://api.bitnexus.io/v1</code></pre>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">Endpoints</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-black/40 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded">GET</span>
+                                    <code class="text-cyan-400">/dashboard/metrics</code>
+                                </div>
+                                <p class="text-sm text-white/70">Retrieve dashboard metrics and earnings data</p>
+                            </div>
+                            <div class="p-4 bg-black/40 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs font-bold rounded">GET</span>
+                                    <code class="text-cyan-400">/marketplace/products</code>
+                                </div>
+                                <p class="text-sm text-white/70">List all available products in the marketplace</p>
+                            </div>
+                            <div class="p-4 bg-black/40 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold rounded">POST</span>
+                                    <code class="text-cyan-400">/affiliate/generate-link</code>
+                                </div>
+                                <p class="text-sm text-white/70">Generate a new affiliate link for a product</p>
+                            </div>
+                            <div class="p-4 bg-black/40 rounded-lg">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-bold rounded">POST</span>
+                                    <code class="text-cyan-400">/earn/stake</code>
+                                </div>
+                                <p class="text-sm text-white/70">Stake NXC tokens in a MEV bot</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-techCyan">Response Format</h3>
+                        <pre><code>{
+  "success": true,
+  "data": { ... },
+  "message": "Operation successful"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guides -->
+            <div id="guides" class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-nexusPurple to-techCyan flex items-center justify-center text-xl">📚</span>
+                    Guides & Tutorials
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all">
+                        <h3 class="text-lg font-bold mb-2 text-purple-400">Getting Your First $1,000/Month</h3>
+                        <p class="text-sm text-white/70 mb-3">A step-by-step guide to reaching your first $1K in monthly earnings through strategic product promotion and network building.</p>
+                        <a href="#" class="text-cyan-400 text-sm font-bold hover:underline">Read Guide →</a>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">MEV Bot Staking Guide</h3>
+                        <p class="text-sm text-white/70 mb-3">Learn how to stake NXC tokens in MEV bots, calculate returns, and optimize your passive income strategy.</p>
+                        <a href="#" class="text-cyan-400 text-sm font-bold hover:underline">Read Guide →</a>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5 hover:border-green-500/30 transition-all">
+                        <h3 class="text-lg font-bold mb-2 text-green-400">Building Your Alliance Network</h3>
+                        <p class="text-sm text-white/70 mb-3">Master the art of network building, referral strategies, and scaling your MLM structure for maximum earnings.</p>
+                        <a href="#" class="text-cyan-400 text-sm font-bold hover:underline">Read Guide →</a>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5 hover:border-yellow-500/30 transition-all">
+                        <h3 class="text-lg font-bold mb-2 text-yellow-400">Content Generator Best Practices</h3>
+                        <p class="text-sm text-white/70 mb-3">Tips and strategies for using AI-powered content generation to maximize your social media reach and conversions.</p>
+                        <a href="#" class="text-cyan-400 text-sm font-bold hover:underline">Read Guide →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tokenomics -->
+            <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-wealthGold to-nexusPurple flex items-center justify-center text-xl">💰</span>
+                    NXC Tokenomics
+                </h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-wealthGold">Token Utility</h3>
+                        <ul class="list-disc list-inside space-y-2 text-white/80">
+                            <li>Purchase products in the marketplace</li>
+                            <li>Stake in MEV bots for passive income</li>
+                            <li>Pay for platform fees and services</li>
+                            <li>Access premium features and courses</li>
+                            <li>Participate in governance (coming soon)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-wealthGold">Token Supply</h3>
+                        <p class="text-white/80">Total Supply: 10,000,000 NXC</p>
+                        <p class="text-white/80">Circulating Supply: 2,500,000 NXC</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-wealthGold">Exchange Rate</h3>
+                        <p class="text-white/80">1 NXC ≈ $3.00 USD (subject to market conditions)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-signalGreen to-techCyan flex items-center justify-center text-xl">🔒</span>
+                    Security & Audits
+                </h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-signalGreen">Security Measures</h3>
+                        <ul class="list-disc list-inside space-y-2 text-white/80">
+                            <li>End-to-end encryption for all transactions</li>
+                            <li>Two-factor authentication (2FA) support</li>
+                            <li>Smart contract audits by CertiK and OpenZeppelin</li>
+                            <li>Regular security updates and patches</li>
+                            <li>Cold storage for majority of funds</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-signalGreen">Audit Reports</h3>
+                        <div class="space-y-3">
+                            <a href="#" class="block p-4 bg-white/5 rounded-lg hover:bg-white/10 transition border border-white/5">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold">CertiK Security Audit 2024</span>
+                                    <span class="text-cyan-400 text-sm">Download PDF →</span>
+                                </div>
+                            </a>
+                            <a href="#" class="block p-4 bg-white/5 rounded-lg hover:bg-white/10 transition border border-white/5">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold">OpenZeppelin Smart Contract Review</span>
+                                    <span class="text-cyan-400 text-sm">Download PDF →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/5 mb-12">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase flex items-center gap-4">
+                    <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-techCyan to-nexusPurple flex items-center justify-center text-xl">❓</span>
+                    Frequently Asked Questions
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">How do I get started?</h3>
+                        <p class="text-white/80 text-sm">Sign up for a Genesis account, purchase NXC tokens, and start promoting products from the marketplace. Check out our Getting Started guide above for detailed steps.</p>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">What are MEV bots?</h3>
+                        <p class="text-white/80 text-sm">MEV (Maximal Extractable Value) bots are automated trading systems that generate returns by capturing value from blockchain transactions. You can stake NXC tokens in these bots to earn passive income.</p>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">How does the Alliance system work?</h3>
+                        <p class="text-white/80 text-sm">The Alliance system is our MLM (Multi-Level Marketing) structure. When you refer new users, they join your network, and you earn commissions from their activity. The larger your network, the more you earn.</p>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">Is BitNexus safe?</h3>
+                        <p class="text-white/80 text-sm">Yes. We've undergone multiple security audits, use industry-standard encryption, and maintain transparent operations. All smart contracts are audited and publicly verifiable.</p>
+                    </div>
+
+                    <div class="p-6 bg-white/5 rounded-xl border border-white/5">
+                        <h3 class="text-lg font-bold mb-2 text-cyan-400">Can I withdraw my earnings?</h3>
+                        <p class="text-white/80 text-sm">Yes, you can withdraw your NXC earnings to USD or other cryptocurrencies. Withdrawal fees apply, and processing times vary based on the method chosen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support -->
+            <div class="glass-card p-8 md:p-12 rounded-3xl border-2 border-techCyan/50 bg-gradient-to-br from-techCyan/10 to-nexusPurple/10 text-center">
+                <h2 class="text-3xl md:text-4xl font-black font-futuristic mb-6 uppercase">Need Help?</h2>
+                <p class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+                    Can't find what you're looking for? Our support team is here to help.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                        href="#" 
+                        class="px-8 py-4 bg-techCyan text-black font-black font-futuristic rounded-sm uppercase tracking-widest text-sm transition-all hover:scale-105"
+                    >
+                        Contact Support
+                    </a>
+                    <a 
+                        href="index.html#genesis" 
+                        class="px-8 py-4 border border-nexusPurple/50 text-nexusPurple font-black font-futuristic rounded-sm uppercase tracking-widest text-sm hover:bg-nexusPurple/10 transition-all"
+                    >
+                        Join Discord
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 bg-black/40 text-center">
+        <div class="text-2xl font-black font-futuristic mb-8">BIT<span class="text-techCyan">NEXUS</span></div>
+        <div class="flex justify-center space-x-12 text-[10px] font-bold font-futuristic uppercase tracking-[0.3em] text-white/40 mb-12">
+            <a href="index.html" class="hover:text-techCyan transition">Home</a>
+            <a href="manifesto.html" class="hover:text-techCyan transition">Manifesto</a>
+            <a href="index.html#genesis" class="hover:text-techCyan transition">Join Launch</a>
+        </div>
+        <p class="text-[8px] uppercase tracking-[0.5em] text-white/20">The Future of Decentralized Revenue &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
+

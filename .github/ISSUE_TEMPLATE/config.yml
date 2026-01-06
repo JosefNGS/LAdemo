@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/JosefNGS/LADEMO/discussions
+    about: Ask questions and discuss ideas
+  - name: 📚 Documentation
+    url: https://github.com/JosefNGS/LADEMO#readme
+    about: Check the documentation
+  - name: 🔒 Security
+    url: https://github.com/JosefNGS/LADEMO/security
+    about: Report a security vulnerability
+

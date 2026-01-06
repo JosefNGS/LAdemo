@@ -1,0 +1,347 @@
+import React, { useState } from 'react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { MetricCardData } from '../types';
+
+const data = [
+  { name: 'Mon', sales: 4000, nxc: 2400 },
+  { name: 'Tue', sales: 3000, nxc: 1398 },
+  { name: 'Wed', sales: 2000, nxc: 9800 },
+  { name: 'Thu', sales: 2780, nxc: 3908 },
+  { name: 'Fri', sales: 1890, nxc: 4800 },
+  { name: 'Sat', sales: 2390, nxc: 3800 },
+  { name: 'Sun', sales: 3490, nxc: 4300 },
+];
+
+const metrics: MetricCardData[] = [
+  { label: 'Daily ROI Target', value: '~1.2%', trend: 0.3, type: 'percent' },
+  { label: 'Total Earnings', value: '$14,210.00', trend: 15.2, type: 'currency' },
+  { label: 'Affiliate Clicks', value: '52,810', trend: 8.4, type: 'count' },
+  { label: 'Conversion Rate', value: '2.4%', trend: 1.1, type: 'percent' },
+];
+
+const Dashboard: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('Overview');
+
+  const tabs = ['Overview', 'Due Diligence', 'Team Builder', 'Withdraw', 'My Products', 'Tools'];
+
+  return (
+    <div className="space-y-6">
+      {/* Header Info */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+           <h2 className="text-3xl font-bold font-display">Command Center</h2>
+           <p className="text-gray-500 text-sm">Welcome back, Agent Nexus-77.</p>
+        </div>
+        <div className="flex gap-2 bg-white/5 p-1 rounded-2xl border border-white/5">
+           {tabs.map(t => (
+             <button
+               key={t}
+               onClick={() => setActiveTab(t)}
+               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${activeTab === t ? 'bg-purple-600 text-white shadow-lg' : 'text-gray-400 hover:text-gray-200'}`}
+             >
+               {t}
+             </button>
+           ))}
+        </div>
+      </div>
+
+      {activeTab === 'Overview' && (
+        <>
+          {/* Financial Freedom Progress Bar */}
+          <div className="glass-card p-6 rounded-3xl border border-white/5">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h3 className="text-xl font-bold font-display mb-1">Financial Freedom Progress</h3>
+                <p className="text-gray-500 text-sm">Target: $5,000/month passive income</p>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold text-green-400">$1,184</p>
+                <p className="text-xs text-gray-500">Current monthly income</p>
+              </div>
+            </div>
+            <div className="mb-4">
+              <div className="flex items-center justify-between text-sm mb-2">
+                <span className="text-gray-400">Progress to Financial Freedom</span>
+                <span className="font-bold text-cyan-400">23.7%</span>
+              </div>
+              <div className="w-full h-6 bg-gray-800 rounded-full overflow-hidden border border-white/5 p-1">
+                <div 
+                  className="h-full bg-gradient-to-r from-green-500 via-cyan-500 to-purple-600 rounded-full shadow-lg shadow-green-500/30 transition-all duration-1000"
+                  style={{ width: '23.7%' }}
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Estimated Time</p>
+                <p className="text-sm font-bold text-cyan-400">~16 months</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Monthly Goal</p>
+                <p className="text-sm font-bold">$5,000</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Remaining</p>
+                <p className="text-sm font-bold text-purple-400">$3,816</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Income Streams Widget */}
+          <div className="glass-card p-6 rounded-3xl border border-white/5">
+            <h3 className="text-xl font-bold mb-4">Income Streams Overview</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Affiliate Commissions</p>
+                <p className="text-lg font-bold text-purple-400">$892</p>
+                <p className="text-xs text-gray-500 mt-1">75% of income</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">MEV Bot Returns</p>
+                <p className="text-lg font-bold text-cyan-400">$234</p>
+                <p className="text-xs text-gray-500 mt-1">20% of income</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Sub-Affiliate Network</p>
+                <p className="text-lg font-bold text-green-400">$58</p>
+                <p className="text-xs text-gray-500 mt-1">5% of income</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-green-500/30 bg-green-500/5">
+                <p className="text-xs text-gray-500 mb-1">Passive Income %</p>
+                <p className="text-lg font-bold text-green-400">25%</p>
+                <p className="text-xs text-green-400 mt-1">$292/month</p>
+              </div>
+            </div>
+            <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+              <p className="text-xs text-cyan-400 font-bold mb-1">💡 Goal: Reach 50% Passive Income</p>
+              <p className="text-xs text-gray-400">Focus on MEV bot staking and building your network for more passive earnings</p>
+            </div>
+          </div>
+
+          {/* Quick Actions Section */}
+          <div className="glass-card p-6 rounded-3xl border border-white/5">
+            <h3 className="text-xl font-bold mb-4">Quick Actions</h3>
+            <p className="text-gray-500 text-sm mb-4">Daily checklist to boost your earnings</p>
+            <div className="space-y-3">
+              {[
+                { id: '1', task: 'Share 1 product link on social media', completed: true },
+                { id: '2', task: 'Follow up with 3 warm leads', completed: false },
+                { id: '3', task: 'Post content using Content Generator', completed: false },
+                { id: '4', task: 'Check today\'s earnings and goals', completed: true },
+                { id: '5', task: 'Engage with 2 potential referrals', completed: false },
+              ].map((item) => (
+                <div key={item.id} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all">
+                  <input
+                    type="checkbox"
+                    checked={item.completed}
+                    onChange={() => {}}
+                    className="w-5 h-5 rounded accent-purple-600 cursor-pointer"
+                  />
+                  <span className={`flex-1 text-sm ${item.completed ? 'line-through text-gray-500' : 'text-gray-300'}`}>
+                    {item.task}
+                  </span>
+                  {!item.completed && (
+                    <button className="px-3 py-1 bg-purple-600/20 text-purple-400 rounded-lg text-xs font-bold hover:bg-purple-600/30 transition-all">
+                      Do Now
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+              <span className="text-xs text-gray-500">Progress: 2/5 completed</span>
+              <button className="text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                View All Actions →
+              </button>
+            </div>
+          </div>
+
+          {/* Daily Tip */}
+          <div className="glass-card p-4 rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-purple-500/10">
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">💡</div>
+              <div className="flex-1">
+                <p className="text-xs font-bold text-cyan-400 mb-1">Today's Tip</p>
+                <p className="text-sm text-gray-300">
+                  Focus on products with recurring commissions - they build sustainable passive income over time. Check the Marketplace for products tagged "Recurring Income".
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Hero Card */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1e1b4b] to-[#0f172a] p-8 border border-purple-500/20 shadow-2xl">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/20 blur-[100px] -mr-32 -mt-32" />
+            <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <span className="text-gray-400 text-sm font-medium uppercase tracking-wider">Net NXC Assets</span>
+                <h2 className="text-5xl md:text-6xl font-bold font-display mt-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                  2,840.00 <span className="text-2xl text-yellow-500/70">NXC</span>
+                </h2>
+                <p className="text-gray-500 mt-2">≈ $8,520.00 USD <span className="text-green-400 ml-2">(+4.2%)</span></p>
+              </div>
+              <div className="flex gap-3">
+                 <button className="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-xl border border-white/10 backdrop-blur-md transition-all font-semibold">
+                   Deposit
+                 </button>
+                 <button className="bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded-xl transition-all font-semibold shadow-lg shadow-purple-900/40">
+                   Trade
+                 </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {metrics.map((m, i) => (
+              <div key={i} className="glass-card p-6 rounded-3xl border border-white/5 group hover:border-purple-500/30 transition-colors">
+                <p className="text-gray-400 text-sm font-medium">{m.label}</p>
+                <div className="flex items-end justify-between mt-2">
+                  <h3 className="text-2xl font-bold font-display group-hover:text-purple-400 transition-colors">{m.value}</h3>
+                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${m.trend > 0 ? 'bg-green-500/10 text-green-400' : 'bg-gray-500/10 text-gray-400'}`}>
+                    +{m.trend}%
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 glass-card p-6 rounded-3xl">
+              <h3 className="text-xl font-bold mb-6">Network Growth</h3>
+              <div className="h-64 w-full" style={{ minHeight: '256px', minWidth: '0' }}>
+                <ResponsiveContainer width="100%" height="100%" minHeight={256} minWidth={0}>
+                  <AreaChart data={data}>
+                    <defs>
+                      <linearGradient id="colorNxc" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#7c3aed" stopOpacity={0.3}/>
+                        <stop offset="95%" stopColor="#7c3aed" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
+                    <XAxis dataKey="name" stroke="#9ca3af" fontSize={12} tickLine={false} axisLine={false} />
+                    <YAxis hide />
+                    <Tooltip contentStyle={{ backgroundColor: '#111827', border: '1px solid #374151', borderRadius: '12px' }} />
+                    <Area type="monotone" dataKey="nxc" stroke="#7c3aed" fillOpacity={1} fill="url(#colorNxc)" strokeWidth={3} />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+            <div className="glass-card p-6 rounded-3xl">
+              <h3 className="text-xl font-bold mb-6">Company Intro</h3>
+              <div className="aspect-video bg-black/50 rounded-2xl flex items-center justify-center border border-white/5 relative group cursor-pointer overflow-hidden">
+                 <img src="https://picsum.photos/seed/presentation/400/225" className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform" alt="Video Thumb" />
+                 <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 z-10 group-hover:scale-110 transition-transform">
+                    <svg className="w-8 h-8 text-white fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                 </div>
+              </div>
+              <p className="mt-4 text-sm text-gray-400 text-center italic">"BitNexus: Revolutionizing Affiliate Automation"</p>
+            </div>
+          </div>
+        </>
+      )}
+
+      {activeTab === 'Due Diligence' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+           <div className="glass-card p-8 rounded-3xl space-y-4">
+              <h3 className="text-2xl font-bold">Project Audits</h3>
+              <p className="text-gray-400">View detailed reports from third-party security firms regarding our smart contracts and MEV bot logic.</p>
+              <div className="space-y-2">
+                 {['CertiK Audit 2024', 'OpenZeppelin Report', 'KPMG Fintech Review'].map(d => (
+                   <div key={d} className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer">
+                      <span className="font-medium">{d}</span>
+                      <span className="text-cyan-400 text-xs font-bold">DOWNLOAD PDF</span>
+                   </div>
+                 ))}
+              </div>
+           </div>
+           <div className="glass-card p-8 rounded-3xl space-y-4">
+              <h3 className="text-2xl font-bold">Transparency Ledger</h3>
+              <div className="p-4 bg-black/40 rounded-2xl font-mono text-xs text-green-400 overflow-hidden leading-relaxed">
+                 [BLOCK_SYNC] 0x82...12A verified at 14:02:11<br/>
+                 [BOT_PROFIT] +0.124 NXC added to Liquidity Pool<br/>
+                 [SYSTEM] Integrity check PASSED (99.98%)<br/>
+                 [AUDIT] Continuous monitoring active...
+              </div>
+              <button className="w-full py-4 bg-white/5 rounded-2xl font-bold hover:bg-white/10 transition-colors">View On-Chain Ledger</button>
+           </div>
+        </div>
+      )}
+
+      {activeTab === 'Team Builder' && (
+        <div className="glass-card p-8 rounded-3xl">
+           <div className="flex justify-between items-center mb-8">
+              <h3 className="text-2xl font-bold">Priority Prospects</h3>
+              <button className="bg-purple-600 px-4 py-2 rounded-xl text-sm font-bold">+ Add Contact</button>
+           </div>
+           <div className="space-y-4">
+              {[
+                { name: 'Sarah Miller', score: '92/100', status: 'Warm' },
+                { name: 'James Wilson', score: '88/100', status: 'Follow Up' },
+                { name: 'Elena Korova', score: '74/100', status: 'Cold' },
+                { name: 'Mike Thompson', score: '61/100', status: 'New' },
+              ].map(c => (
+                <div key={c.name} className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                   <input type="checkbox" className="w-5 h-5 rounded accent-purple-600 cursor-pointer" />
+                   <div className="flex-1 flex items-center justify-between">
+                      <div>
+                        <p className="font-bold">{c.name}</p>
+                        <p className="text-xs text-gray-500">Contact Score: {c.score}</p>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-[10px] font-bold ${c.status === 'Warm' ? 'bg-orange-500/20 text-orange-400' : 'bg-blue-500/20 text-blue-400'}`}>
+                        {c.status}
+                      </span>
+                   </div>
+                </div>
+              ))}
+           </div>
+        </div>
+      )}
+
+      {activeTab === 'Withdraw' && (
+        <div className="max-w-md mx-auto glass-card p-8 rounded-3xl space-y-6">
+           <h3 className="text-2xl font-bold text-center">NXC Liquidation</h3>
+           <div className="bg-black/40 p-4 rounded-2xl text-center border border-white/5">
+              <p className="text-xs text-gray-500 uppercase">Available for Payout</p>
+              <p className="text-3xl font-bold text-yellow-500">1,450.00 NXC</p>
+           </div>
+           <div className="space-y-2">
+              <label className="text-xs font-bold text-gray-500">Amount to Convert (NXC)</label>
+              <input type="number" placeholder="50.00" className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:border-purple-500 focus:outline-none" />
+           </div>
+           <div className="flex justify-between text-sm text-gray-400">
+              <span>Fee: 0.5%</span>
+              <span>Net: $149.25 USD</span>
+           </div>
+           <button className="w-full py-4 bg-gradient-to-r from-purple-600 to-cyan-500 rounded-2xl font-bold shadow-xl shadow-purple-900/40">Confirm Withdrawal</button>
+        </div>
+      )}
+
+      {activeTab === 'My Products' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           <div className="glass-card p-6 rounded-3xl border-dashed border-2 border-white/10 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-white/5 transition-all min-h-[200px]">
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4">
+                 <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"/></svg>
+              </div>
+              <p className="font-bold">Submit New Product</p>
+              <p className="text-xs text-gray-500 mt-1">NXC Listing Fee: 25 Tokens</p>
+           </div>
+           <div className="glass-card p-6 rounded-3xl border border-white/5 relative">
+              <span className="absolute top-4 right-4 px-2 py-1 bg-green-500/10 text-green-400 border border-green-500/20 text-[10px] font-bold rounded">ACTIVE</span>
+              <div className="w-12 h-12 bg-purple-600/20 rounded-xl flex items-center justify-center mb-4">
+                 <svg className="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+              </div>
+              <h4 className="font-bold">AI Copywriter Pro</h4>
+              <p className="text-xs text-gray-500 mt-1">2,412 Sales • $12.4k Generated</p>
+              <div className="mt-4 pt-4 border-t border-white/5 flex gap-2">
+                 <button className="flex-1 py-2 bg-white/5 rounded-lg text-xs font-bold">Edit</button>
+                 <button className="flex-1 py-2 bg-red-500/10 text-red-400 rounded-lg text-xs font-bold">Delist</button>
+              </div>
+           </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Dashboard;
+
