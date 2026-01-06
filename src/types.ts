@@ -18,6 +18,7 @@ export enum AppRoute {
   MOD_REPORTS = 'mod-reports',
   LOGIN = 'login',
   REGISTER = 'register',
+  FORGOT_PASSWORD = 'forgot-password',
   MANIFESTO = 'manifesto'
 }
 

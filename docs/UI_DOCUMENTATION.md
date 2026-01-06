@@ -1,10 +1,10 @@
 # BitNexus UI Documentation
 ## Complete Page Inventory & User Interface Guide
 
-**Last Updated**: Based on v1 branch  
+**Last Updated**: December 2024  
 **System**: BitNexus Command Center - AI-Powered Affiliate Marketing Platform  
-**Document Version**: 1.0  
-**Status**: Complete Page Inventory
+**Document Version**: 1.1  
+**Status**: Complete Page Inventory - Updated with Affiliate Revenue Focus
 
 ---
 
@@ -81,12 +81,18 @@
 **Tabs**:
 
 #### Overview
-- **NXC Balance Hero Card**: Large display of current NXC balance
+- **Affiliate Link Revenue Hero Card**: Large display of total earnings from affiliate links with growth percentage
+  - "View Links" button - Opens affiliate manager
+  - "Generate Link" button - Quick link generation
+- **Financial Freedom Progress Bar**: Shows current income, target, progress percentage, and estimated time to goal
+- **Income Streams Widget**: Breakdown of all income sources (affiliate commissions, MEV bot returns, sub-affiliate network, passive income %)
+- **Quick Actions Section**: Daily checklist for boosting earnings
+- **Daily Tips**: Rotating tips for financial success
 - **4-Card Metric Grid**:
-  - ROI (Return on Investment)
-  - Earnings (From what sources?)
-  - Offers (From what products?)
-  - Clicks (From what campaigns?)
+  - Daily ROI Target
+  - Total Earnings
+  - Affiliate Clicks
+  - Conversion Rate
 - **Product Sales Performance Charts**: Visual representation of sales data
 - **Company Presentation Video**: Trust documentation and due diligence information (front page section)
 
@@ -104,9 +110,10 @@
 - Management tools
 
 #### Withdraw
-- Balance display
-- Withdrawal form (NXC to USD conversion)
+- Available earnings balance display
+- Withdrawal form (USD payout)
 - History table showing past withdrawals
+- Fee information (0.5%)
 
 #### My Products
 - Management list for user-submitted products

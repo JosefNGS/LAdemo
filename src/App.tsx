@@ -15,7 +15,11 @@ import Vetting from './pages/Vetting';
 import Users from './pages/Users';
 import Reports from './pages/Reports';
 import NexusHub from './pages/NexusHub';
-import Auth from './pages/Auth';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 import { AppRoute } from './types';
 
 const App: React.FC = () => {
@@ -40,7 +44,7 @@ const App: React.FC = () => {
       case AppRoute.MARKETPLACE: return <Marketplace />;
       case AppRoute.ALLIANCE: return <Alliance />;
       case AppRoute.EARN: return <Earn />;
-      case AppRoute.SHOP: return <TokenShop />;
+      case AppRoute.SHOP: return <TokenShop setActiveRoute={setActiveRoute} />;
       case AppRoute.ACADEMY: return <Academy />;
       case AppRoute.CHAT: return <Chat />;
       case AppRoute.AFFILIATE: return <AffiliateManager />;
@@ -50,7 +54,8 @@ const App: React.FC = () => {
       case AppRoute.ADMIN_VETTING: return <Vetting />;
       case AppRoute.ADMIN_USERS: return <Users />;
       case AppRoute.MOD_REPORTS: return <Reports />;
-      case AppRoute.CART: return <PlaceholderPage title="Shopping Cart" desc="Review your NXC packages and digital products before checkout." />;
+      case AppRoute.CART: return <Cart setActiveRoute={setActiveRoute} />;
+      case AppRoute.CHECKOUT: return <Checkout setActiveRoute={setActiveRoute} />;
       case AppRoute.PROFILE: return (
         <div className="max-w-4xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <h2 className="text-3xl font-bold font-display">Command Profile</h2>
@@ -182,7 +187,32 @@ const App: React.FC = () => {
     }
   };
 
-  if (!isLoggedIn) return <Auth onSuccess={() => setIsLoggedIn(true)} />;
+  if (!isLoggedIn) {
+    if (authView === 'login') {
+      return (
+        <Login
+          onSuccess={() => setIsLoggedIn(true)}
+          onSwitchToRegister={() => setAuthView('register')}
+          onSwitchToForgotPassword={() => setAuthView('forgot-password')}
+        />
+      );
+    }
+    if (authView === 'register') {
+      return (
+        <Register
+          onSuccess={() => setIsLoggedIn(true)}
+          onSwitchToLogin={() => setAuthView('login')}
+        />
+      );
+    }
+    if (authView === 'forgot-password') {
+      return (
+        <ForgotPassword
+          onSwitchToLogin={() => setAuthView('login')}
+        />
+      );
+    }
+  }
 
   return (
     <>

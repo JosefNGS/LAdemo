@@ -70,6 +70,18 @@ http://localhost:8000
 
 For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
+## 📄 Documentation
+
+- **[UI Documentation](./docs/UI_DOCUMENTATION.md)** - Complete UI specifications and page inventory
+- **[Product Presentation](./docs/Product%20docs/PRODUCT_PRESENTATION.md)** - Complete product overview and business case
+- **[Product Presentation Slides](./docs/Product%20docs/PRODUCT_PRESENTATION_SLIDES.md)** - Pitch deck outline
+- **[Implementation Plan](./docs/IMPLEMENTATION_PLAN.md)** - Development roadmap and feature implementation
+- **[Quick Wins](./docs/QUICK_WINS_FINANCIAL_FREEDOM.md)** - High-impact features for financial freedom
+- **[Financial Freedom Enhancements](./docs/FINANCIAL_FREEDOM_ENHANCEMENTS.md)** - Strategies to help users achieve financial freedom
+- **[Deployment Guide](./docs/DEPLOYMENT.md)** - Netlify deployment instructions
+- **[API Setup](./docs/API_SETUP.md)** - Gemini API configuration guide
+- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+
 ## 📁 Project Structure
 
 ```
@@ -110,12 +122,20 @@ BitNexus Landing Page/
 - Responsive design
 
 ### Demo Dashboard
-- **Dashboard**: Command Center with metrics, charts, and tabs
-- **Marketplace**: Product listings with search and filtering
-- **Alliance**: Tier progression and leaderboard
+- **Dashboard**: Command Center with affiliate revenue tracking, financial freedom progress, income streams, and quick actions
+- **Marketplace**: Product listings with search, filtering, earning calculators, and product tags
+- **Earn**: MEV Bot Lab with staking, passive income calculator, and bot management
+- **Alliance**: Tier progression, referral tools, success stories, and leaderboard
+- **Token Shop**: NXC token packages with pricing tiers
+- **Chat**: Encrypted messaging interface
+- **Friends**: Social connections and friend management
+- **Affiliate Manager**: Link tracking, performance analytics, and QR code generation
+- **Content Generator**: AI-powered content creation for social media
+- **Goals**: Goal setting and progress tracking
+- **Academy**: Educational courses and financial freedom learning paths
 - **NexusHub**: AI-powered chat assistant
-- **Profile**: User settings and security
-- **Placeholder Pages**: Coming soon sections for other features
+- **Profile**: User settings, security, and social media connections
+- **Admin Pages**: Vetting, Users, Reports (for administrators)
 
 ## 🎨 Design System
 

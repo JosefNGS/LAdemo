@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
+import ProductDetailDrawer from '../components/ProductDetailDrawer';
+import ProductUploadForm from '../components/ProductUploadForm';
 
 interface ProductWithTags extends Product {
   tags: string[];
@@ -16,9 +18,15 @@ const mockProducts: ProductWithTags[] = [
   { id: '6', name: 'Blockchain Marketing Kit', category: 'Marketing', price: 95, commission: 30, image: 'https://picsum.photos/seed/nxc6/400/300', status: 'Active', tags: ['🎯 High Commission', '⚡ Quick Win'], avgMonthlyEarnings: 285, timeTo1K: 3.5 },
 ];
 
+import ProductDetailDrawer from '../components/ProductDetailDrawer';
+import ProductUploadForm from '../components/ProductUploadForm';
+
 const Marketplace: React.FC = () => {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedProduct, setSelectedProduct] = useState<ProductWithTags | null>(null);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [showUploadForm, setShowUploadForm] = useState(false);
 
   const categories = ['All', 'Crypto', 'Health', 'Tech', 'Marketing', 'Automation'];
 
@@ -30,7 +38,16 @@ const Marketplace: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row gap-6 md:items-center justify-between">
-        <h2 className="text-3xl font-bold font-display">Nexus Marketplace</h2>
+        <div>
+          <h2 className="text-3xl font-bold font-display">Nexus Marketplace</h2>
+          <p className="text-gray-500 text-sm mt-1">Discover products and generate affiliate links</p>
+        </div>
+        <button
+          onClick={() => setShowUploadForm(true)}
+          className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+        >
+          + Submit Product
+        </button>
         <div className="relative group max-w-md w-full">
            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
              <svg className="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -113,8 +130,14 @@ const Marketplace: React.FC = () => {
                 )}
               </div>
               <div className="flex gap-2">
-                <button className="flex-1 bg-purple-600 hover:bg-purple-500 py-3 rounded-xl text-sm font-bold shadow-lg shadow-purple-900/20 transition-all">
-                  Get Link
+                <button
+                  onClick={() => {
+                    setSelectedProduct(product);
+                    setShowDrawer(true);
+                  }}
+                  className="flex-1 bg-purple-600 hover:bg-purple-500 py-3 rounded-xl text-sm font-bold shadow-lg shadow-purple-900/20 transition-all"
+                >
+                  View Details
                 </button>
                 <button className="p-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all">
                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
@@ -124,6 +147,30 @@ const Marketplace: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Product Detail Drawer */}
+      {selectedProduct && (
+        <ProductDetailDrawer
+          product={selectedProduct}
+          isOpen={showDrawer}
+          onClose={() => {
+            setShowDrawer(false);
+            setSelectedProduct(null);
+          }}
+        />
+      )}
+
+      {/* Product Upload Form */}
+      {showUploadForm && (
+        <ProductUploadForm
+          onClose={() => setShowUploadForm(false)}
+          onSubmit={(product) => {
+            console.log('Product submitted:', product);
+            // In real app, this would submit to API
+            setShowUploadForm(false);
+          }}
+        />
+      )}
     </div>
   );
 };

@@ -156,6 +156,50 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
+          {/* Network Health Summary */}
+          <div className="glass-card p-6 rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/5 to-purple-500/5">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold font-display">Your Network Status</h3>
+              <div className="px-3 py-1 bg-green-500/20 border border-green-500/30 rounded-full">
+                <span className="text-xs font-bold text-green-400">Thriving</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Direct Referrals</p>
+                <p className="text-xl font-bold text-cyan-400">14</p>
+                <p className="text-xs text-green-400 mt-1">+3 this month</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Sub-Affiliates</p>
+                <p className="text-xl font-bold text-purple-400">128</p>
+                <p className="text-xs text-green-400 mt-1">+18 this month</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Network Revenue</p>
+                <p className="text-xl font-bold text-green-400">$2,450</p>
+                <p className="text-xs text-green-400 mt-1">+22% growth</p>
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 mb-1">Your Commission</p>
+                <p className="text-xl font-bold text-yellow-400">$245</p>
+                <p className="text-xs text-gray-500 mt-1">10% from network</p>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-white/5">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-400">Network Activity Score</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-32 h-2 bg-black/20 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full" style={{ width: '87%' }}></div>
+                  </div>
+                  <span className="text-cyan-400 font-bold">87/100</span>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 mt-2">Your network is performing in the top 15% globally. Keep up the momentum!</p>
+            </div>
+          </div>
+
           {/* Daily Tip */}
           <div className="glass-card p-4 rounded-2xl border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-purple-500/10">
             <div className="flex items-start gap-3">
@@ -174,18 +218,18 @@ const Dashboard: React.FC = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/20 blur-[100px] -mr-32 -mt-32" />
             <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
-                <span className="text-gray-400 text-sm font-medium uppercase tracking-wider">Net NXC Assets</span>
-                <h2 className="text-5xl md:text-6xl font-bold font-display mt-2 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-                  2,840.00 <span className="text-2xl text-yellow-500/70">NXC</span>
+                <span className="text-gray-400 text-sm font-medium uppercase tracking-wider">Affiliate Link Revenue</span>
+                <h2 className="text-5xl md:text-6xl font-bold font-display mt-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">
+                  $14,210.00 <span className="text-2xl text-green-400/70">USD</span>
                 </h2>
-                <p className="text-gray-500 mt-2">≈ $8,520.00 USD <span className="text-green-400 ml-2">(+4.2%)</span></p>
+                <p className="text-gray-500 mt-2">Total earnings from affiliate links <span className="text-green-400 ml-2">(+15.2%)</span></p>
               </div>
               <div className="flex gap-3">
                  <button className="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-xl border border-white/10 backdrop-blur-md transition-all font-semibold">
-                   Deposit
+                   View Links
                  </button>
                  <button className="bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded-xl transition-all font-semibold shadow-lg shadow-purple-900/40">
-                   Trade
+                   Generate Link
                  </button>
               </div>
             </div>
@@ -203,6 +247,149 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Network Performance Section */}
+          <div className="glass-card p-6 rounded-3xl border border-white/5">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold font-display">Network Performance</h3>
+              <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/20 rounded-xl">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-xs font-bold text-green-400">Excellent Health</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Network Size</p>
+                <p className="text-2xl font-bold text-cyan-400">142</p>
+                <p className="text-xs text-green-400 mt-1">+12 this month</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Active Members</p>
+                <p className="text-2xl font-bold text-purple-400">89</p>
+                <p className="text-xs text-gray-500 mt-1">62.7% active rate</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Network Earnings</p>
+                <p className="text-2xl font-bold text-green-400">$2,450</p>
+                <p className="text-xs text-gray-500 mt-1">This month</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-green-500/30 bg-green-500/5">
+                <p className="text-xs text-gray-500 mb-1">Network Score</p>
+                <p className="text-2xl font-bold text-green-400">8.7/10</p>
+                <p className="text-xs text-green-400 mt-1">Top 15%</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold text-cyan-400">Growth Rate</span>
+                  <span className="text-sm font-bold text-cyan-400">+9.2%</span>
+                </div>
+                <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-cyan-400 rounded-full" style={{ width: '92%' }}></div>
+                </div>
+                <p className="text-xs text-gray-400 mt-2">Faster than 78% of networks</p>
+              </div>
+              <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold text-purple-400">Engagement</span>
+                  <span className="text-sm font-bold text-purple-400">High</span>
+                </div>
+                <div className="flex gap-1 mb-2">
+                  {[1,2,3,4,5].map(i => (
+                    <div key={i} className="flex-1 h-2 bg-purple-400 rounded"></div>
+                  ))}
+                </div>
+                <p className="text-xs text-gray-400">5/5 engagement score</p>
+              </div>
+              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold text-green-400">Retention</span>
+                  <span className="text-sm font-bold text-green-400">94%</span>
+                </div>
+                <div className="w-full h-2 bg-black/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-green-400 rounded-full" style={{ width: '94%' }}></div>
+                </div>
+                <p className="text-xs text-gray-400">Excellent member retention</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Leaderboard Section */}
+          <div className="glass-card p-6 rounded-3xl border border-white/5">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold font-display">Global Leaderboard</h3>
+              <div className="flex gap-2">
+                <button className="px-3 py-1 bg-purple-600 text-white rounded-lg text-xs font-bold">Earnings</button>
+                <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">Network</button>
+                <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">Growth</button>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {[
+                { rank: 1, name: 'Agent Nexus-15', earnings: '$15,800', network: 342, tier: 'Platinum', badge: '🥇', change: 0 },
+                { rank: 2, name: 'Agent Nexus-42', earnings: '$10,240', network: 142, tier: 'Gold', badge: '🥈', change: 0 },
+                { rank: 3, name: 'Agent Nexus-88', earnings: '$8,920', network: 98, tier: 'Gold', badge: '🥉', change: +1 },
+                { rank: 4, name: 'Agent Nexus-33', earnings: '$7,450', network: 156, tier: 'Gold', badge: '', change: -1 },
+                { rank: 5, name: 'Agent Nexus-91', earnings: '$6,200', network: 87, tier: 'Silver', badge: '', change: +2 },
+                { rank: 27, name: 'Agent Nexus-77', earnings: '$2,450', network: 42, tier: 'Silver', badge: '', change: +3, isYou: true },
+              ].map((user) => (
+                <div 
+                  key={user.rank} 
+                  className={`flex items-center gap-4 p-4 rounded-2xl border transition-all ${
+                    user.isYou 
+                      ? 'bg-purple-500/10 border-purple-500/30 shadow-lg shadow-purple-500/20' 
+                      : 'bg-white/5 border-white/5 hover:border-purple-500/20'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 min-w-[60px]">
+                    {user.badge ? (
+                      <span className="text-2xl">{user.badge}</span>
+                    ) : (
+                      <span className={`text-lg font-bold ${user.rank <= 10 ? 'text-purple-400' : 'text-gray-500'}`}>
+                        #{user.rank}
+                      </span>
+                    )}
+                    {user.change !== 0 && (
+                      <span className={`text-xs font-bold ${user.change > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                        {user.change > 0 ? '↑' : '↓'} {Math.abs(user.change)}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-bold">{user.name}</span>
+                      {user.isYou && (
+                        <span className="px-2 py-0.5 bg-purple-600 text-white text-[10px] font-bold rounded">YOU</span>
+                      )}
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                        user.tier === 'Platinum' ? 'bg-purple-500/20 text-purple-400' :
+                        user.tier === 'Gold' ? 'bg-yellow-500/20 text-yellow-400' :
+                        'bg-gray-500/20 text-gray-400'
+                      }`}>
+                        {user.tier}
+                      </span>
+                    </div>
+                    <div className="flex gap-4 text-xs text-gray-400">
+                      <span>Network: <span className="text-cyan-400 font-bold">{user.network}</span></span>
+                      <span>Earnings: <span className="text-green-400 font-bold">{user.earnings}/mo</span></span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-bold text-sm">
+                      {user.name.split(' ')[1]}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+              <p className="text-xs text-gray-500">Your rank improved by 3 positions this week!</p>
+              <button className="text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
+                View Full Leaderboard →
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

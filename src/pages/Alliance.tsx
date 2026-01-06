@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Alliance: React.FC = () => {
+  const [copied, setCopied] = useState(false);
+
+  const copyReferralLink = () => {
+    const link = 'https://bitnexus.io/join?ref=NEXUS-7781-BETA';
+    navigator.clipboard.writeText(link);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="space-y-8 pb-10">
       <div className="flex items-center justify-between">
@@ -91,6 +100,50 @@ const Alliance: React.FC = () => {
             <button className="w-full mt-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all">
               View More Success Stories
             </button>
+          </div>
+
+          {/* Network Statistics Overview */}
+          <div className="glass-card p-8 rounded-[2rem] border-white/5 mb-8">
+            <h3 className="text-xl font-bold mb-6">Network Overview</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Total Network</p>
+                <p className="text-3xl font-bold text-cyan-400">142</p>
+                <p className="text-xs text-green-400 mt-1">+18 this month</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Direct Referrals</p>
+                <p className="text-3xl font-bold text-purple-400">14</p>
+                <p className="text-xs text-green-400 mt-1">+3 this month</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <p className="text-xs text-gray-500 mb-1">Active Members</p>
+                <p className="text-3xl font-bold text-green-400">89</p>
+                <p className="text-xs text-gray-500 mt-1">62.7% active</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-green-500/30 bg-green-500/5">
+                <p className="text-xs text-gray-500 mb-1">Network Health</p>
+                <p className="text-3xl font-bold text-green-400">8.7</p>
+                <p className="text-xs text-green-400 mt-1">Top 15%</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                <p className="text-xs font-bold text-cyan-400 mb-2">Network Growth</p>
+                <p className="text-2xl font-bold mb-1">+9.2%</p>
+                <p className="text-xs text-gray-400">Faster than 78% of networks</p>
+              </div>
+              <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl">
+                <p className="text-xs font-bold text-purple-400 mb-2">Monthly Revenue</p>
+                <p className="text-2xl font-bold mb-1">$2,450</p>
+                <p className="text-xs text-gray-400">+22% from last month</p>
+              </div>
+              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
+                <p className="text-xs font-bold text-green-400 mb-2">Your Commission</p>
+                <p className="text-2xl font-bold mb-1">$245</p>
+                <p className="text-xs text-gray-400">10% from network</p>
+              </div>
+            </div>
           </div>
 
           <div className="glass-card p-8 rounded-[2rem] border-white/5">
