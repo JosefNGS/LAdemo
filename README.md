@@ -2,20 +2,58 @@
 
 A modern, interactive landing page with a React-based demo dashboard for BitNexus, a decentralized affiliate revenue platform.
 
+## ⚠️ LICENSE AND USAGE TERMS
+
+**PROPRIETARY SOFTWARE - NOT FOR USE IN OTHER PROJECTS**
+
+This codebase is proprietary and protected by copyright. **You are NOT allowed to use this code in your own projects** without explicit written permission.
+
+**PROHIBITED:**
+- ❌ Using this code in your own projects
+- ❌ Redistributing or selling this code
+- ❌ Creating derivative works based on this code
+- ❌ Copying substantial portions of this code into other projects
+
+**PERMITTED:**
+- ✅ Viewing the code for reference or educational purposes
+- ✅ Reporting bugs or contributing (subject to approval)
+
+For licensing inquiries or usage permissions, contact: josef@nordicglobalsolutions.com
+
+See [LICENSE](LICENSE) for full terms and conditions.
+
 ## 🚀 Quick Start
 
 ### Prerequisites
 - A modern web browser (Chrome, Firefox, Edge, Safari - latest versions)
-- Node.js 18+ (for development server and builds)
+- Node.js 20+ (for development server and builds)
 - A local web server (for ES modules to work properly)
+
+**Platform Support:**
+- ✅ **Windows** (x64, ARM64)
+- ✅ **macOS** (Intel x64, Apple Silicon ARM64 - M1/M2/M3)
+- ✅ **Linux** (x64, ARM64)
+- ✅ **All architectures**: The dev server automatically uses the correct esbuild binary for your platform
 
 ### Running Locally
 
-#### Option 1: Using start.bat (Recommended - Windows)
-Simply double-click `start.bat` or run:
+#### Option 1: Using start script (Recommended)
+**Windows**: Double-click `start.bat` or run:
 ```bash
 start.bat
 ```
+
+**macOS/Linux**: Run:
+```bash
+./start.sh
+```
+
+Or make it executable first:
+```bash
+chmod +x start.sh
+./start.sh
+```
+
 This will:
 - Use Node.js with TypeScript support (if available)
 - Automatically transpile TypeScript files on the fly
@@ -71,6 +109,60 @@ http://localhost:8000
 
 For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
+## 🔧 GitHub Configuration
+
+This repository includes GitHub-specific configuration files for the BitNexus project.
+
+### Repository
+**GitHub**: [JosefNGS/LAdemo](https://github.com/JosefNGS/LAdemo)
+
+### Files Overview
+
+#### Issue Templates
+- **bug_report.md** - Template for reporting bugs
+- **feature_request.md** - Template for requesting new features
+- **config.yml** - Configuration for issue templates
+
+#### Pull Requests
+- **PULL_REQUEST_TEMPLATE.md** - Template for pull requests with checklist
+
+#### Documentation
+- **CONTRIBUTING.md** - Guidelines for contributors
+- **CODE_OF_CONDUCT.md** - Community code of conduct
+- **SECURITY.md** - Security policy and vulnerability reporting
+
+#### CI/CD Workflows
+- **workflows/ci.yml** - Continuous Integration pipeline
+- **workflows/deploy.yml** - Netlify deployment workflow
+
+#### Automation
+- **dependabot.yml** - Automated dependency updates
+
+### Setup Instructions
+
+1. **Push these files to your GitHub repository** (already included)
+2. **Configure GitHub Secrets** (for deployment):
+   - `NETLIFY_AUTH_TOKEN`
+   - `NETLIFY_SITE_ID`
+3. **Enable GitHub Features**:
+   - Issues
+   - Discussions (optional)
+   - Actions
+
+### Workflows
+
+#### CI Pipeline
+Runs on every push and pull request to `main` or `develop` branches:
+- Builds the project
+- Runs type checking
+- Runs linting (if configured)
+
+#### Deployment
+Automatically deploys to Netlify when pushing to `main` branch.
+
+### Contributing
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed contribution guidelines.
+
 ## 📄 Documentation
 
 - **[UI Documentation](./docs/UI_DOCUMENTATION.md)** - Complete UI specifications and page inventory
@@ -79,6 +171,7 @@ For detailed deployment instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.m
 - **[Implementation Plan](./docs/IMPLEMENTATION_PLAN.md)** - Development roadmap and feature implementation
 - **[Quick Wins](./docs/QUICK_WINS_FINANCIAL_FREEDOM.md)** - High-impact features for financial freedom
 - **[Financial Freedom Enhancements](./docs/FINANCIAL_FREEDOM_ENHANCEMENTS.md)** - Strategies to help users achieve financial freedom
+- **[Affiliate Program Architecture](./docs/AFFILIATE_PROGRAM_ARCHITECTURE.md)** - Comprehensive affiliate program strategy, commission structure, and operations framework
 - **[Deployment Guide](./docs/DEPLOYMENT.md)** - Netlify deployment instructions
 - **[API Setup](./docs/API_SETUP.md)** - Gemini API configuration guide
 - **[Supabase Setup](./docs/SUPABASE_SETUP.md)** - Complete Supabase database integration guide
@@ -108,7 +201,7 @@ BitNexus Landing Page/
 │   │   │   ├── Marketplace.tsx # Product marketplace
 │   │   │   ├── Alliance.tsx    # Alliance arena
 │   │   │   ├── Earn.tsx        # MEV/XAB Bot Lab
-│   │   │   ├── TokenShop.tsx   # NXC token shop
+│   │   │   ├── TokenShop.tsx   # NXC credits shop
 │   │   │   ├── Chat.tsx        # Encrypted chat
 │   │   │   ├── Friends.tsx     # Social connections
 │   │   │   ├── Forum.tsx       # Community forum
@@ -173,7 +266,7 @@ BitNexus Landing Page/
 - **Marketplace**: Product listings with search, filtering, earning calculators, product tags, and product detail drawer
 - **Earn**: MEV Bot Lab & XAB Bot Lab (XRP) with staking, passive income calculator, and bot management
 - **Alliance**: Tier progression, referral tools, success stories, Global Hall of Fame, and network statistics
-- **Token Shop**: NXC token packages with pricing tiers and AI usage credits
+- **Credits Shop**: NXC credits packages with pricing tiers and AI usage credits
 - **Chat**: Encrypted messaging interface with financial freedom chat groups
 - **Friends**: Social connections and friend management
 - **Forum**: Community forum with categories (Affiliate Marketing, MEV Bot Trading, XAB Bot Trading, Network Building, Financial Freedom, Support)
@@ -259,5 +352,5 @@ BitNexus Landing Page/
 
 ## 📄 License
 
-This project is part of the BitNexus platform.
+See [LICENSE](LICENSE) for full terms and conditions.
 

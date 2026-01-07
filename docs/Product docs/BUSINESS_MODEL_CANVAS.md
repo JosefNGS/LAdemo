@@ -220,7 +220,7 @@ The Business Model Canvas is a strategic management tool that provides a visual 
 
 **Fee Structure**:
 - Affiliate Link Sales: 0.5% of transaction value
-- NXC Token Transactions: 0.25% of transaction value
+- NXC Credits Transactions: 0.25% of transaction value
 - Product Listings: 25 NXC per product (one-time)
 - Premium Feature Access: Variable based on feature
 
@@ -285,10 +285,10 @@ The Business Model Canvas is a strategic management tool that provides a visual 
 
 ### Revenue Stream 5: Token Economics (Ecosystem - 2% of revenue)
 
-**Description**: NXC token sales and ecosystem fees
+**Description**: NXC credits sales and ecosystem fees
 
 **Sources**:
-- Token Shop: Package sales (50-500 NXC)
+- Credits Shop: Package sales (50-500 NXC)
 - Token Transaction Fees: 0.25% on transfers
 - Token Staking: Platform rewards
 
@@ -332,7 +332,7 @@ The Business Model Canvas is a strategic management tool that provides a visual 
 ### Financial Resources
 - **Seed Funding**: (To be raised)
 - **Revenue**: Transaction fees, subscriptions
-- **Token Reserves**: NXC token allocation
+- **Token Reserves**: NXC credits allocation
 - **Operating Capital**: Cash reserves for operations
 
 ### Key Resource Priorities

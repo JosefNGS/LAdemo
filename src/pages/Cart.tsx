@@ -31,14 +31,14 @@ const Cart: React.FC<CartProps> = ({ onCheckout, setActiveRoute }) => {
             </svg>
           </div>
           <h3 className="text-2xl font-bold mb-2">Your cart is empty</h3>
-          <p className="text-gray-500 mb-6">Add items from the Token Shop or Marketplace to get started</p>
+          <p className="text-gray-500 mb-6">Add items from the Credits Shop or Marketplace to get started</p>
           {setActiveRoute && (
             <div className="flex gap-4 justify-center">
               <button
                 onClick={() => setActiveRoute(AppRoute.SHOP)}
                 className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
               >
-                Browse Token Shop
+                Browse Credits Shop
               </button>
               <button
                 onClick={() => setActiveRoute(AppRoute.MARKETPLACE)}
@@ -87,7 +87,7 @@ const Cart: React.FC<CartProps> = ({ onCheckout, setActiveRoute }) => {
                     <div>
                       <h3 className="font-bold text-lg">{item.name}</h3>
                       {item.amount && (
-                        <p className="text-sm text-gray-500">{item.amount} NXC Tokens</p>
+                        <p className="text-sm text-gray-500">{item.amount} NXC Credits</p>
                       )}
                       {item.type === 'product' && (
                         <p className="text-sm text-gray-500">Product</p>
@@ -175,4 +175,6 @@ const Cart: React.FC<CartProps> = ({ onCheckout, setActiveRoute }) => {
 };
 
 export default Cart;
+
+
 

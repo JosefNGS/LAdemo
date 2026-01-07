@@ -29,7 +29,7 @@ BitNexus operates on a **multi-stream revenue model** that aligns platform succe
 
 **Fee Structure**:
 - **Affiliate Link Sales**: 0.5% of transaction value
-- **NXC Token Transactions**: 0.25% of transaction value
+- **NXC Credits Transactions**: 0.25% of transaction value
 - **Product Listings**: 25 NXC per product (one-time)
 - **Premium Feature Access**: Variable based on feature
 
@@ -174,7 +174,7 @@ BitNexus operates on a **multi-stream revenue model** that aligns platform succe
 
 ### Stream 5: Token Sales & Ecosystem (Growth - 2% of revenue)
 
-**Description**: NXC token sales, partnerships, and ecosystem fees
+**Description**: NXC credits sales, partnerships, and ecosystem fees
 
 **Revenue Sources**:
 - **Token Sales**: Direct NXC sales to users
@@ -626,7 +626,7 @@ BitNexus operates on a **multi-stream revenue model** that aligns platform succe
    - Valuation: 15-20x revenue ($375M-$500M)
 
 3. **Token Buyback** (Ongoing)
-   - Use profits to buy back NXC tokens
+   - Use profits to buy back NXC creditss
    - Increase token value
    - Reward early adopters
 

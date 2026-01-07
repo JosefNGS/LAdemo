@@ -29,19 +29,23 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
     { id: AppRoute.DASHBOARD, label: 'Dashboard', icon: ICONS.Dashboard },
     { id: AppRoute.MARKETPLACE, label: 'Marketplace', icon: ICONS.Marketplace },
     { id: AppRoute.EARN, label: 'Earn', icon: ICONS.Earn },
-    { id: AppRoute.BOT_LAB, label: 'Bot Lab', icon: ICONS.Earn },
     { id: AppRoute.ALLIANCE, label: 'Alliance', icon: ICONS.Alliance },
-    { id: AppRoute.SHOP, label: 'Token Shop', icon: ICONS.Shop },
   ];
 
   const socialNav = [
+    { id: AppRoute.FEED, label: 'Feed', icon: ICONS.Feed },
     { id: AppRoute.CHAT, label: 'Chat', icon: ICONS.Chat },
     { id: AppRoute.FRIENDS, label: 'Friends', icon: ICONS.Friends },
+    { id: AppRoute.USERS, label: 'Users', icon: ICONS.Users },
     { id: AppRoute.FORUM, label: 'Forum', icon: ICONS.Forum },
     { id: AppRoute.AFFILIATE, label: 'Affiliate Mgr', icon: ICONS.Affiliate },
     { id: AppRoute.CONTENT_GENERATOR, label: 'Content Generator', icon: ICONS.ContentGenerator },
     { id: AppRoute.GOALS, label: 'Goals', icon: ICONS.Dashboard },
     { id: AppRoute.ACADEMY, label: 'Academy', icon: ICONS.Academy },
+    { id: AppRoute.ABOUT, label: 'About Us', icon: ICONS.About },
+    { id: AppRoute.NEWS, label: 'News', icon: ICONS.News },
+    { id: AppRoute.PROFILE, label: 'Profile', icon: ICONS.Profile },
+    { id: AppRoute.SUPPORT, label: 'Support', icon: ICONS.Support },
   ];
 
   const adminNav = [
@@ -199,9 +203,82 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
       </header>
 
       {/* Main Content */}
-      <main className="p-4 lg:p-8 max-w-7xl mx-auto min-h-screen">
+      <main className="p-4 lg:p-8 max-w-7xl mx-auto min-h-screen pb-20 lg:pb-8">
         {children}
       </main>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#1e1b4b] border-t border-purple-500/20 z-50">
+        {/* Top Indicator Bar */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-purple-400 to-purple-500 rounded-b-full shadow-lg shadow-purple-500/50"></div>
+        
+        <div className="flex items-center justify-around px-2 py-3 pb-safe">
+          {/* Forum */}
+          <button
+            onClick={() => { setActiveRoute(AppRoute.FORUM); setIsSidebarOpen(false); }}
+            className={`flex flex-col items-center gap-1 px-2 py-1.5 rounded-xl transition-all ${
+              activeRoute === AppRoute.FORUM
+                ? 'text-purple-400'
+                : 'text-gray-300'
+            }`}
+          >
+            <ICONS.Forum />
+            <span className="text-[10px] font-medium">Forum</span>
+          </button>
+
+          {/* Market */}
+          <button
+            onClick={() => { setActiveRoute(AppRoute.MARKETPLACE); setIsSidebarOpen(false); }}
+            className={`flex flex-col items-center gap-1 px-2 py-1.5 rounded-xl transition-all ${
+              activeRoute === AppRoute.MARKETPLACE
+                ? 'text-purple-400'
+                : 'text-gray-300'
+            }`}
+          >
+            <ICONS.Marketplace />
+            <span className="text-[10px] font-medium">Market</span>
+          </button>
+
+          {/* Central N Button (NexusAI/Dashboard) */}
+          <button
+            onClick={() => { setActiveRoute(AppRoute.DASHBOARD); setIsSidebarOpen(false); }}
+            className="relative flex items-center justify-center w-14 h-14 -mt-6 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-purple-500 shadow-lg shadow-purple-500/50 hover:scale-105 transition-transform z-10"
+          >
+            <span className="text-2xl font-bold text-white">N</span>
+          </button>
+
+          {/* Chat */}
+          <button
+            onClick={() => { setActiveRoute(AppRoute.CHAT); setIsSidebarOpen(false); }}
+            className={`flex flex-col items-center gap-1 px-2 py-1.5 rounded-xl transition-all relative ${
+              activeRoute === AppRoute.CHAT
+                ? 'text-purple-400'
+                : 'text-gray-300'
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {/* First bubble (back) */}
+              <path d="M19 13a2 2 0 0 1-2 2H5l-4 4V3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/>
+              {/* Second overlapping bubble (front) */}
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span className="text-[10px] font-medium">Chat</span>
+          </button>
+
+          {/* Profile */}
+          <button
+            onClick={() => { setActiveRoute(AppRoute.PROFILE); setIsSidebarOpen(false); }}
+            className={`flex flex-col items-center gap-1 px-2 py-1.5 rounded-xl transition-all ${
+              activeRoute === AppRoute.PROFILE
+                ? 'text-purple-400'
+                : 'text-gray-300'
+            }`}
+          >
+            <ICONS.Profile />
+            <span className="text-[10px] font-medium">Profile</span>
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };

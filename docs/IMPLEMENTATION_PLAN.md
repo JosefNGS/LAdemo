@@ -27,7 +27,7 @@ This document outlines the implementation plan to bring all pages and features u
 - **Friends** - Social connections management
 - **Profile** - User settings, security, social media connections
 - **Content Generator** - AI-powered content creation for social media platforms
-- **Token Shop** - NXC token packages with tiered pricing
+- **Credits Shop** - NXC credits packages with tiered pricing
 - **Vetting** (Admin) - Product review queue
 - **Users** (Admin) - User management system
 - **Reports** (Moderator) - Report moderation dashboard
@@ -114,7 +114,7 @@ This document outlines the implementation plan to bring all pages and features u
   - Confirmation step
   - Receipt display
 - [ ] Add cart state management (localStorage or context)
-- [ ] Integrate with Token Shop for NXC packages
+- [ ] Integrate with Credits Shop for NXC packages
 - [ ] Add cart icon badge with item count
 - [ ] Update `Layout.tsx` cart button to show count
 

@@ -134,6 +134,23 @@ const AffiliateManager: React.FC = () => {
         </div>
       </div>
 
+      {/* Performance Overview */}
+      <div className="glass-card p-6 rounded-3xl border border-white/5 mb-6">
+        <h3 className="text-xl font-bold mb-6">Performance Overview</h3>
+        <div className="h-64 w-full" style={{ minHeight: '256px', minWidth: '0' }}>
+          <ResponsiveContainer width="100%" height="100%" minHeight={256} minWidth={0}>
+            <LineChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
+              <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} tickLine={false} axisLine={false} />
+              <YAxis hide />
+              <Tooltip contentStyle={{ backgroundColor: '#111827', border: '1px solid #374151', borderRadius: '12px' }} />
+              <Line type="monotone" dataKey="clicks" stroke="#06b6d4" strokeWidth={2} dot={false} />
+              <Line type="monotone" dataKey="conversions" stroke="#7c3aed" strokeWidth={2} dot={false} />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
       {/* Tax Preparation Tools */}
       <div className="glass-card p-6 rounded-3xl border border-white/5 mb-6">
         <h3 className="text-xl font-bold mb-4">Tax Preparation Tools</h3>
@@ -153,22 +170,6 @@ const AffiliateManager: React.FC = () => {
               View Details
             </button>
           </div>
-        </div>
-      </div>
-
-      <div className="glass-card p-6 rounded-3xl border border-white/5">
-        <h3 className="text-xl font-bold mb-6">Performance Overview</h3>
-        <div className="h-64 w-full" style={{ minHeight: '256px', minWidth: '0' }}>
-          <ResponsiveContainer width="100%" height="100%" minHeight={256} minWidth={0}>
-            <LineChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#374151" vertical={false} />
-              <XAxis dataKey="date" stroke="#9ca3af" fontSize={12} tickLine={false} axisLine={false} />
-              <YAxis hide />
-              <Tooltip contentStyle={{ backgroundColor: '#111827', border: '1px solid #374151', borderRadius: '12px' }} />
-              <Line type="monotone" dataKey="clicks" stroke="#06b6d4" strokeWidth={2} dot={false} />
-              <Line type="monotone" dataKey="conversions" stroke="#7c3aed" strokeWidth={2} dot={false} />
-            </LineChart>
-          </ResponsiveContainer>
         </div>
       </div>
 
@@ -255,4 +256,5 @@ const AffiliateManager: React.FC = () => {
 };
 
 export default AffiliateManager;
+
 

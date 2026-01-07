@@ -6,7 +6,7 @@
   functions = "netlify/functions"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
   # Ensure devDependencies are installed (some builds fail if they are skipped)
   NPM_FLAGS = "--include=dev"
   NPM_CONFIG_PRODUCTION = "false"

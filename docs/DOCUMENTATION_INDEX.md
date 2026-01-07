@@ -54,6 +54,17 @@ Complete guide to all documentation files in the BitNexus project.
 - **Last Updated**: January 2026
 - Growth milestones
 
+### [Affiliate Program Architecture](./AFFILIATE_PROGRAM_ARCHITECTURE.md)
+**Comprehensive affiliate program strategy and operations**
+- Executive summary and program positioning
+- Commission structure & financial model (40% top tier = $875.60 per sale)
+- Operational framework and governance (ToS, payout policies, marketing rules)
+- Affiliate recruitment and outreach strategies
+- Activation sequences and partner support
+- Program scaling milestones ($20k, $50k, $100k MRR)
+- Pre-launch readiness checklist
+- **Last Updated**: January 2026
+
 ---
 
 ## 🚀 Getting Started
@@ -185,6 +196,7 @@ docs/
 ├── PRODUCT_PRESENTATION_SLIDES.md   # Pitch deck outline
 ├── PITCH_DECK.md                    # Complete pitch deck
 ├── REVENUE_PLAN.md                  # Monetization strategy
+├── AFFILIATE_PROGRAM_ARCHITECTURE.md # Affiliate program strategy
 ├── IMPLEMENTATION_PLAN.md           # Development roadmap
 ├── QUICK_WINS_FINANCIAL_FREEDOM.md  # Quick wins (all implemented)
 ├── FINANCIAL_FREEDOM_ENHANCEMENTS.md # Enhancement strategies
@@ -213,6 +225,7 @@ docs/
 - Use [PITCH_DECK.md](./Product%20docs/PITCH_DECK.md) for complete presentations
 - Reference [PRODUCT_PRESENTATION_SLIDES.md](./Product%20docs/PRODUCT_PRESENTATION_SLIDES.md) for outline
 - Review [REVENUE_PLAN.md](./Product%20docs/REVENUE_PLAN.md) for financial strategy
+- Review [AFFILIATE_PROGRAM_ARCHITECTURE.md](./AFFILIATE_PROGRAM_ARCHITECTURE.md) for affiliate program strategy
 - Review [QUICK_WINS_FINANCIAL_FREEDOM.md](./QUICK_WINS_FINANCIAL_FREEDOM.md)
 
 ### For Deployment
@@ -233,4 +246,6 @@ For questions or issues:
 
 **Last Updated**: January 2026  
 **Maintained By**: BitNexus Development Team
+
+
 

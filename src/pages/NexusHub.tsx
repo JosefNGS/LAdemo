@@ -79,7 +79,7 @@ const NexusHub: React.FC<NexusHubProps> = ({ onClose }) => {
         </div>
 
         {/* Chat Area */}
-        <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 hide-scrollbar">
           {messages.map((m, i) => (
             <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <div className={`max-w-[85%] p-4 rounded-2xl ${
@@ -87,7 +87,7 @@ const NexusHub: React.FC<NexusHubProps> = ({ onClose }) => {
                 ? 'bg-purple-600 text-white rounded-tr-none' 
                 : 'bg-white/5 text-gray-200 border border-white/10 rounded-tl-none'
               }`}>
-                <p className="text-sm leading-relaxed">{m.text}</p>
+                <p className="text-sm leading-relaxed whitespace-pre-wrap">{m.text}</p>
               </div>
             </div>
           ))}
@@ -100,6 +100,40 @@ const NexusHub: React.FC<NexusHubProps> = ({ onClose }) => {
               </div>
             </div>
           )}
+          
+          {/* Quick Action Buttons - Show when only welcome message exists */}
+          {messages.length === 1 && !isTyping && (
+            <div className="space-y-3">
+              <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Quick Actions</p>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { text: 'How to increase ROI?', icon: '💰' },
+                  { text: 'Best products to promote?', icon: '🛒' },
+                  { text: 'Network building strategy?', icon: '👥' },
+                  { text: 'MEV bot trading tips?', icon: '🤖' },
+                  { text: 'Content creation help?', icon: '📱' },
+                  { text: 'Financial freedom plan?', icon: '🎯' },
+                ].map((action, i) => (
+                  <button
+                    key={i}
+                    onClick={async () => {
+                      const userMsg = action.text;
+                      setInput('');
+                      setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+                      setIsTyping(true);
+                      const aiResponse = await getAIAdvice(userMsg);
+                      setIsTyping(false);
+                      setMessages(prev => [...prev, { role: 'assistant', text: aiResponse }]);
+                    }}
+                    className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-left transition-all text-xs"
+                  >
+                    <span className="mr-2">{action.icon}</span>
+                    <span className="text-gray-300">{action.text}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -107,4 +141,5 @@ const NexusHub: React.FC<NexusHubProps> = ({ onClose }) => {
 };
 
 export default NexusHub;
+
 

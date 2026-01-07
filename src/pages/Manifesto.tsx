@@ -218,3 +218,5 @@ const Manifesto: React.FC = () => {
 
 export default Manifesto;
 
+
+

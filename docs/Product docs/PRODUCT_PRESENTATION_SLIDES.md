@@ -66,8 +66,8 @@ One platform for:
 2. Marketplace - Product discovery & links
 3. Bot Lab - MEV Bot & XAB Bot (XRP) passive staking income
 4. Alliance Network - MLM team building
-5. Content Generator - AI marketing automation
-6. Academy - Education & training
+5. Content Generator - AI marketing automation with marketing assets
+6. Academy - Education & training with Getting Started course
 7. Goals - Progress tracking
 8. Social - Community & networking
 
@@ -93,7 +93,8 @@ One platform for:
 - 🏷️ Product tags (Recurring, Quick Win, High Commission)
 - 📊 Earning potential calculator
 - 🔗 One-click affiliate link generation
-- 📱 QR codes for easy sharing
+- 📱 QR codes for easy sharing (downloadable PNG format)
+- 🎓 Getting Started onboarding course with video and PDFs
 
 **"If you get 10 sales/month: $XXX" - Clear earning potential**
 
@@ -139,7 +140,7 @@ One platform for:
 ---
 
 ## Slide 11: Tokenomics
-**"NXC Token: The Platform Currency"**
+**"NXC Credits: The Platform Currency"**
 
 **Token Utility**:
 - 💳 Platform payments & fees
@@ -271,7 +272,7 @@ One platform for:
 
 **For Early Adopters**:
 1. Secure Genesis spot
-2. Purchase NXC tokens
+2. Purchase NXC creditss
 3. Start earning immediately
 
 **For Investors**:

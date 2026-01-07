@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 export interface CartItem {
   id: string;
   name: string;
-  amount?: number; // For token packages
+  amount?: number; // For credits packages
   price: number;
   quantity: number;
   type: 'token' | 'product';
@@ -102,4 +102,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+
 

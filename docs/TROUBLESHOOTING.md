@@ -44,6 +44,23 @@
 - Make sure you're running `start.bat` from the project root directory
 - Check that all files exist in `src/` directory
 
+#### 6. ARM64 / Apple Silicon Compatibility
+**Question**: Does the dev server work on ARM64 (Apple Silicon M1/M2/M3)?
+
+**Answer**: ✅ **Yes, fully supported!**
+
+The dev server works perfectly on ARM64 architectures:
+- **Node.js 20+** has native ARM64 support
+- **esbuild** automatically downloads the correct ARM64 binary via `npx`
+- All code uses cross-platform Node.js APIs (no architecture-specific code)
+- The `start.sh` script handles macOS (including ARM64) correctly
+
+**If you encounter issues on ARM64:**
+1. Ensure Node.js 20+ is installed: `node --version`
+2. Clear npm cache: `npm cache clean --force`
+3. Let `npx` download the correct esbuild binary: `npx --yes esbuild --version`
+4. The server will automatically use the ARM64 version of esbuild
+
 ## Manual Testing
 
 ### Test Node.js Server

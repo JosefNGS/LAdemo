@@ -21,7 +21,14 @@ export enum AppRoute {
   REGISTER = 'register',
   FORGOT_PASSWORD = 'forgot-password',
   MANIFESTO = 'manifesto',
-  FORUM = 'forum'
+  FORUM = 'forum',
+  MY_PRODUCTS = 'my-products',
+  GETTING_STARTED = 'getting-started',
+  ABOUT = 'about',
+  NEWS = 'news',
+  USERS = 'users',
+  SUPPORT = 'support',
+  FEED = 'feed'
 }
 
 export interface Product {

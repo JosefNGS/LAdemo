@@ -154,7 +154,7 @@
 
 ### Payment Processing
 - [ ] Integrate payment gateway (Stripe/PayPal)
-- [ ] NXC token payment processing
+- [ ] NXC credits payment processing
 - [ ] Wallet connection (MetaMask/WalletConnect)
 - [ ] Transaction history API
 - [ ] Refund processing
@@ -505,4 +505,6 @@
 **Last Updated**: January 2026  
 **Next Review**: Weekly  
 **Maintained By**: Development Team
+
+
 

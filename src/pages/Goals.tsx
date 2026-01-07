@@ -9,17 +9,59 @@ interface Goal {
   current: number;
   deadline: string;
   unit: string;
+  description?: string;
+  createdAt?: string;
+  milestones?: { date: string; value: number; note?: string }[];
 }
 
 const Goals: React.FC = () => {
   const [goals, setGoals] = useState<Goal[]>([
-    { id: '1', type: 'income', title: 'Monthly Income Goal', target: 5000, current: 1184, deadline: '2025-06-01', unit: '$' },
-    { id: '2', type: 'network', title: 'Network Size Goal', target: 200, current: 142, deadline: '2025-03-01', unit: 'members' },
-    { id: '3', type: 'products', title: 'Products to Promote', target: 10, current: 6, deadline: '2025-02-01', unit: 'products' },
+    { 
+      id: '1', 
+      type: 'income', 
+      title: 'Monthly Income Goal', 
+      target: 5000, 
+      current: 1184, 
+      deadline: '2025-06-01', 
+      unit: '$',
+      description: 'Achieve $5,000 monthly recurring income through affiliate commissions and bot returns',
+      createdAt: '2024-12-01',
+      milestones: [
+        { date: '2024-12-15', value: 500, note: 'First $500 milestone' },
+        { date: '2025-01-01', value: 1000, note: 'Reached $1K mark' }
+      ]
+    },
+    { 
+      id: '2', 
+      type: 'network', 
+      title: 'Network Size Goal', 
+      target: 200, 
+      current: 142, 
+      deadline: '2025-03-01', 
+      unit: 'members',
+      description: 'Build a network of 200 active members in the affiliate program',
+      createdAt: '2024-11-15',
+      milestones: [
+        { date: '2024-12-01', value: 100, note: 'First 100 members' }
+      ]
+    },
+    { 
+      id: '3', 
+      type: 'products', 
+      title: 'Products to Promote', 
+      target: 10, 
+      current: 6, 
+      deadline: '2025-02-01', 
+      unit: 'products',
+      description: 'Promote 10 different products across various categories',
+      createdAt: '2024-12-10'
+    },
   ]);
 
   const [showAddGoal, setShowAddGoal] = useState(false);
-  const [newGoal, setNewGoal] = useState({ type: 'income' as Goal['type'], title: '', target: 0, deadline: '' });
+  const [newGoal, setNewGoal] = useState({ type: 'income' as Goal['type'], title: '', target: 0, deadline: '', description: '' });
+  const [editingGoal, setEditingGoal] = useState<Goal | null>(null);
+  const [viewingGoal, setViewingGoal] = useState<Goal | null>(null);
 
   const calculateProgress = (current: number, target: number) => {
     return Math.min((current / target) * 100, 100);
@@ -110,6 +152,16 @@ const Goals: React.FC = () => {
                 className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50"
               />
             </div>
+            <div>
+              <label className="text-sm font-bold text-gray-400 mb-2 block">Description (Optional)</label>
+              <textarea
+                value={newGoal.description}
+                onChange={(e) => setNewGoal({ ...newGoal, description: e.target.value })}
+                placeholder="Add a description for this goal..."
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 resize-none"
+                rows={3}
+              />
+            </div>
           </div>
           <div className="flex gap-2 mt-4">
             <button
@@ -119,9 +171,10 @@ const Goals: React.FC = () => {
                     id: Date.now().toString(),
                     ...newGoal,
                     current: 0,
-                    unit: newGoal.type === 'income' ? '$' : newGoal.type === 'network' ? 'members' : 'products'
+                    unit: newGoal.type === 'income' ? '$' : newGoal.type === 'network' ? 'members' : 'products',
+                    createdAt: new Date().toISOString().split('T')[0]
                   }]);
-                  setNewGoal({ type: 'income', title: '', target: 0, deadline: '' });
+                  setNewGoal({ type: 'income', title: '', target: 0, deadline: '', description: '' });
                   setShowAddGoal(false);
                 }
               }}
@@ -195,10 +248,16 @@ const Goals: React.FC = () => {
               </div>
 
               <div className="mt-4 pt-4 border-t border-white/5 flex gap-2">
-                <button className="flex-1 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold transition-all">
+                <button 
+                  onClick={() => setEditingGoal(goal)}
+                  className="flex-1 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold transition-all"
+                >
                   Edit
                 </button>
-                <button className="flex-1 py-2 bg-purple-600/20 text-purple-400 hover:bg-purple-600/30 rounded-lg text-xs font-bold transition-all">
+                <button 
+                  onClick={() => setViewingGoal(goal)}
+                  className="flex-1 py-2 bg-purple-600/20 text-purple-400 hover:bg-purple-600/30 rounded-lg text-xs font-bold transition-all"
+                >
                   View Details
                 </button>
               </div>
@@ -222,9 +281,245 @@ const Goals: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Edit Goal Modal */}
+      {editingGoal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-6 rounded-3xl border border-white/5 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold">Edit Goal</h3>
+              <button
+                onClick={() => setEditingGoal(null)}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm font-bold text-gray-400 mb-2 block">Goal Type</label>
+                <select
+                  value={editingGoal.type}
+                  onChange={(e) => setEditingGoal({ ...editingGoal, type: e.target.value as Goal['type'] })}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50"
+                >
+                  <option value="income">Monthly Income</option>
+                  <option value="network">Network Size</option>
+                  <option value="products">Products to Promote</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-sm font-bold text-gray-400 mb-2 block">Goal Title</label>
+                <input
+                  type="text"
+                  value={editingGoal.title}
+                  onChange={(e) => setEditingGoal({ ...editingGoal, title: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-bold text-gray-400 mb-2 block">Description</label>
+                <textarea
+                  value={editingGoal.description || ''}
+                  onChange={(e) => setEditingGoal({ ...editingGoal, description: e.target.value })}
+                  placeholder="Add a description for this goal..."
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 resize-none"
+                  rows={3}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-bold text-gray-400 mb-2 block">Target Value</label>
+                  <input
+                    type="number"
+                    value={editingGoal.target}
+                    onChange={(e) => setEditingGoal({ ...editingGoal, target: Number(e.target.value) })}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50"
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-bold text-gray-400 mb-2 block">Current Value</label>
+                  <input
+                    type="number"
+                    value={editingGoal.current}
+                    onChange={(e) => setEditingGoal({ ...editingGoal, current: Number(e.target.value) })}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-bold text-gray-400 mb-2 block">Deadline</label>
+                <input
+                  type="date"
+                  value={editingGoal.deadline}
+                  onChange={(e) => setEditingGoal({ ...editingGoal, deadline: e.target.value })}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50"
+                />
+              </div>
+
+              <div className="flex gap-2 pt-4">
+                <button
+                  onClick={() => {
+                    setGoals(goals.map(g => g.id === editingGoal.id ? editingGoal : g));
+                    setEditingGoal(null);
+                  }}
+                  className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+                >
+                  Save Changes
+                </button>
+                <button
+                  onClick={() => setEditingGoal(null)}
+                  className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* View Details Modal */}
+      {viewingGoal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-6 rounded-3xl border border-white/5 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${getGoalColor(viewingGoal.type)} bg-opacity-20 flex items-center justify-center text-2xl`}>
+                  {getGoalIcon(viewingGoal.type)}
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">{viewingGoal.title}</h3>
+                  <p className="text-sm text-gray-500">{viewingGoal.type.charAt(0).toUpperCase() + viewingGoal.type.slice(1)} Goal</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setViewingGoal(null)}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              {/* Progress Overview */}
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-sm font-bold text-gray-400">Progress</span>
+                  <span className="font-bold text-cyan-400">{calculateProgress(viewingGoal.current, viewingGoal.target).toFixed(1)}%</span>
+                </div>
+                <div className="w-full h-4 bg-gray-800 rounded-full overflow-hidden border border-white/5 mb-3">
+                  <div
+                    className={`h-full bg-gradient-to-r ${getGoalColor(viewingGoal.type)} transition-all duration-500`}
+                    style={{ width: `${calculateProgress(viewingGoal.current, viewingGoal.target)}%` }}
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p className="text-gray-500">Current</p>
+                    <p className="font-bold">{viewingGoal.current.toLocaleString()} {viewingGoal.unit}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-500">Target</p>
+                    <p className="font-bold">{viewingGoal.target.toLocaleString()} {viewingGoal.unit}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description */}
+              {viewingGoal.description && (
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 mb-2">Description</h4>
+                  <p className="text-sm text-gray-300">{viewingGoal.description}</p>
+                </div>
+              )}
+
+              {/* Key Metrics */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-xs text-gray-500 mb-1">Remaining</p>
+                  <p className="text-lg font-bold text-purple-400">
+                    {(viewingGoal.target - viewingGoal.current).toLocaleString()} {viewingGoal.unit}
+                  </p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-xs text-gray-500 mb-1">Days Remaining</p>
+                  <p className="text-lg font-bold text-cyan-400">
+                    {calculateDaysRemaining(viewingGoal.deadline)} days
+                  </p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-xs text-gray-500 mb-1">Daily Target</p>
+                  <p className="text-lg font-bold text-green-400">
+                    {((viewingGoal.target - viewingGoal.current) / Math.max(calculateDaysRemaining(viewingGoal.deadline), 1)).toFixed(0)} {viewingGoal.unit}
+                  </p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-xs text-gray-500 mb-1">Created</p>
+                  <p className="text-lg font-bold text-gray-300">
+                    {viewingGoal.createdAt ? new Date(viewingGoal.createdAt).toLocaleDateString() : 'N/A'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Milestones */}
+              {viewingGoal.milestones && viewingGoal.milestones.length > 0 && (
+                <div>
+                  <h4 className="text-sm font-bold text-gray-400 mb-3">Milestones</h4>
+                  <div className="space-y-2">
+                    {viewingGoal.milestones.map((milestone, index) => (
+                      <div key={index} className="p-3 bg-white/5 rounded-lg border border-white/5">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-sm font-bold">{milestone.value.toLocaleString()} {viewingGoal.unit}</p>
+                            <p className="text-xs text-gray-500">{new Date(milestone.date).toLocaleDateString()}</p>
+                          </div>
+                          {milestone.note && (
+                            <p className="text-xs text-gray-400 italic">{milestone.note}</p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Actions */}
+              <div className="flex gap-2 pt-4 border-t border-white/5">
+                <button
+                  onClick={() => {
+                    setViewingGoal(null);
+                    setEditingGoal(viewingGoal);
+                  }}
+                  className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+                >
+                  Edit Goal
+                </button>
+                <button
+                  onClick={() => setViewingGoal(null)}
+                  className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Goals;
+
+
 

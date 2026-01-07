@@ -262,3 +262,5 @@ const Checkout: React.FC<CheckoutProps> = ({ setActiveRoute }) => {
 
 export default Checkout;
 
+
+

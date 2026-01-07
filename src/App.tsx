@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Marketplace from './pages/Marketplace';
+import MyProducts from './pages/MyProducts';
 import Alliance from './pages/Alliance';
 import Earn from './pages/Earn';
 import BotLab from './pages/BotLab';
@@ -13,6 +14,7 @@ import AffiliateManager from './pages/AffiliateManager';
 import ContentGenerator from './pages/ContentGenerator';
 import Goals from './pages/Goals';
 import Academy from './pages/Academy';
+import GettingStarted from './pages/GettingStarted';
 import Vetting from './pages/Vetting';
 import Users from './pages/Users';
 import Reports from './pages/Reports';
@@ -22,12 +24,42 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import About from './pages/About';
+import News from './pages/News';
+import AllUsers from './pages/AllUsers';
+import Support from './pages/Support';
+import Feed from './pages/Feed';
+import GettingStartedModal from './components/GettingStartedModal';
+import PlatformAdminUsers from './components/PlatformAdminUsers';
 import { AppRoute } from './types';
 
 const App: React.FC = () => {
   const [activeRoute, setActiveRoute] = useState<AppRoute>(AppRoute.DASHBOARD);
   const [showAIHub, setShowAIHub] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Default to true for demo, set to false for real auth
+  const [showGettingStartedModal, setShowGettingStartedModal] = useState(false);
+
+  // Check if user has seen getting started modal on login
+  useEffect(() => {
+    if (isLoggedIn) {
+      const hasSeenGettingStarted = localStorage.getItem('hasSeenGettingStarted');
+      if (!hasSeenGettingStarted) {
+        setShowGettingStartedModal(true);
+      }
+    }
+  }, [isLoggedIn]);
+
+  // Scroll to top when route changes
+  useEffect(() => {
+    // Scroll window to top
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    
+    // Also scroll main content area to top (for mobile/desktop layouts)
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+      mainContent.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
+  }, [activeRoute]);
 
   const PlaceholderPage = ({ title, desc }: { title: string, desc: string }) => (
     <div className="flex items-center justify-center min-h-[60vh] flex-col gap-4 text-center px-6">
@@ -42,19 +74,26 @@ const App: React.FC = () => {
 
   const renderContent = () => {
     switch (activeRoute) {
-      case AppRoute.DASHBOARD: return <Dashboard />;
-      case AppRoute.MARKETPLACE: return <Marketplace />;
+      case AppRoute.DASHBOARD: return <Dashboard setActiveRoute={setActiveRoute} />;
+      case AppRoute.MARKETPLACE: return <Marketplace setActiveRoute={setActiveRoute} />;
+      case AppRoute.MY_PRODUCTS: return <MyProducts />;
       case AppRoute.ALLIANCE: return <Alliance />;
       case AppRoute.EARN: return <Earn setActiveRoute={setActiveRoute} />;
       case AppRoute.BOT_LAB: return <BotLab />;
       case AppRoute.SHOP: return <TokenShop setActiveRoute={setActiveRoute} />;
-      case AppRoute.ACADEMY: return <Academy />;
+      case AppRoute.ACADEMY: return <Academy setActiveRoute={setActiveRoute} />;
+      case AppRoute.GETTING_STARTED: return <GettingStarted setActiveRoute={setActiveRoute} />;
+      case AppRoute.FEED: return <Feed />;
       case AppRoute.CHAT: return <Chat />;
       case AppRoute.FORUM: return <Forum />;
       case AppRoute.AFFILIATE: return <AffiliateManager />;
-      case AppRoute.CONTENT_GENERATOR: return <ContentGenerator />;
+      case AppRoute.CONTENT_GENERATOR: return <ContentGenerator setActiveRoute={setActiveRoute} />;
       case AppRoute.GOALS: return <Goals />;
-      case AppRoute.FRIENDS: return <Friends />;
+      case AppRoute.FRIENDS: return <Friends setActiveRoute={setActiveRoute} />;
+      case AppRoute.ABOUT: return <About />;
+      case AppRoute.NEWS: return <News />;
+      case AppRoute.USERS: return <AllUsers setActiveRoute={setActiveRoute} />;
+      case AppRoute.SUPPORT: return <Support />;
       case AppRoute.ADMIN_VETTING: return <Vetting />;
       case AppRoute.ADMIN_USERS: return <Users />;
       case AppRoute.MOD_REPORTS: return <Reports />;
@@ -185,6 +224,9 @@ const App: React.FC = () => {
               </p>
             </div>
           </div>
+
+          {/* Platform Admin Users */}
+          <PlatformAdminUsers />
         </div>
       );
       default: return <Dashboard />;
@@ -218,6 +260,11 @@ const App: React.FC = () => {
     }
   }
 
+  const handleCloseGettingStarted = () => {
+    setShowGettingStartedModal(false);
+    localStorage.setItem('hasSeenGettingStarted', 'true');
+  };
+
   return (
     <>
       <Layout 
@@ -229,6 +276,12 @@ const App: React.FC = () => {
         {renderContent()}
       </Layout>
       {showAIHub && <NexusHub onClose={() => setShowAIHub(false)} />}
+      {showGettingStartedModal && (
+        <GettingStartedModal 
+          onClose={handleCloseGettingStarted}
+          setActiveRoute={setActiveRoute}
+        />
+      )}
     </>
   );
 };

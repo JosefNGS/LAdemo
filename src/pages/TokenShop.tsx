@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ICONS } from '../constants';
 import { useCart } from '../contexts/CartContext';
 import { AppRoute } from '../types';
@@ -7,8 +7,17 @@ interface TokenShopProps {
   setActiveRoute?: (route: AppRoute) => void;
 }
 
+interface FreedomPackage {
+  name: string;
+  goal: string;
+  price: number;
+  description: string;
+  color: 'green' | 'cyan' | 'purple';
+}
+
 const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
   const { addItem, getItemCount } = useCart();
+  const [selectedPackage, setSelectedPackage] = useState<FreedomPackage | null>(null);
 
   const packages = [
     { id: '1', name: 'Starter Pack', amount: 50, price: 150, bonus: 0, aiCredits: 25, popular: false },
@@ -27,11 +36,58 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
     });
   };
 
+  const handleSelectPackage = (pkg: FreedomPackage) => {
+    setSelectedPackage(pkg);
+  };
+
+  const handleAddPackageToCart = () => {
+    if (selectedPackage) {
+      addItem({
+        id: `freedom-${selectedPackage.name.toLowerCase().replace(/\s+/g, '-')}`,
+        name: selectedPackage.name,
+        amount: selectedPackage.price,
+        price: selectedPackage.price * 3, // USD price
+        type: 'token',
+      });
+      setSelectedPackage(null);
+    }
+  };
+
+  const colorClasses = {
+    green: {
+      bg: 'bg-green-600',
+      hover: 'hover:bg-green-500',
+      border: 'border-green-500/30',
+      bgGradient: 'from-green-500/10',
+      text: 'text-green-400',
+      bgBadge: 'bg-green-500/20',
+      borderBadge: 'border-green-500/30',
+    },
+    cyan: {
+      bg: 'bg-cyan-600',
+      hover: 'hover:bg-cyan-500',
+      border: 'border-cyan-500/30',
+      bgGradient: 'from-cyan-500/10',
+      text: 'text-cyan-400',
+      bgBadge: 'bg-cyan-500/20',
+      borderBadge: 'border-cyan-500/30',
+    },
+    purple: {
+      bg: 'bg-purple-600',
+      hover: 'hover:bg-purple-500',
+      border: 'border-purple-500/30',
+      bgGradient: 'from-purple-500/10',
+      text: 'text-purple-400',
+      bgBadge: 'bg-purple-500/20',
+      borderBadge: 'border-purple-500/30',
+    },
+  };
+
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-3xl font-bold font-display">NXC Token Shop</h2>
+          <h2 className="text-3xl font-bold font-display">NXC Credits Shop</h2>
           <p className="text-gray-500 text-sm">Purchase NXC packages for network interactions and AI usage credits for the AI tools</p>
         </div>
         {getItemCount() > 0 && (
@@ -65,7 +121,7 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
                 <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
                   {pkg.amount}
                 </div>
-                <p className="text-gray-500 text-sm mt-1">NXC Tokens</p>
+                <p className="text-gray-500 text-sm mt-1">NXC Credits</p>
               </div>
               <div className="mb-4 space-y-1">
                 {pkg.bonus > 0 && (
@@ -91,7 +147,7 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
       {/* ROI Calculator */}
       <div className="glass-card p-6 rounded-3xl border border-white/5 mb-6">
         <h3 className="text-xl font-bold mb-4">ROI Calculator</h3>
-        <p className="text-sm text-gray-400 mb-4">Calculate expected returns from NXC token packages</p>
+        <p className="text-sm text-gray-400 mb-4">Calculate expected returns from NXC credits packages</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { name: 'Starter Pack', price: 50, apy: 10, years: 1 },
@@ -136,29 +192,35 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
         <h3 className="text-xl font-bold mb-4">Financial Freedom Packages</h3>
         <p className="text-sm text-gray-400 mb-4">Pre-configured bundles designed to help you reach specific income goals</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {[
-            { name: 'Starter Freedom', goal: '$500/month', price: 250, description: 'Perfect for beginners starting their journey', color: 'green' },
-            { name: 'Moderate Freedom', goal: '$2,000/month', price: 1000, description: 'For those ready to scale their income', color: 'cyan' },
-            { name: 'Full Freedom', goal: '$5,000+/month', price: 2500, description: 'Complete financial independence package', color: 'purple' },
-          ].map((pkg) => (
-            <div key={pkg.name} className={`p-5 rounded-xl border border-${pkg.color}-500/30 bg-gradient-to-br from-${pkg.color}-500/10 to-transparent`}>
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="font-bold text-lg">{pkg.name}</h4>
-                <span className={`px-2 py-1 bg-${pkg.color}-500/20 text-${pkg.color}-400 border border-${pkg.color}-500/30 rounded text-xs font-bold`}>
-                  {pkg.goal}
-                </span>
+          {([
+            { name: 'Starter Freedom', goal: '$500/month', price: 250, description: 'Perfect for beginners starting their journey', color: 'green' as const },
+            { name: 'Moderate Freedom', goal: '$2,000/month', price: 1000, description: 'For those ready to scale their income', color: 'cyan' as const },
+            { name: 'Full Freedom', goal: '$5,000+/month', price: 2500, description: 'Complete financial independence package', color: 'purple' as const },
+          ] as FreedomPackage[]).map((pkg) => {
+            const colors = colorClasses[pkg.color];
+            return (
+              <div key={pkg.name} className={`p-5 rounded-xl border ${colors.border} bg-gradient-to-br ${colors.bgGradient} to-transparent`}>
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="font-bold text-lg">{pkg.name}</h4>
+                  <span className={`px-2 py-1 ${colors.bgBadge} ${colors.text} border ${colors.borderBadge} rounded text-xs font-bold`}>
+                    {pkg.goal}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-400 mb-3">{pkg.description}</p>
+                <div className="mb-3">
+                  <p className="text-xs text-gray-500 mb-1">Package Value</p>
+                  <p className="text-2xl font-bold">{pkg.price} NXC</p>
+                  <p className="text-xs text-gray-500">≈ ${(pkg.price * 3).toFixed(0)} USD</p>
+                </div>
+                <button 
+                  onClick={() => handleSelectPackage(pkg)}
+                  className={`w-full py-3 ${colors.bg} ${colors.hover} rounded-xl font-bold transition-all`}
+                >
+                  Select Package
+                </button>
               </div>
-              <p className="text-sm text-gray-400 mb-3">{pkg.description}</p>
-              <div className="mb-3">
-                <p className="text-xs text-gray-500 mb-1">Package Value</p>
-                <p className="text-2xl font-bold">{pkg.price} NXC</p>
-                <p className="text-xs text-gray-500">≈ ${(pkg.price * 3).toFixed(0)} USD</p>
-              </div>
-              <button className={`w-full py-3 bg-${pkg.color}-600 hover:bg-${pkg.color}-500 rounded-xl font-bold transition-all`}>
-                Select Package
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -209,7 +271,7 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
           <div className="flex-1">
             <h4 className="font-bold text-lg mb-2 text-cyan-400">AI Usage Credits</h4>
             <p className="text-gray-300 text-sm mb-3">
-              NXC tokens are used as credits for AI-powered features across the platform:
+              NXC credits are used for AI-powered features across the platform:
             </p>
             <ul className="space-y-2 text-sm text-gray-400">
               <li className="flex items-center gap-2">
@@ -233,12 +295,120 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
             </ul>
             <div className="mt-4 p-3 bg-black/20 rounded-xl border border-cyan-500/10">
               <p className="text-xs text-cyan-300">
-                <strong>💡 Tip:</strong> Higher token packages include bonus AI credits. The Growth Pack includes 50 bonus AI credits!
+                <strong>💡 Tip:</strong> Higher credits packages include bonus AI credits. The Growth Pack includes 50 bonus AI credits!
               </p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Package Detail Modal */}
+      {selectedPackage && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-2xl w-full">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-2xl font-bold mb-2">{selectedPackage.name}</h3>
+                <span className={`inline-block px-3 py-1 ${colorClasses[selectedPackage.color].bgBadge} ${colorClasses[selectedPackage.color].text} border ${colorClasses[selectedPackage.color].borderBadge} rounded-lg text-sm font-bold`}>
+                  {selectedPackage.goal}
+                </span>
+              </div>
+              <button
+                onClick={() => setSelectedPackage(null)}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <ICONS.Close className="w-6 h-6" />
+              </button>
+            </div>
+
+            <p className="text-gray-300 mb-6">{selectedPackage.description}</p>
+
+            <div className="mb-6 p-6 bg-white/5 rounded-xl border border-white/10">
+              <h4 className="font-bold text-lg mb-4">Package Contents</h4>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">NXC Credits</span>
+                  <span className="text-2xl font-bold">{selectedPackage.price} NXC</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">USD Value</span>
+                  <span className="text-xl font-bold">≈ ${(selectedPackage.price * 3).toFixed(0)} USD</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-400">AI Credits</span>
+                  <span className="text-lg font-bold text-cyan-400">+{Math.floor(selectedPackage.price / 2)} AI Credits</span>
+                </div>
+                {selectedPackage.price >= 1000 && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-400">Bonus NXC</span>
+                    <span className="text-lg font-bold text-green-400">+{Math.floor(selectedPackage.price * 0.05)} Bonus NXC</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mb-6 p-6 bg-gradient-to-br from-green-500/10 to-cyan-500/10 rounded-xl border border-green-500/20">
+              <h4 className="font-bold text-lg mb-3">What's Included</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Full access to BitNexus marketplace</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>AI-powered content generation credits</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>MEV Bot & XAB Bot staking eligibility</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Premium affiliate commission rates</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Priority customer support</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex gap-4">
+              <button
+                onClick={handleAddPackageToCart}
+                className={`flex-1 py-3 ${colorClasses[selectedPackage.color].bg} ${colorClasses[selectedPackage.color].hover} rounded-xl font-bold transition-all`}
+              >
+                Add to Cart
+              </button>
+              <button
+                onClick={() => {
+                  handleAddPackageToCart();
+                  setActiveRoute && setActiveRoute(AppRoute.CART);
+                }}
+                className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 rounded-xl font-bold transition-all"
+              >
+                Buy Now
+              </button>
+              <button
+                onClick={() => setSelectedPackage(null)}
+                className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

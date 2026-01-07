@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITNEXUS | Command Center</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,6 +105,36 @@
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
+        /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(17, 24, 39, 0.5);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #7c3aed, #06b6d4);
+            border-radius: 10px;
+            border: 2px solid rgba(17, 24, 39, 0.5);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #8b5cf6, #22d3ee);
+        }
+        /* Firefox scrollbar */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #7c3aed #111827;
+        }
+        /* Hide scrollbar but keep functionality */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
     </style>
     <script type="importmap">
     {
@@ -147,7 +178,7 @@
                 </h1>
                 
                 <p class="max-w-2xl text-white/60 text-lg md:text-xl mb-12 font-medium leading-relaxed">
-                    Stop chasing the market. Start architecting it. Join <span class="text-white font-bold">12,400+ pioneers</span> securing automated wealth through the world's first AI-powered sovereign affiliate ecosystem.
+                    Stop chasing the market. Start architecting it. Join pioneers securing automated wealth through the world's first AI-powered sovereign affiliate ecosystem.
                 </p>
 
                 <!-- Countdown -->
@@ -173,7 +204,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row gap-6">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <a href="#genesis" class="px-12 py-5 bg-nexusPurple text-white font-black font-futuristic rounded-sm glow-purple uppercase tracking-widest text-sm transition-all hover:scale-105">
                         Secure Genesis Spot
                     </a>
@@ -501,7 +532,7 @@
         });
 
         // --- COUNTDOWN LOGIC ---
-        const launchDate = new Date("Jan 13, 2026 16:03:00").getTime();
+        const launchDate = new Date("Jan 21, 2026 05:00:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();

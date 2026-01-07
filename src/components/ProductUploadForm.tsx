@@ -125,7 +125,7 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
                 value={formData.name}
                 onChange={(e) => handleChange('name', e.target.value)}
                 placeholder="Enter product name"
-                className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors ${
+                className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors text-white placeholder:text-gray-500 ${
                   errors.name ? 'border-red-500/50' : 'border-white/10 focus:border-purple-500/50'
                 }`}
                 required
@@ -143,7 +143,7 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
                 onChange={(e) => handleChange('description', e.target.value)}
                 placeholder="Describe your product..."
                 rows={4}
-                className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors resize-none ${
+                className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors resize-none text-white placeholder:text-gray-500 ${
                   errors.description ? 'border-red-500/50' : 'border-white/10 focus:border-purple-500/50'
                 }`}
                 required
@@ -160,14 +160,14 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
                 <select
                   value={formData.category}
                   onChange={(e) => handleChange('category', e.target.value)}
-                  className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors ${
+                  className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors text-white ${
                     errors.category ? 'border-red-500/50' : 'border-white/10 focus:border-purple-500/50'
                   }`}
                   required
                 >
-                  <option value="">Select category</option>
+                  <option value="" className="bg-gray-800 text-white">Select category</option>
                   {categories.map(cat => (
-                    <option key={cat} value={cat}>{cat}</option>
+                    <option key={cat} value={cat} className="bg-gray-800 text-white">{cat}</option>
                   ))}
                 </select>
                 {errors.category && <p className="text-red-400 text-xs mt-1">{errors.category}</p>}
@@ -184,7 +184,7 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
                   placeholder="150"
                   min="1"
                   step="0.01"
-                  className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors ${
+                  className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors text-white placeholder:text-gray-500 ${
                     errors.price ? 'border-red-500/50' : 'border-white/10 focus:border-purple-500/50'
                   }`}
                   required
@@ -205,7 +205,7 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
                 placeholder="25"
                 min="1"
                 max="100"
-                className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors ${
+                className={`w-full bg-white/5 border rounded-xl px-4 py-3 focus:outline-none transition-colors text-white placeholder:text-gray-500 ${
                   errors.commission ? 'border-red-500/50' : 'border-white/10 focus:border-purple-500/50'
                 }`}
                 required
@@ -224,7 +224,7 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
                 value={formData.image}
                 onChange={(e) => handleChange('image', e.target.value)}
                 placeholder="https://example.com/image.jpg"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500/50 transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500/50 transition-colors text-white placeholder:text-gray-500"
               />
             </div>
 
@@ -255,7 +255,7 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
             <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl">
               <p className="text-xs text-yellow-400 font-bold mb-1">📋 Submission Fee</p>
               <p className="text-xs text-gray-400">
-                Product listing fee: 25 NXC tokens. This will be deducted from your balance upon approval.
+                Product listing fee: 25 NXC credits. This will be deducted from your balance upon approval.
               </p>
             </div>
 
@@ -294,4 +294,5 @@ const ProductUploadForm: React.FC<ProductUploadFormProps> = ({ onClose, onSubmit
 };
 
 export default ProductUploadForm;
+
 

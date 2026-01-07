@@ -124,8 +124,8 @@
 2. **Marketplace** - Product discovery, earning calculators, affiliate links
 3. **XAB Bot Lab** - Passive staking income, bot management, projections
 4. **Alliance Network** - MLM structure, tier progression, leaderboards
-5. **Content Generator** - AI marketing automation, multi-platform sharing
-6. **Academy** - Education, financial freedom paths, live events
+5. **Content Generator** - AI marketing automation, multi-platform sharing, marketing assets integration, NXC credits system (10 credits per generation)
+6. **Academy** - Education, financial freedom paths, live events with Zoom integration, Getting Started onboarding course
 7. **Goals** - Progress tracking, milestone management
 8. **Social** - Community, chat, networking
 
@@ -180,7 +180,8 @@
 
 **One-Click Tools**:
 - Instant affiliate link generation
-- QR code creation
+- QR code creation and download for affiliate links (QR Server API, PNG download, 300x300px)
+- Getting Started course with onboarding, user flow, video tutorials, and downloadable PDFs
 - Social media sharing
 
 **Visual**: Marketplace interface with product cards
@@ -196,7 +197,7 @@
 
 **XAB Bot Staking**:
 - Automated trading bots
-- 10-15% APY on staked NXC tokens
+- 10-15% APY on staked NXC creditss
 - Real-time earnings tracking
 - Easy withdrawal system
 
@@ -274,7 +275,7 @@
 
 ## Slide 11: Tokenomics
 
-### **NXC Token: The Platform Currency**
+### **NXC Credits: The Platform Currency**
 
 **Token Utility**:
 
@@ -538,7 +539,7 @@
    - Enter your email
    - Complete onboarding
 
-2. **Purchase NXC Tokens**
+2. **Purchase NXC Creditss**
    - Starter Pack: $500 (200 NXC)
    - Growth Pack: $1,000 (400 NXC)
    - Freedom Pack: $2,500 (1,000 NXC)

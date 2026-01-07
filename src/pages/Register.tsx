@@ -294,3 +294,5 @@ const Register: React.FC<RegisterProps> = ({ onSuccess, onSwitchToLogin }) => {
 
 export default Register;
 
+
+

@@ -50,3 +50,5 @@ If no API key is set, the service will automatically use mock responses based on
 2. With API key: Real Gemini API will be called
 3. On API error: Falls back to mock responses
 
+
+

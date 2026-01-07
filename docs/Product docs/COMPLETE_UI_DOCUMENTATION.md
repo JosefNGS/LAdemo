@@ -19,8 +19,9 @@
    - [Marketplace](#32-marketplace)
    - [Earn (Bot Lab)](#33-earn-bot-lab)
    - [Alliance](#34-alliance)
-   - [Token Shop](#35-token-shop)
+   - [Credits Shop](#35-token-shop)
    - [Academy](#36-academy)
+   - [Getting Started Course](#36-getting-started-course)
    - [Goals](#37-goals)
    - [Content Generator](#38-content-generator)
    - [Affiliate Manager](#39-affiliate-manager)
@@ -448,7 +449,7 @@
   - Image URL (optional)
   - Tags (multi-select)
 - **Validation**: Real-time with error messages
-- **Submission Fee Notice**: 25 NXC tokens
+- **Submission Fee Notice**: 25 NXC creditss
 - **Submit Button**: Loading state
 
 #### Features
@@ -629,29 +630,29 @@
 
 ---
 
-### 3.5 Token Shop
+### 3.5 Credits Shop
 
 **File**: `src/pages/TokenShop.tsx`  
 **Route**: `/shop`  
-**Purpose**: Purchase NXC tokens for platform usage
+**Purpose**: Purchase NXC creditss for platform usage
 
 #### Contents
 
 **Header Section**:
-- **Title**: "NXC Token Shop"
+- **Title**: "NXC Credits Shop"
 - **Subtitle**: "Purchase NXC packages for network interactions and AI usage credits for the AI tools"
 - **Cart Button**: Shows item count if cart has items
 
 **Token Packages Grid** (4 packages):
 1. **Starter Pack**:
-   - 50 NXC Tokens
+   - 50 NXC Creditss
    - Price: $150
    - Bonus: 0 NXC
    - AI Credits: 25
    - "Add to Cart" button
 
 2. **Growth Pack** (Most Popular):
-   - 100 NXC Tokens
+   - 100 NXC Creditss
    - Price: $280
    - Bonus: +5 NXC
    - AI Credits: 50
@@ -659,14 +660,14 @@
    - "Add to Cart" button
 
 3. **Pro Pack**:
-   - 250 NXC Tokens
+   - 250 NXC Creditss
    - Price: $650
    - Bonus: +15 NXC
    - AI Credits: 150
    - "Add to Cart" button
 
 4. **Enterprise Pack**:
-   - 500 NXC Tokens
+   - 500 NXC Creditss
    - Price: $1,200
    - Bonus: +35 NXC
    - AI Credits: 350
@@ -725,8 +726,18 @@
   - Event title
   - Date and time
   - Platform (Zoom, etc.)
-  - "Live Soon" badge
-  - "Register" button
+  - "Live" badge with pulsing indicator
+  - Category badges (AI Learning, Financial Freedom, Affiliate Marketing)
+  - Host name
+  - Attendee count
+  - "Join" button
+- **Joining Zoom Modal**:
+  - Appears when "Join" button is clicked
+  - Shows "Joining Zoom..." with spinning loader
+  - Displays event title
+  - Transitions to "Connected!" success state
+  - Auto-closes after connection confirmation
+  - Ready for Zoom URL redirection
 - **Past Events**: Recordings available
 
 **Financial Freedom Learning Paths**:
@@ -786,7 +797,8 @@
 - Structured learning paths
 - Course library with filters
 - Progress tracking
-- Live events calendar
+- Live events calendar with category filtering
+- **Joining Zoom modal** with connection status
 - Achievement system
 - Certificate generation
 
@@ -859,9 +871,24 @@
 - **Subtitle**: "Create engaging social media content with AI"
 
 **Product Selection**:
-- **Dropdown/Select**: Choose product to promote
-- **Product Preview**: Selected product card
+- **Product List**: Scrollable list of available products
+- **Product Cards**: 
+  - Product image thumbnail
+  - Product name
+  - Category and commission percentage
+  - Selection highlight (purple border)
 - **Product Info**: Name, commission, tags
+
+**Marketing Assets Section** (appears when product is selected):
+- **Asset Grid**: 2-column grid displaying available marketing assets
+- **Asset Types**: Banner 1, Banner 2, Social Post, Email Template
+- **Asset Cards**:
+  - Aspect-video ratio containers
+  - Asset name display
+  - Hover effects with download button
+  - Individual download functionality
+- **Download All Assets Button**: Downloads all assets at once
+- **Integration**: Assets available for use in content generation
 
 **Content Type Selection**:
 - **Options**:
@@ -917,16 +944,18 @@
 **AI Credits Display**:
 - **Remaining Credits**: X AI credits
 - **Cost Per Generation**: 10 NXC
-- **Buy More Credits**: Link to Token Shop
+- **Buy More Credits**: Link to Credits Shop
 
 #### Features
 - Product integration
+- **Marketing assets display** with download functionality
 - Multi-platform support
 - AI-powered generation
 - Content preview and editing
 - Social media sharing
 - Content history
-- Credit management
+- Credit management (10 NXC per generation)
+- Insufficient credits handling with "Buy Credits" link
 
 ---
 
@@ -1243,7 +1272,7 @@
 - **Suggested Questions**:
   - "How do I increase my affiliate earnings?"
   - "What products should I promote?"
-  - "Explain NXC tokenomics"
+  - "Explain NXC creditsomics"
   - "Help me build my network"
 - **Click to Ask**: Pre-fills input
 
@@ -1284,9 +1313,9 @@
 **Empty Cart State**:
 - **Icon**: Shopping cart icon
 - **Message**: "Your cart is empty"
-- **Description**: "Add items from the Token Shop or Marketplace"
+- **Description**: "Add items from the Credits Shop or Marketplace"
 - **Action Buttons**:
-  - "Browse Token Shop"
+  - "Browse Credits Shop"
   - "Browse Marketplace"
 
 **Cart Items List**:
@@ -1614,7 +1643,7 @@ Each principle includes:
 - Core Features
 - API Reference
 - Guides & Tutorials
-- NXC Tokenomics
+- NXC Creditsomics
 - Security & Audits
 - FAQs
 - Support
@@ -1624,7 +1653,7 @@ Each principle includes:
 - **Core Features**: Feature documentation
 - **API Reference**: Technical docs
 - **Guides**: Step-by-step tutorials
-- **Tokenomics**: NXC token details
+- **Tokenomics**: NXC credits details
 - **Security**: Security measures
 - **FAQs**: Common questions
 - **Support**: Contact information
@@ -1651,7 +1680,7 @@ Each principle includes:
   - Marketplace
   - Earn
   - Alliance
-  - Token Shop
+  - Credits Shop
   - Academy
   - Goals
   - Content Generator
@@ -1716,16 +1745,28 @@ Each principle includes:
 3. **Affiliate Link**: Link generation, QR code
 
 **Tab Content**:
-- **Overview**: Full description, calculators
-- **Marketing Assets**: Image grid, downloads
-- **Affiliate Link**: Generator, copy, QR code
+- **Overview**: Full description, earning potential calculators
+- **Marketing Assets**: Image grid (2 columns), individual downloads, "Download All Assets" button
+- **Affiliate Link**: 
+  - Link generator button
+  - Generated link display with copy functionality
+  - **QR Code Section**:
+    - Auto-generated QR code (180x180px) using QR Server API
+    - White background with black QR pattern
+    - "Scan to share affiliate link" helper text
+    - **Download QR Code button**: Downloads as PNG (300x300px)
+    - Filename format: `qr-code-{product-name}.png`
+    - Placeholder icon when no link generated
+  - "Generate New Link" button
 
 #### Features
-- Responsive design
+- Responsive design (desktop slide-over, mobile full-screen)
 - Tab navigation
-- Link generation
-- QR code display
-- Asset downloads
+- Link generation with user ID tracking
+- **QR code generation and download** (QR Server API integration)
+- Asset downloads (individual and bulk)
+- Copy to clipboard functionality
+- Visual feedback for all actions
 
 ---
 
@@ -1756,7 +1797,7 @@ Each principle includes:
 - **Error Display**: Red text below fields
 
 **Submission Info**:
-- **Fee Notice**: 25 NXC tokens
+- **Fee Notice**: 25 NXC creditss
 - **Review Process**: Explanation
 - **Terms**: Acceptance required
 

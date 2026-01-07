@@ -165,9 +165,9 @@
 
 ---
 
-### 7. Token Shop (`/shop`)
+### 7. Credits Shop (`/shop`)
 
-**Purpose**: Purchase NXC tokens to interact with the platform.
+**Purpose**: Purchase NXC creditss to interact with the platform.
 
 **Features**:
 - **Packages**: Tiered bundles:

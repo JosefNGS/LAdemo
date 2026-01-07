@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Chat and Friends pages
 - Profile with social media connections
 - Admin pages (Vetting, Users, Reports)
-- Token Shop for NXC purchases
+- Credits Shop for NXC purchases
 - Manifesto and Documentation pages
 - GitHub configuration and workflows
 - Complete documentation suite
@@ -101,4 +101,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 **For detailed implementation plans, see [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md)**
+
+
 

@@ -163,3 +163,5 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ onSwitchToLogin }) => {
 
 export default ForgotPassword;
 
+
+

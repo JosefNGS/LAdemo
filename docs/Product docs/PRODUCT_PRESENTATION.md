@@ -77,7 +77,7 @@ BitNexus provides a complete ecosystem where users can:
 │  • Alliance Network (MLM System)        │
 │  • Content Generator (AI-Powered)        │
 │  • Academy (Education & Training)       │
-│  • Token Shop (NXC Purchases)           │
+│  • Credits Shop (NXC Purchases)           │
 │  • Social Features (Chat, Friends)       │
 └─────────────────────────────────────────┘
 ```
@@ -111,10 +111,14 @@ BitNexus provides a complete ecosystem where users can:
 - Product tags (Recurring Income, Quick Win, High Commission)
 - Earning potential calculator
 - Product detail drawer with marketing assets
-- Affiliate link generator with QR codes
+- **Affiliate link generator with QR code download**: 
+  - Auto-generated QR codes using QR Server API
+  - Download as PNG (300x300px) for offline sharing
+  - Filename format: `qr-code-{product-name}.png`
+  - Visual placeholder when link not generated
 - Product upload for sellers
 
-**Impact**: Users can quickly find high-value products and generate revenue-generating links in seconds.
+**Impact**: Users can quickly find high-value products, generate revenue-generating links, and download QR codes for easy offline and print sharing in seconds.
 
 ---
 
@@ -155,13 +159,15 @@ BitNexus provides a complete ecosystem where users can:
 
 **Features**:
 - Product-based content generation
+- **Marketing assets integration**: View and download marketing materials directly in Content Generator
 - Multi-platform support (YouTube, Instagram, Facebook, TikTok, X, LinkedIn, Snapchat)
 - AI-powered copywriting using Gemini
 - Content preview and editing
 - One-click sharing to connected accounts
 - Performance tracking
+- **NXC credits system**: 10 credits per generation with balance display and insufficient credits handling
 
-**Impact**: Users can create professional marketing content in minutes instead of hours.
+**Impact**: Users can create professional marketing content in minutes instead of hours, with all marketing assets readily available.
 
 ---
 
@@ -170,15 +176,21 @@ BitNexus provides a complete ecosystem where users can:
 **Purpose**: Education and skill development
 
 **Features**:
+- **Getting Started Course**: Featured onboarding course at top of Academy page
+  - Comprehensive platform overview
+  - 10-step visual user flow guide
+  - Video tutorial with chapter navigation
+  - Downloadable resources (PDFs): Getting Started Guide, User Flow Diagram, Quick Reference Card, Platform Glossary
 - Financial Freedom Learning Paths:
   - Path to $1K/month (30 days)
   - Path to $5K/month (90 days)
   - Path to Financial Freedom (6 months)
-- Live Zoom training events
+- Live Zoom training events with category filtering (AI Learning, Financial Freedom, Affiliate Marketing)
+- **Joining Zoom modal**: Seamless connection experience with status indicators (joining → connected states)
 - Course library (Beginner to Mastery)
 - Progress tracking
 
-**Impact**: Users learn proven strategies to scale their income systematically.
+**Impact**: Users learn proven strategies to scale their income systematically with interactive live training sessions and comprehensive onboarding materials.
 
 ---
 
@@ -197,7 +209,7 @@ BitNexus provides a complete ecosystem where users can:
 
 ---
 
-## Tokenomics: NXC Token
+## Tokenomics: NXC Credits
 
 ### Token Utility
 
@@ -381,13 +393,13 @@ BitNexus provides a complete ecosystem where users can:
 
 ### For Early Adopters
 1. **Secure Genesis Spot**: Limited to 500 licenses (142 remaining)
-2. **Purchase NXC Tokens**: Start with 50-500 NXC package
+2. **Purchase NXC Creditss**: Start with 50-500 NXC package
 3. **Join Academy**: Begin Financial Freedom Learning Path
 4. **Build Network**: Invite friends with referral code
 5. **Start Earning**: Promote products, stake tokens, create content
 
 ### For Investors
-- **Token Investment**: Purchase NXC tokens for platform access and staking
+- **Token Investment**: Purchase NXC creditss for platform access and staking
 - **Partnership Opportunities**: Integrate products into marketplace
 - **Strategic Alliances**: Collaborate on network expansion
 
