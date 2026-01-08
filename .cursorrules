@@ -240,6 +240,148 @@
 - **UI & Features** → `docs/UI & Features/`
 - **Product docs** → `docs/Product docs/` (organized by topic)
 
+### 📚 INSTRUCTIONS FOLDER - CRITICAL STRUCTURE
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **`instructions/` folder contains external frameworks and instruction sets**
+- **ALL instruction-related folders MUST be in `instructions/`**
+- **Each subfolder in `instructions/` has its own structure that MUST be followed**
+- **NEVER modify the internal structure of instruction folders without understanding their purpose**
+
+### 📋 RULES FOLDER - FRAMEWORK RULES
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **`rules/` folder contains extracted rules from frameworks in `instructions/`**
+- **Rules are organized by framework** (`rules/agent-os/`, `rules/bmad-method/`)
+- **ALWAYS check relevant rule files** when working with framework-related code
+- **Rules are extracted summaries** - refer to `instructions/` for complete documentation
+
+**Rules Folder Structure**:
+```
+rules/
+├── README.md              # Rules directory overview
+├── agent-os/              # Agent OS framework rules
+│   ├── README.md         # Agent OS rules overview
+│   ├── code-style.md     # Code style guidelines
+│   ├── best-practices.md # Development best practices
+│   ├── security.md       # Security principles
+│   └── deployment.md     # Deployment requirements
+└── bmad-method/          # BMAD-METHOD framework rules
+    ├── README.md         # BMAD-METHOD rules overview
+    ├── workflow.md       # Workflow guidelines
+    └── structure.md      # Structure and organization rules
+```
+
+**When to Use Rules**:
+1. **Agent OS Rules** (`rules/agent-os/`):
+   - When writing code that follows Agent OS standards
+   - When implementing security-sensitive features
+   - When planning deployments
+   - When establishing code style for new features
+   - **Code Style**: Follow `rules/agent-os/code-style.md` for formatting, naming, HTML/CSS/Tailwind
+   - **Best Practices**: Follow `rules/agent-os/best-practices.md` for DRY, simplicity, readability
+   - **Security**: Follow `rules/agent-os/security.md` for all security requirements
+   - **Deployment**: Follow `rules/agent-os/deployment.md` for containerization and deployment
+
+2. **BMAD-METHOD Rules** (`rules/bmad-method/`):
+   - When following BMAD-METHOD workflows
+   - When working with BMAD agents
+   - When structuring development tasks
+   - When planning product development
+   - **Workflow**: Follow `rules/bmad-method/workflow.md` for workflow guidelines
+   - **Structure**: Follow `rules/bmad-method/structure.md` for framework organization
+
+**Rule File Priority**:
+1. **Project-specific rules** in `.cursorrules` (this file) - Highest priority
+2. **Framework rules** in `rules/` - Framework-specific guidelines
+3. **Source documentation** in `instructions/` - Complete reference
+
+**CRITICAL Rules**:
+- ✅ **Check rule files first** - Quick reference for framework guidelines
+- ✅ **Follow Agent OS code style** - Use `rules/agent-os/code-style.md` for all code
+- ✅ **Follow security principles** - Use `rules/agent-os/security.md` for all security
+- ✅ **Follow BMAD workflows** - Use `rules/bmad-method/workflow.md` when using BMAD
+- ✅ **Reference source docs** - Use `instructions/` for complete documentation
+- ❌ **Don't ignore framework rules** - They apply when using those frameworks
+- ❌ **Don't modify rule files** - They are extracted from `instructions/`
+- ❌ **Don't skip security rules** - Security is mandatory
+
+**Instructions Folder Structure**:
+```
+instructions/
+├── BMAD-METHOD/          # BMAD Method framework
+│   ├── src/              # Core source files
+│   │   ├── core/         # Core framework files
+│   │   ├── modules/      # BMAD modules (bmb, bmgd, bmm, cis)
+│   │   └── utility/      # Utility components
+│   ├── docs/             # BMAD documentation
+│   │   ├── explanation/  # Concept explanations
+│   │   ├── how-to/       # How-to guides
+│   │   ├── reference/    # Reference documentation
+│   │   └── tutorials/    # Tutorial materials
+│   ├── tools/            # Development tools
+│   ├── samples/          # Sample modules
+│   ├── test/             # Test files
+│   └── website/          # Website files
+└── .agent-os/            # Agent OS configuration
+    ├── commands/         # Command definitions
+    ├── instructions/     # Core instructions
+    │   ├── core/        # Core instruction files
+    │   └── meta/         # Meta instructions
+    ├── product/          # Product documentation
+    ├── standards/        # Code standards
+    │   ├── code-style/  # Code style guides
+    │   └── security-rules/  # Security rules
+    └── config.yml        # Agent OS configuration
+```
+
+**BMAD-METHOD Structure Rules**:
+- **`src/core/`** - Core framework files (DO NOT modify unless updating BMAD framework)
+- **`src/modules/`** - BMAD modules (bmb, bmgd, bmm, cis) - Each module has its own structure
+- **`src/utility/`** - Utility components and helpers
+- **`docs/`** - BMAD documentation (follow BMAD documentation structure)
+- **`tools/`** - Development tools and CLI utilities
+- **`samples/`** - Sample custom modules for reference
+- **`test/`** - Test fixtures and test files
+- **`website/`** - BMAD website source files
+
+**When working with BMAD-METHOD**:
+1. **Refer to `instructions/BMAD-METHOD/README.md`** for framework overview
+2. **Follow BMAD-METHOD documentation** in `instructions/BMAD-METHOD/docs/`
+3. **Use samples** in `instructions/BMAD-METHOD/samples/` as reference
+4. **DO NOT modify core framework** without understanding BMAD architecture
+5. **Follow BMAD module structure** when creating custom modules
+
+**.agent-os Structure Rules**:
+- **`commands/`** - Command definitions for agent operations
+- **`instructions/core/`** - Core instruction files (analyze-product, create-spec, create-tasks, execute-tasks, plan-product)
+- **`instructions/meta/`** - Meta instructions (pre-flight, post-flight)
+- **`product/`** - Product documentation (mission, roadmap, tech-stack)
+- **`standards/`** - Code standards and best practices
+  - **`code-style/`** - Language-specific style guides (CSS, HTML, JavaScript)
+  - **`security-rules/`** - Security rules (core-principles, dangerous-flows, MCP security, SQL, SSRF, XXE, Rust)
+- **`config.yml`** - Agent OS configuration (version, agents, project types)
+
+**When working with .agent-os**:
+1. **Refer to `instructions/.agent-os/config.yml`** for configuration
+2. **Follow instructions** in `instructions/.agent-os/instructions/core/` for agent workflows
+3. **Follow standards** in `instructions/.agent-os/standards/` for code quality
+4. **Check security rules** in `instructions/.agent-os/standards/security-rules/` before implementing features
+5. **DO NOT modify .agent-os structure** without understanding Agent OS architecture
+
+**CRITICAL Rules**:
+- ✅ **Keep instruction folders intact** - Do not reorganize their internal structure
+- ✅ **Follow each framework's own structure** - BMAD-METHOD and .agent-os have their own conventions
+- ✅ **Reference instruction folders** when implementing features that use these frameworks
+- ✅ **Update instruction folders** only when syncing with upstream repositories
+- ❌ **DO NOT move files** from instruction folders to other locations
+- ❌ **DO NOT modify core framework files** without understanding the framework
+- ❌ **DO NOT create new files** in instruction folders unless following framework conventions
+- ❌ **DO NOT delete instruction folders** - They are required for project functionality
+
+**Instruction Folder Maintenance**:
+- **BMAD-METHOD**: Sync with upstream repository when framework updates are needed
+- **.agent-os**: Sync with upstream repository when Agent OS updates are needed
+- **Both folders**: Keep in `instructions/` directory, never move to root or other locations
+
 ### 🚫 NO RANDOM FILES IN ROOT DIRECTORY
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **ALL files must be organized according to folder structure defined in `docs/Core Documentation/STRUCTURE.md`**
@@ -256,6 +398,8 @@
 - ✅ **Frontend files** → `frontend/`
 - ✅ **Backend files** → `backend/` (one folder per service)
 - ✅ **Documentation** → `docs/` (organized by purpose)
+- ✅ **Instruction frameworks** → `instructions/` (BMAD-METHOD, .agent-os)
+- ✅ **Framework rules** → `rules/` (extracted rules from instruction frameworks)
 - ✅ **GitHub files** → `.github/`
 - ❌ **NO other files in root** - Move to appropriate folder immediately
 
@@ -423,6 +567,12 @@ BitNexus Landing Page/
 │   ├── DEVELOPER_DOCS.md # Team responsibilities
 │   ├── Product docs/   # Product documentation
 │   └── ... (other docs)
+├── instructions/       # External frameworks and instruction sets
+│   ├── BMAD-METHOD/    # BMAD Method framework
+│   └── .agent-os/      # Agent OS configuration
+├── rules/             # Extracted rules from instruction frameworks
+│   ├── agent-os/       # Agent OS framework rules
+│   └── bmad-method/   # BMAD-METHOD framework rules
 ├── .github/            # GitHub-specific files
 ├── package.json        # Node.js dependencies
 ├── netlify.toml        # Netlify configuration
