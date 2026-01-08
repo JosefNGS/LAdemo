@@ -552,6 +552,14 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: craig@nordicglobalsolutions.com
 
+### Backend Developer
+
+**Jonne Waselius** - *Backend Developer*
+- 🎯 **Role**: Backend Developer
+- 📐 **Responsibilities**: Backend development, API implementation, server-side logic, database integration
+- 🏢 **Company**: Nordic Global Solutions
+- 📧 **Contact**: Jonne@nordicglobalsolutions.com
+
 ### Development Collaboration
 
 **⚠️ IMPORTANT: Contract Required for All Development Work**
