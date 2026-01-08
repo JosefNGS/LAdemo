@@ -66,7 +66,7 @@ If Netlify is still failing:
 **Fix**: Run `npm install` again
 
 ### Error: "Source directory not found"
-**Fix**: Ensure `src/` folder exists in project root
+**Fix**: Ensure `frontend/src/` folder exists
 
 ### Error: "ENOENT: no such file or directory"
 **Fix**: Check that all files are committed to git

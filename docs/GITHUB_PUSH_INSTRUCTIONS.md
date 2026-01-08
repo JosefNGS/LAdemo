@@ -76,10 +76,10 @@ git branch
 ## Files Being Pushed
 
 This push includes:
-- ✅ All source files (`src/`)
+- ✅ All source files (`frontend/src/`)
 - ✅ HTML files (`index.html`, `docs.html`, `manifesto.html`)
 - ✅ Static files (`public/_redirects`)
-- ✅ Serverless functions (`netlify/functions/`)
+- ✅ Serverless functions (`backend/netlify/functions/`)
 - ✅ Build scripts (`frontend/build.js`, `frontend/server.js`)
 - ✅ Configuration files (`netlify.toml`, `package.json`)
 - ✅ Documentation (`docs/`)
@@ -90,8 +90,8 @@ This push includes:
 After pushing, verify on GitHub:
 1. Go to: https://github.com/JosefNGS/LAdemo
 2. Check that all files are present
-3. Verify `src/` directory exists
-4. Verify `netlify/functions/` exists
+3. Verify `frontend/src/` directory exists
+4. Verify `backend/netlify/functions/` exists
 5. Verify `frontend/build.js` exists
 
 ---

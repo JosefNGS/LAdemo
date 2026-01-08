@@ -6,18 +6,18 @@
 
 ### Error: "Source directory not found" or "ENOENT: scandir failed"
 
-**Cause**: The `src/` directory is not committed to git or doesn't exist in the repository.
+**Cause**: The `frontend/src/` directory is not committed to git or doesn't exist in the repository.
 
 **Solution**:
 ```bash
-# 1. Verify src/ exists locally
+# 1. Verify frontend/src/ exists locally
 dir src\main.tsx
 
 # 2. Check if it's tracked by git
 git ls-files src/main.tsx
 
 # 3. If not tracked, add it
-git add src/
+git add frontend/src/
 git add frontend/
 git commit -m "Add source files for Netlify build"
 git push origin main
@@ -79,22 +79,22 @@ git push origin main
 **Cause**: Functions not in expected location.
 
 **Solution**: 
-- `netlify.toml` points to `netlify/functions`
+- `netlify.toml` points to `backend/netlify/functions`
 - Verify functions are committed:
   ```bash
-  git ls-files netlify/functions/
+  git ls-files backend/netlify/functions/
   ```
 
 ## Pre-Deployment Checklist
 
 Before pushing to GitHub, verify:
 
-- [ ] `src/` directory exists and is committed
+- [ ] `frontend/src/` directory exists and is committed
 - [ ] `package.json` is committed with correct build script
 - [ ] `netlify.toml` is committed with correct paths
 - [ ] `.nvmrc` file exists (Node 18)
 - [ ] `frontend/build.js` is committed
-- [ ] `netlify/functions/` is committed
+- [ ] `backend/netlify/functions/` is committed
 - [ ] Local build works: `npm run build`
 - [ ] `frontend/dist/` is created after build
 
@@ -151,12 +151,12 @@ Verify these in Netlify Dashboard:
 
 ```bash
 # Add all necessary files
-git add src/
+git add frontend/src/
 git add frontend/
 git add package.json
 git add netlify.toml
 git add .nvmrc
-git add netlify/functions/
+git add backend/netlify/functions/
 
 # Commit
 git commit -m "Fix Netlify build - ensure all files committed"

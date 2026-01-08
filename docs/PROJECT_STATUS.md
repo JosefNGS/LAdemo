@@ -24,7 +24,11 @@ BitNexus Landing Page/
 │   ├── index.html               ✅ Main HTML with landing page & React setup
 │   ├── docs.html                ✅ Documentation page
 │   ├── manifesto.html           ✅ Manifesto page
-│   ├── src/                     ✅ React source code
+│   ├── frontend/
+│   │   ├── src/                 ✅ React source code
+│   │   ├── index.html           ✅ Main HTML file
+│   │   ├── build.js             ✅ Build script
+│   │   └── server.js            ✅ Dev server
 │   │   ├── main.tsx             ✅ React entry point
 │   │   ├── App.tsx              ✅ Main app component
 │   │   ├── types.ts             ✅ TypeScript definitions
