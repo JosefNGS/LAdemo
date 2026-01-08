@@ -319,6 +319,7 @@ One platform for:
 - 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
 
 **Resources**:
+- 📚 **Documentation Repository**: [BitNexusDocs on GitHub](https://github.com/JosefNGS/BitNexusDocs) - All presentation materials and product documentation
 - Documentation: [docs.html]
 - Manifesto: [manifesto.html]
 

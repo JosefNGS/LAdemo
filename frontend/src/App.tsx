@@ -34,6 +34,8 @@ import Governance from './pages/Governance';
 import AdminView from './pages/AdminView';
 import GettingStartedModal from './components/GettingStartedModal';
 import PlatformAdminUsers from './components/PlatformAdminUsers';
+import TeamProfile from './pages/TeamProfile';
+import { teamProfiles } from './data/teamProfiles';
 import { AppRoute } from './types';
 
 const App: React.FC = () => {
@@ -41,6 +43,7 @@ const App: React.FC = () => {
   const [showAIHub, setShowAIHub] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Default to true for demo, set to false for real auth
   const [showGettingStartedModal, setShowGettingStartedModal] = useState(false);
+  const [authView, setAuthView] = useState<'login' | 'register' | 'forgot-password'>('login');
 
   // Check if user has seen getting started modal on login
   useEffect(() => {

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { MetricCardData, AppRoute } from '../types';
+import { useNotifications } from '../contexts/NotificationContext';
 
 const data = [
   { name: 'Mon', sales: 4000, nxc: 2400 },

@@ -34,6 +34,7 @@
 3. **Production Readiness Checklist**:
    - [ ] Code is tested and working
    - [ ] No breaking changes
+   - [ ] **CRITICAL**: CHANGELOG.md updated with ALL changes (MANDATORY)
    - [ ] Documentation is updated
    - [ ] Build passes successfully
    - [ ] No console errors
@@ -57,13 +58,17 @@
 2. **Make Changes**:
    - Write code
    - Test thoroughly
+   - **CRITICAL**: Update CHANGELOG.md with ALL changes (MANDATORY)
+   - **CRITICAL**: Include developer tracking in changelog entries (`[Developer: Name]` or `[Cursor]`)
    - Update documentation
    - Commit with clear messages
 
 3. **Commit Changes**:
    ```bash
+   # CRITICAL: Update CHANGELOG.md FIRST
+   # Then add all files including changelog
    git add .
-   git commit -m "Clear description of changes"
+   git commit -m "Clear description of changes - Updated CHANGELOG.md"
    ```
 
 4. **Push to Remote**:
@@ -106,6 +111,9 @@
 - ❌ **NEVER force push to main branch**
 - ❌ **NEVER merge to main without CTO approval**
 - ❌ **NEVER commit broken code**
+- ❌ **NEVER commit without updating CHANGELOG.md** (MANDATORY - NO EXCEPTIONS)
+- ❌ **NEVER skip developer tracking** in changelog entries (must include `[Developer: Name]` or `[Cursor]`)
+- ❌ **NEVER skip changelog entries** for "small" changes (ALL changes must be logged)
 - ❌ **NEVER commit untested code**
 - ❌ **NEVER commit API keys or secrets**
 - ❌ **NEVER commit large binary files**

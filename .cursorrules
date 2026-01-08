@@ -24,6 +24,7 @@
 - [ ] Documentation updated (if needed)
 - [ ] Follows project structure (`docs/Core Documentation/STRUCTURE.md`)
 - [ ] Follows coding standards (`.cursorrules`)
+- [ ] **CRITICAL**: CHANGELOG.md updated with ALL changes (MANDATORY - NO EXCEPTIONS)
 - [ ] **CRITICAL**: Push change documentation created (see Push Change Documentation section)
 - [ ] Developer information updated in change documentation (who made the changes)
 - [ ] Developer registry (`docs/Services/github/DEVELOPERS.md`) updated if developer info changed
@@ -37,6 +38,42 @@
 - **Template**: `docs/Services/github/PUSH_CHANGE_DOCUMENTATION_TEMPLATE.md`
 - **Must include**: Developer name, email, role, and all changes made
 - **CRITICAL**: No push to GitHub without change documentation
+
+**CHANGELOG - CRITICAL - MUST ALWAYS BE USED**:
+- **EVERY change MUST be logged** in `docs/Project Management/CHANGELOG.md`
+- **NO EXCEPTIONS** - All changes, fixes, features, updates MUST be documented
+- **When to update**: BEFORE committing or pushing any changes
+- **What to log**:
+  - All new features added
+  - All bug fixes
+  - All changes to existing functionality
+  - All documentation updates
+  - All configuration changes
+  - All dependency updates
+  - All structural changes (file moves, folder reorganization)
+- **Format**: Follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+- **Categories**: Use `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security`
+- **CRITICAL**: Changelog MUST be updated for EVERY change, no matter how small
+- **CRITICAL**: Changelog entries MUST include date (Month Year format)
+- **CRITICAL**: Changelog MUST be updated BEFORE committing changes
+- **CRITICAL**: Changelog entries MUST track developer/Cursor who made the change
+- **Developer Tracking Format**: Each entry must include `[Developer: Name]` or `[Cursor]` tag
+- **Example Format**:
+  ```markdown
+  ### Added
+  - New feature description [Developer: Josef Lindbom]
+  - Another feature [Cursor]
+  ```
+- **Location**: `docs/Project Management/CHANGELOG.md`
+- **This is MANDATORY and STRICTLY ENFORCED - NO EXCEPTIONS**
+
+**BitNexusDocs Repository Sync - CRITICAL**:
+- **Presentation materials repository**: [https://github.com/JosefNGS/BitNexusDocs](https://github.com/JosefNGS/BitNexusDocs)
+- **CRITICAL**: When ANY file in `docs/Product docs/` is updated, it MUST be synced to BitNexusDocs repository
+- **Sync location**: All files from `docs/Product docs/` must be pushed to BitNexusDocs
+- **Sync process**: See `docs/Services/github/BITNEXUS_DOCS_SYNC.md` for complete sync procedure
+- **When to sync**: After every update to Product docs, before sharing with stakeholders
+- **CRITICAL**: BitNexusDocs repository must always reflect the latest Product docs
 
 **Active Developers** (tracked in `docs/Services/github/DEVELOPERS.md`):
 - **Josef Lindbom** (COO & Development Vision Lead) - josef@nordicglobalsolutions.com
@@ -551,6 +588,9 @@ After making responsive changes:
 - ❌ **CRITICAL**: Don't update LICENSE or README.md without updating both root and `.github/` versions
 - ❌ **CRITICAL**: Don't let `.github/LICENSE` and `LICENSE` get out of sync
 - ❌ **CRITICAL**: Don't let `.github/README.md` and `README.md` get out of sync
+- ❌ **CRITICAL**: Don't commit changes without updating CHANGELOG.md (MANDATORY - NO EXCEPTIONS)
+- ❌ **CRITICAL**: Don't skip changelog entries for "small" changes (ALL changes must be logged)
+- ❌ **CRITICAL**: Don't update changelog after committing (must be done BEFORE)
 - ❌ **CRITICAL**: Don't place files in root directory that don't belong there (check `docs/Core Documentation/STRUCTURE.md`)
 - ❌ **CRITICAL**: Don't create random files without following folder structure (see `docs/Core Documentation/STRUCTURE.md`)
 - ❌ **CRITICAL**: Don't place documentation files randomly (see `docs/Core Documentation/DOCS_STRUCTURE.md`)
@@ -629,8 +669,30 @@ After making responsive changes:
 - Update these fields when making changes:
   - `**Last Updated**:` or `**Date**:` fields in markdown files
   - `**Version**:` dates in version history
-  - Changelog entry dates
+  - **CRITICAL**: Changelog entry dates (MUST be updated for every change)
   - Any timestamp or date references
+
+### CHANGELOG Update Rules - CRITICAL
+- **MANDATORY**: Update `docs/Project Management/CHANGELOG.md` for EVERY change
+- **NO EXCEPTIONS**: All changes must be logged, regardless of size
+- **When**: Update changelog BEFORE committing changes
+- **Format**: Use semantic versioning and Keep a Changelog format
+- **Categories**: 
+  - `Added` - New features
+  - `Changed` - Changes to existing functionality
+  - `Deprecated` - Soon-to-be removed features
+  - `Removed` - Removed features
+  - `Fixed` - Bug fixes
+  - `Security` - Security-related changes
+- **CRITICAL**: Changelog MUST be updated for:
+  - Code changes
+  - Documentation updates
+  - Configuration changes
+  - File structure changes
+  - Dependency updates
+  - Bug fixes
+  - Feature additions
+  - Any modification to the project
 
 ### Date Format Standards
 - **Documentation headers**: `**Last Updated**: January 2026` (month and year only, no day)
