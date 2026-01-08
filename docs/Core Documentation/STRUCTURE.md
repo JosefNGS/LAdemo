@@ -33,6 +33,12 @@ BitNexus Landing Page/
 │   ├── server.js                   # Node.js dev server with TypeScript transpilation
 │   └── server.py                   # Python dev server (fallback)
 │
+├── Dev server/                     # ⚠️ CRITICAL: ALL development server files MUST be here
+│   ├── server.js                   # Development server script (if moved from frontend/)
+│   ├── server.py                   # Fallback Python server (if moved from frontend/)
+│   ├── config/                     # Development server configuration
+│   └── ... (all development server related files)
+│
 ├── backend/                        # Backend services (one folder per service)
 │   ├── netlify/                    # Netlify serverless functions
 │   │   └── functions/               # Serverless functions
@@ -113,7 +119,30 @@ BitNexus Landing Page/
 - ✅ **GitHub files** → `.github/`
 - ❌ **NO other files in root** - Move to appropriate folder immediately
 
-### Rule 2: Backend Service Organization
+### Rule 2: Development Server Location - CRITICAL
+**MANDATORY - CRITICAL**:
+- **ALL development server files MUST be in**: `Dev server/` folder
+- **Location**: `C:\Users\josef\OneDrive\Skrivbord\BitNexus Landing Page\Dev server\`
+- **NO development server files in root or other locations**
+- **This is CRITICAL for project organization**
+
+**Development Server Files**:
+- Development server scripts (`server.js`, `server.py`)
+- Development server configuration
+- Development server dependencies
+- Development server logs (if any)
+- All files related to running the development server
+
+**What Goes Where**:
+- ✅ **Development server files** → `Dev server/`
+- ❌ **NO development server files in root** - Move to `Dev server/` immediately
+
+**If you find development server files in wrong location**:
+1. **Move files to `Dev server/`** immediately
+2. **Update any references** to the moved files
+3. **Never leave development server files in root** or other locations
+
+### Rule 3: Backend Service Organization
 **MANDATORY**: 
 - **Each backend service MUST have its own folder** under `backend/`
 - **One folder per service** - No mixing of services in the same folder
@@ -127,7 +156,27 @@ BitNexus Landing Page/
    - Example: `backend/erlang-ledger/` for blockchain ledger service
    - Example: `backend/golang-api/` for Go API services
 
-### Rule 3: Documentation Organization
+### Rule 4: Service Rules Documentation
+**MANDATORY**:
+- **Each service MUST have a SERVICE_RULES.md file** in `docs/Services/service-name/`
+- **Service rules define critical requirements** for each service
+- **All service rules are linked in cursor rules**
+
+**Service Rules Files**:
+- `docs/Services/netlify/SERVICE_RULES.md` - Netlify service rules
+- `docs/Services/supabase/SERVICE_RULES.md` - Supabase service rules
+- `docs/Services/github/SERVICE_RULES.md` - GitHub service rules
+- `docs/Services/n8n/SERVICE_RULES.md` - n8n service rules
+- `docs/Services/discourse/SERVICE_RULES.md` - Discourse service rules
+- `docs/Services/erlang-ledger/SERVICE_RULES.md` - Erlang/Elixir ledger service rules
+- `docs/Services/golang-api/SERVICE_RULES.md` - Golang API service rules
+
+**When working with a service**:
+1. **Check the service rules** first
+2. **Follow all rules** defined in SERVICE_RULES.md
+3. **Update service rules** if adding new requirements
+
+### Rule 5: Documentation Organization
 **MANDATORY**: 
 - **ALL documentation files MUST be in the `docs/` folder**
 - **NO `.md` files in root directory** (except `README.md` which is required for GitHub)

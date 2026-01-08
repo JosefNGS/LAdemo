@@ -28,6 +28,50 @@
 
 **See `docs/Services/github/VERSION_CONTROL.md` for complete Git workflow guidelines.**
 
+### 🖥️ DEVELOPMENT SERVER - CRITICAL LOCATION
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **ALL development server files MUST be in**: `Dev server/` folder
+- **Location**: `C:\Users\josef\OneDrive\Skrivbord\BitNexus Landing Page\Dev server\`
+- **NO development server files in root or other locations**
+- **This is CRITICAL for project organization**
+
+**Development Server Files**:
+- Development server scripts
+- Development server configuration
+- Development server dependencies
+- Development server logs (if any)
+- All files related to running the development server
+
+**What Goes Where**:
+- ✅ **Development server files** → `Dev server/`
+- ❌ **NO development server files in root** - Move to `Dev server/` immediately
+
+**If you find development server files in wrong location**:
+1. **Move files to `Dev server/`** immediately
+2. **Update any references** to the moved files
+3. **Never leave development server files in root** or other locations
+
+### 🔧 SERVICE RULES - CRITICAL
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **Each service MUST have a SERVICE_RULES.md file** in `docs/Services/service-name/`
+- **All service rules are linked in cursor rules** (see below)
+- **Service rules define critical requirements** for each service
+
+**Service Rules Documentation**:
+- **Netlify**: `docs/Services/netlify/SERVICE_RULES.md`
+- **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
+- **GitHub**: `docs/Services/github/SERVICE_RULES.md`
+- **n8n**: `docs/Services/n8n/SERVICE_RULES.md`
+- **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
+- **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
+- **Golang API**: `docs/Services/golang-api/SERVICE_RULES.md`
+
+**When working with a service**:
+1. **Check the service rules** first
+2. **Follow all rules** defined in SERVICE_RULES.md
+3. **Update service rules** if adding new requirements
+4. **Never violate service rules** - they are CRITICAL
+
 ### 📁 PROJECT STRUCTURE - MAIN SOURCE
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **`docs/Core Documentation/STRUCTURE.md` is the MAIN SOURCE for project structure**
