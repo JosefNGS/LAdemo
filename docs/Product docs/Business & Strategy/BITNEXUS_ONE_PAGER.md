@@ -264,7 +264,16 @@ Traditional affiliate platforms extract 30-50% of earnings through fees, require
 **Status**: Production Ready  
 **Trust**: ISO 27001 & 27701 Certified
 
-**For inquiries**: josef@nordicglobalsolutions.com  
+**For inquiries**: josef@nordicglobalsolutions.com
+
+**Nordic Global Communication**:
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
+
 **Document Version**: 1.0  
 **Last Updated**: January 2026
 

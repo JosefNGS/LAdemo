@@ -305,10 +305,20 @@ One platform for:
 - 🌐 Visit platform
 - 📚 Read documentation
 - 💬 Join Discord community
-- 📧 Contact: support@bitnexus.io
+
+**Contact**:
+- 📧 Email: josef@nordicglobalsolutions.com
+- 🌐 Website: www.nordicglobalsolutions.com
+
+**Nordic Global Communication**:
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG)
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2)
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
 
 **Resources**:
-- GitHub: github.com/JosefNGS/LADEMO
 - Documentation: [docs.html]
 - Manifesto: [manifesto.html]
 

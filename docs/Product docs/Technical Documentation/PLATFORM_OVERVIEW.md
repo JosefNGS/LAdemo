@@ -1108,3 +1108,20 @@ BitNexus represents a paradigm shift in how individuals achieve financial freedo
 **Last Updated**: January 2026  
 **Next Review**: Quarterly updates planned
 
+---
+
+## Contact & Communication
+
+### Nordic Global Communication
+
+**Discord Servers**:
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
+
+**Contact**:
+- 📧 Email: josef@nordicglobalsolutions.com
+
