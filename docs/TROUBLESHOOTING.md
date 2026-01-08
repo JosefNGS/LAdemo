@@ -42,7 +42,7 @@
 
 **Solution**: 
 - Make sure you're running `start.bat` from the project root directory
-- Check that all files exist in `src/` directory
+- Check that all files exist in `frontend/src/` directory
 
 #### 6. ARM64 / Apple Silicon Compatibility
 **Question**: Does the dev server work on ARM64 (Apple Silicon M1/M2/M3)?

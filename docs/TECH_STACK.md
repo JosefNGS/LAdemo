@@ -129,8 +129,8 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 - **Version**: Latest (transpiled via esbuild)
 - **Configuration**: TypeScript strict mode
 - **Key Files**:
-  - `src/types.ts`: Type definitions (AppRoute, Product, User, etc.)
-  - `src/App.tsx`: Main app component with routing
+  - `frontend/src/types.ts`: Type definitions (AppRoute, Product, User, etc.)
+  - `frontend/src/App.tsx`: Main app component with routing
   - All `.tsx` files: React components with TypeScript
 - **Benefits**: Type safety, better IDE support, fewer runtime errors
 
@@ -208,7 +208,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 #### Context API
 - **CartContext**: Shopping cart state management
-- **Location**: `src/contexts/CartContext.tsx`
+- **Location**: `frontend/src/contexts/CartContext.tsx`
 - **Purpose**: Share cart state across components
 
 ---
@@ -220,7 +220,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 #### Netlify Functions
 - **Runtime**: Node.js 20
 - **Language**: JavaScript
-- **Location**: `netlify/functions/`
+- **Location**: `backend/netlify/functions/`
 - **Functions**:
   1. **submit-email.js**
      - Purpose: Email collection for landing page
@@ -411,7 +411,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 - **Build Settings**:
   - Build Command: `npm run build`
   - Publish Directory: `frontend/dist`
-  - Functions Directory: `netlify/functions`
+  - Functions Directory: `backend/netlify/functions`
   - Node Version: 20
   - Environment: Production builds include devDependencies
 - **Features**:
@@ -522,7 +522,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - User data storage
   - Product data storage
   - Transaction records
-- **Location**: `netlify/functions/submit-email-supabase.js`
+- **Location**: `backend/netlify/functions/submit-email-supabase.js`
 
 #### Airtable (Alternative)
 - **Purpose**: Alternative database/CRM for email collection
@@ -1272,11 +1272,12 @@ BitNexus Landing Page/
 │   ├── manifesto.html             # Manifesto page
 │   ├── server.js                  # Development server
 │   └── build.js                   # Production build script
-├── netlify/                       # Netlify configuration
-│   └── functions/                 # Serverless functions
-│       ├── submit-email.js
-│       ├── submit-email-airtable.js
-│       └── submit-email-supabase.js
+├── backend/                       # Backend services
+│   └── netlify/
+│       └── functions/             # Serverless functions
+│           ├── submit-email.js
+│           ├── submit-email-airtable.js
+│           └── submit-email-supabase.js
 ├── docs/                          # Documentation
 │   └── Product docs/              # Product documentation
 ├── package.json                   # Node.js dependencies

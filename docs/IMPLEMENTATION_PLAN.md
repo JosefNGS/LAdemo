@@ -88,11 +88,11 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Update routing in `App.tsx` to handle new auth routes
 
 **Files to Create/Modify**:
-- `src/pages/Login.tsx` (new)
-- `src/pages/Register.tsx` (new)
-- `src/pages/ForgotPassword.tsx` (new)
-- `src/types.ts` (add auth route enums)
-- `src/App.tsx` (update routing)
+- `frontend/src/pages/Login.tsx` (new)
+- `frontend/src/pages/Register.tsx` (new)
+- `frontend/src/pages/ForgotPassword.tsx` (new)
+- `frontend/src/types.ts` (add auth route enums)
+- `frontend/src/App.tsx` (update routing)
 
 ---
 
@@ -119,11 +119,11 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Update `Layout.tsx` cart button to show count
 
 **Files to Create/Modify**:
-- `src/pages/Cart.tsx` (new)
-- `src/pages/Checkout.tsx` (new)
-- `src/types.ts` (add cart item interface)
-- `src/App.tsx` (update routing)
-- `src/components/Layout.tsx` (update cart button)
+- `frontend/src/pages/Cart.tsx` (new)
+- `frontend/src/pages/Checkout.tsx` (new)
+- `frontend/src/types.ts` (add cart item interface)
+- `frontend/src/App.tsx` (update routing)
+- `frontend/src/components/Layout.tsx` (update cart button)
 
 ---
 
@@ -147,8 +147,8 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Integrate with existing product cards
 
 **Files to Create/Modify**:
-- `src/components/ProductDetailDrawer.tsx` (new)
-- `src/pages/Marketplace.tsx` (add drawer integration)
+- `frontend/src/components/ProductDetailDrawer.tsx` (new)
+- `frontend/src/pages/Marketplace.tsx` (add drawer integration)
 
 ---
 
@@ -171,8 +171,8 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Integrate with Marketplace page
 
 **Files to Create/Modify**:
-- `src/components/ProductUploadForm.tsx` (new)
-- `src/pages/Marketplace.tsx` (add upload button/modal)
+- `frontend/src/components/ProductUploadForm.tsx` (new)
+- `frontend/src/pages/Marketplace.tsx` (add upload button/modal)
 
 ---
 
@@ -189,7 +189,7 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Add shipping information display
 
 **Files to Modify**:
-- `src/pages/Marketplace.tsx` (add store products and filters)
+- `frontend/src/pages/Marketplace.tsx` (add store products and filters)
 
 ---
 
@@ -210,8 +210,8 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Integrate with Alliance page
 
 **Files to Create/Modify**:
-- `src/components/AllianceChat.tsx` (new)
-- `src/pages/Alliance.tsx` (add chat tab/section)
+- `frontend/src/components/AllianceChat.tsx` (new)
+- `frontend/src/pages/Alliance.tsx` (add chat tab/section)
 
 ---
 
@@ -236,8 +236,8 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Integrate with Alliance page
 
 **Files to Create/Modify**:
-- `src/components/AllianceForum.tsx` (new)
-- `src/pages/Alliance.tsx` (add forum tab/section)
+- `frontend/src/components/AllianceForum.tsx` (new)
+- `frontend/src/pages/Alliance.tsx` (add forum tab/section)
 
 ---
 
@@ -254,8 +254,8 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Integrate with Alliance page
 
 **Files to Create/Modify**:
-- `src/components/ModerationQA.tsx` (new)
-- `src/pages/Alliance.tsx` (add Q&A tab/section)
+- `frontend/src/components/ModerationQA.tsx` (new)
+- `frontend/src/pages/Alliance.tsx` (add Q&A tab/section)
 
 ---
 
@@ -275,7 +275,7 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Add network growth metrics
 
 **Files to Modify**:
-- `src/pages/Dashboard.tsx` (add Alliance tab)
+- `frontend/src/pages/Dashboard.tsx` (add Alliance tab)
 
 ---
 
@@ -295,7 +295,7 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Add transaction history link
 
 **Files to Modify**:
-- `src/pages/Profile.tsx` (in App.tsx) (enhance wallet section)
+- `frontend/src/pages/Profile.tsx` (in App.tsx) (enhance wallet section)
 
 ---
 
@@ -312,7 +312,7 @@ This document outlines the implementation plan to bring all pages and features u
 - [ ] Add privacy preset options (Public/Private/Custom)
 
 **Files to Modify**:
-- `src/pages/Profile.tsx` (in App.tsx) (enhance privacy section)
+- `frontend/src/pages/Profile.tsx` (in App.tsx) (enhance privacy section)
 
 ---
 

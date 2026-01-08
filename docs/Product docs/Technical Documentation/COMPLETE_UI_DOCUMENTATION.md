@@ -136,7 +136,7 @@
 
 ### 2.1 Login
 
-**File**: `src/pages/Login.tsx`  
+**File**: `frontend/src/pages/Login.tsx`  
 **Route**: `/login`  
 **Purpose**: User authentication and access to the platform
 
@@ -191,7 +191,7 @@
 
 ### 2.2 Register
 
-**File**: `src/pages/Register.tsx`  
+**File**: `frontend/src/pages/Register.tsx`  
 **Route**: `/register`  
 **Purpose**: New user account creation
 
@@ -254,7 +254,7 @@
 
 ### 2.3 Forgot Password
 
-**File**: `src/pages/ForgotPassword.tsx`  
+**File**: `frontend/src/pages/ForgotPassword.tsx`  
 **Route**: `/forgot-password`  
 **Purpose**: Password recovery via email
 
@@ -291,7 +291,7 @@
 
 ### 3.1 Dashboard
 
-**File**: `src/pages/Dashboard.tsx`  
+**File**: `frontend/src/pages/Dashboard.tsx`  
 **Route**: `/dashboard`  
 **Purpose**: Financial headquarters and command center
 
@@ -395,7 +395,7 @@
 
 ### 3.2 Marketplace
 
-**File**: `src/pages/Marketplace.tsx`  
+**File**: `frontend/src/pages/Marketplace.tsx`  
 **Route**: `/marketplace`  
 **Purpose**: Product discovery and affiliate link generation
 
@@ -555,7 +555,7 @@
 
 ### 3.3 Earn (Bot Lab)
 
-**File**: `src/pages/Earn.tsx`  
+**File**: `frontend/src/pages/Earn.tsx`  
 **Route**: `/earn`  
 **Purpose**: Passive income through MEV Bot and XAB Bot (XRP) staking
 
@@ -637,7 +637,7 @@
 
 ### 3.4 Alliance
 
-**File**: `src/pages/Alliance.tsx`  
+**File**: `frontend/src/pages/Alliance.tsx`  
 **Route**: `/alliance`  
 **Purpose**: Network management and MLM tracking
 
@@ -760,7 +760,7 @@
 
 ### 3.5 Credits Shop
 
-**File**: `src/pages/TokenShop.tsx`  
+**File**: `frontend/src/pages/TokenShop.tsx`  
 **Route**: `/shop`  
 **Purpose**: Purchase NXC creditss for platform usage
 
@@ -839,7 +839,7 @@
 
 ### 3.6 Academy
 
-**File**: `src/pages/Academy.tsx`  
+**File**: `frontend/src/pages/Academy.tsx`  
 **Route**: `/academy`  
 **Purpose**: Educational content and training
 
@@ -934,7 +934,7 @@
 
 ### 3.7 Goals
 
-**File**: `src/pages/Goals.tsx`  
+**File**: `frontend/src/pages/Goals.tsx`  
 **Route**: `/goals`  
 **Purpose**: Goal setting and progress tracking
 
@@ -988,7 +988,7 @@
 
 ### 3.8 Content Generator
 
-**File**: `src/pages/ContentGenerator.tsx`  
+**File**: `frontend/src/pages/ContentGenerator.tsx`  
 **Route**: `/content-generator`  
 **Purpose**: AI-powered content creation for social media
 
@@ -1089,7 +1089,7 @@
 
 ### 3.9 Affiliate Manager
 
-**File**: `src/pages/AffiliateManager.tsx`  
+**File**: `frontend/src/pages/AffiliateManager.tsx`  
 **Route**: `/affiliate`  
 **Purpose**: Track affiliate link performance
 
@@ -1172,7 +1172,7 @@
 
 ### 3.10 Chat
 
-**File**: `src/pages/Chat.tsx`  
+**File**: `frontend/src/pages/Chat.tsx`  
 **Route**: `/chat`  
 **Purpose**: Encrypted messaging between users
 
@@ -1236,7 +1236,7 @@
 
 ### 3.11 Friends
 
-**File**: `src/pages/Friends.tsx`  
+**File**: `frontend/src/pages/Friends.tsx`  
 **Route**: `/friends`  
 **Purpose**: Manage social connections
 
@@ -1299,7 +1299,7 @@
 
 ### 3.12 Profile
 
-**File**: `src/pages/Profile.tsx` (embedded in App.tsx)  
+**File**: `frontend/src/pages/Profile.tsx` (embedded in App.tsx)  
 **Route**: `/profile`  
 **Purpose**: User settings and account management
 
@@ -1369,7 +1369,7 @@
 
 ### 3.13 NexusHub (AI Command)
 
-**File**: `src/pages/NexusHub.tsx`  
+**File**: `frontend/src/pages/NexusHub.tsx`  
 **Route**: `/nexushub` or via AI button  
 **Purpose**: AI-powered chat assistant
 
@@ -1428,7 +1428,7 @@
 
 ### 3.14 Cart
 
-**File**: `src/pages/Cart.tsx`  
+**File**: `frontend/src/pages/Cart.tsx`  
 **Route**: `/cart`  
 **Purpose**: Shopping cart with item management
 
@@ -1477,7 +1477,7 @@
 
 ### 3.15 Checkout
 
-**File**: `src/pages/Checkout.tsx`  
+**File**: `frontend/src/pages/Checkout.tsx`  
 **Route**: `/checkout`  
 **Purpose**: Payment processing and order completion
 
@@ -1540,7 +1540,7 @@
 
 ### 4.1 Vetting
 
-**File**: `src/pages/Vetting.tsx`  
+**File**: `frontend/src/pages/Vetting.tsx`  
 **Route**: `/admin/vetting`  
 **Purpose**: Admin review queue for marketplace submissions
 
@@ -1595,7 +1595,7 @@
 
 ### 4.2 Users
 
-**File**: `src/pages/Users.tsx`  
+**File**: `frontend/src/pages/Users.tsx`  
 **Route**: `/admin/users`  
 **Purpose**: Global user administration
 
@@ -1661,7 +1661,7 @@
 
 ### 4.3 Reports
 
-**File**: `src/pages/Reports.tsx`  
+**File**: `frontend/src/pages/Reports.tsx`  
 **Route**: `/moderator/reports`  
 **Purpose**: Moderation of user-submitted reports
 
@@ -1797,7 +1797,7 @@ Each principle includes:
 
 ## 6. Layout & Navigation
 
-**File**: `src/components/Layout.tsx`  
+**File**: `frontend/src/components/Layout.tsx`  
 **Purpose**: Main application layout with sidebar and header
 
 #### Contents
@@ -1842,7 +1842,7 @@ Each principle includes:
 
 ### 7.1 ProductDetailDrawer
 
-**File**: `src/components/ProductDetailDrawer.tsx`  
+**File**: `frontend/src/components/ProductDetailDrawer.tsx`  
 **Purpose**: Product details modal with tabs
 
 #### Contents
@@ -1900,7 +1900,7 @@ Each principle includes:
 
 ### 7.2 ProductUploadForm
 
-**File**: `src/components/ProductUploadForm.tsx`  
+**File**: `frontend/src/components/ProductUploadForm.tsx`  
 **Purpose**: Product submission form
 
 #### Contents

@@ -21,7 +21,7 @@ The landing page email collection form now saves emails to a database via a Netl
 - Form validation before submission
 
 ### Backend (Netlify Function)
-- **File**: `netlify/functions/submit-email.js`
+- **File**: `backend/netlify/functions/submit-email.js`
 - Validates email format
 - Saves to database (configurable)
 - Returns success/error responses
@@ -63,7 +63,7 @@ The landing page email collection form now saves emails to a database via a Netl
      - `AIRTABLE_BASE_ID`: Your Base ID
 
 4. **Update Function**:
-   - Use `netlify/functions/submit-email-airtable.js`
+   - Use `backend/netlify/functions/submit-email-airtable.js`
    - Rename to `submit-email.js` or update the fetch URL in `index.html`
 
 5. **Install Dependencies**:
@@ -144,7 +144,7 @@ The landing page email collection form now saves emails to a database via a Netl
    - Add environment variables to Netlify:
      - `SUPABASE_URL`: Your project URL
      - `SUPABASE_ANON_KEY`: Your anon key
-   - Use `netlify/functions/submit-email-supabase.js` (or rename to `submit-email.js`)
+   - Use `backend/netlify/functions/submit-email-supabase.js` (or rename to `submit-email.js`)
 
 3. **Install Dependencies**:
    ```bash
