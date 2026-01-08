@@ -15,17 +15,40 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.22.0] - January 2026
+
+### Added
+- **README.md and CHANGELOG.md in All Folders**: Created README.md and CHANGELOG.md files for all folders [Cursor]
+  - **Main Folders**: Added README.md and CHANGELOG.md to `frontend/`, `backend/`, `docs/Core Documentation/`, `docs/Development/`, `docs/Setup & Configuration/`, `docs/UI & Features/`, `docs/Product docs/`, `docs/Product docs/Business & Strategy/`
+  - **Rules Folders**: Added README.md and CHANGELOG.md to `rules/agent-os/`, `rules/bmad-method/`, `rules/frontend/`, `rules/backend/`, `rules/dev_server/`, `rules/docs/`
+  - **Service Rules Folders**: Added README.md and CHANGELOG.md to all 8 service rule folders (`rules/services/admin/`, `rules/services/netlify/`, `rules/services/supabase/`, `rules/services/github/`, `rules/services/n8n/`, `rules/services/discourse/`, `rules/services/erlang-ledger/`, `rules/services/golang-api/`)
+  - **Backend Service Folders**: Added README.md and CHANGELOG.md to `backend/netlify/`
+- **Critical Rule Added**: Updated `.cursorrules` to require README.md and CHANGELOG.md in ALL folders [Cursor]
+  - Added "README AND CHANGELOG - CRITICAL REQUIREMENT" section to `.cursorrules`
+  - Made README.md and CHANGELOG.md mandatory for all folders
+  - Updated `rules/docs/rules.md` to include this requirement
+
+### Changed
+- **Cursor Rules**: Added mandatory requirement for README.md and CHANGELOG.md in all folders [Cursor]
+- **Documentation Rules**: Updated `rules/docs/rules.md` to include README.md and CHANGELOG.md requirement [Cursor]
+
+---
+
 ## [1.21.0] - January 2026
 
 ### Added
 - **Comprehensive Rules Structure**: Created complete rules directory structure mirroring system organization [Cursor]
   - **Service Rules**: Created rules for all 8 services (admin, netlify, supabase, github, n8n, discourse, erlang-ledger, golang-api)
   - **Folder Rules**: Created rules for major folders (frontend, backend, dev_server, docs)
-  - **Services README**: Created ules/services/README.md with service rules overview
-  - **Updated Main README**: Enhanced ules/README.md with complete structure documentation
+  - **Services README**: Created 
+ules/services/README.md with service rules overview
+  - **Updated Main README**: Enhanced 
+ules/README.md with complete structure documentation
 - **Rules Management**: Added TODO and CHANGELOG to rules directory [Cursor]
-  - ules/TODO.md - Tracks tasks and improvements for rules directory
-  - ules/CHANGELOG.md - Tracks all changes to rules directory with developer tracking
+  - 
+ules/TODO.md - Tracks tasks and improvements for rules directory
+  - 
+ules/CHANGELOG.md - Tracks all changes to rules directory with developer tracking
   - Both files follow project standards with mandatory developer tracking
 
 ### Changed
