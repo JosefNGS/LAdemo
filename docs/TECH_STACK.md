@@ -240,6 +240,56 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
      - Timeout: 10 seconds
      - Data: Email, metadata
 
+### Backend Service Organization
+
+**Structure**: One folder per service under `backend/`
+
+#### Current Services
+- **`backend/netlify/`** - Netlify serverless functions
+  - Location: `backend/netlify/functions/`
+  - Purpose: Serverless API endpoints
+  - Status: ✅ Active
+
+#### Planned Services
+- **`backend/n8n/`** - n8n automation service
+  - Location: `backend/n8n/`
+  - Purpose: Workflow automation and integrations
+  - Status: ⏳ Planned
+  - Structure:
+    - `workflows/` - n8n workflow configurations
+    - `config/` - n8n configuration files
+    - `integrations/` - Custom integration scripts
+
+- **`backend/discourse/`** - Discourse forum service
+  - Location: `backend/discourse/`
+  - Purpose: Community forum platform
+  - Status: ⏳ Planned
+  - Structure:
+    - `config/` - Discourse configuration files
+    - `themes/` - Custom themes
+    - `plugins/` - Custom plugins
+
+- **`backend/erlang-ledger/`** - Erlang/Elixir blockchain ledger
+  - Location: `backend/erlang-ledger/`
+  - Purpose: Custom blockchain transparency ledger
+  - Status: ⏳ Planned
+  - Structure:
+    - `lib/` - Erlang/Elixir source code
+    - `config/` - Configuration files
+    - `test/` - Test files
+
+- **`backend/golang-api/`** - Go API services
+  - Location: `backend/golang-api/`
+  - Purpose: High-performance API servers
+  - Status: ⏳ Planned
+  - Structure:
+    - `cmd/` - Application entry points
+    - `internal/` - Internal packages
+    - `api/` - API handlers
+    - `config/` - Configuration files
+
+**Rule**: Each backend service must have its own folder. Never mix services in the same folder.
+
 ### Server-Side Logic
 
 #### Node.js 20.x

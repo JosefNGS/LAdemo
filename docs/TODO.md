@@ -489,6 +489,33 @@
   - [ ] Bulk generation (links + QR codes for multiple products)
   - [ ] Campaign management (products, links, QR codes as campaigns)
 
+- [ ] **Backend Service Structure** (One folder per service)
+  - [x] `backend/netlify/` - Netlify serverless functions ✅
+  - [ ] `backend/n8n/` - n8n automation service
+    - [ ] Create `backend/n8n/` folder structure
+    - [ ] n8n workflow configurations
+    - [ ] Integration with Supabase, Gemini AI, payment gateways
+    - [ ] Commission calculation workflows
+    - [ ] Notification workflows
+    - [ ] Data sync workflows
+  - [ ] `backend/discourse/` - Discourse forum service
+    - [ ] Create `backend/discourse/` folder structure
+    - [ ] Discourse configuration files
+    - [ ] Integration with main platform
+    - [ ] SSO (Single Sign-On) setup
+    - [ ] Custom theme and branding
+  - [ ] `backend/erlang-ledger/` - Erlang/Elixir blockchain ledger
+    - [ ] Create `backend/erlang-ledger/` folder structure
+    - [ ] Implement test chain/ledger (~200 lines)
+    - [ ] Block creation and validation logic
+    - [ ] Hash chain verification
+    - [ ] Transaction recording functionality
+  - [ ] `backend/golang-api/` - Go API services
+    - [ ] Create `backend/golang-api/` folder structure
+    - [ ] High-performance API servers
+    - [ ] Real-time data processing
+    - [ ] Blockchain service integration
+
 - [ ] **Backend API Development**
   - [ ] QR code generation API endpoint
   - [ ] Affiliate link generation API endpoint
