@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BITNEXUS | Command Center</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,10 +30,13 @@
         }
     </script>
     <style>
-        * { box-sizing: border-box; }
-        html { overflow-x: hidden; width: 100%; max-width: 100%; }
-        body { background-color: #030712; color: #ffffff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow-x: hidden; width: 100%; max-width: 100%; }
-        .touch-target { min-height: 44px; min-width: 44px; }
+        html, body { 
+            background-color: #030712; 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
         .font-futuristic { font-family: 'Orbitron', sans-serif; }
         .glow-cyan { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
         .glow-purple { box-shadow: 0 0 35px rgba(124, 58, 237, 0.4); }
@@ -51,7 +53,6 @@
             background: linear-gradient(90deg, #06b6d4, #7c3aed, #06b6d4);
             background-size: 200% auto;
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s linear infinite;
         }
@@ -61,7 +62,6 @@
         .text-gradient-cyan-purple {
             background: linear-gradient(to right, #06b6d4, #7c3aed, #06b6d4);
             -webkit-background-clip: text;
-            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .animate-pulse-slow {
@@ -102,20 +102,13 @@
         .modal-content {
             background: #111827;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            max-width: 90%;
-            width: 100%;
+            border-radius: 24px;
+            padding: 32px;
             max-width: 500px;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        @media (min-width: 640px) {
-            .modal-content {
-                padding: 32px;
-                border-radius: 24px;
-            }
         }
         /* Custom Scrollbar Styling */
         ::-webkit-scrollbar {
@@ -160,74 +153,68 @@
     }
     </script>
 </head>
-<body class="bg-grid">
+<body class="bg-grid overflow-x-hidden">
 
     <!-- LANDING PAGE VIEW -->
     <div id="landing-view">
-        <header class="fixed top-0 w-full z-50 glass-card border-b border-white/5">
-            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 flex justify-between items-center gap-2">
-                <div class="text-lg sm:text-xl md:text-2xl font-black font-futuristic tracking-tighter whitespace-nowrap">
+        <header class="fixed top-0 w-full z-50 glass-card border-b border-white/5 overflow-x-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+                <div class="text-2xl font-black font-futuristic tracking-tighter">
                     BIT<span class="text-techCyan">NEXUS</span>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-3 md:gap-4 flex-shrink-0">
-                    <button onclick="enterDemo()" class="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 bg-techCyan/10 border border-techCyan/30 text-techCyan text-[9px] sm:text-[10px] font-bold font-futuristic hover:bg-techCyan hover:text-black transition-all uppercase tracking-widest whitespace-nowrap">
+                <div class="flex items-center space-x-4">
+                    <button onclick="enterDemo()" class="px-6 py-2 bg-techCyan/10 border border-techCyan/30 text-techCyan text-[10px] font-bold font-futuristic hover:bg-techCyan hover:text-black transition-all uppercase tracking-widest">
                         Try Demo
                     </button>
-                    <a href="#genesis" class="hidden md:block px-4 md:px-6 py-1.5 md:py-2 bg-nexusPurple text-white text-[9px] md:text-[10px] font-bold font-futuristic uppercase tracking-widest rounded-sm whitespace-nowrap">Join Launch</a>
+                    <a href="#genesis" class="hidden md:block px-6 py-2 bg-nexusPurple text-white text-[10px] font-bold font-futuristic uppercase tracking-widest rounded-sm">Join Launch</a>
                 </div>
             </div>
         </header>
 
         <main>
             <!-- Hero -->
-            <section class="min-h-screen flex flex-col items-center justify-center pt-24 sm:pt-28 md:pt-32 px-3 sm:px-4 md:px-6 lg:px-8 text-center overflow-x-hidden w-full">
+            <section class="min-h-screen flex flex-col items-center justify-center pt-32 px-4 sm:px-6 lg:px-8 text-center overflow-x-hidden w-full max-w-full">
                 <div class="w-full max-w-7xl mx-auto">
-                    <div class="inline-block mb-4 sm:mb-6 px-3 sm:px-4 py-1 border border-techCyan/30 rounded-full bg-techCyan/5">
-                        <span class="text-[9px] sm:text-[10px] font-bold font-futuristic text-techCyan tracking-[0.2em] sm:tracking-[0.3em] uppercase whitespace-nowrap">Genesis Phase: Calibration in Progress</span>
+                    <div class="inline-block mb-6 px-4 py-1 border border-techCyan/30 rounded-full bg-techCyan/5">
+                        <span class="text-[10px] font-bold font-futuristic text-techCyan tracking-[0.3em] uppercase">Genesis Phase: Calibration in Progress</span>
                     </div>
-                    
-                    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-black font-futuristic mb-6 sm:mb-8 uppercase italic leading-tight px-2 w-full break-words">
-                        The Future of <br class="sm:hidden"/>
-                        <span class="gradient-text block sm:inline">Decentralized Revenue</span>
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-futuristic mb-8 uppercase italic leading-tight px-2 w-full max-w-full break-words">
+                        The Future of <br/>
+                        <span class="gradient-text">Decentralized Revenue</span>
                     </h1>
                     
-                    <p class="max-w-2xl mx-auto text-white/60 text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 font-medium leading-relaxed px-3 sm:px-4">
+                    <p class="max-w-2xl mx-auto text-white/60 text-base sm:text-lg md:text-xl mb-12 font-medium leading-relaxed px-4">
                         Stop chasing the market. Start architecting it. Join pioneers securing automated wealth through the world's first AI-powered sovereign affiliate ecosystem.
                     </p>
 
-                    <!-- Launch in text -->
-                    <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-futuristic uppercase tracking-widest font-black mb-4 sm:mb-6 px-3">
-                        Launch in.
-                    </p>
-
                     <!-- Countdown -->
-                    <div id="countdown" class="flex justify-center items-center gap-1 sm:gap-2 md:gap-3 lg:gap-4 xl:gap-6 mb-10 sm:mb-12 md:mb-16 w-full max-w-full overflow-x-hidden px-2 flex-wrap">
-                        <div class="flex flex-col items-center min-w-0 flex-shrink-0">
-                            <span id="days" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-futuristic font-black leading-none">06</span>
-                            <span class="text-[8px] uppercase tracking-widest text-white/30 mt-1 sm:mt-2 whitespace-nowrap">Days</span>
+                    <div id="countdown" class="flex justify-center gap-2 sm:gap-3 md:gap-6 lg:gap-10 mb-16 w-full max-w-full overflow-x-hidden px-2">
+                        <div class="flex flex-col items-center">
+                            <span id="days" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-futuristic font-black">06</span>
+                            <span class="text-[8px] uppercase tracking-widest text-white/30 mt-2">Days</span>
                         </div>
-                        <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-futuristic text-nexusPurple animate-pulse flex-shrink-0">:</span>
-                        <div class="flex flex-col items-center min-w-0 flex-shrink-0">
-                            <span id="hours" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-futuristic font-black leading-none">22</span>
-                            <span class="text-[8px] uppercase tracking-widest text-white/30 mt-1 sm:mt-2 whitespace-nowrap">Hours</span>
+                        <span class="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-futuristic text-nexusPurple animate-pulse">:</span>
+                        <div class="flex flex-col items-center">
+                            <span id="hours" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-futuristic font-black">22</span>
+                            <span class="text-[8px] uppercase tracking-widest text-white/30 mt-2">Hours</span>
                         </div>
-                        <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-futuristic text-nexusPurple animate-pulse flex-shrink-0">:</span>
-                        <div class="flex flex-col items-center min-w-0 flex-shrink-0">
-                            <span id="minutes" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-futuristic font-black leading-none">14</span>
-                            <span class="text-[8px] uppercase tracking-widest text-white/30 mt-1 sm:mt-2 whitespace-nowrap">Mins</span>
+                        <span class="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-futuristic text-nexusPurple animate-pulse">:</span>
+                        <div class="flex flex-col items-center">
+                            <span id="minutes" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-futuristic font-black">14</span>
+                            <span class="text-[8px] uppercase tracking-widest text-white/30 mt-2">Mins</span>
                         </div>
-                        <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-futuristic text-techCyan animate-pulse flex-shrink-0">:</span>
-                        <div class="flex flex-col items-center min-w-0 flex-shrink-0">
-                            <span id="seconds" class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-futuristic font-black text-techCyan leading-none">00</span>
-                            <span class="text-[8px] uppercase tracking-widest text-techCyan/50 mt-1 sm:mt-2 whitespace-nowrap">Secs</span>
+                        <span class="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-futuristic text-techCyan animate-pulse">:</span>
+                        <div class="flex flex-col items-center">
+                            <span id="seconds" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-futuristic font-black text-techCyan">00</span>
+                            <span class="text-[8px] uppercase tracking-widest text-techCyan/50 mt-2">Secs</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 w-full max-w-md sm:max-w-lg md:max-w-none justify-center items-center px-3">
-                        <a href="#genesis" class="w-full sm:w-auto px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 bg-nexusPurple text-white font-black font-futuristic rounded-sm glow-purple uppercase tracking-widest text-xs sm:text-sm transition-all text-center min-h-[44px] flex items-center justify-center touch-target">
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full max-w-md sm:max-w-none justify-center items-center">
+                        <a href="#genesis" class="px-6 sm:px-12 py-4 sm:py-5 bg-nexusPurple text-white font-black font-futuristic rounded-sm glow-purple uppercase tracking-widest text-xs sm:text-sm transition-all hover:scale-105 text-center">
                             Secure Genesis Spot
                         </a>
-                        <button onclick="enterDemo()" class="w-full sm:w-auto px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 border border-techCyan/50 text-techCyan font-black font-futuristic rounded-sm uppercase tracking-widest text-xs sm:text-sm hover:bg-techCyan/10 transition-all min-h-[44px] flex items-center justify-center touch-target">
+                        <button onclick="enterDemo()" class="px-6 sm:px-12 py-4 sm:py-5 border border-techCyan/50 text-techCyan font-black font-futuristic rounded-sm uppercase tracking-widest text-xs sm:text-sm hover:bg-techCyan/10 transition-all">
                             Live Demo Module
                         </button>
                     </div>
@@ -235,37 +222,37 @@
             </section>
 
             <!-- Hype Section: Why Now? -->
-            <section id="genesis" class="py-16 sm:py-20 md:py-24 lg:py-32 px-3 sm:px-4 md:px-6 bg-deepBg relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-nexusPurple to-transparent"></div>
+            <section id="genesis" class="py-32 px-4 sm:px-6 bg-deepBg relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-nexusPurple to-transparent"></div>
                 <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black font-futuristic mb-6 sm:mb-8 uppercase italic px-2 break-words">Don't Get Left in the <span class="text-techCyan italic block sm:inline">Old Economy</span></h2>
-                    <p class="text-white/50 text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 px-3">The Nexus launch is a once-in-a-cycle event. Pre-registering grants you immediate access to Founder-tier commissions and early Node deployment rights.</p>
+                    <h2 class="text-4xl md:text-6xl font-black font-futuristic mb-8 uppercase italic">Don't Get Left in the <span class="text-techCyan italic">Old Economy</span></h2>
+                    <p class="text-white/50 text-lg mb-12">The Nexus launch is a once-in-a-cycle event. Pre-registering grants you immediate access to Founder-tier commissions and early Node deployment rights.</p>
                     
-                    <div class="relative inline-block mb-4 max-w-full px-3">
+                    <div class="relative inline-block mb-4">
                         <a 
                             href="https://docs.google.com/forms/d/1p-j5rBF7MgrHq1obFZKC4Pl-u4Vq5p1k9CZh8uG-YoM/edit"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="relative bg-gradient-to-r from-techCyan via-cyan-400 to-techCyan text-black px-4 sm:px-6 md:px-10 lg:px-16 py-4 sm:py-5 md:py-6 font-black font-futuristic text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-widest hover:brightness-110 transition-all duration-300 shadow-2xl shadow-techCyan/60 rounded-xl animate-pulse-slow z-10 overflow-hidden inline-block w-full sm:w-auto max-w-full min-h-[44px] flex items-center justify-center touch-target"
+                            class="relative bg-gradient-to-r from-techCyan via-cyan-400 to-techCyan text-black px-12 sm:px-16 py-5 sm:py-6 font-black font-futuristic text-base sm:text-lg md:text-xl uppercase tracking-widest hover:brightness-110 transition-all duration-300 shadow-2xl shadow-techCyan/60 rounded-xl animate-pulse-slow hover:scale-105 hover:shadow-techCyan/80 z-10 overflow-hidden inline-block"
                             style="background-size: 200% auto; animation: shine 3s linear infinite;"
                         >
-                            <span class="relative z-10 flex items-center justify-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
+                            <span class="relative z-10 flex items-center gap-2 sm:gap-3">
                                 <span>⚡</span>
-                                <span class="whitespace-nowrap">INITIATE ACCESS NOW</span>
+                                <span>INITIATE ACCESS NOW</span>
                                 <span>⚡</span>
                             </span>
                             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
                         </a>
-                        <div class="absolute -inset-0.5 sm:-inset-1 bg-gradient-to-r from-techCyan via-purple-500 to-techCyan rounded-xl blur-lg opacity-75 animate-pulse -z-10"></div>
+                        <div class="absolute -inset-1 bg-gradient-to-r from-techCyan via-purple-500 to-techCyan rounded-xl blur-lg opacity-75 animate-pulse"></div>
                     </div>
-                    <div class="mt-6 sm:mt-8 space-y-2 sm:space-y-3 px-3">
-                        <p class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-futuristic uppercase tracking-widest font-black leading-tight break-words">
+                    <div class="mt-8 space-y-3">
+                        <p class="text-xl md:text-3xl text-white font-futuristic uppercase tracking-widest font-black leading-tight">
                             <span class="text-red-400 animate-pulse">⚠️ URGENT:</span> Limited to 500 Early-Adopter licenses.
                         </p>
-                        <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-wealthGold font-black font-futuristic uppercase tracking-wider animate-pulse-slow break-words">
-                            <span class="inline-block animate-bounce">🔥</span> ONLY <span class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">142</span> REMAINING <span class="inline-block animate-bounce">🔥</span>
+                        <p class="text-2xl md:text-5xl text-wealthGold font-black font-futuristic uppercase tracking-wider animate-pulse-slow">
+                            <span class="inline-block animate-bounce">🔥</span> ONLY <span class="text-4xl md:text-6xl">142</span> REMAINING <span class="inline-block animate-bounce">🔥</span>
                         </p>
-                        <p class="text-xs sm:text-sm md:text-base text-white/70 font-futuristic italic mt-3 sm:mt-4">
+                        <p class="text-sm md:text-base text-white/70 font-futuristic italic mt-4">
                             ⏰ Spots are filling fast. Don't miss your chance at Founder-tier benefits.
                         </p>
                     </div>
@@ -273,73 +260,73 @@
             </section>
 
             <!-- Academy Modules (6 Courses) -->
-            <section id="courses" class="py-16 sm:py-20 md:py-24 lg:py-32 px-3 sm:px-4 md:px-6">
+            <section id="courses" class="py-32 px-4 sm:px-6 overflow-x-hidden">
                 <div class="max-w-7xl mx-auto text-center">
-                    <div class="flex flex-col items-center mb-10 sm:mb-12 md:mb-16">
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black font-futuristic uppercase mb-3 sm:mb-4 tracking-tighter italic px-2 break-words">Academy Modules</h2>
-                        <div class="h-1 w-16 sm:w-20 md:w-24 bg-techCyan"></div>
+                    <div class="flex flex-col items-center mb-16">
+                        <h2 class="text-4xl font-black font-futuristic uppercase mb-4 tracking-tighter italic">Academy Modules</h2>
+                        <div class="h-1 w-24 bg-techCyan"></div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 px-3 sm:px-0">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Course 1: AI Dev -->
-                        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-xl text-left hover:border-techCyan/50 transition group">
-                            <span class="text-[9px] font-bold text-techCyan border border-techCyan px-2 py-1 uppercase italic whitespace-nowrap">University-Grade</span>
-                            <h4 class="text-base sm:text-lg md:text-xl font-black font-futuristic mt-3 sm:mt-4 mb-2 group-hover:text-techCyan transition break-words">Next-Gen Dev with AI</h4>
-                            <p class="text-xs text-white/50 mb-4 sm:mb-6 break-words">Master Gemini, Mokka, and Cursor via "Vibe Coding." Build apps at the speed of thought.</p>
-                            <button onclick="if(window.openTrackModal){window.openTrackModal('dev');}else{alert('Next-Gen Dev with AI - Enroll Draft');}" class="w-full py-2.5 sm:py-2 min-h-[44px] bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-techCyan/30 transition touch-target">Enroll Draft</button>
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-techCyan/50 transition group cursor-pointer track-card" data-track="dev">
+                            <span class="text-[9px] font-bold text-techCyan border border-techCyan px-2 py-1 uppercase italic">University-Grade</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-techCyan transition">Next-Gen Dev with AI</h4>
+                            <p class="text-xs text-white/50 mb-6">Master Gemini, Mokka, and Cursor via "Vibe Coding." Build apps at the speed of thought.</p>
+                            <button onclick="openTrackModal('dev'); event.stopPropagation();" class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-techCyan/30 transition">Enroll Draft</button>
                         </div>
                         <!-- Course 2: DeFi Wealth -->
-                        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-xl text-left hover:border-wealthGold/50 transition group">
-                            <span class="text-[9px] font-bold text-wealthGold border border-wealthGold px-2 py-1 uppercase italic whitespace-nowrap">Wealth Track</span>
-                            <h4 class="text-base sm:text-lg md:text-xl font-black font-futuristic mt-3 sm:mt-4 mb-2 group-hover:text-wealthGold transition break-words">The DeFi Wealth Protocol</h4>
-                            <p class="text-xs text-white/50 mb-4 sm:mb-6 break-words">Liquidity provision and automated yield optimization. Create money that never sleeps.</p>
-                            <button onclick="if(window.openTrackModal){window.openTrackModal('wealth');}else{alert('The DeFi Wealth Protocol - Coming Soon');}" class="w-full py-2.5 sm:py-2 min-h-[44px] bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-wealthGold/30 transition touch-target">Coming Soon</button>
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-wealthGold/50 transition group cursor-pointer track-card" data-track="wealth">
+                            <span class="text-[9px] font-bold text-wealthGold border border-wealthGold px-2 py-1 uppercase italic">Wealth Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-wealthGold transition">The DeFi Wealth Protocol</h4>
+                            <p class="text-xs text-white/50 mb-6">Liquidity provision and automated yield optimization. Create money that never sleeps.</p>
+                            <button onclick="openTrackModal('wealth'); event.stopPropagation();" class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-wealthGold/30 transition">Coming Soon</button>
                         </div>
                         <!-- Course 3: Financial Freedom -->
-                        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-xl text-left hover:border-signalGreen/50 transition group">
-                            <span class="text-[9px] font-bold text-signalGreen border border-signalGreen px-2 py-1 uppercase italic whitespace-nowrap">Sovereign Track</span>
-                            <h4 class="text-base sm:text-lg md:text-xl font-black font-futuristic mt-3 sm:mt-4 mb-2 group-hover:text-signalGreen transition break-words">Sovereign Lifestyle</h4>
-                            <p class="text-xs text-white/50 mb-4 sm:mb-6 break-words">Designing a borderless life with total autonomy. The technical roadmap to freedom.</p>
-                            <button onclick="if(window.openTrackModal){window.openTrackModal('sovereign');}else{alert('Sovereign Lifestyle - New Release');}" class="w-full py-2.5 sm:py-2 min-h-[44px] bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-signalGreen/30 transition touch-target">New Release</button>
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-signalGreen/50 transition group cursor-pointer track-card" data-track="sovereign">
+                            <span class="text-[9px] font-bold text-signalGreen border border-signalGreen px-2 py-1 uppercase italic">Sovereign Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-signalGreen transition">Sovereign Lifestyle</h4>
+                            <p class="text-xs text-white/50 mb-6">Designing a borderless life with total autonomy. The technical roadmap to freedom.</p>
+                            <button onclick="openTrackModal('sovereign'); event.stopPropagation();" class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-signalGreen/30 transition">New Release</button>
                         </div>
                         <!-- Course 4: Algorithmic Revenue -->
-                        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-xl text-left hover:border-nexusPurple/50 transition group">
-                            <span class="text-[9px] font-bold text-nexusPurple border border-nexusPurple px-2 py-1 uppercase italic whitespace-nowrap">Algo Track</span>
-                            <h4 class="text-base sm:text-lg md:text-xl font-black font-futuristic mt-3 sm:mt-4 mb-2 group-hover:text-nexusPurple transition break-words">Revenue Engine Bots</h4>
-                            <p class="text-xs text-white/50 mb-4 sm:mb-6 break-words">Build AI-driven trading bots across global markets. Deploy your digital workforce.</p>
-                            <button onclick="if(window.openTrackModal){window.openTrackModal('algo');}else{alert('Revenue Engine Bots - Early Access');}" class="w-full py-2.5 sm:py-2 min-h-[44px] bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-nexusPurple/30 transition touch-target">Early Access</button>
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-nexusPurple/50 transition group cursor-pointer track-card" data-track="algo">
+                            <span class="text-[9px] font-bold text-nexusPurple border border-nexusPurple px-2 py-1 uppercase italic">Algo Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-nexusPurple transition">Revenue Engine Bots</h4>
+                            <p class="text-xs text-white/50 mb-6">Build AI-driven trading bots across global markets. Deploy your digital workforce.</p>
+                            <button onclick="openTrackModal('algo'); event.stopPropagation();" class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-nexusPurple/30 transition">Early Access</button>
                         </div>
                         <!-- Course 5: Affiliate Funnels -->
-                        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-xl text-left hover:border-techCyan/50 transition group">
-                            <span class="text-[9px] font-bold text-techCyan border border-techCyan px-2 py-1 uppercase italic whitespace-nowrap">Marketing Track</span>
-                            <h4 class="text-base sm:text-lg md:text-xl font-black font-futuristic mt-3 sm:mt-4 mb-2 group-hover:text-techCyan transition break-words">High-Ticket Funnels</h4>
-                            <p class="text-xs text-white/50 mb-4 sm:mb-6 break-words">Enterprise-grade affiliate loops for recurring payouts. Scale from zero to sovereign.</p>
-                            <button onclick="if(window.openTrackModal){window.openTrackModal('marketing');}else{alert('High-Ticket Funnels - Open Now');}" class="w-full py-2.5 sm:py-2 min-h-[44px] bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-techCyan/30 transition touch-target">Open Now</button>
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-techCyan/50 transition group cursor-pointer track-card" data-track="marketing">
+                            <span class="text-[9px] font-bold text-techCyan border border-techCyan px-2 py-1 uppercase italic">Marketing Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-techCyan transition">High-Ticket Funnels</h4>
+                            <p class="text-xs text-white/50 mb-6">Enterprise-grade affiliate loops for recurring payouts. Scale from zero to sovereign.</p>
+                            <button onclick="openTrackModal('marketing'); event.stopPropagation();" class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-techCyan/30 transition">Open Now</button>
                         </div>
                         <!-- Course 6: AI Content -->
-                        <div class="glass-card p-4 sm:p-6 md:p-8 rounded-xl text-left hover:border-wealthGold/50 transition group">
-                            <span class="text-[9px] font-bold text-wealthGold border border-wealthGold px-2 py-1 uppercase italic whitespace-nowrap">Traffic Track</span>
-                            <h4 class="text-base sm:text-lg md:text-xl font-black font-futuristic mt-3 sm:mt-4 mb-2 group-hover:text-wealthGold transition break-words">Content Arbitrage</h4>
-                            <p class="text-xs text-white/50 mb-4 sm:mb-6 break-words">Weaponizing viral AI media for endless traffic. Dominate the attention economy.</p>
-                            <button onclick="if(window.openTrackModal){window.openTrackModal('traffic');}else{alert('Content Arbitrage - Enroll Now');}" class="w-full py-2.5 sm:py-2 min-h-[44px] bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-wealthGold/30 transition touch-target">Enroll Now</button>
+                        <div class="glass-card p-8 rounded-xl text-left hover:border-wealthGold/50 transition group cursor-pointer track-card" data-track="traffic">
+                            <span class="text-[9px] font-bold text-wealthGold border border-wealthGold px-2 py-1 uppercase italic">Traffic Track</span>
+                            <h4 class="text-xl font-black font-futuristic mt-4 mb-2 group-hover:text-wealthGold transition">Content Arbitrage</h4>
+                            <p class="text-xs text-white/50 mb-6">Weaponizing viral AI media for endless traffic. Dominate the attention economy.</p>
+                            <button onclick="openTrackModal('traffic'); event.stopPropagation();" class="w-full py-2 bg-white/5 text-[9px] font-bold uppercase tracking-widest font-futuristic border border-white/5 group-hover:border-wealthGold/30 transition">Enroll Now</button>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="py-12 sm:py-16 md:py-20 border-t border-white/5 glass-card backdrop-blur-xl text-center overflow-x-hidden px-3 sm:px-4 relative">
+        <footer class="py-20 border-t border-white/5 glass-card backdrop-blur-xl text-center overflow-x-hidden px-4 relative">
             <div class="absolute inset-0 bg-gradient-to-b from-nexusPurple/5 via-transparent to-techCyan/5"></div>
             <div class="relative z-10">
-                <div class="text-xl sm:text-2xl font-black font-futuristic mb-6 sm:mb-8">
+                <div class="text-2xl font-black font-futuristic mb-8">
                     BIT<span class="text-techCyan">NEXUS</span>
                 </div>
-                <div class="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-[9px] sm:text-[10px] font-bold font-futuristic uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-8 sm:mb-10 md:mb-12 px-2">
-                    <a href="manifesto.html" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1 whitespace-nowrap">Manifesto</a>
-                    <a href="#" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1 whitespace-nowrap">Twitter</a>
-                    <a href="#" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1 whitespace-nowrap">Discord</a>
-                    <a href="docs.html" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1 whitespace-nowrap">Docs</a>
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-8 md:space-x-12 text-[10px] font-bold font-futuristic uppercase tracking-[0.3em] mb-12">
+                    <a href="manifesto.html" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1">Manifesto</a>
+                    <a href="#" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1">Twitter</a>
+                    <a href="#" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1">Discord</a>
+                    <a href="docs.html" class="text-white/60 hover:text-techCyan transition-colors border-b border-transparent hover:border-techCyan/50 pb-1">Docs</a>
                 </div>
-                <p class="text-[7px] sm:text-[8px] uppercase tracking-[0.4em] sm:tracking-[0.5em] text-white/30 px-2 break-words">The Future of Decentralized Revenue &copy; 2026</p>
+                <p class="text-[8px] uppercase tracking-[0.5em] text-white/30">The Future of Decentralized Revenue &copy; 2026</p>
             </div>
         </footer>
     </div>
@@ -405,6 +392,23 @@
                     Submit Access Request
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- TRACK DETAIL MODAL -->
+    <div id="track-modal" class="modal-overlay hidden">
+        <div class="modal-content max-w-4xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h3 id="track-modal-title" class="text-2xl font-black font-futuristic text-gradient-cyan-purple"></h3>
+                <button id="close-track-modal" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div id="track-modal-content" class="space-y-6">
+                <!-- Content will be populated by JavaScript -->
+            </div>
         </div>
     </div>
 
@@ -541,6 +545,336 @@
                 });
             }
 
+            // --- TRACK MODAL HANDLERS ---
+            const trackModal = document.getElementById('track-modal');
+            const trackModalTitle = document.getElementById('track-modal-title');
+            const trackModalContent = document.getElementById('track-modal-content');
+            const closeTrackModalBtn = document.getElementById('close-track-modal');
+
+            // Track data
+            const trackData = {
+                dev: {
+                    badge: 'University-Grade',
+                    title: 'Next-Gen Dev with AI',
+                    description: 'Master Gemini, Mokka, and Cursor via "Vibe Coding." Build apps at the speed of thought.',
+                    status: 'Enroll Draft',
+                    color: 'techCyan',
+                    details: {
+                        duration: '12 weeks',
+                        level: 'Intermediate to Advanced',
+                        format: 'Self-paced with live sessions',
+                        modules: [
+                            'Introduction to AI-Assisted Development',
+                            'Mastering Gemini for Code Generation',
+                            'Mokka Framework Deep Dive',
+                            'Cursor IDE Mastery',
+                            'Vibe Coding Methodology',
+                            'Building Production Apps at Speed',
+                            'Advanced AI Integration Patterns',
+                            'Deployment & Scaling Strategies'
+                        ],
+                        outcomes: [
+                            'Build full-stack applications in hours, not weeks',
+                            'Master AI coding assistants for maximum productivity',
+                            'Understand modern development workflows',
+                            'Deploy production-ready applications'
+                        ],
+                        prerequisites: 'Basic programming knowledge recommended'
+                    }
+                },
+                wealth: {
+                    badge: 'Wealth Track',
+                    title: 'The DeFi Wealth Protocol',
+                    description: 'Liquidity provision and automated yield optimization. Create money that never sleeps.',
+                    status: 'Coming Soon',
+                    color: 'wealthGold',
+                    details: {
+                        duration: '8 weeks',
+                        level: 'All Levels',
+                        format: 'Self-paced with community support',
+                        modules: [
+                            'Introduction to DeFi & Liquidity Provision',
+                            'Yield Optimization Strategies',
+                            'Automated Trading Systems',
+                            'Risk Management in DeFi',
+                            'Portfolio Diversification',
+                            'Advanced Yield Farming',
+                            'Smart Contract Security',
+                            'Building Passive Income Streams'
+                        ],
+                        outcomes: [
+                            'Understand DeFi protocols and opportunities',
+                            'Set up automated yield optimization',
+                            'Build sustainable passive income',
+                            'Navigate DeFi risks safely'
+                        ],
+                        prerequisites: 'Basic understanding of cryptocurrency'
+                    }
+                },
+                sovereign: {
+                    badge: 'Sovereign Track',
+                    title: 'Sovereign Lifestyle',
+                    description: 'Designing a borderless life with total autonomy. The technical roadmap to freedom.',
+                    status: 'New Release',
+                    color: 'signalGreen',
+                    details: {
+                        duration: '10 weeks',
+                        level: 'All Levels',
+                        format: 'Self-paced with mentorship',
+                        modules: [
+                            'Philosophy of Digital Nomadism',
+                            'Remote Work Setup & Optimization',
+                            'Tax Optimization Strategies',
+                            'International Banking & Finance',
+                            'Building Location Independence',
+                            'Legal Structures for Freedom',
+                            'Community & Network Building',
+                            'Long-term Sustainability Planning'
+                        ],
+                        outcomes: [
+                            'Design your ideal borderless lifestyle',
+                            'Understand legal and financial frameworks',
+                            'Build systems for location independence',
+                            'Create sustainable freedom structures'
+                        ],
+                        prerequisites: 'None - open to all'
+                    }
+                },
+                algo: {
+                    badge: 'Algo Track',
+                    title: 'Revenue Engine Bots',
+                    description: 'Build AI-driven trading bots across global markets. Deploy your digital workforce.',
+                    status: 'Early Access',
+                    color: 'nexusPurple',
+                    details: {
+                        duration: '14 weeks',
+                        level: 'Intermediate to Advanced',
+                        format: 'Self-paced with code reviews',
+                        modules: [
+                            'Introduction to Algorithmic Trading',
+                            'Bot Architecture & Design',
+                            'AI Integration for Trading',
+                            'Multi-Market Strategy Development',
+                            'Risk Management Systems',
+                            'Backtesting & Optimization',
+                            'Deployment & Monitoring',
+                            'Scaling Your Bot Network'
+                        ],
+                        outcomes: [
+                            'Build production-ready trading bots',
+                            'Integrate AI for market analysis',
+                            'Deploy automated trading systems',
+                            'Scale across multiple markets'
+                        ],
+                        prerequisites: 'Programming experience required'
+                    }
+                },
+                marketing: {
+                    badge: 'Marketing Track',
+                    title: 'High-Ticket Funnels',
+                    description: 'Enterprise-grade affiliate loops for recurring payouts. Scale from zero to sovereign.',
+                    status: 'Open Now',
+                    color: 'techCyan',
+                    details: {
+                        duration: '10 weeks',
+                        level: 'All Levels',
+                        format: 'Self-paced with live workshops',
+                        modules: [
+                            'High-Ticket Offer Creation',
+                            'Sales Funnel Architecture',
+                            'Affiliate System Design',
+                            'Traffic Generation Strategies',
+                            'Conversion Optimization',
+                            'Email Marketing Mastery',
+                            'Automation & Scaling',
+                            'Building Recurring Revenue'
+                        ],
+                        outcomes: [
+                            'Create high-ticket offers that sell',
+                            'Build complete sales funnels',
+                            'Design affiliate systems',
+                            'Scale from zero to significant income'
+                        ],
+                        prerequisites: 'None - perfect for beginners'
+                    }
+                },
+                traffic: {
+                    badge: 'Traffic Track',
+                    title: 'Content Arbitrage',
+                    description: 'Weaponizing viral AI media for endless traffic. Dominate the attention economy.',
+                    status: 'Enroll Now',
+                    color: 'wealthGold',
+                    details: {
+                        duration: '8 weeks',
+                        level: 'All Levels',
+                        format: 'Self-paced with content reviews',
+                        modules: [
+                            'AI Content Creation Mastery',
+                            'Viral Content Patterns',
+                            'Multi-Platform Distribution',
+                            'Traffic Monetization Strategies',
+                            'Content Automation Systems',
+                            'Analytics & Optimization',
+                            'Scaling Content Production',
+                            'Building Traffic Assets'
+                        ],
+                        outcomes: [
+                            'Create viral content consistently',
+                            'Generate massive traffic',
+                            'Monetize attention effectively',
+                            'Build sustainable traffic systems'
+                        ],
+                        prerequisites: 'None - open to all'
+                    }
+                }
+            };
+
+            // Open track modal
+            window.openTrackModal = function(trackId) {
+                const track = trackData[trackId];
+                if (!track) return;
+
+                trackModalTitle.textContent = track.title;
+                trackModalTitle.className = `text-2xl font-black font-futuristic text-gradient-cyan-purple`;
+
+                // Color class mapping for Tailwind JIT
+                const colorClasses = {
+                    techCyan: {
+                        text: 'text-techCyan',
+                        border: 'border-techCyan',
+                        bg: 'bg-techCyan'
+                    },
+                    wealthGold: {
+                        text: 'text-wealthGold',
+                        border: 'border-wealthGold',
+                        bg: 'bg-wealthGold'
+                    },
+                    signalGreen: {
+                        text: 'text-signalGreen',
+                        border: 'border-signalGreen',
+                        bg: 'bg-signalGreen'
+                    },
+                    nexusPurple: {
+                        text: 'text-nexusPurple',
+                        border: 'border-nexusPurple',
+                        bg: 'bg-nexusPurple'
+                    }
+                };
+
+                const colors = colorClasses[track.color] || colorClasses.techCyan;
+
+                trackModalContent.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[9px] font-bold ${colors.text} ${colors.border} border px-2 py-1 uppercase italic">${track.badge}</span>
+                            <span class="text-xs text-gray-400">${track.status}</span>
+                        </div>
+                        <p class="text-white/80 text-sm leading-relaxed">${track.description}</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 mb-1">Duration</p>
+                                <p class="text-sm text-white">${track.details.duration}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 mb-1">Level</p>
+                                <p class="text-sm text-white">${track.details.level}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 mb-1">Format</p>
+                                <p class="text-sm text-white">${track.details.format}</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-400 mb-1">Prerequisites</p>
+                                <p class="text-sm text-white">${track.details.prerequisites}</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10">
+                            <h4 class="text-lg font-bold mb-3">Course Modules</h4>
+                            <ul class="space-y-2">
+                                ${track.details.modules.map((module, i) => `
+                                    <li class="flex items-start gap-2 text-sm text-white/80">
+                                        <span class="${colors.text} font-bold mt-0.5">${i + 1}.</span>
+                                        <span>${module}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="pt-4 border-t border-white/10">
+                            <h4 class="text-lg font-bold mb-3">What You'll Achieve</h4>
+                            <ul class="space-y-2">
+                                ${track.details.outcomes.map(outcome => `
+                                    <li class="flex items-start gap-2 text-sm text-white/80">
+                                        <span class="${colors.text} font-bold mt-0.5">✓</span>
+                                        <span>${outcome}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="pt-6 border-t border-white/10 flex gap-3">
+                            <button class="flex-1 py-3 ${colors.bg} text-black font-black font-futuristic text-xs uppercase tracking-widest rounded-xl hover:brightness-110 transition">
+                                ${track.status}
+                            </button>
+                            <button id="close-track-modal-btn" class="px-6 py-3 bg-white/5 border border-white/10 text-white font-bold font-futuristic text-xs uppercase tracking-widest rounded-xl hover:bg-white/10 transition">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                trackModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Close track modal
+            function closeTrackModal() {
+                trackModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+
+            // Add click handlers to track cards
+            document.querySelectorAll('.track-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't open modal if clicking the button
+                    if (e.target.tagName === 'BUTTON') return;
+                    const trackId = this.getAttribute('data-track');
+                    if (trackId) {
+                        openTrackModal(trackId);
+                    }
+                });
+            });
+
+            // Close modal handlers
+            if (closeTrackModalBtn) {
+                closeTrackModalBtn.addEventListener('click', closeTrackModal);
+            }
+
+            // Close on overlay click
+            if (trackModal) {
+                trackModal.addEventListener('click', function(e) {
+                    if (e.target === trackModal) {
+                        closeTrackModal();
+                    }
+                });
+            }
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !trackModal.classList.contains('hidden')) {
+                    closeTrackModal();
+                }
+            });
+
+            // Close button inside modal content (dynamically added)
+            document.addEventListener('click', function(e) {
+                if (e.target && e.target.id === 'close-track-modal-btn') {
+                    closeTrackModal();
+                }
+            });
+
             function showMessage(text, type) {
                 messageDiv.textContent = text;
                 messageDiv.classList.remove('hidden');
@@ -558,30 +892,18 @@
             }
         });
 
+        // --- COUNTDOWN LOGIC ---
+        const launchDate = new Date("Jan 21, 2026 05:00:00").getTime();
 
-        // Countdown to January 21, 2026 at midnight (00:00:00)
         function updateCountdown() {
-            const launchDate = new Date("Jan 21, 2026 00:00:00").getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
-
-            if (distance < 0) {
-                // Countdown finished - show zeros or hide
-                if (document.getElementById("days")) {
-                    document.getElementById("days").innerText = "00";
-                    document.getElementById("hours").innerText = "00";
-                    document.getElementById("minutes").innerText = "00";
-                    document.getElementById("seconds").innerText = "00";
-                }
-                return;
-            }
 
             const d = Math.floor(distance / (1000 * 60 * 60 * 24));
             const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Update the countdown display
             if (document.getElementById("days")) {
                 document.getElementById("days").innerText = d.toString().padStart(2, '0');
                 document.getElementById("hours").innerText = h.toString().padStart(2, '0');
@@ -590,7 +912,6 @@
             }
         }
 
-        // Start countdown timer
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
@@ -637,4 +958,6 @@
     </script>
 </body>
 </html>
-
+</html>
+</html>
+</html>

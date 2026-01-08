@@ -109,25 +109,12 @@ const server = http.createServer(async (req, res) => {
   const contentType = MIME_TYPES[extname] || 'application/octet-stream';
 
   try {
-    // Handle TypeScript files - check both frontend/src and root src
+    // Handle TypeScript files - source is now always in frontend/src
     if (extname === '.ts' || extname === '.tsx') {
-      // First try frontend/src (preferred location)
-      let absolutePath = path.resolve(frontendRoot, cleanPath);
-      
-      // If not found in frontend, try root src directory
-      if (!fs.existsSync(absolutePath) && cleanPath.startsWith('src/')) {
-        const rootSrcPath = path.resolve(projectRoot, cleanPath);
-        if (fs.existsSync(rootSrcPath)) {
-          absolutePath = rootSrcPath;
-        }
-      }
+      const absolutePath = path.resolve(frontendRoot, cleanPath);
       
       if (!fs.existsSync(absolutePath)) {
         console.error('File not found:', absolutePath);
-        console.error('Tried paths:', [
-          path.resolve(frontendRoot, cleanPath),
-          path.resolve(projectRoot, cleanPath)
-        ]);
         res.writeHead(404, { 'Content-Type': 'text/html' });
         res.end('<h1>404 - File Not Found</h1>');
         return;
@@ -150,19 +137,22 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
-    // Handle regular files - check both frontend and root
+    // Handle regular files - all files are now in frontend directory
+    const absolutePath = path.resolve(frontendRoot, cleanPath);
+    
+    if (!fs.existsSync(absolutePath)) {
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.end('<h1>404 - File Not Found</h1>');
+      return;
+    }
+
+    // Handle regular files (HTML, CSS, JS, etc.) - resolve from frontend directory
     let absolutePath = path.resolve(frontendRoot, cleanPath);
     
-    // If not found in frontend, try project root
     if (!fs.existsSync(absolutePath)) {
-      const rootPath = path.resolve(projectRoot, cleanPath);
-      if (fs.existsSync(rootPath)) {
-        absolutePath = rootPath;
-      } else {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('<h1>404 - File Not Found</h1>');
-        return;
-      }
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.end('<h1>404 - File Not Found</h1>');
+      return;
     }
 
     const content = fs.readFileSync(absolutePath);

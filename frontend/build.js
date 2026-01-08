@@ -12,10 +12,8 @@ const path = require('path');
 const util = require('util');
 
 const distDir = path.join(__dirname, 'dist');
-// Check both frontend/src and root src directory
-const frontendSrcDir = path.join(__dirname, 'src');
-const rootSrcDir = path.join(__dirname, '..', 'src');
-const srcDir = fs.existsSync(frontendSrcDir) ? frontendSrcDir : rootSrcDir;
+// Source directory is now always in frontend/src
+const srcDir = path.join(__dirname, 'src');
 
 function writeBuildFailureLog(message, error) {
   try {
@@ -50,35 +48,17 @@ if (!fs.existsSync(distDir)) {
 function copyStaticFiles() {
   console.log('📦 Copying static files...');
   
-  // Copy index.html - check both frontend and root
-  const indexHtml = fs.existsSync('index.html') ? 'index.html' : 
-                    fs.existsSync('../index.html') ? '../index.html' : null;
-  if (indexHtml) {
-    fs.copyFileSync(indexHtml, path.join(distDir, 'index.html'));
-    console.log(`✅ Copied: ${indexHtml}`);
-  } else {
-    console.warn('⚠️  index.html not found in frontend/ or root');
-  }
+  // Copy HTML files from frontend directory
+  const htmlFiles = ['index.html', 'docs.html', 'manifesto.html'];
+  htmlFiles.forEach(file => {
+    if (fs.existsSync(file)) {
+      fs.copyFileSync(file, path.join(distDir, file));
+      console.log(`✅ Copied: ${file}`);
+    }
+  });
   
-  // Copy docs.html - check both frontend and root
-  const docsHtml = fs.existsSync('docs.html') ? 'docs.html' : 
-                   fs.existsSync('../docs.html') ? '../docs.html' : null;
-  if (docsHtml) {
-    fs.copyFileSync(docsHtml, path.join(distDir, 'docs.html'));
-    console.log(`✅ Copied: ${docsHtml}`);
-  }
-  
-  // Copy manifesto.html - check both frontend and root
-  const manifestoHtml = fs.existsSync('manifesto.html') ? 'manifesto.html' : 
-                         fs.existsSync('../manifesto.html') ? '../manifesto.html' : null;
-  if (manifestoHtml) {
-    fs.copyFileSync(manifestoHtml, path.join(distDir, 'manifesto.html'));
-    console.log(`✅ Copied: ${manifestoHtml}`);
-  }
-  
-  // Copy _redirects file for Netlify SPA routing - check both frontend/public and root public
-  const redirectsFile = fs.existsSync('public/_redirects') ? 'public/_redirects' : 
-                        fs.existsSync('../public/_redirects') ? '../public/_redirects' : null;
+  // Copy _redirects file for Netlify SPA routing from frontend/public
+  const redirectsFile = 'public/_redirects';
   if (redirectsFile) {
     fs.copyFileSync(redirectsFile, path.join(distDir, '_redirects'));
     console.log(`✅ Copied: ${redirectsFile}`);
@@ -134,10 +114,8 @@ async function buildTypeScript() {
   
   // Verify source directory exists
   if (!fs.existsSync(srcDir)) {
-    console.error(`❌ Source directory not found`);
-    console.error(`   Checked frontend/src: ${frontendSrcDir} - ${fs.existsSync(frontendSrcDir) ? 'EXISTS' : 'NOT FOUND'}`);
-    console.error(`   Checked root/src: ${rootSrcDir} - ${fs.existsSync(rootSrcDir) ? 'EXISTS' : 'NOT FOUND'}`);
-    throw new Error(`Source directory not found. Expected either ${frontendSrcDir} or ${rootSrcDir}`);
+    console.error(`❌ Source directory not found: ${srcDir}`);
+    throw new Error(`Source directory not found: ${srcDir}`);
   }
 
   // Production build only needs the app entry; this avoids builds failing due to

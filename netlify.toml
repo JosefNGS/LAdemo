@@ -1,9 +1,7 @@
 [build]
   command = "npm run build"
   publish = "frontend/dist"
-  # Functions location - check both locations
-  # Priority: backend/netlify/functions, then netlify/functions
-  functions = "netlify/functions"
+  functions = "backend/netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
