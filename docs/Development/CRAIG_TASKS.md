@@ -1,0 +1,207 @@
+# Craig Martin - Task Tracking & Responsibilities
+## CTO - Main Branch Maintainer
+
+**Last Updated**: January 2026  
+**Version**: 1.0  
+**Status**: Active Task Tracking
+
+**Contact**: craig@nordicglobalsolutions.com
+
+**⚠️ SYNC**: This document is synchronized with `docs/Project Management/TODO.md`. Always update both files when tasks change.
+
+---
+
+## 👤 Role & Responsibilities
+
+### Primary Responsibilities:
+- **Hosting Services**: Infrastructure, deployment, and hosting management
+- **Discourse (Forum)**: Forum service setup, configuration, and integration
+- **n8n**: Workflow automation platform setup, configuration, and integration
+- **Technology Leadership**: Technical architecture and system design
+- **Security Oversight**: Security architecture and compliance
+- **Main Branch Protection**: Review and merge all Pull Requests to main branch
+
+### Key Documentation to Maintain:
+- `docs/Services/netlify/DEPLOYMENT.md`
+- `docs/Core Documentation/TECH_STACK.md`
+- `docs/Services/github/VERSION_CONTROL.md`
+- `docs/Services/n8n/` (when implemented)
+- `docs/Services/discourse/` (when implemented)
+
+---
+
+## 📋 Current Tasks (Synced with TODO.md)
+
+### ✅ Completed Tasks
+
+#### Hosting & Infrastructure
+- [x] Netlify deployment setup
+- [x] Netlify configuration (`netlify.toml`)
+- [x] Build process configuration
+- [x] Deployment documentation
+
+#### Version Control
+- [x] GitHub repository setup
+- [x] Branch protection rules
+- [x] Pull Request workflow
+- [x] Version control documentation
+
+---
+
+### 🔄 In Progress
+
+**Synced from TODO.md** - See `docs/Project Management/TODO.md` section "In Progress" for current tasks.
+
+**Craig-Specific In Progress Tasks**:
+- [ ] Review Pull Requests (as CTO)
+- [ ] Maintain main branch protection
+- [ ] Plan n8n and Discourse implementation
+
+---
+
+### 📌 High Priority Tasks
+
+#### Hosting Services
+- [ ] Production deployment optimization
+- [ ] CDN configuration
+- [ ] Environment variable management
+- [ ] Server infrastructure planning
+- [ ] Performance optimization
+
+#### Discourse (Forum) Setup
+- [ ] Create `backend/discourse/` folder structure
+- [ ] Discourse installation and configuration
+- [ ] SSO (Single Sign-On) setup
+- [ ] Custom theme and branding
+- [ ] Integration with main platform
+- [ ] Documentation: `docs/Services/discourse/`
+
+#### n8n Automation Setup
+- [ ] Create `backend/n8n/` folder structure
+- [ ] n8n installation and configuration
+- [ ] Workflow configurations
+- [ ] Integration with Supabase
+- [ ] Integration with Gemini AI
+- [ ] Integration with payment gateways
+- [ ] Commission calculation workflows
+- [ ] Notification workflows
+- [ ] Data sync workflows
+- [ ] Documentation: `docs/Services/n8n/`
+
+#### Security & Compliance
+- [ ] Security architecture review
+- [ ] Compliance documentation
+- [ ] Security audit coordination
+- [ ] ISO certification maintenance
+
+---
+
+### 📝 Medium Priority Tasks
+
+#### Infrastructure
+- [ ] Server infrastructure documentation
+- [ ] CDN configuration documentation
+- [ ] Environment setup guides
+- [ ] Production deployment guides
+
+#### Service Integration
+- [ ] Service integration documentation
+- [ ] API integration guides
+- [ ] Webhook configuration
+- [ ] Data sync workflows
+
+---
+
+### 🔮 Future Enhancements
+
+#### Infrastructure
+- [ ] Dedicated server setup (future)
+- [ ] Kubernetes configuration (future)
+- [ ] Monitoring and logging setup
+- [ ] Backup and disaster recovery
+
+#### Services
+- [ ] Additional service integrations
+- [ ] Advanced automation workflows
+- [ ] Enhanced security features
+- [ ] Performance monitoring
+
+---
+
+## 🔗 Related TODO Items
+
+**Main TODO**: `docs/Project Management/TODO.md`
+
+**Relevant Sections**:
+- Backend Service Structure
+- Hosting Services
+- n8n Automation
+- Discourse Forum
+- Security & Compliance
+- Infrastructure
+
+---
+
+## 🔐 Main Branch Protection
+
+### Pull Request Review Process
+
+**As CTO, you are responsible for**:
+1. **Reviewing all Pull Requests** before merging to main
+2. **Ensuring production readiness** of all code
+3. **Verifying code quality** and standards
+4. **Checking documentation** updates
+5. **Approving and merging** when ready
+
+**Review Checklist**:
+- [ ] Code is tested and working
+- [ ] No breaking changes
+- [ ] Documentation updated
+- [ ] Build passes successfully
+- [ ] No console errors
+- [ ] Follows project structure
+- [ ] Follows coding standards
+- [ ] No sensitive data exposed
+
+**See**: `docs/Services/github/VERSION_CONTROL.md` for complete workflow
+
+---
+
+## 📊 Task Status Summary
+
+**Total Tasks**: See `docs/Project Management/TODO.md`  
+**Completed**: See completed tasks above  
+**In Progress**: Check main TODO  
+**High Priority**: See high priority section above  
+**Blocked**: None currently
+
+---
+
+## 🔄 Synchronization Notes
+
+**This document must be kept synchronized with**:
+- `docs/Project Management/TODO.md` - Main task tracking
+- `docs/Development/DEVELOPER_DOCS.md` - Team responsibilities
+- `docs/Development/TEAM_DOCUMENTATION_RESPONSIBILITIES.md` - Documentation ownership
+- `docs/Services/github/VERSION_CONTROL.md` - Version control workflow
+
+**When updating tasks**:
+1. Update this file with Craig-specific tasks
+2. Update `docs/Project Management/TODO.md` with general tasks
+3. Keep both files synchronized
+
+---
+
+## 📞 Contact & Coordination
+
+**For Infrastructure Questions**: Contact Craig Martin  
+**For Deployment Issues**: Contact Craig Martin  
+**For Pull Request Reviews**: Contact Craig Martin (CTO)
+
+**Email**: craig@nordicglobalsolutions.com
+
+---
+
+**Last Updated**: January 2026  
+**Next Review**: Weekly synchronization with TODO.md
+
