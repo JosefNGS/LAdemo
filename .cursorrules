@@ -25,8 +25,18 @@
 - [ ] Follows project structure (`docs/Core Documentation/STRUCTURE.md`)
 - [ ] Follows coding standards (`.cursorrules`)
 - [ ] **CRITICAL**: Push change documentation created (see Push Change Documentation section)
+- [ ] Developer information updated in change documentation (who made the changes)
+- [ ] Developer registry (`docs/Services/github/DEVELOPERS.md`) updated if developer info changed
 
 **See `docs/Services/github/VERSION_CONTROL.md` for complete Git workflow guidelines.**
+
+**Push Change Documentation - CRITICAL**:
+- **EVERY push MUST have** change documentation
+- **Documentation location**: `docs/Services/github/push-docs/`
+- **Naming**: `YYYY-MM-DD-HHMMSS-[brief-description].md`
+- **Template**: `docs/Services/github/PUSH_CHANGE_DOCUMENTATION_TEMPLATE.md`
+- **Must include**: Developer name, email, role, and all changes made
+- **CRITICAL**: No push to GitHub without change documentation
 
 **Active Developers** (tracked in `docs/Services/github/DEVELOPERS.md`):
 - **Josef Lindbom** (COO & Development Vision Lead) - josef@nordicglobalsolutions.com
@@ -34,6 +44,14 @@
 - **Jonne Waselius** (Backend Developer) - Jonne@nordicglobalsolutions.com
 
 **CRITICAL**: All developer information must be kept up-to-date in `docs/Services/github/DEVELOPERS.md`. This file is tracked in version control and must be updated whenever developers join or leave the project.
+
+**Nordic Global Communication**:
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
+
+**All active developers must join the Admin & Developer Discord server for team communication.**
 
 ### 🖥️ DEVELOPMENT SERVER - CRITICAL LOCATION
 **MANDATORY RULE - STRICTLY ENFORCED**:
@@ -47,7 +65,13 @@
 - Development server configuration
 - Development server dependencies
 - Development server logs (if any)
+- Docker files (Dockerfile, docker-compose.yml, .dockerignore)
 - All files related to running the development server
+
+**Docker Setup**:
+- Docker configuration files MUST be in `Dev server/` folder
+- See `docs/Setup & Configuration/DOCKER_SETUP.md` for Docker setup guide
+- Docker Compose for multi-service development environment
 
 **What Goes Where**:
 - ✅ **Development server files** → `Dev server/`
@@ -79,6 +103,19 @@
 2. **Follow all rules** defined in SERVICE_RULES.md
 3. **Update service rules** if adding new requirements
 4. **Never violate service rules** - they are CRITICAL
+
+**Service Rules Locations**:
+- **Netlify**: `docs/Services/netlify/SERVICE_RULES.md`
+- **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
+- **GitHub**: `docs/Services/github/SERVICE_RULES.md`
+  - **Developer Registry**: `docs/Services/github/DEVELOPERS.md` (CRITICAL)
+  - **Version Control**: `docs/Services/github/VERSION_CONTROL.md`
+  - **Push Instructions**: `docs/Services/github/GITHUB_PUSH_INSTRUCTIONS.md`
+  - **Push Change Template**: `docs/Services/github/PUSH_CHANGE_DOCUMENTATION_TEMPLATE.md`
+- **n8n**: `docs/Services/n8n/SERVICE_RULES.md`
+- **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
+- **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
+- **Golang API**: `docs/Services/golang-api/SERVICE_RULES.md`
 
 ### 📁 PROJECT STRUCTURE - MAIN SOURCE
 **MANDATORY RULE - STRICTLY ENFORCED**:
@@ -461,6 +498,10 @@ After making responsive changes:
 - Commit messages should be clear and descriptive
 - Keep commits focused on single features/fixes
 - Don't commit build artifacts or node_modules
+- **CRITICAL**: Every push MUST include change documentation
+- **CRITICAL**: Change documentation must include developer information
+- **CRITICAL**: Developer registry must be updated when developers join/leave
+- **CRITICAL**: All pushes must go through Pull Request workflow (no direct pushes to main)
 
 ### Documentation
 - Add JSDoc comments for complex functions
@@ -606,6 +647,18 @@ After making responsive changes:
 
 **IMPORTANT**: Never leave outdated dates in documentation. Always verify and update to today's date.
 
+## 💬 Team Communication & Resources
+
+### Nordic Global Discord Servers
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+
+### Nordic Global Websites
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
+
+**All active developers must join the Admin & Developer Discord server for team communication.**
+
 ## Notes
 - This project uses ES modules with on-the-fly TypeScript transpilation
 - Import maps are defined in `index.html` for CDN dependencies
@@ -613,4 +666,6 @@ After making responsive changes:
 - The demo mode loads React app dynamically when "Try Demo" is clicked
 - TypeScript files are transpiled by `server.js` using esbuild when served
 - Documentation is organized in the `docs/` folder
+- All developers must be registered in `docs/Services/github/DEVELOPERS.md`
+- Every push must include change documentation in `docs/Services/github/push-docs/`
 
