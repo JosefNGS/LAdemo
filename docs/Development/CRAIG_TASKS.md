@@ -105,6 +105,15 @@
 - [ ] Security audit coordination
 - [ ] ISO certification maintenance
 
+#### GitLab & GitHub Setup
+- [ ] Set up GitLab repository
+- [ ] Configure GitLab CI/CD pipelines
+- [ ] Set up GitHub repository (if separate from existing)
+- [ ] Verify all development plans
+- [ ] Create the development plans we need
+- [ ] Synchronize GitLab and GitHub workflows
+- [ ] Configure branch protection for both platforms
+
 ---
 
 ### 📝 Medium Priority Tasks
