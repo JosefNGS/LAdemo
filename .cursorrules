@@ -415,6 +415,10 @@ After making responsive changes:
 - ❌ **CRITICAL**: Don't update LICENSE or README.md without updating both root and `.github/` versions
 - ❌ **CRITICAL**: Don't let `.github/LICENSE` and `LICENSE` get out of sync
 - ❌ **CRITICAL**: Don't let `.github/README.md` and `README.md` get out of sync
+- ❌ **CRITICAL**: Don't place files in root directory that don't belong there (check `docs/STRUCTURE.md`)
+- ❌ **CRITICAL**: Don't create random files without following folder structure (see `docs/STRUCTURE.md`)
+- ❌ **CRITICAL**: Don't mix backend services in the same folder (one folder per service)
+- ❌ **CRITICAL**: Don't organize documentation randomly (must follow `docs/` structure)
 - ❌ Don't use inline styles (use Tailwind classes)
 - ❌ Don't create components in wrong directories
 - ❌ Don't use `any` type (use proper TypeScript types)
