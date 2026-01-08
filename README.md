@@ -375,12 +375,17 @@ BitNexus Landing Page/
 │   ├── build.js            # Production build script
 │   ├── server.js           # Development server with TypeScript transpilation
 │   └── server.py           # Fallback Python server
-├── backend/                # Backend services
-│   └── netlify/
-│       └── functions/      # Serverless functions
-│           ├── submit-email.js
-│           ├── submit-email-airtable.js
-│           └── submit-email-supabase.js
+├── backend/                # Backend services (one folder per service)
+│   ├── netlify/            # Netlify serverless functions
+│   │   └── functions/      # Serverless functions
+│   │       ├── submit-email.js
+│   │       ├── submit-email-airtable.js
+│   │       └── submit-email-supabase.js
+│   ├── n8n/                # n8n automation service (planned)
+│   │   └── workflows/      # n8n workflow configurations
+│   ├── discourse/          # Discourse forum service (planned)
+│   │   └── config/         # Discourse configuration files
+│   └── ... (other services, one folder per service)
 ├── docs/                   # Documentation
 │   ├── Product docs/       # Product documentation (organized by topic)
 │   │   ├── Pitch Deck & Presentations/  # Pitch decks and presentation materials

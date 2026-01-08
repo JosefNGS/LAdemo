@@ -128,7 +128,7 @@ Verify these in Netlify Dashboard:
 
 - **Build command**: `npm run build`
 - **Publish directory**: `frontend/dist`
-- **Functions directory**: `netlify/functions`
+  - **Functions directory**: `backend/netlify/functions`
 - **Node version**: 18 (or use `.nvmrc`)
 
 ## If Build Still Fails

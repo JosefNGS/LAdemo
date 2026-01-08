@@ -122,6 +122,12 @@
   - [x] Move all backend files to `backend/` directory ✅
     - [x] Move `netlify/functions/` → `backend/netlify/functions/` ✅
   - [x] Update all file path references throughout the system ✅
+  - [x] Implement one-folder-per-service backend structure ✅
+    - [x] `backend/netlify/` - Netlify serverless functions ✅
+    - [ ] `backend/n8n/` - n8n automation service (planned)
+    - [ ] `backend/discourse/` - Discourse forum service (planned)
+    - [ ] `backend/erlang-ledger/` - Erlang/Elixir blockchain ledger (planned)
+    - [ ] `backend/golang-api/` - Go API services (planned)
     - [ ] Update `package.json` scripts
     - [ ] Update `netlify.toml` configuration
     - [ ] Update `server.js` file paths

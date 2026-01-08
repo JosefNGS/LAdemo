@@ -100,11 +100,14 @@ BitNexus Landing Page/
 │   ├── build.js        # Production build script
 │   ├── server.js       # Node.js dev server with TypeScript transpilation
 │   └── server.py       # Python dev server (fallback)
-├── backend/            # Backend services (or netlify/ in root)
-│   └── netlify/
-│       └── functions/  # Serverless functions (submit-email, etc.)
-├── netlify/            # Alternative: Functions in root (current structure)
-│   └── functions/      # Serverless functions
+├── backend/            # Backend services (one folder per service)
+│   ├── netlify/        # Netlify serverless functions
+│   │   └── functions/  # Serverless functions (submit-email, etc.)
+│   ├── n8n/            # n8n automation service (planned)
+│   │   └── workflows/  # n8n workflow configurations
+│   ├── discourse/      # Discourse forum service (planned)
+│   │   └── config/     # Discourse configuration files
+│   └── ... (other services, one folder per service)
 ├── docs/               # Documentation folder
 │   ├── Product docs/   # Product documentation (Revenue Plan, Pitch Deck, etc.)
 │   ├── API_SETUP.md   # Gemini API configuration guide
@@ -117,6 +120,27 @@ BitNexus Landing Page/
 ├── README.md          # Project documentation
 └── .cursorrules       # This file
 ```
+
+### Backend Service Organization
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **Each backend service MUST have its own folder** under `backend/`
+- **One folder per service** - No mixing of services in the same folder
+- **Service folders should be named after the service** (e.g., `n8n/`, `discourse/`, `netlify/`)
+
+**Backend Structure Rules**:
+1. **Netlify Functions**: `backend/netlify/functions/` - Serverless functions
+2. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
+3. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
+4. **Future Services**: Each new service gets its own folder under `backend/`
+   - Example: `backend/erlang-ledger/` for blockchain ledger service
+   - Example: `backend/golang-api/` for Go API services
+
+**When adding a new backend service**:
+1. Create a new folder under `backend/` named after the service
+2. Add service-specific configuration files in that folder
+3. Update documentation to reflect the new service folder
+4. Update `netlify.toml` or relevant config files if needed
+5. Never mix services in the same folder
 
 ## Coding Standards
 
