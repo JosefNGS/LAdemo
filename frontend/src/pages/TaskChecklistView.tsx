@@ -19,15 +19,27 @@ const TaskChecklistView: React.FC<TaskChecklistViewProps> = ({ teamMember, setAc
       setLoading(true);
       setError(null);
       try {
-        // Sync tasks from markdown to database first
-        await syncTasksFromMarkdown(teamMember);
+        console.log(`Loading tasks for team member: ${teamMember}`);
+        
+        // Sync tasks from markdown to database first (this might fail, but we continue)
+        try {
+          await syncTasksFromMarkdown(teamMember);
+        } catch (syncError) {
+          console.warn('Sync failed, continuing with file load:', syncError);
+        }
         
         // Then load task file for display
         const data = await loadTaskFile(teamMember);
-        setTaskData(data);
-      } catch (err) {
+        console.log(`Loaded task data:`, { name: data.name, taskCount: data.tasks.length });
+        
+        if (data.tasks.length === 0) {
+          setError(`No tasks found in the markdown file. Please check docs/Development/${teamMember.toUpperCase()}_TASKS.md contains tasks in format: - [ ] Task name`);
+        } else {
+          setTaskData(data);
+        }
+      } catch (err: any) {
         console.error('Error loading task file:', err);
-        setError('Failed to load task file. Please check the file path.');
+        setError(`Failed to load task file: ${err.message || 'Unknown error'}. Check browser console for details.`);
       } finally {
         setLoading(false);
       }
@@ -53,6 +65,27 @@ const TaskChecklistView: React.FC<TaskChecklistViewProps> = ({ teamMember, setAc
         <p>{error || 'Team member not found'}</p>
         <p className="text-sm text-gray-500 mt-2">
           File: docs/Development/{teamMember.toUpperCase()}_TASKS.md
+        </p>
+        <p className="text-xs text-gray-600 mt-2">
+          Check browser console for detailed error information.
+        </p>
+      </div>
+    );
+  }
+
+  // Check if no tasks were found
+  if (taskData.tasks.length === 0) {
+    return (
+      <div className="p-6 text-center text-yellow-400">
+        <p className="text-lg font-bold mb-2">No tasks found</p>
+        <p className="text-sm text-gray-400 mb-4">
+          The task file exists but no tasks were parsed from it.
+        </p>
+        <p className="text-xs text-gray-500">
+          File: docs/Development/{teamMember.toUpperCase()}_TASKS.md
+        </p>
+        <p className="text-xs text-gray-500 mt-2">
+          Make sure the file contains tasks in markdown format: <code className="bg-white/10 px-1 rounded">- [ ] Task name</code>
         </p>
       </div>
     );

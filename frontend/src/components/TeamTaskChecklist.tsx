@@ -80,17 +80,43 @@ const TeamTaskChecklist: React.FC<TeamTaskChecklistProps> = ({
   };
 
   const groupedTasks = tasks.reduce((acc, task) => {
-    if (!acc[task.category]) {
-      acc[task.category] = [];
+    const category = task.category || 'General';
+    if (!acc[category]) {
+      acc[category] = [];
     }
-    acc[task.category].push(task);
+    acc[category].push(task);
     return acc;
   }, {} as { [key: string]: typeof tasks });
 
   if (loading) {
     return (
       <div className="p-6 text-center text-gray-500">
-        Loading tasks...
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+        <p className="mt-4">Loading tasks...</p>
+      </div>
+    );
+  }
+
+  if (tasks.length === 0) {
+    return (
+      <div className="p-6 text-center text-yellow-400">
+        <p className="text-lg font-bold mb-2">No tasks found</p>
+        <p className="text-sm text-gray-400">
+          No tasks were loaded for {teamMemberName}.
+        </p>
+      </div>
+    );
+  }
+
+  const categoryEntries = Object.entries(groupedTasks);
+  
+  if (categoryEntries.length === 0) {
+    return (
+      <div className="p-6 text-center text-yellow-400">
+        <p className="text-lg font-bold mb-2">No tasks to display</p>
+        <p className="text-sm text-gray-400">
+          Tasks were loaded but could not be grouped by category.
+        </p>
       </div>
     );
   }
@@ -107,7 +133,7 @@ const TeamTaskChecklist: React.FC<TeamTaskChecklistProps> = ({
         </button>
       </div>
 
-      {Object.entries(groupedTasks).map(([category, categoryTasks]) => (
+      {categoryEntries.map(([category, categoryTasks]) => (
         <div key={category} className="glass-card p-4 rounded-xl border border-white/5">
           <h4 className="font-bold mb-3 text-purple-400">{category}</h4>
           <div className="space-y-2">
