@@ -14,7 +14,7 @@
 **Push Date**: 2026-01-08  
 **Push Time**: 16:56:57  
 **Branch**: feature/admin-guide-and-workflow-updates  
-**Commit Hash**: [Will be filled after commit]  
+**Commit Hash**: 1485d3a  
 **Developer**: Josef Lindbom  
 **Developer Email**: josef@nordicglobalsolutions.com  
 **Developer Role**: COO & Development Vision Lead  
