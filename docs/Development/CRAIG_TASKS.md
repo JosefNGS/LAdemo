@@ -64,6 +64,9 @@
 - [ ] Review Pull Requests (as CTO)
 - [ ] Maintain main branch protection
 - [ ] Plan n8n and Discourse implementation
+- [ ] **VERIFY**: All completed tasks marked by Josef
+- [ ] Set up GitLab and GitHub
+- [ ] Verify all development plans and make the ones we need
 
 ---
 
