@@ -124,7 +124,7 @@ BitNexus is protected by comprehensive legal protections:
 ### Comprehensive Legal Documentation
 
 For detailed information about all legal protections, see:
-- **[Legal Protections Documentation](./docs/Product%20docs/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework
+- **[Legal Protections Documentation](./docs/Product%20docs/Legal%20&%20Compliance/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework
 
 **Key Topics Covered:**
 - Copyright registration and enforcement
@@ -286,19 +286,47 @@ See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed contribution guideli
 ## 📄 Documentation
 
 - **[UI Documentation](./docs/UI_DOCUMENTATION.md)** - Complete UI specifications and page inventory
-- **[Product Presentation](./docs/Product%20docs/PRODUCT_PRESENTATION.md)** - Complete product overview and business case
-- **[Product Presentation Slides](./docs/Product%20docs/PRODUCT_PRESENTATION_SLIDES.md)** - Pitch deck outline
 - **[Implementation Plan](./docs/IMPLEMENTATION_PLAN.md)** - Development roadmap and feature implementation
 - **[Quick Wins](./docs/QUICK_WINS_FINANCIAL_FREEDOM.md)** - High-impact features for financial freedom
 - **[Financial Freedom Enhancements](./docs/FINANCIAL_FREEDOM_ENHANCEMENTS.md)** - Strategies to help users achieve financial freedom
 - **[Affiliate Program Architecture](./docs/AFFILIATE_PROGRAM_ARCHITECTURE.md)** - Comprehensive affiliate program strategy, commission structure, and operations framework
+- **[Tech Stack](./docs/TECH_STACK.md)** - Complete technology stack documentation
+- **[TODO List](./docs/TODO.md)** - Project task tracking and roadmap
 - **[Deployment Guide](./docs/DEPLOYMENT.md)** - Netlify deployment instructions
 - **[API Setup](./docs/API_SETUP.md)** - Gemini API configuration guide
 - **[Supabase Setup](./docs/SUPABASE_SETUP.md)** - Complete Supabase database integration guide
 - **[Supabase Quick Start](./docs/SUPABASE_QUICK_START.md)** - Get started with Supabase in 5 minutes
 - **[Email Collection Setup](./docs/EMAIL_COLLECTION_SETUP.md)** - Database options for email signups
 - **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
-- **[Legal Protections](./docs/Product%20docs/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework (Copyright, Trade Secrets, Patents, Trademarks, DMCA, International Protection)
+
+### Product Documentation
+
+The Product documentation is organized into topic-specific folders:
+
+#### Pitch Deck & Presentations
+- **[Pitch Deck](./docs/Product%20docs/Pitch%20Deck%20&%20Presentations/PITCH_DECK.md)** - Complete pitch deck content
+- **[Pitch Deck Speaker Notes](./docs/Product%20docs/Pitch%20Deck%20&%20Presentations/PITCH_DECK_SPEAKER_NOTES.md)** - Detailed speaker notes for pitch presentations
+- **[Product Presentation](./docs/Product%20docs/Pitch%20Deck%20&%20Presentations/PRODUCT_PRESENTATION.md)** - Complete product overview and business case
+- **[Product Presentation Slides](./docs/Product%20docs/Pitch%20Deck%20&%20Presentations/PRODUCT_PRESENTATION_SLIDES.md)** - Pitch deck slide outline
+
+#### Business & Strategy
+- **[One-Pager](./docs/Product%20docs/Business%20&%20Strategy/BITNEXUS_ONE_PAGER.md)** - Concise one-page platform overview
+- **[Business Model Canvas](./docs/Product%20docs/Business%20&%20Strategy/BUSINESS_MODEL_CANVAS.md)** - Strategic business model framework
+- **[Market Analysis](./docs/Product%20docs/Business%20&%20Strategy/MARKET_ANALYSIS.md)** - Comprehensive market research and competitive intelligence
+- **[Revenue Plan](./docs/Product%20docs/Business%20&%20Strategy/REVENUE_PLAN.md)** - Detailed revenue model and pricing strategy
+- **[SWOT Analysis](./docs/Product%20docs/Business%20&%20Strategy/SWOT_ANALYSIS.md)** - Strategic business evaluation (Strengths, Weaknesses, Opportunities, Threats)
+
+#### Technical Documentation
+- **[Platform Overview](./docs/Product%20docs/Technical%20Documentation/PLATFORM_OVERVIEW.md)** - Comprehensive platform architecture and features
+- **[Complete UI Documentation](./docs/Product%20docs/Technical%20Documentation/COMPLETE_UI_DOCUMENTATION.md)** - Detailed UI/UX specifications for all pages
+- **[Trust Building System](./docs/Product%20docs/Technical%20Documentation/TRUST_BUILDING_SYSTEM.md)** - Trust and security features implementation
+- **[User Flow Logic](./docs/Product%20docs/Technical%20Documentation/USER_FLOW_LOGIC.md)** - User journey mapping and conversion flows
+
+#### Legal & Compliance
+- **[Legal Protections](./docs/Product%20docs/Legal%20&%20Compliance/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework (Copyright, Trade Secrets, Patents, Trademarks, DMCA, International Protection)
+
+#### Tokenomics
+- **[NXC Credits Explanation](./docs/Product%20docs/Tokenomics/NXC_CREDITS_EXPLANATION.md)** - Tokenomics and credit system documentation
 
 ## 📁 Project Structure
 
@@ -354,10 +382,29 @@ BitNexus Landing Page/
 │           ├── submit-email-airtable.js
 │           └── submit-email-supabase.js
 ├── docs/                   # Documentation
-│   ├── Product docs/       # Product documentation
-│   │   ├── REVENUE_PLAN.md
-│   │   ├── PITCH_DECK.md
-│   │   └── ... (more docs)
+│   ├── Product docs/       # Product documentation (organized by topic)
+│   │   ├── Pitch Deck & Presentations/  # Pitch decks and presentation materials
+│   │   │   ├── PITCH_DECK.md
+│   │   │   ├── PITCH_DECK_SPEAKER_NOTES.md
+│   │   │   ├── PRODUCT_PRESENTATION.md
+│   │   │   └── PRODUCT_PRESENTATION_SLIDES.md
+│   │   ├── Business & Strategy/         # Business planning and strategy docs
+│   │   │   ├── BITNEXUS_ONE_PAGER.md
+│   │   │   ├── BUSINESS_MODEL_CANVAS.md
+│   │   │   ├── MARKET_ANALYSIS.md
+│   │   │   ├── REVENUE_PLAN.md
+│   │   │   └── SWOT_ANALYSIS.md
+│   │   ├── Technical Documentation/     # Technical specs and documentation
+│   │   │   ├── COMPLETE_UI_DOCUMENTATION.md
+│   │   │   ├── PLATFORM_OVERVIEW.md
+│   │   │   ├── TRUST_BUILDING_SYSTEM.md
+│   │   │   └── USER_FLOW_LOGIC.md
+│   │   ├── Legal & Compliance/          # Legal protection documentation
+│   │   │   └── LEGAL_PROTECTIONS.md
+│   │   └── Tokenomics/                  # Tokenomics and credit system
+│   │       └── NXC_CREDITS_EXPLANATION.md
+│   ├── TECH_STACK.md                    # Technology stack documentation
+│   ├── TODO.md                          # Project task tracking and roadmap
 │   └── ... (other docs)
 ├── package.json            # Node.js dependencies
 ├── netlify.toml            # Netlify configuration
@@ -367,12 +414,25 @@ BitNexus Landing Page/
 
 ## 🛠️ Tech Stack
 
+### Frontend
 - **React 19.2.3** - UI framework (loaded via ESM CDN)
-- **TypeScript** - Type safety
+- **TypeScript** - Type safety with strict typing
 - **Tailwind CSS** - Utility-first CSS framework (via CDN)
 - **Recharts 3.6.0** - Chart library for data visualization
-- **Supabase** - PostgreSQL database with real-time capabilities
 - **ES Modules** - Native browser module system (no bundler needed)
+- **esbuild** - TypeScript transpilation for development and production
+
+### Backend
+- **Netlify Functions** - Serverless backend functions (Node.js 20)
+- **Supabase** - PostgreSQL database with real-time capabilities
+
+### Future/Planned Technologies
+- **Erlang/Elixir** - Blockchain ledger implementation (custom transparency ledger)
+- **Go (Golang)** - High-performance backend services and APIs
+- **n8n** - Workflow automation and integration platform
+- **Server Infrastructure** - Dedicated server hosting for specialized needs
+
+For complete technology stack details, see [Tech Stack Documentation](./docs/TECH_STACK.md).
 
 ## ✨ Features
 
@@ -383,21 +443,24 @@ BitNexus Landing Page/
 - Responsive design
 
 ### Demo Dashboard
-- **Dashboard**: Command Center with affiliate revenue tracking, financial freedom progress, income streams, quick actions, and Tools section (Link Shortener, QR Generator, Commission Calculator, UTM Builder)
-- **Marketplace**: Product listings with search, filtering, earning calculators, product tags, and product detail drawer
+- **Dashboard**: Command Center with affiliate revenue tracking, financial freedom progress, income streams, quick actions, Tools section (Link Shortener, QR Generator, Commission Calculator, UTM Builder), Link Performance Tracker (with functional View Details and Add New Link buttons), and functional UTM Parameter Builder
+- **Marketplace**: Product listings with search, filtering, earning calculators, product tags, product detail drawer, Due Diligence tab with ISO 27001/27701 certifications, product ranking system (S to F grades), and detailed audit modals
 - **Earn**: MEV Bot Lab & XAB Bot Lab (XRP) with staking, passive income calculator, and bot management
-- **Alliance**: Tier progression, referral tools, success stories, Global Hall of Fame, and network statistics
-- **Credits Shop**: NXC credits packages with pricing tiers and AI usage credits
+- **Alliance**: Tier progression, referral tools, success stories, Global Hall of Fame, network statistics, and Outreach & Communication with manual email/phone entry
+- **Credits Shop**: NXC credits packages with pricing tiers, AI usage credits, and Financial Freedom Packages with functional Select Package buttons
 - **Chat**: Encrypted messaging interface with financial freedom chat groups
 - **Friends**: Social connections and friend management
 - **Forum**: Community forum with categories (Affiliate Marketing, MEV Bot Trading, XAB Bot Trading, Network Building, Financial Freedom, Support)
 - **Affiliate Manager**: Link tracking, performance analytics, and QR code generation
-- **Content Generator**: AI-powered content creation for social media
-- **Goals**: Goal setting and progress tracking
+- **Content Generator**: AI-powered content creation for social media with upload modal, Save Template, Schedule Post, and View Analytics modals
+- **Goals**: Goal setting and progress tracking (integrated into Profile)
 - **Academy**: Educational courses, financial freedom learning paths, and live events
 - **NexusHub**: AI-powered chat assistant
-- **Profile**: User settings, security, and social media connections
-- **Admin Pages**: Vetting, Users, Reports (for administrators)
+- **Profile**: User settings, security, verification badges, vendor certification, and social media connections
+- **Governance**: Decentralized governance and voting system for platform changes
+- **News**: News articles with images
+- **Feed**: Social media feed with functional like, comment, and share buttons
+- **Admin Pages**: Vetting (with community-driven product approval), Users, Reports (for administrators)
 
 ## 🎨 Design System
 
@@ -475,18 +538,67 @@ BitNexus Landing Page/
 
 ### Vision/Developer
 
-**Josef Lindbom**
-- Vision and Development Lead
-- Strategic direction and platform architecture
-- Contact: josef@nordicglobalsolutions.com
+**Josef Lindbom** - *Founder & Vision Lead*
+- 🎯 **Role**: Vision and Development Lead
+- 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development
+- 🏢 **Company**: Nordic Global Solutions
+- 📧 **Contact**: josef@nordicglobalsolutions.com
 
 ### Chief Technology Officer (CTO)
 
-**Craig Martin**
-- Technology leadership and oversight
-- Technical architecture and implementation
-- System design and scalability
-- Contact: craig@nordicglobalsolutions.com
+**Craig Martin** - *CTO*
+- 🎯 **Role**: Chief Technology Officer
+- 📐 **Responsibilities**: Technology leadership, technical architecture, system design, scalability, security oversight
+- 🏢 **Company**: Nordic Global Solutions
+- 📧 **Contact**: craig@nordicglobalsolutions.com
+
+### Development Collaboration
+
+**⚠️ IMPORTANT: Contract Required for All Development Work**
+
+Any collaboration with developers or use of this codebase requires:
+1. **Signed Development Agreement** - Mandatory before any code access
+2. **Non-Disclosure Agreement (NDA)** - Strict confidentiality terms
+3. **Work-for-Hire Clause** - All code owned by BitNexus
+4. **IP Assignment** - Developer assigns all intellectual property rights
+
+**To inquire about development opportunities:**
+- Email: josef@nordicglobalsolutions.com
+- Subject: "BitNexus Development Collaboration Inquiry"
+
+---
+
+## ⚖️ Legal & Compliance
+
+### Intellectual Property Protection
+
+BitNexus employs a comprehensive multi-layered IP protection strategy:
+
+| Protection Type | Status | Coverage |
+|----------------|--------|----------|
+| **Copyright** | ✅ Active | U.S. + 179 countries (Berne Convention) |
+| **Trade Secrets** | ✅ Active | UTSA framework (49 U.S. states) |
+| **Patents** | ⏳ Pending | Novel algorithms under evaluation |
+| **Trademarks** | ⏳ Pending | BitNexus brand registration in progress |
+| **DMCA** | ✅ Active | Eligible for takedown procedures |
+| **ISO 27001** | ✅ Certified | Information Security Management |
+| **ISO 27701** | ✅ Certified | Privacy Information Management |
+
+### Protected Assets
+
+- ✅ Source code (literal code and SSO)
+- ✅ User interface designs
+- ✅ Core algorithms (AI content generation, commission calculations)
+- ✅ Business logic and processes
+- ✅ Database structures
+- ✅ Documentation
+- ✅ Security implementations
+- ✅ Proprietary integrations
+
+### Legal Documentation
+
+For complete legal framework details, see:
+- **[Legal Protections](./docs/Product%20docs/Legal%20&%20Compliance/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework
 
 ---
 
@@ -546,7 +658,7 @@ A signed development agreement is mandatory for any use of this codebase in deve
 - **Subject**: "BitNexus Legal Inquiry"
 
 **Comprehensive Legal Documentation:**
-- See [Legal Protections Documentation](./docs/Product%20docs/LEGAL_PROTECTIONS.md) for complete IP protection framework
+- See [Legal Protections Documentation](./docs/Product%20docs/Legal%20&%20Compliance/LEGAL_PROTECTIONS.md) for complete IP protection framework
 
 See [LICENSE](LICENSE) for full terms and conditions.
 

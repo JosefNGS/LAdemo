@@ -36,7 +36,9 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
     });
   };
 
-  const handleSelectPackage = (pkg: FreedomPackage) => {
+  const handleSelectPackage = (pkg: FreedomPackage, e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     setSelectedPackage(pkg);
   };
 
@@ -213,8 +215,9 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
                   <p className="text-xs text-gray-500">≈ ${(pkg.price * 3).toFixed(0)} USD</p>
                 </div>
                 <button 
-                  onClick={() => handleSelectPackage(pkg)}
+                  onClick={(e) => handleSelectPackage(pkg, e)}
                   className={`w-full py-3 ${colors.bg} ${colors.hover} rounded-xl font-bold transition-all`}
+                  type="button"
                 >
                   Select Package
                 </button>
@@ -304,8 +307,19 @@ const TokenShop: React.FC<TokenShopProps> = ({ setActiveRoute }) => {
 
       {/* Package Detail Modal */}
       {selectedPackage && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-2xl w-full">
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setSelectedPackage(null);
+            }
+          }}
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+          <div 
+            className="glass-card p-8 rounded-3xl border border-white/10 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-2xl font-bold mb-2">{selectedPackage.name}</h3>

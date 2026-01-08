@@ -427,16 +427,16 @@ const Marketplace: React.FC<MarketplaceProps> = ({ setActiveRoute }) => {
                   key={item.grade}
                   className={`p-4 rounded-xl border border-white/5 bg-gradient-to-br ${item.color} bg-opacity-10 text-center`}
                 >
-                  <div className={`text-2xl font-bold mb-1 bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}>
+                  <div className={`text-4xl font-bold mb-1 text-black`}>
                     {item.grade}
                   </div>
-                  <div className="text-xs text-gray-400">{item.desc}</div>
+                  <div className="text-xs text-black font-medium">{item.desc}</div>
                 </div>
               ))}
             </div>
             <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-              <p className="text-sm text-cyan-400 font-bold mb-1">📊 Grading Criteria</p>
-              <p className="text-xs text-gray-300">
+              <p className="text-sm text-black font-bold mb-1">📊 Grading Criteria</p>
+              <p className="text-xs text-black">
                 Products are evaluated based on: Quality, Security (if applicable), Value Proposition, Affiliate Potential, Market Demand, User Reviews, and Compliance. 
                 Only products graded B- or higher are featured in the main catalog.
               </p>

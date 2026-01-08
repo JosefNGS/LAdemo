@@ -69,6 +69,22 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
   ]);
   const [showAllActionsModal, setShowAllActionsModal] = useState(false);
   const [showAffiliateRevenueModal, setShowAffiliateRevenueModal] = useState(false);
+  
+  // Link Performance Tracker state
+  const [trackedLinks, setTrackedLinks] = useState([
+    { id: '1', shortUrl: 'bitnex.us/abc123', status: 'ACTIVE', clicks: 1234, conversions: 89, rate: 7.2 }
+  ]);
+  const [selectedLink, setSelectedLink] = useState<string | null>(null);
+  const [showAddLinkModal, setShowAddLinkModal] = useState(false);
+  const [newLinkUrl, setNewLinkUrl] = useState('');
+  
+  // UTM Parameter Builder state
+  const [utmBaseUrl, setUtmBaseUrl] = useState('');
+  const [utmSource, setUtmSource] = useState('');
+  const [utmMedium, setUtmMedium] = useState('');
+  const [utmCampaign, setUtmCampaign] = useState('');
+  const [utmContent, setUtmContent] = useState('');
+  const [generatedUtmLink, setGeneratedUtmLink] = useState<string | null>(null);
 
   const tabs = ['Overview', 'Tools'];
 
@@ -844,30 +860,53 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
               </div>
             </div>
             <div className="space-y-3">
-              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <code className="text-xs text-cyan-400 font-mono">bitnex.us/abc123</code>
-                    <span className="px-2 py-0.5 bg-green-500/10 text-green-400 border border-green-500/20 text-[10px] font-bold rounded">ACTIVE</span>
+              {trackedLinks.length > 0 ? (
+                trackedLinks.map((link) => (
+                  <div key={link.id} className="p-4 bg-white/5 rounded-xl border border-white/5">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <code className="text-xs text-cyan-400 font-mono">{link.shortUrl}</code>
+                        <span className={`px-2 py-0.5 ${
+                          link.status === 'ACTIVE' 
+                            ? 'bg-green-500/10 text-green-400 border border-green-500/20' 
+                            : 'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                        } text-[10px] font-bold rounded`}>
+                          {link.status}
+                        </span>
+                      </div>
+                      <button 
+                        onClick={() => setSelectedLink(link.id)}
+                        className="text-xs text-gray-400 hover:text-white transition-colors"
+                      >
+                        View Details
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 mt-3">
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Clicks</p>
+                        <p className="text-lg font-bold text-purple-400">{link.clicks.toLocaleString()}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Conversions</p>
+                        <p className="text-lg font-bold text-green-400">{link.conversions}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-gray-500 mb-1">Rate</p>
+                        <p className="text-lg font-bold text-cyan-400">{link.rate}%</p>
+                      </div>
+                    </div>
                   </div>
-                  <button className="text-xs text-gray-400 hover:text-white transition-colors">View Details</button>
+                ))
+              ) : (
+                <div className="p-8 text-center text-gray-400">
+                  <p className="mb-2">No links tracked yet</p>
+                  <p className="text-xs">Click "+ Add New Link to Track" to get started</p>
                 </div>
-                <div className="grid grid-cols-3 gap-4 mt-3">
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Clicks</p>
-                    <p className="text-lg font-bold text-purple-400">1,234</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Conversions</p>
-                    <p className="text-lg font-bold text-green-400">89</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1">Rate</p>
-                    <p className="text-lg font-bold text-cyan-400">7.2%</p>
-                  </div>
-                </div>
-              </div>
-              <button className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all">
+              )}
+              <button 
+                onClick={() => setShowAddLinkModal(true)}
+                className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+              >
                 + Add New Link to Track
               </button>
             </div>
@@ -892,6 +931,8 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                 <input
                   type="text"
                   placeholder="https://example.com/product"
+                  value={utmBaseUrl}
+                  onChange={(e) => setUtmBaseUrl(e.target.value)}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-pink-500/50 text-sm"
                 />
               </div>
@@ -901,6 +942,8 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <input
                     type="text"
                     placeholder="facebook"
+                    value={utmSource}
+                    onChange={(e) => setUtmSource(e.target.value)}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-pink-500/50 text-sm"
                   />
                 </div>
@@ -909,6 +952,8 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <input
                     type="text"
                     placeholder="social"
+                    value={utmMedium}
+                    onChange={(e) => setUtmMedium(e.target.value)}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-pink-500/50 text-sm"
                   />
                 </div>
@@ -917,6 +962,8 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <input
                     type="text"
                     placeholder="summer-sale"
+                    value={utmCampaign}
+                    onChange={(e) => setUtmCampaign(e.target.value)}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-pink-500/50 text-sm"
                   />
                 </div>
@@ -925,19 +972,50 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <input
                     type="text"
                     placeholder="banner-ad"
+                    value={utmContent}
+                    onChange={(e) => setUtmContent(e.target.value)}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-pink-500/50 text-sm"
                   />
                 </div>
               </div>
-              <button className="w-full py-3 bg-pink-600 hover:bg-pink-500 rounded-xl font-bold transition-all">
+              <button 
+                onClick={() => {
+                  if (!utmBaseUrl) {
+                    alert('Please enter a base URL');
+                    return;
+                  }
+                  const params = new URLSearchParams();
+                  if (utmSource) params.append('utm_source', utmSource);
+                  if (utmMedium) params.append('utm_medium', utmMedium);
+                  if (utmCampaign) params.append('utm_campaign', utmCampaign);
+                  if (utmContent) params.append('utm_content', utmContent);
+                  const separator = utmBaseUrl.includes('?') ? '&' : '?';
+                  const generatedLink = params.toString() ? `${utmBaseUrl}${separator}${params.toString()}` : utmBaseUrl;
+                  setGeneratedUtmLink(generatedLink);
+                }}
+                className="w-full py-3 bg-pink-600 hover:bg-pink-500 rounded-xl font-bold transition-all"
+              >
                 Generate UTM Link
               </button>
-              <div className="p-4 bg-black/40 rounded-xl border border-white/10 hidden" id="utm-result">
-                <p className="text-xs text-gray-500 mb-2">Generated Link:</p>
-                <code className="block px-3 py-2 bg-black/60 rounded-lg text-pink-400 font-mono text-xs break-all">
-                  https://example.com/product?utm_source=facebook&utm_medium=social&utm_campaign=summer-sale&utm_content=banner-ad
-                </code>
-              </div>
+              {generatedUtmLink && (
+                <div className="p-4 bg-black/40 rounded-xl border border-white/10">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-xs text-gray-500">Generated Link:</p>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(generatedUtmLink);
+                        alert('Link copied to clipboard!');
+                      }}
+                      className="text-xs text-pink-400 hover:text-pink-300 transition-colors"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <code className="block px-3 py-2 bg-black/60 rounded-lg text-pink-400 font-mono text-xs break-all">
+                    {generatedUtmLink}
+                  </code>
+                </div>
+              )}
             </div>
           </div>
 
