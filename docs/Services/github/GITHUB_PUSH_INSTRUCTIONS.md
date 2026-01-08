@@ -80,6 +80,18 @@ git remote -v
 git branch
 ```
 
+## Developer Tracking
+
+**CRITICAL**: All pushes must include developer information:
+- Developer name must be included in change documentation
+- Developer must be listed in `docs/Services/github/DEVELOPERS.md`
+- If developer information changes, update `DEVELOPERS.md` first
+
+**Current Active Developers** (see `docs/Services/github/DEVELOPERS.md`):
+- Josef Lindbom (COO & Development Vision Lead)
+- Craig Martin (CTO)
+- Jonne Waselius (Backend Developer)
+
 ## Files Being Pushed
 
 This push includes:
@@ -90,6 +102,7 @@ This push includes:
 - ✅ Build scripts (`frontend/build.js`, `frontend/server.js`)
 - ✅ Configuration files (`netlify.toml`, `package.json`)
 - ✅ Documentation (`docs/`)
+- ✅ Developer registry (`docs/Services/github/DEVELOPERS.md` - if updated)
 - ✅ All updated configuration files
 
 ## Verification

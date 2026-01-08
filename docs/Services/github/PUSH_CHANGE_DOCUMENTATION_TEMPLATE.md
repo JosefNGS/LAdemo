@@ -15,8 +15,12 @@
 **Push Time**: [HH:MM:SS]  
 **Branch**: [branch-name]  
 **Commit Hash**: [commit-hash]  
-**Author**: [Your Name]  
+**Developer**: [Developer Name - e.g., Josef Lindbom, Craig Martin, Jonne Waselius]  
+**Developer Email**: [developer@nordicglobalsolutions.com]  
+**Developer Role**: [e.g., COO & Development Vision Lead, CTO, Backend Developer]  
 **Related PR**: [PR # or N/A]
+
+**⚠️ CRITICAL**: Developer information must match the active developers listed in `docs/Services/github/DEVELOPERS.md`
 
 ---
 
