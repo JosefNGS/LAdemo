@@ -585,6 +585,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 #### n8n
 - **Purpose**: Workflow automation and integration platform
 - **Status**: Planned (for automation and integrations)
+- **Location**: `backend/n8n/` (one folder per service structure)
 - **Type**: Self-hosted or cloud workflow automation tool
 - **Features**:
   - Visual workflow builder
