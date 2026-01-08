@@ -560,6 +560,22 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: Jonne@nordicglobalsolutions.com
 
+### Office Manager
+
+**Lee** - *Office Manager*
+- 🎯 **Role**: Office Manager
+- 📐 **Responsibilities**: Office administration, operations management, organizational coordination
+- 🏢 **Company**: Nordic Global Solutions
+- 📧 **Contact**: Lee@nordicglobalsolutions.com
+
+### Investor/Vision
+
+**Svein Nilsen** - *Investor/Vision*
+- 🎯 **Role**: Investor/Vision
+- 📐 **Responsibilities**: Strategic investment, vision alignment, business development
+- 🏢 **Company**: Nordic Global Solutions
+- 📧 **Contact**: Svein@nordicglobalsolutions.com
+
 ### Development Collaboration
 
 **⚠️ IMPORTANT: Contract Required for All Development Work**
