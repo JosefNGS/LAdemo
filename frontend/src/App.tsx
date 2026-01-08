@@ -97,6 +97,7 @@ const App: React.FC = () => {
       case AppRoute.USERS: return <AllUsers setActiveRoute={setActiveRoute} />;
       case AppRoute.SUPPORT: return <Support />;
       case AppRoute.GOVERNANCE: return <Governance />;
+      case AppRoute.ADMIN_VIEW: return <AdminView setActiveRoute={setActiveRoute} />;
       case AppRoute.ADMIN_VETTING: return <Vetting />;
       case AppRoute.ADMIN_USERS: return <Users />;
       case AppRoute.MOD_REPORTS: return <Reports />;
