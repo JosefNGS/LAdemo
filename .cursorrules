@@ -28,6 +28,13 @@
 
 **See `docs/Services/github/VERSION_CONTROL.md` for complete Git workflow guidelines.**
 
+**Active Developers** (tracked in `docs/Services/github/DEVELOPERS.md`):
+- **Josef Lindbom** (COO & Development Vision Lead) - josef@nordicglobalsolutions.com
+- **Craig Martin** (CTO) - craig@nordicglobalsolutions.com
+- **Jonne Waselius** (Backend Developer) - Jonne@nordicglobalsolutions.com
+
+**CRITICAL**: All developer information must be kept up-to-date in `docs/Services/github/DEVELOPERS.md`. This file is tracked in version control and must be updated whenever developers join or leave the project.
+
 ### 🖥️ DEVELOPMENT SERVER - CRITICAL LOCATION
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **ALL development server files MUST be in**: `Dev server/` folder
@@ -61,6 +68,7 @@
 - **Netlify**: `docs/Services/netlify/SERVICE_RULES.md`
 - **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
 - **GitHub**: `docs/Services/github/SERVICE_RULES.md`
+  - **Developer Registry**: `docs/Services/github/DEVELOPERS.md` (CRITICAL - tracks all active developers)
 - **n8n**: `docs/Services/n8n/SERVICE_RULES.md`
 - **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
 - **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`

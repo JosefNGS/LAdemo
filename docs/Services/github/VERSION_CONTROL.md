@@ -196,16 +196,33 @@ Before committing code:
 - Merge to main branch
 - Ensure production stability
 - Maintain code quality standards
+- Manage developer access and permissions
 
 **Contact**: craig@nordicglobalsolutions.com
 
-### Developers (Josef, Jonne)
-**Responsibilities**:
-- Create feature branches
-- Write and test code
-- Create Pull Requests
-- Respond to review feedback
-- Never push directly to main
+### Active Developers
+
+**Josef Lindbom** (COO & Development Vision Lead)
+- **Contact**: josef@nordicglobalsolutions.com
+- **Responsibilities**:
+  - Create feature branches
+  - Write and test code
+  - Create Pull Requests
+  - Respond to review feedback
+  - Never push directly to main
+  - UX/UI Design and User Flow Logic
+
+**Jonne Waselius** (Backend Developer)
+- **Contact**: Jonne@nordicglobalsolutions.com
+- **Responsibilities**:
+  - Create feature branches
+  - Write and test code
+  - Create Pull Requests
+  - Respond to review feedback
+  - Never push directly to main
+  - Backend development and API implementation
+
+**Developer Registry**: See `docs/Services/github/DEVELOPERS.md` for complete developer information and access levels.
 
 ---
 

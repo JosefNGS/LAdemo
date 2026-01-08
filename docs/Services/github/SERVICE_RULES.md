@@ -49,12 +49,32 @@ Before pushing to GitHub:
 
 ---
 
+## 👥 Active Developers
+
+**CRITICAL**: All active developers must be registered in `docs/Services/github/DEVELOPERS.md`.
+
+**Current Active Developers**:
+- **Josef Lindbom** (COO & Development Vision Lead) - josef@nordicglobalsolutions.com
+- **Craig Martin** (CTO) - craig@nordicglobalsolutions.com
+- **Jonne Waselius** (Backend Developer) - Jonne@nordicglobalsolutions.com
+
+**Developer Tracking**:
+- All developers must be listed in `docs/Services/github/DEVELOPERS.md`
+- Developer information must be kept up-to-date
+- Access levels must be clearly defined
+- Branch permissions must be documented
+
+**See `docs/Services/github/DEVELOPERS.md` for complete developer registry.**
+
+---
+
 ## 🔗 Related Documentation
 
 - **Version Control**: `docs/Services/github/VERSION_CONTROL.md`
 - **Push Instructions**: `docs/Services/github/GITHUB_PUSH_INSTRUCTIONS.md`
 - **Setup Guide**: `docs/Services/github/GITHUB_SETUP.md`
 - **Change Documentation Template**: `docs/Services/github/PUSH_CHANGE_DOCUMENTATION_TEMPLATE.md`
+- **Developer Registry**: `docs/Services/github/DEVELOPERS.md`
 
 ---
 
