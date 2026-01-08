@@ -536,11 +536,19 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 
 ## 👥 Vision & Development Team
 
-### Vision/Developer
+### COO/CEO
 
-**Josef Lindbom** - *Founder & Vision Lead*
-- 🎯 **Role**: Vision and Development Lead
+**Josef Lindbom** - *COO/CEO*
+- 🎯 **Role**: Chief Operating Officer / Chief Executive Officer
 - 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
+- 🏢 **Company**: Nordic Global Solutions
+- 📧 **Contact**: josef@nordicglobalsolutions.com
+
+### Development Vision Lead
+
+**Josef Lindbom** - *Development Vision Lead*
+- 🎯 **Role**: Development Vision Lead
+- 📐 **Responsibilities**: Development strategy, technical vision, product roadmap, development oversight
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: josef@nordicglobalsolutions.com
 
@@ -564,7 +572,7 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 
 **Lee** - *Office Manager*
 - 🎯 **Role**: Office Manager
-- 📐 **Responsibilities**: Office administration, operations management, organizational coordination
+- 📐 **Responsibilities**: Office administration, operations management, organizational coordination, sales
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: Lee@nordicglobalsolutions.com
 
@@ -572,7 +580,7 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 
 **Svein Nilsen** - *Investor/Vision*
 - 🎯 **Role**: Investor/Vision
-- 📐 **Responsibilities**: Strategic investment, vision alignment, business development
+- 📐 **Responsibilities**: Strategic investment, vision alignment, business development, sales
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: Svein@nordicglobalsolutions.com
 

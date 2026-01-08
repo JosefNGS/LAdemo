@@ -1051,6 +1051,38 @@ Available in Credits Shop:
 - **Support Tickets**: Technical support system
 - **Live Training**: Zoom events with experts
 
+### Team
+
+#### COO/CEO
+- **Josef Lindbom** - COO/CEO
+  - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
+  - **Contact**: josef@nordicglobalsolutions.com
+
+#### Development Vision Lead
+- **Josef Lindbom** - Development Vision Lead
+  - **Responsibilities**: Development strategy, technical vision, product roadmap, development oversight
+  - **Contact**: josef@nordicglobalsolutions.com
+
+#### Chief Technology Officer (CTO)
+- **Craig Martin** - CTO
+  - **Responsibilities**: Technology leadership, technical architecture, system design, scalability, security oversight
+  - **Contact**: craig@nordicglobalsolutions.com
+
+#### Backend Developer
+- **Jonne Waselius** - Backend Developer
+  - **Responsibilities**: Backend development, API implementation, server-side logic, database integration
+  - **Contact**: Jonne@nordicglobalsolutions.com
+
+#### Office Manager
+- **Lee** - Office Manager
+  - **Responsibilities**: Office administration, operations management, organizational coordination, sales
+  - **Contact**: Lee@nordicglobalsolutions.com
+
+#### Investor/Vision
+- **Svein Nilsen** - Investor/Vision
+  - **Responsibilities**: Strategic investment, vision alignment, business development, sales
+  - **Contact**: Svein@nordicglobalsolutions.com
+
 ### Contact
 
 - **Email**: josef@nordicglobalsolutions.com

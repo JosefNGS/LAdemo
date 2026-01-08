@@ -4,8 +4,12 @@
 **Version**: 1.2  
 **Date**: January 2026  
 **Status**: Production Ready - Launch Date: January 21, 2026  
-**Vision/Developer**: Josef Lindbom (josef@nordicglobalsolutions.com)  
-**CTO**: Craig Martin (craig@nordicglobalsolutions.com)
+**COO/CEO**: Josef Lindbom (josef@nordicglobalsolutions.com)  
+**Development Vision Lead**: Josef Lindbom (josef@nordicglobalsolutions.com)  
+**CTO**: Craig Martin (craig@nordicglobalsolutions.com)  
+**Backend Developer**: Jonne Waselius (Jonne@nordicglobalsolutions.com)  
+**Office Manager**: Lee (Lee@nordicglobalsolutions.com)  
+**Investor/Vision**: Svein Nilsen (Svein@nordicglobalsolutions.com)
 
 ---
 
@@ -503,8 +507,38 @@ BitNexus provides a complete ecosystem where users can:
 - **Manifesto**: [manifesto.html]
 
 ### Team
-- **Vision/Developer**: Josef Lindbom (josef@nordicglobalsolutions.com)
-- **CTO**: Craig Martin (craig@nordicglobalsolutions.com)
+
+#### COO/CEO
+- **Josef Lindbom** - COO/CEO
+  - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
+  - **Contact**: josef@nordicglobalsolutions.com
+
+#### Development Vision Lead
+- **Josef Lindbom** - Development Vision Lead
+  - **Responsibilities**: Development strategy, technical vision, product roadmap, development oversight
+  - **Contact**: josef@nordicglobalsolutions.com
+
+#### Chief Technology Officer (CTO)
+- **Craig Martin** - CTO
+  - **Responsibilities**: Technology leadership, technical architecture, system design, scalability, security oversight
+  - **Contact**: craig@nordicglobalsolutions.com
+
+#### Backend Developer
+- **Jonne Waselius** - Backend Developer
+  - **Responsibilities**: Backend development, API implementation, server-side logic, database integration
+  - **Contact**: Jonne@nordicglobalsolutions.com
+
+#### Office Manager
+- **Lee** - Office Manager
+  - **Responsibilities**: Office administration, operations management, organizational coordination, sales
+  - **Contact**: Lee@nordicglobalsolutions.com
+
+#### Investor/Vision
+- **Svein Nilsen** - Investor/Vision
+  - **Responsibilities**: Strategic investment, vision alignment, business development, sales
+  - **Contact**: Svein@nordicglobalsolutions.com
+
+#### Development Collaboration
 - **Development**: Contract-based development with signed agreements required
 
 ### Support & Legal Inquiries
