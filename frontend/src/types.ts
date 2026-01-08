@@ -30,7 +30,12 @@ export enum AppRoute {
   SUPPORT = 'support',
   FEED = 'feed',
   GOVERNANCE = 'governance',
-  ADMIN_VIEW = 'admin-view'
+  ADMIN_VIEW = 'admin-view',
+  PROFILE_JOSEF = 'profile-josef',
+  PROFILE_CRAIG = 'profile-craig',
+  PROFILE_JONNE = 'profile-jonne',
+  PROFILE_SVEIN = 'profile-svein',
+  PROFILE_LEE = 'profile-lee'
 }
 
 export interface Product {
@@ -56,6 +61,33 @@ export interface Message {
   text: string;
   timestamp: Date;
   isSelf: boolean;
+}
+
+// Notification System Types
+export type NotificationType = 
+  | 'task-update'
+  | 'task-verification'
+  | 'system-update'
+  | 'commission'
+  | 'product-approval'
+  | 'alliance'
+  | 'governance'
+  | 'message'
+  | 'achievement'
+  | 'warning'
+  | 'info';
+
+export interface Notification {
+  id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  timestamp: Date;
+  read: boolean;
+  actionUrl?: string;
+  actionLabel?: string;
+  priority: 'low' | 'medium' | 'high' | 'urgent';
+  userId?: string; // For user-specific notifications
 }
 
 // Trust System Types
@@ -135,3 +167,23 @@ export interface ProductCertification {
   certificationBadges: ProductCertificationType[];
 }
 
+// Team Member Profile Types
+export interface TeamMemberProfile {
+  id: string;
+  name: string;
+  role: string;
+  email: string;
+  bio: string;
+  avatar: string;
+  responsibilities: string[];
+  skills: string[];
+  contact: {
+    email: string;
+    phone?: string;
+  };
+  social?: {
+    linkedin?: string;
+    twitter?: string;
+    github?: string;
+  };
+}

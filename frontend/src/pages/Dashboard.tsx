@@ -25,6 +25,22 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
   const [activeTab, setActiveTab] = useState('Overview');
+  const { addNotification } = useNotifications();
+
+  // Sample notifications on mount (for demo)
+  useEffect(() => {
+    // Add sample notifications
+    setTimeout(() => {
+      addNotification({
+        type: 'task-update',
+        title: 'New Task Assigned',
+        message: 'You have a new task that requires verification',
+        priority: 'high',
+        actionUrl: '/admin-view',
+        actionLabel: 'View Tasks'
+      });
+    }, 2000);
+  }, [addNotification]);
   
   // Leaderboard filter state
   const [leaderboardFilter, setLeaderboardFilter] = useState<'Earnings' | 'Network' | 'Growth'>('Earnings');

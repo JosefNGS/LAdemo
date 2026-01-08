@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import AdminLoginModal from '../components/AdminLoginModal';
 import { AppRoute } from '../types';
+import { useNotifications } from '../contexts/NotificationContext';
+import { teamProfiles } from '../data/teamProfiles';
 import Vetting from './Vetting';
 import Users from './Users';
 import Reports from './Reports';
@@ -13,6 +15,7 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'vetting' | 'users' | 'reports' | 'tasks'>('tasks');
+  const { addNotification } = useNotifications();
 
   useEffect(() => {
     // Check if admin is already authenticated
@@ -124,80 +127,46 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* Josef's Tasks */}
-                <div className="glass-card p-4 rounded-xl border border-white/5">
-                  <h3 className="font-bold mb-2">Josef Lindbom</h3>
-                  <p className="text-sm text-gray-500 mb-4">COO & Development Vision Lead</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-green-400">✓</span>
-                      <span>Tasks completed by Josef</span>
+                {teamProfiles.map((member) => {
+                  const isJosef = member.id === 'josef';
+                  return (
+                    <div
+                      key={member.id}
+                      className="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer"
+                      onClick={() => {
+                        const routeMap: { [key: string]: AppRoute } = {
+                          'josef': AppRoute.PROFILE_JOSEF,
+                          'craig': AppRoute.PROFILE_CRAIG,
+                          'jonne': AppRoute.PROFILE_JONNE,
+                          'svein': AppRoute.PROFILE_SVEIN,
+                          'lee': AppRoute.PROFILE_LEE
+                        };
+                        setActiveRoute(routeMap[member.id]);
+                      }}
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center text-lg font-bold">
+                          {member.avatar}
+                        </div>
+                        <div>
+                          <h3 className="font-bold">{member.name}</h3>
+                          <p className="text-xs text-gray-500">{member.role}</p>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex items-center gap-2">
+                          <span className={isJosef ? "text-green-400" : "text-yellow-400"}>
+                            {isJosef ? "✓" : "⚠"}
+                          </span>
+                          <span>{isJosef ? "Tasks completed by Josef" : "Verification required"}</span>
+                        </div>
+                        <div className="text-gray-500 text-xs">
+                          See: docs/Development/{member.name.toUpperCase().split(' ')[0]}_TASKS.md
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-gray-500 text-xs">
-                      See: docs/Development/JOSEF_TASKS.md
-                    </div>
-                  </div>
-                </div>
-
-                {/* Craig's Tasks */}
-                <div className="glass-card p-4 rounded-xl border border-white/5">
-                  <h3 className="font-bold mb-2">Craig Martin</h3>
-                  <p className="text-sm text-gray-500 mb-4">CTO</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-yellow-400">⚠</span>
-                      <span>Verification required</span>
-                    </div>
-                    <div className="text-gray-500 text-xs">
-                      See: docs/Development/CRAIG_TASKS.md
-                    </div>
-                  </div>
-                </div>
-
-                {/* Jonne's Tasks */}
-                <div className="glass-card p-4 rounded-xl border border-white/5">
-                  <h3 className="font-bold mb-2">Jonne Waselius</h3>
-                  <p className="text-sm text-gray-500 mb-4">Backend Developer</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-yellow-400">⚠</span>
-                      <span>Verification required</span>
-                    </div>
-                    <div className="text-gray-500 text-xs">
-                      See: docs/Development/JONNE_TASKS.md
-                    </div>
-                  </div>
-                </div>
-
-                {/* Svein's Tasks */}
-                <div className="glass-card p-4 rounded-xl border border-white/5">
-                  <h3 className="font-bold mb-2">Svein Nilsen</h3>
-                  <p className="text-sm text-gray-500 mb-4">Investor/Vision - Sales</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-yellow-400">⚠</span>
-                      <span>Verification required</span>
-                    </div>
-                    <div className="text-gray-500 text-xs">
-                      See: docs/Development/SVEIN_TASKS.md
-                    </div>
-                  </div>
-                </div>
-
-                {/* Lee's Tasks */}
-                <div className="glass-card p-4 rounded-xl border border-white/5">
-                  <h3 className="font-bold mb-2">Lee</h3>
-                  <p className="text-sm text-gray-500 mb-4">Office Manager - Sales</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex items-center gap-2">
-                      <span className="text-yellow-400">⚠</span>
-                      <span>Verification required</span>
-                    </div>
-                    <div className="text-gray-500 text-xs">
-                      See: docs/Development/LEE_TASKS.md
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
 
               <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">

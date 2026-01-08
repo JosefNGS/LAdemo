@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppRoute } from '../types';
 import { ICONS } from '../constants';
 import { useCart } from '../contexts/CartContext';
+import NotificationBell from './NotificationBell';
 
 const CartBadge: React.FC = () => {
   const { getItemCount } = useCart();
@@ -209,6 +210,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
         </button>
         <h1 className="text-lg font-bold font-display text-gradient-cyan-purple">BitNexus</h1>
         <div className="flex gap-4 items-center">
+          <NotificationBell setActiveRoute={setActiveRoute} />
            <button onClick={() => setActiveRoute(AppRoute.CART)} className="text-gray-400 relative">
              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
              <CartBadge />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NotificationProvider } from './contexts/NotificationContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import Marketplace from './pages/Marketplace';
@@ -101,6 +102,11 @@ const App: React.FC = () => {
       case AppRoute.ADMIN_VETTING: return <Vetting />;
       case AppRoute.ADMIN_USERS: return <Users />;
       case AppRoute.MOD_REPORTS: return <Reports />;
+      case AppRoute.PROFILE_JOSEF: return <TeamProfile profile={teamProfiles.find(p => p.id === 'josef')!} setActiveRoute={setActiveRoute} />;
+      case AppRoute.PROFILE_CRAIG: return <TeamProfile profile={teamProfiles.find(p => p.id === 'craig')!} setActiveRoute={setActiveRoute} />;
+      case AppRoute.PROFILE_JONNE: return <TeamProfile profile={teamProfiles.find(p => p.id === 'jonne')!} setActiveRoute={setActiveRoute} />;
+      case AppRoute.PROFILE_SVEIN: return <TeamProfile profile={teamProfiles.find(p => p.id === 'svein')!} setActiveRoute={setActiveRoute} />;
+      case AppRoute.PROFILE_LEE: return <TeamProfile profile={teamProfiles.find(p => p.id === 'lee')!} setActiveRoute={setActiveRoute} />;
       case AppRoute.CART: return <Cart setActiveRoute={setActiveRoute} />;
       case AppRoute.CHECKOUT: return <Checkout setActiveRoute={setActiveRoute} />;
       case AppRoute.PROFILE: return (
