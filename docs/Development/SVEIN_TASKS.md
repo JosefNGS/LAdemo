@@ -41,6 +41,9 @@
 - [x] Initial investment and vision alignment
 - [x] Strategic planning participation
 - [x] Market analysis contribution
+- [x] Revenue plan development (coordination)
+- [x] Business model canvas contribution
+- [x] Market analysis documentation (coordination)
 
 ---
 
@@ -153,11 +156,14 @@
 - `docs/Project Management/TODO.md` - Main task tracking
 - `docs/Development/DEVELOPER_DOCS.md` - Team responsibilities
 - `docs/Development/TEAM_DOCUMENTATION_RESPONSIBILITIES.md` - Documentation ownership
+- `docs/Product docs/Business & Strategy/REVENUE_PLAN.md` - Revenue planning
+- `docs/Product docs/Business & Strategy/MARKET_ANALYSIS.md` - Market analysis
 
 **When updating tasks**:
 1. Update this file with Svein-specific tasks
 2. Update `docs/Project Management/TODO.md` with general tasks
 3. Keep both files synchronized
+4. Reference specific TODO.md sections when adding tasks
 
 ---
 

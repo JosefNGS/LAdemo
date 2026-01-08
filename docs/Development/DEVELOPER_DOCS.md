@@ -127,13 +127,68 @@
 
 ---
 
+### Svein Nilsen - Investor/Vision - Sales
+
+**Contact**: Svein@nordicglobalsolutions.com
+
+#### Primary Responsibilities:
+- **Investor/Vision**: Strategic investment and vision alignment
+- **Sales**: Sales strategy, business development, and revenue generation
+- **Strategic Partnerships**: Building relationships with key partners and investors
+- **Market Development**: Expanding market reach and opportunities
+
+#### Key Documentation to Maintain:
+- `docs/Product docs/Business & Strategy/REVENUE_PLAN.md`
+- `docs/Product docs/Business & Strategy/MARKET_ANALYSIS.md`
+- `docs/Product docs/Business & Strategy/BUSINESS_MODEL_CANVAS.md`
+- `docs/Product docs/Pitch Deck & Presentations/` (coordination)
+
+#### Focus Areas:
+- Sales strategy and execution
+- Investor relations
+- Strategic partnerships
+- Market development
+- Revenue planning
+
+---
+
+### Lee - Office Manager - Sales
+
+**Contact**: Lee@nordicglobalsolutions.com
+
+#### Primary Responsibilities:
+- **Office Management**: Day-to-day office operations and administration
+- **Sales**: Sales support, customer relations, and sales operations
+- **Administrative Support**: Supporting team operations and coordination
+- **Customer Service**: Customer support and relationship management
+
+#### Key Documentation to Maintain:
+- Office operations documentation (to be created)
+- Sales operations documentation (to be created)
+- Customer service procedures (to be created)
+
+#### Focus Areas:
+- Office operations
+- Sales support
+- Customer service
+- Administrative support
+- Operations optimization
+
+---
+
 ## 🔄 Synchronization with Domain Documentation
 
-All developer responsibilities are synchronized with:
+All team member responsibilities are synchronized with:
 - **Platform Overview**: `docs/Product docs/Technical Documentation/PLATFORM_OVERVIEW.md`
-- **Tech Stack**: `docs/TECH_STACK.md`
-- **Project Structure**: `docs/STRUCTURE.md`
-- **TODO**: `docs/TODO.md`
+- **Tech Stack**: `docs/Core Documentation/TECH_STACK.md`
+- **Project Structure**: `docs/Core Documentation/STRUCTURE.md`
+- **TODO**: `docs/Project Management/TODO.md`
+- **Individual Task Tracking**: 
+  - `docs/Development/JOSEF_TASKS.md`
+  - `docs/Development/CRAIG_TASKS.md`
+  - `docs/Development/JONNE_TASKS.md`
+  - `docs/Development/SVEIN_TASKS.md`
+  - `docs/Development/LEE_TASKS.md`
 
 ---
 

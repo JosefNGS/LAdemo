@@ -39,6 +39,8 @@
 #### Office Management
 - [x] Initial office setup and organization
 - [x] Administrative systems setup
+- [x] Team coordination setup
+- [x] Basic administrative processes
 
 ---
 
@@ -151,11 +153,15 @@
 - `docs/Project Management/TODO.md` - Main task tracking
 - `docs/Development/DEVELOPER_DOCS.md` - Team responsibilities
 - `docs/Development/TEAM_DOCUMENTATION_RESPONSIBILITIES.md` - Documentation ownership
+- Office operations documentation (when created)
+- Sales operations documentation (when created)
+- Customer service procedures (when created)
 
 **When updating tasks**:
 1. Update this file with Lee-specific tasks
 2. Update `docs/Project Management/TODO.md` with general tasks
 3. Keep both files synchronized
+4. Reference specific TODO.md sections when adding tasks
 
 ---
 
