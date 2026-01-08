@@ -126,10 +126,11 @@ Before committing code:
 - [ ] No console errors
 - [ ] No TypeScript errors
 - [ ] Documentation updated (if needed)
-- [ ] Follows project structure (`docs/STRUCTURE.md`)
+- [ ] Follows project structure (`docs/Core Documentation/STRUCTURE.md`)
 - [ ] Follows coding standards (`.cursorrules`)
 - [ ] No sensitive data (API keys, passwords)
 - [ ] Commit message is clear and descriptive
+- [ ] **CRITICAL**: Push change documentation created (see Push Change Documentation section below)
 
 ---
 

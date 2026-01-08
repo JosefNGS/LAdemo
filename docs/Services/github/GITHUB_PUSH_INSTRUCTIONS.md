@@ -11,10 +11,13 @@
 Run these commands in your terminal from the project root:
 
 ```bash
-# 1. Add all files
+# Step 0: Create change documentation (REQUIRED - see above)
+# Step 1: Add all files including documentation
 git add .
+# OR add specific files including documentation:
+git add path/to/changed-files.ext docs/Services/github/push-docs/YYYY-MM-DD-HHMMSS-[description].md
 
-# 2. Commit changes
+# Step 2: Commit changes
 git commit -m "Fix Netlify deployment configuration - Update build script to handle both file locations, verify all paths, ensure functions directory matches config - January 15, 2025"
 
 # 3. Set remote (if not already set)
