@@ -3,7 +3,7 @@
  * Build script for Netlify deployment
  * Transpiles TypeScript files to JavaScript for production
  * This script runs from the frontend/ directory
- * Handles both frontend/src and root src/ directory locations
+ * Source files are located in frontend/src/
  */
 
 const esbuild = require('esbuild');
@@ -26,8 +26,7 @@ function writeBuildFailureLog(message, error) {
       `cwd: ${process.cwd()}`,
       `distDir: ${distDir}`,
       `srcDir: ${srcDir}`,
-      `frontendSrcDir exists: ${fs.existsSync(frontendSrcDir)}`,
-      `rootSrcDir exists: ${fs.existsSync(rootSrcDir)}`,
+      `srcDir exists: ${fs.existsSync(srcDir)}`,
       '',
       'Error:',
       error?.stack || String(error || ''),
@@ -170,8 +169,8 @@ async function build() {
     console.error(util.inspect(error, { depth: 6, colors: false }));
     writeBuildFailureLog('Build failed in frontend/build.js', error);
     console.error('\n💡 Troubleshooting:');
-    console.error('   1. Ensure src/ directory exists (either in frontend/ or root)');
-    console.error('   2. Check that TypeScript files are present');
+    console.error('   1. Ensure frontend/src/ directory exists');
+    console.error('   2. Check that TypeScript files are present in frontend/src/');
     console.error('   3. Verify file paths in build.js');
     console.error('   4. Check that all source files are committed to git');
     // Netlify exit code 2 indicates build script failure; match that for clearer diagnostics.
