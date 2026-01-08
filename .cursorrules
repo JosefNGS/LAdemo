@@ -258,16 +258,32 @@
 ```
 rules/
 ├── README.md              # Rules directory overview
+├── TODO.md                # Tasks and improvements for rules directory
+├── CHANGELOG.md           # Change history for rules directory
 ├── agent-os/              # Agent OS framework rules
 │   ├── README.md         # Agent OS rules overview
 │   ├── code-style.md     # Code style guidelines
 │   ├── best-practices.md # Development best practices
 │   ├── security.md       # Security principles
 │   └── deployment.md     # Deployment requirements
-└── bmad-method/          # BMAD-METHOD framework rules
-    ├── README.md         # BMAD-METHOD rules overview
-    ├── workflow.md       # Workflow guidelines
-    └── structure.md      # Structure and organization rules
+├── bmad-method/          # BMAD-METHOD framework rules
+│   ├── README.md         # BMAD-METHOD rules overview
+│   ├── workflow.md       # Workflow guidelines
+│   └── structure.md      # Structure and organization rules
+├── services/             # Service-specific rules
+│   ├── README.md         # Services rules overview
+│   ├── admin/            # Admin View & Task Management
+│   ├── netlify/          # Netlify deployment
+│   ├── supabase/         # Supabase database
+│   ├── github/           # GitHub version control
+│   ├── n8n/              # n8n automation
+│   ├── discourse/        # Discourse forum
+│   ├── erlang-ledger/    # Erlang/Elixir ledger
+│   └── golang-api/       # Golang API
+├── frontend/             # Frontend rules
+├── backend/              # Backend rules
+├── dev_server/           # Development server rules
+└── docs/                 # Documentation rules
 ```
 
 **When to Use Rules**:
@@ -299,9 +315,14 @@ rules/
 - ✅ **Follow Agent OS code style** - Use `rules/agent-os/code-style.md` for all code
 - ✅ **Follow security principles** - Use `rules/agent-os/security.md` for all security
 - ✅ **Follow BMAD workflows** - Use `rules/bmad-method/workflow.md` when using BMAD
+- ✅ **Check service rules** - Use `rules/services/[service-name]/rules.md` when working with services
+- ✅ **Check folder rules** - Use `rules/[folder-name]/rules.md` when working in specific folders
 - ✅ **Reference source docs** - Use `instructions/` for complete documentation
+- ✅ **Review rules TODO** - Check `rules/TODO.md` for pending rule updates
+- ✅ **Track rule changes** - Update `rules/CHANGELOG.md` when modifying rules
 - ❌ **Don't ignore framework rules** - They apply when using those frameworks
-- ❌ **Don't modify rule files** - They are extracted from `instructions/`
+- ❌ **Don't ignore service rules** - They apply when working with services
+- ❌ **Don't modify rule files** - They are extracted from `instructions/` or `docs/`
 - ❌ **Don't skip security rules** - Security is mandatory
 
 **Instructions Folder Structure**:
