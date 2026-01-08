@@ -107,10 +107,10 @@ BitNexus Landing Page/
    ```
    ✅ cd frontend
    ✅ node build.js
-   ✅ build.js checks frontend/src/ (not found)
-   ✅ Falls back to ../src/ (FOUND!) ✅
+   ✅ build.js uses frontend/src/ directory ✅
    ✅ Transpiles all .tsx/.ts files to .js
-   ✅ Copies HTML files from root
+   ✅ Copies HTML files from frontend/ directory
+   ✅ Copies _redirects from frontend/public/ directory
    ✅ Creates frontend/dist/ with output
    ```
 

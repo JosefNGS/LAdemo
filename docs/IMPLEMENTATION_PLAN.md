@@ -358,7 +358,7 @@ This document outlines the implementation plan to bring all pages and features u
 
 ### File Structure
 ```
-src/
+frontend/src/
 ├── components/
 │   ├── ProductDetailDrawer.tsx (new)
 │   ├── ProductUploadForm.tsx (new)

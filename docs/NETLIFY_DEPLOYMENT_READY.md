@@ -82,10 +82,10 @@
    ```
    ✅ Changes to frontend/ directory
    ✅ Executes: node build.js
-   ✅ build.js checks for frontend/src/ (won't find it)
-   ✅ Falls back to ../src/ (WILL FIND IT) ✅
+   ✅ build.js uses frontend/src/ directory ✅
    ✅ Transpiles all TypeScript files
-   ✅ Copies HTML files from root
+   ✅ Copies HTML files from frontend/ directory
+   ✅ Copies _redirects from frontend/public/ directory
    ✅ Creates frontend/dist/ with all output
    ```
 

@@ -2,6 +2,43 @@
 
 ## ⚠️ CRITICAL RULES - READ FIRST
 
+### 📁 PROJECT STRUCTURE - MAIN SOURCE
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **`docs/STRUCTURE.md` is the MAIN SOURCE for project structure**
+- **ALWAYS refer to `docs/STRUCTURE.md` when organizing files or folders**
+- **This file defines the complete folder organization and file structure**
+- **All files MUST follow the structure defined in `docs/STRUCTURE.md`**
+
+**When in doubt about file placement**:
+1. **Check `docs/STRUCTURE.md` first**
+2. **Follow the structure defined there**
+3. **Update `docs/STRUCTURE.md` if adding new folder types**
+
+### 🚫 NO RANDOM FILES IN ROOT DIRECTORY
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **ALL files must be organized according to folder structure defined in `docs/STRUCTURE.md`**
+- **NO files in root directory except**:
+  - `README.md` (project overview)
+  - `LICENSE` (project license)
+  - `package.json` (Node.js dependencies)
+  - `netlify.toml` (Netlify configuration)
+  - `start.bat` (development launcher)
+  - `.cursorrules` (IDE rules)
+  - `.gitignore` (Git ignore rules)
+
+**What Goes Where** (see `docs/STRUCTURE.md` for complete details):
+- ✅ **Frontend files** → `frontend/`
+- ✅ **Backend files** → `backend/` (one folder per service)
+- ✅ **Documentation** → `docs/` (organized by purpose)
+- ✅ **GitHub files** → `.github/`
+- ❌ **NO other files in root** - Move to appropriate folder immediately
+
+**If you find files in root that don't belong**:
+1. **Check `docs/STRUCTURE.md`** to determine correct location
+2. **Move file to appropriate folder** immediately
+3. **Update any references** to the moved file
+4. **Never leave files in root** that don't belong there
+
 ### 🚫 NO DOCUMENTATION FILES IN ROOT DIRECTORY
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **ALL documentation files MUST be in the `docs/` folder**
@@ -81,45 +118,37 @@ This is a React + TypeScript landing page with an interactive demo dashboard for
 - **Fonts**: Orbitron (futuristic), Inter (sans), Space Grotesk (display)
 
 ## File Structure
+
+**⚠️ IMPORTANT**: The complete and authoritative file structure is defined in `docs/STRUCTURE.md`. Always refer to that document for the most up-to-date structure.
+
+**Quick Reference** (see `docs/STRUCTURE.md` for complete details):
 ```
 BitNexus Landing Page/
 ├── frontend/           # Frontend application
-│   ├── index.html      # Main HTML with landing page & React setup
-│   ├── docs.html       # Documentation page
-│   ├── manifesto.html  # Manifesto page
 │   ├── src/            # React source code
-│   │   ├── pages/      # Page components (Dashboard, Marketplace, Alliance, Forum, etc.)
-│   │   ├── components/ # Reusable components (Layout, ProductDetailDrawer, etc.)
-│   │   ├── contexts/   # React contexts (CartContext)
-│   │   ├── services/   # API services and utilities
-│   │   ├── types.ts    # TypeScript type definitions
-│   │   ├── constants.tsx # Constants, icons, and shared data
-│   │   ├── App.tsx     # Main app component with routing
-│   │   └── main.tsx    # React entry point
-│   ├── public/         # Static assets (_redirects)
+│   ├── public/         # Static assets
 │   ├── build.js        # Production build script
-│   ├── server.js       # Node.js dev server with TypeScript transpilation
-│   └── server.py       # Python dev server (fallback)
+│   └── server.js       # Dev server
 ├── backend/            # Backend services (one folder per service)
 │   ├── netlify/        # Netlify serverless functions
-│   │   └── functions/  # Serverless functions (submit-email, etc.)
-│   ├── n8n/            # n8n automation service (planned)
-│   │   └── workflows/  # n8n workflow configurations
-│   ├── discourse/      # Discourse forum service (planned)
-│   │   └── config/     # Discourse configuration files
-│   └── ... (other services, one folder per service)
-├── docs/               # Documentation folder
-│   ├── Product docs/   # Product documentation (Revenue Plan, Pitch Deck, etc.)
-│   ├── API_SETUP.md   # Gemini API configuration guide
-│   ├── PROJECT_STATUS.md # Project status and overview
-│   ├── DEPLOYMENT.md  # Netlify deployment guide
+│   ├── n8n/            # n8n automation service
+│   ├── discourse/      # Discourse forum service
+│   └── ... (other services)
+├── docs/               # ALL documentation files
+│   ├── STRUCTURE.md    # ⭐ MAIN STRUCTURE REFERENCE
+│   ├── DEVELOPER_DOCS.md # Team responsibilities
+│   ├── Product docs/   # Product documentation
 │   └── ... (other docs)
-├── start.bat          # Development server launcher (Windows)
-├── package.json       # Node.js dependencies
-├── netlify.toml       # Netlify configuration
-├── README.md          # Project documentation
-└── .cursorrules       # This file
+├── .github/            # GitHub-specific files
+├── package.json        # Node.js dependencies
+├── netlify.toml        # Netlify configuration
+├── start.bat           # Development launcher
+├── LICENSE             # License file
+├── README.md           # Project overview
+└── .cursorrules        # This file
 ```
+
+**For complete structure details, see**: `docs/STRUCTURE.md`
 
 ### Backend Service Organization
 **MANDATORY RULE - STRICTLY ENFORCED**:

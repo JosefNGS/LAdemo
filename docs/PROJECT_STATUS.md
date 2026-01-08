@@ -24,16 +24,12 @@ BitNexus Landing Page/
 │   ├── index.html               ✅ Main HTML with landing page & React setup
 │   ├── docs.html                ✅ Documentation page
 │   ├── manifesto.html           ✅ Manifesto page
-│   ├── frontend/
-│   │   ├── src/                 ✅ React source code
-│   │   ├── index.html           ✅ Main HTML file
-│   │   ├── build.js             ✅ Build script
-│   │   └── server.js            ✅ Dev server
+│   ├── src/                     ✅ React source code
 │   │   ├── main.tsx             ✅ React entry point
 │   │   ├── App.tsx              ✅ Main app component
 │   │   ├── types.ts             ✅ TypeScript definitions
 │   │   ├── constants.tsx        ✅ Icons & constants
-│   │   ├── components/          ✅ Reusable components
+│   │   ├── components/           ✅ Reusable components
 │   │   ├── pages/               ✅ All page components (20+ pages)
 │   │   ├── contexts/            ✅ React contexts (CartContext)
 │   │   └── services/            ✅ API services

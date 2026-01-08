@@ -64,15 +64,14 @@ This guide covers how to deploy the BitNexus Landing Page to Netlify.
 The build process (`npm run build`) does the following:
 
 1. **Changes to `frontend/` directory** and creates `dist/` directory for production files
-2. **Detects source files** - Uses `frontend/src/` directory (reorganized structure)
-3. **Copies static files** (index.html, docs.html, manifesto.html) - Checks both frontend and root locations
-4. **Transpiles TypeScript** files to JavaScript:
+2. **Uses source files** from `frontend/src/` directory
+3. **Copies static files** (index.html, docs.html, manifesto.html) from `frontend/` directory
+4. **Copies `_redirects` file** from `frontend/public/` directory for Netlify SPA routing
+5. **Transpiles TypeScript** files to JavaScript:
    - All `.tsx` and `.ts` files are compiled to `.js`
    - Files are bundled and minified
    - CDN dependencies (React, ReactDOM, Recharts) remain external
-5. **Outputs production-ready files** to `frontend/dist/`
-
-**Note**: The build script automatically detects files in either location, so it works whether files are in `frontend/` or root directory.
+6. **Outputs production-ready files** to `frontend/dist/`
 
 ---
 
