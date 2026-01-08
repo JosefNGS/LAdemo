@@ -2,6 +2,31 @@
 
 ## ⚠️ CRITICAL RULES - READ FIRST
 
+### 🔐 VERSION CONTROL - MAIN BRANCH PROTECTION
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **Main branch is PROTECTED - PRODUCTION-READY ONLY**
+- **ONLY CTO (Craig Martin) can merge to main branch**
+- **NO direct pushes to main branch** - All changes must go through Pull Requests
+- **Main branch must always be production-ready**
+- **All code in main must be tested and verified**
+
+**Git Workflow Rules**:
+1. **Create feature branch** for all changes: `git checkout -b feature/your-feature-name`
+2. **Make changes** and commit to feature branch
+3. **Create Pull Request** from feature branch to main
+4. **Request review** from CTO (Craig Martin)
+5. **CTO reviews and merges** if production-ready
+6. **NEVER push directly to main** - Always use Pull Request workflow
+
+**Before Committing**:
+- [ ] Code is tested and working
+- [ ] No console errors
+- [ ] Documentation updated (if needed)
+- [ ] Follows project structure (`docs/STRUCTURE.md`)
+- [ ] Follows coding standards (`.cursorrules`)
+
+**See `docs/VERSION_CONTROL.md` for complete Git workflow guidelines.**
+
 ### 📁 PROJECT STRUCTURE - MAIN SOURCE
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **`docs/STRUCTURE.md` is the MAIN SOURCE for project structure**

@@ -1,0 +1,30 @@
+# Branch Protection Workflow
+# This workflow enforces branch protection rules
+
+name: Branch Protection Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  check-branch-protection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if pushing to main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "❌ ERROR: Direct pushes to main branch are not allowed!"
+          echo "Please create a Pull Request from a feature branch instead."
+          exit 1
+      
+      - name: Check Pull Request
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "✅ Pull Request workflow detected"
+          echo "This PR requires review from CTO (Craig Martin) before merging."
+

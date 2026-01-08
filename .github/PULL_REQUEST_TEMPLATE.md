@@ -1,52 +1,47 @@
 # Pull Request
 
 ## Description
-<!-- Provide a brief description of what this PR does -->
+<!-- Describe your changes clearly and concisely -->
 
 ## Type of Change
 <!-- Mark the relevant option with an 'x' -->
-- [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
-- [ ] ✨ New feature (non-breaking change which adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] 📝 Documentation update
-- [ ] 🎨 Style/UI update
-- [ ] ⚡ Performance improvement
-- [ ] ♻️ Refactoring (no functional changes)
-- [ ] 🧪 Tests (adding or updating tests)
-- [ ] 🔧 Build/Config changes
-
-## Related Issues
-<!-- Link related issues here -->
-Closes #(issue number)
-
-## Changes Made
-<!-- List the main changes in this PR -->
-- 
-- 
-- 
-
-## Screenshots (if applicable)
-<!-- Add screenshots to help explain your changes -->
+- [ ] New feature
+- [ ] Bug fix
+- [ ] Documentation update
+- [ ] Code refactoring
+- [ ] Performance improvement
+- [ ] Security fix
+- [ ] Other (please describe):
 
 ## Testing
-<!-- Describe the tests you ran and how to verify your changes -->
-- [ ] I have tested this locally
-- [ ] I have added/updated tests
-- [ ] All existing tests pass
+<!-- Describe how you tested your changes -->
+- [ ] Code tested and working
+- [ ] No console errors
+- [ ] No TypeScript errors
+- [ ] Responsive design verified
+- [ ] Cross-browser tested (if applicable)
 
-## Checklist
-<!-- Mark completed items with an 'x' -->
-- [ ] My code follows the project's style guidelines (see `.cursorrules`)
-- [ ] I have performed a self-review of my code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have updated the documentation accordingly
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] Any dependent changes have been merged and published
+## Production Readiness Checklist
+<!-- All items must be checked before CTO review -->
+- [ ] Code is tested and working
+- [ ] No breaking changes
+- [ ] Documentation updated (if needed)
+- [ ] Build passes successfully
+- [ ] No console errors
+- [ ] Follows project structure (`docs/STRUCTURE.md`)
+- [ ] Follows coding standards (`.cursorrules`)
+- [ ] No sensitive data (API keys, passwords)
+
+## Screenshots
+<!-- Add screenshots if UI changes were made -->
+
+## Related Issues
+<!-- Link to related issues or tasks -->
+- Related to: #
 
 ## Additional Notes
-<!-- Add any additional context or notes about the PR -->
+<!-- Any additional information for reviewers -->
 
+---
 
-
+**⚠️ IMPORTANT**: This PR requires review and approval from CTO (Craig Martin) before merging to main branch.
