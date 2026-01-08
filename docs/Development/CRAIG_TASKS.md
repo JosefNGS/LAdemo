@@ -9,6 +9,12 @@
 
 **⚠️ SYNC**: This document is synchronized with `docs/Project Management/TODO.md`. Always update both files when tasks change.
 
+**📋 How to Sync**:
+1. When completing a task, mark it complete in both this file AND `docs/Project Management/TODO.md`
+2. When adding a new task, add it to both files
+3. Weekly review: Compare this file with TODO.md to ensure synchronization
+4. This file focuses on Craig-specific tasks; TODO.md contains all project tasks
+
 ---
 
 ## 👤 Role & Responsibilities

@@ -53,6 +53,9 @@ docs/
 │   │
 │   ├── DEVELOPER_DOCS.md            # Developer documentation
 │   ├── TEAM_DOCUMENTATION_RESPONSIBILITIES.md
+│   ├── JOSEF_TASKS.md               # Josef's task tracking (synced with TODO.md)
+│   ├── CRAIG_TASKS.md               # Craig's task tracking (synced with TODO.md)
+│   ├── JONNE_TASKS.md               # Jonne's task tracking (synced with TODO.md)
 │   └── (development-related docs)
 │
 ├── Setup & Configuration/           # Setup, configuration, and troubleshooting
