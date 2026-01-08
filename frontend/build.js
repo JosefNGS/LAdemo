@@ -57,10 +57,10 @@ function copyStaticFiles() {
   });
   
   // Copy _redirects file for Netlify SPA routing from frontend/public
-  const redirectsFile = 'public/_redirects';
-  if (redirectsFile) {
+  const redirectsFile = path.join(__dirname, 'public', '_redirects');
+  if (fs.existsSync(redirectsFile)) {
     fs.copyFileSync(redirectsFile, path.join(distDir, '_redirects'));
-    console.log(`✅ Copied: ${redirectsFile}`);
+    console.log(`✅ Copied: public/_redirects`);
   } else {
     // Create _redirects if it doesn't exist
     fs.writeFileSync(path.join(distDir, '_redirects'), '/*    /index.html   200\n');
