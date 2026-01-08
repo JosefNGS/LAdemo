@@ -34,6 +34,9 @@ BitNexus Landing Page/
 │   └── server.py                   # Python dev server (fallback)
 │
 ├── Dev server/                     # ⚠️ CRITICAL: ALL development server files MUST be here
+│   ├── Dockerfile                  # Docker container definition for development
+│   ├── docker-compose.yml          # Multi-service Docker Compose configuration
+│   ├── .dockerignore              # Files to exclude from Docker build
 │   ├── server.js                   # Development server script (if moved from frontend/)
 │   ├── server.py                   # Fallback Python server (if moved from frontend/)
 │   ├── config/                     # Development server configuration

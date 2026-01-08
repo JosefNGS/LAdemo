@@ -3,6 +3,7 @@ import AdminLoginModal from '../components/AdminLoginModal';
 import { AppRoute } from '../types';
 import { useNotifications } from '../contexts/NotificationContext';
 import { teamProfiles } from '../data/teamProfiles';
+import TaskChecklistView from './TaskChecklistView';
 import Vetting from './Vetting';
 import Users from './Users';
 import Reports from './Reports';
@@ -77,7 +78,7 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
         <button
           onClick={() => setActiveTab('tasks')}
           className={`px-6 py-3 font-medium transition-all border-b-2 ${
-            activeTab === 'tasks'
+            activeTab === 'tasks' || activeTab === 'checklist'
               ? 'border-purple-500 text-purple-400'
               : 'border-transparent text-gray-500 hover:text-gray-300'
           }`}
@@ -126,23 +127,13 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
                 All tasks completed by Josef must be verified by each task owner. Check the task status and verify completion.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                 {teamProfiles.map((member) => {
                   const isJosef = member.id === 'josef';
                   return (
                     <div
                       key={member.id}
-                      className="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer"
-                      onClick={() => {
-                        const routeMap: { [key: string]: AppRoute } = {
-                          'josef': AppRoute.PROFILE_JOSEF,
-                          'craig': AppRoute.PROFILE_CRAIG,
-                          'jonne': AppRoute.PROFILE_JONNE,
-                          'svein': AppRoute.PROFILE_SVEIN,
-                          'lee': AppRoute.PROFILE_LEE
-                        };
-                        setActiveRoute(routeMap[member.id]);
-                      }}
+                      className="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all"
                     >
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center text-lg font-bold">
@@ -153,7 +144,7 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
                           <p className="text-xs text-gray-500">{member.role}</p>
                         </div>
                       </div>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-2 text-sm mb-3">
                         <div className="flex items-center gap-2">
                           <span className={isJosef ? "text-green-400" : "text-yellow-400"}>
                             {isJosef ? "✓" : "⚠"}
@@ -164,10 +155,29 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
                           See: docs/Development/{member.name.toUpperCase().split(' ')[0]}_TASKS.md
                         </div>
                       </div>
+                      <button
+                        onClick={() => {
+                          setSelectedTeamMember(member.id);
+                          setActiveTab('checklist' as any);
+                        }}
+                        className="w-full px-3 py-2 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 text-purple-400 rounded-lg text-sm font-medium transition-all"
+                      >
+                        View Task Checklist
+                      </button>
                     </div>
                   );
                 })}
               </div>
+
+              {/* Task Checklist View */}
+              {activeTab === 'checklist' && (
+                <div className="mt-6">
+                  <TaskChecklistView
+                    teamMember={selectedTeamMember}
+                    setActiveRoute={setActiveRoute}
+                  />
+                </div>
+              )}
 
               <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
                 <p className="text-sm text-yellow-400">
