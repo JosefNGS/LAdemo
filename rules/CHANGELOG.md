@@ -14,6 +14,24 @@ Every changelog entry MUST track who made the change:
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
 
+## [1.3.0] - January 2026
+
+### Changed
+- **All Rule Files**: Updated to reference `instructions/` folder as primary guide [Cursor]
+  - Added PRIMARY GUIDE warnings to all rule files
+  - Updated all rules to reference both Agent OS and BMAD-METHOD frameworks
+  - Added complete framework documentation references with specific file paths
+  - Enhanced framework references with detailed documentation locations
+  - All rule files now guide users to `instructions/` for complete documentation
+
+### Added
+- **Framework References**: Added comprehensive framework documentation references to all rule files [Cursor]
+  - Agent OS references: `instructions/.agent-os/standards/`, `instructions/.agent-os/instructions/`
+  - BMAD-METHOD references: `instructions/BMAD-METHOD/docs/`, `instructions/BMAD-METHOD/src/`
+  - Specific file paths for code style, security, deployment, workflows
+
+---
+
 ## [1.2.0] - January 2026
 
 ### Added
