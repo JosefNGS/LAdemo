@@ -436,6 +436,10 @@ After making responsive changes:
 4. Service automatically falls back to mock responses if no key is set
 
 ## Anti-Patterns to Avoid
+- ❌ **CRITICAL**: Don't push directly to main branch (use Pull Request workflow)
+- ❌ **CRITICAL**: Don't merge to main without CTO (Craig Martin) approval
+- ❌ **CRITICAL**: Don't commit broken or untested code
+- ❌ **CRITICAL**: Don't commit API keys, passwords, or sensitive data
 - ❌ **CRITICAL**: Don't create documentation files in root directory (use `docs/` folder)
 - ❌ **CRITICAL**: Don't update LICENSE or README.md without updating both root and `.github/` versions
 - ❌ **CRITICAL**: Don't let `.github/LICENSE` and `LICENSE` get out of sync
