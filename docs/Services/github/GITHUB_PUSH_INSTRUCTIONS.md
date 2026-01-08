@@ -1,5 +1,9 @@
 # GitHub Push Instructions
 
+**⚠️ CRITICAL**: Every push MUST include change documentation. See "Push Change Documentation" section below.
+
+---
+
 **Date**: January 15, 2025
 
 ## Quick Push Commands

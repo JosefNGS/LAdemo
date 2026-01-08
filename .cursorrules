@@ -24,6 +24,7 @@
 - [ ] Documentation updated (if needed)
 - [ ] Follows project structure (`docs/Core Documentation/STRUCTURE.md`)
 - [ ] Follows coding standards (`.cursorrules`)
+- [ ] **CRITICAL**: Push change documentation created (see Push Change Documentation section)
 
 **See `docs/Services/github/VERSION_CONTROL.md` for complete Git workflow guidelines.**
 
