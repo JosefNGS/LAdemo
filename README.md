@@ -540,7 +540,7 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 
 **Josef Lindbom** - *Founder & Vision Lead*
 - 🎯 **Role**: Vision and Development Lead
-- 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development
+- 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: josef@nordicglobalsolutions.com
 
