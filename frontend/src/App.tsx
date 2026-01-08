@@ -372,7 +372,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
+    <NotificationProvider userId="current-user">
       <Layout 
         activeRoute={activeRoute} 
         setActiveRoute={setActiveRoute} 
@@ -388,7 +388,7 @@ const App: React.FC = () => {
           setActiveRoute={setActiveRoute}
         />
       )}
-    </>
+    </NotificationProvider>
   );
 };
 
