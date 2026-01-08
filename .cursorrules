@@ -25,7 +25,7 @@
 - [ ] Follows project structure (`docs/Core Documentation/STRUCTURE.md`)
 - [ ] Follows coding standards (`.cursorrules`)
 
-**See `docs/VERSION_CONTROL.md` for complete Git workflow guidelines.**
+**See `docs/Services/github/VERSION_CONTROL.md` for complete Git workflow guidelines.**
 
 ### 📁 PROJECT STRUCTURE - MAIN SOURCE
 **MANDATORY RULE - STRICTLY ENFORCED**:
@@ -51,7 +51,7 @@
 
 ### 🚫 NO RANDOM FILES IN ROOT DIRECTORY
 **MANDATORY RULE - STRICTLY ENFORCED**:
-- **ALL files must be organized according to folder structure defined in `docs/STRUCTURE.md`**
+- **ALL files must be organized according to folder structure defined in `docs/Core Documentation/STRUCTURE.md`**
 - **NO files in root directory except**:
   - `README.md` (project overview)
   - `LICENSE` (project license)
@@ -61,7 +61,7 @@
   - `.cursorrules` (IDE rules)
   - `.gitignore` (Git ignore rules)
 
-**What Goes Where** (see `docs/STRUCTURE.md` for complete details):
+**What Goes Where** (see `docs/Core Documentation/STRUCTURE.md` for complete details):
 - ✅ **Frontend files** → `frontend/`
 - ✅ **Backend files** → `backend/` (one folder per service)
 - ✅ **Documentation** → `docs/` (organized by purpose)
@@ -154,9 +154,9 @@ This is a React + TypeScript landing page with an interactive demo dashboard for
 
 ## File Structure
 
-**⚠️ IMPORTANT**: The complete and authoritative file structure is defined in `docs/STRUCTURE.md`. Always refer to that document for the most up-to-date structure.
+**⚠️ IMPORTANT**: The complete and authoritative file structure is defined in `docs/Core Documentation/STRUCTURE.md`. Always refer to that document for the most up-to-date structure.
 
-**Quick Reference** (see `docs/STRUCTURE.md` for complete details):
+**Quick Reference** (see `docs/Core Documentation/STRUCTURE.md` for complete details):
 ```
 BitNexus Landing Page/
 ├── frontend/           # Frontend application
@@ -170,7 +170,9 @@ BitNexus Landing Page/
 │   ├── discourse/      # Discourse forum service
 │   └── ... (other services)
 ├── docs/               # ALL documentation files
-│   ├── STRUCTURE.md    # ⭐ MAIN STRUCTURE REFERENCE
+│   ├── Core Documentation/
+│   │   ├── STRUCTURE.md    # ⭐ MAIN STRUCTURE REFERENCE
+│   │   └── DOCS_STRUCTURE.md  # Documentation organization
 │   ├── DEVELOPER_DOCS.md # Team responsibilities
 │   ├── Product docs/   # Product documentation
 │   └── ... (other docs)
@@ -183,7 +185,8 @@ BitNexus Landing Page/
 └── .cursorrules        # This file
 ```
 
-**For complete structure details, see**: `docs/STRUCTURE.md`
+**For complete structure details, see**: `docs/Core Documentation/STRUCTURE.md`  
+**For documentation organization, see**: `docs/Core Documentation/DOCS_STRUCTURE.md`
 
 ### Backend Service Organization
 **MANDATORY RULE - STRICTLY ENFORCED**:
@@ -454,8 +457,9 @@ After making responsive changes:
 - ❌ **CRITICAL**: Don't update LICENSE or README.md without updating both root and `.github/` versions
 - ❌ **CRITICAL**: Don't let `.github/LICENSE` and `LICENSE` get out of sync
 - ❌ **CRITICAL**: Don't let `.github/README.md` and `README.md` get out of sync
-- ❌ **CRITICAL**: Don't place files in root directory that don't belong there (check `docs/STRUCTURE.md`)
-- ❌ **CRITICAL**: Don't create random files without following folder structure (see `docs/STRUCTURE.md`)
+- ❌ **CRITICAL**: Don't place files in root directory that don't belong there (check `docs/Core Documentation/STRUCTURE.md`)
+- ❌ **CRITICAL**: Don't create random files without following folder structure (see `docs/Core Documentation/STRUCTURE.md`)
+- ❌ **CRITICAL**: Don't place documentation files randomly (see `docs/Core Documentation/DOCS_STRUCTURE.md`)
 - ❌ **CRITICAL**: Don't mix backend services in the same folder (one folder per service)
 - ❌ **CRITICAL**: Don't organize documentation randomly (must follow `docs/` structure)
 - ❌ Don't use inline styles (use Tailwind classes)
