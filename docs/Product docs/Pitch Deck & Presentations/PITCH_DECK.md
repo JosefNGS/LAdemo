@@ -258,7 +258,7 @@
 
 **Platform Support**:
 - YouTube, Instagram, Facebook, TikTok
-- Snapchat, X (Twitter), LinkedIn
+- Snapchat, X
 - One-click sharing to all platforms
 
 **Time Savings**:
@@ -603,14 +603,15 @@
 **Questions?**
 
 **Contact**:
-- Email: support@bitnexus.io
-- Website: bitnexus.io
-- GitHub: github.com/JosefNGS/LADEMO
+- Email: josef@nordicglobalsolutions.com
+- Website: www.nordicglobalsolutions.com
 
 **Follow Us**:
-- Twitter: @BitNexus
-- LinkedIn: BitNexus
-- Discord: (coming soon)
+- 💬 **Official Nordic Global Discord**: [Join Community](https://discord.gg/UhsYV4aytG)
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
 
 **Visual**: Thank you slide with logo and contact info
 

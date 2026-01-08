@@ -499,6 +499,18 @@ BitNexus provides a complete ecosystem where users can:
 
 ## Contact & Resources
 
+### Nordic Global Communication
+
+**Discord Servers**:
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
+
+---
+
 ### Official Channels
 - **Website**: [BitNexus Platform] (Launch: January 21, 2026)
 - **GitHub**: https://github.com/JosefNGS/LAdemo (Note: Proprietary codebase - contracts required for developers)
