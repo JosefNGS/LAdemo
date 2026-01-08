@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ICONS } from '../constants';
 
 interface FeedPost {
@@ -19,6 +19,12 @@ interface FeedPost {
 const Feed: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<FeedPost | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
+  const [postLikes, setPostLikes] = useState<Record<string, number>>({});
+  const [postComments, setPostComments] = useState<Record<string, number>>({});
+  const [postShares, setPostShares] = useState<Record<string, number>>({});
+  const [showComments, setShowComments] = useState<string | null>(null);
+  const [commentInput, setCommentInput] = useState<Record<string, string>>({});
 
   const filters = ['all', 'achievements', 'products', 'updates', 'community'];
 
@@ -115,6 +121,84 @@ const Feed: React.FC = () => {
         return true;
       });
 
+  // Initialize post counts
+  useEffect(() => {
+    const initialLikes: Record<string, number> = {};
+    const initialComments: Record<string, number> = {};
+    const initialShares: Record<string, number> = {};
+    feedPosts.forEach(post => {
+      initialLikes[post.id] = post.likes;
+      initialComments[post.id] = post.comments;
+      initialShares[post.id] = post.shares;
+    });
+    setPostLikes(initialLikes);
+    setPostComments(initialComments);
+    setPostShares(initialShares);
+  }, []);
+
+  const handleLike = (postId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const isLiked = likedPosts.has(postId);
+    setLikedPosts(prev => {
+      const newSet = new Set(prev);
+      if (isLiked) {
+        newSet.delete(postId);
+        setPostLikes(prevLikes => ({ ...prevLikes, [postId]: (prevLikes[postId] || feedPosts.find(p => p.id === postId)?.likes || 0) - 1 }));
+      } else {
+        newSet.add(postId);
+        setPostLikes(prevLikes => ({ ...prevLikes, [postId]: (prevLikes[postId] || feedPosts.find(p => p.id === postId)?.likes || 0) + 1 }));
+      }
+      return newSet;
+    });
+  };
+
+  const handleComment = (postId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setShowComments(prev => prev === postId ? null : postId);
+    if (showComments !== postId) {
+      setSelectedPost(feedPosts.find(p => p.id === postId) || null);
+    }
+  };
+
+  const handleShare = (post: FeedPost, e: React.MouseEvent) => {
+    e.stopPropagation();
+    const shareUrl = `https://bitnexus.io/feed/post/${post.id}`;
+    const shareText = `${post.content}\n\n- ${post.author} on BitNexus`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: `Post by ${post.author}`,
+        text: shareText,
+        url: shareUrl,
+      }).then(() => {
+        setPostShares(prevShares => ({ ...prevShares, [post.id]: (prevShares[post.id] || post.shares) + 1 }));
+      }).catch(() => {
+        // Fallback to clipboard
+        copyToClipboard(shareUrl, post.id);
+      });
+    } else {
+      copyToClipboard(shareUrl, post.id);
+    }
+  };
+
+  const copyToClipboard = (text: string, postId: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+      setPostShares(prevShares => ({ ...prevShares, [postId]: (prevShares[postId] || feedPosts.find(p => p.id === postId)?.shares || 0) + 1 }));
+    });
+  };
+
+  const handleSubmitComment = (postId: string, e: React.FormEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const comment = commentInput[postId];
+    if (comment && comment.trim()) {
+      setPostComments(prevComments => ({ ...prevComments, [postId]: (prevComments[postId] || feedPosts.find(p => p.id === postId)?.comments || 0) + 1 }));
+      setCommentInput(prev => ({ ...prev, [postId]: '' }));
+      alert('Comment posted!');
+    }
+  };
+
   const getTierColor = (tier: string) => {
     switch(tier) {
       case 'Platinum': return 'bg-purple-500/20 text-purple-400 border-purple-500/20';
@@ -189,25 +273,38 @@ const Feed: React.FC = () => {
             )}
 
             <div className="flex items-center gap-6 pt-4 border-t border-white/5">
-              <button className="flex items-center gap-2 text-gray-400 hover:text-red-400 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <button 
+                onClick={(e) => handleLike(post.id, e)}
+                className={`flex items-center gap-2 transition-colors ${
+                  likedPosts.has(post.id) 
+                    ? 'text-red-400' 
+                    : 'text-gray-400 hover:text-red-400'
+                }`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill={likedPosts.has(post.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
-                <span className="text-sm font-medium">{post.likes}</span>
+                <span className="text-sm font-medium">{postLikes[post.id] !== undefined ? postLikes[post.id] : post.likes}</span>
               </button>
-              <button className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors">
+              <button 
+                onClick={(e) => handleComment(post.id, e)}
+                className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                 </svg>
-                <span className="text-sm font-medium">{post.comments}</span>
+                <span className="text-sm font-medium">{postComments[post.id] !== undefined ? postComments[post.id] : post.comments}</span>
               </button>
-              <button className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors">
+              <button 
+                onClick={(e) => handleShare(post, e)}
+                className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors"
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
                   <polyline points="16 6 12 2 8 6"/>
                   <line x1="12" y1="2" x2="12" y2="15"/>
                 </svg>
-                <span className="text-sm font-medium">{post.shares}</span>
+                <span className="text-sm font-medium">{postShares[post.id] !== undefined ? postShares[post.id] : post.shares}</span>
               </button>
             </div>
           </div>
@@ -264,30 +361,101 @@ const Feed: React.FC = () => {
               )}
 
               <div className="flex items-center gap-6 pt-4 border-t border-white/5">
-                <button className="flex items-center gap-2 px-4 py-2 bg-red-500/10 text-red-400 rounded-xl border border-red-500/20 hover:bg-red-500/20 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLike(selectedPost.id, e);
+                  }}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all ${
+                    likedPosts.has(selectedPost.id)
+                      ? 'bg-red-500/20 text-red-400 border-red-500/30 hover:bg-red-500/30'
+                      : 'bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500/20'
+                  }`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill={likedPosts.has(selectedPost.id) ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                   </svg>
-                  <span className="font-bold">{selectedPost.likes}</span>
+                  <span className="font-bold">{postLikes[selectedPost.id] !== undefined ? postLikes[selectedPost.id] : selectedPost.likes}</span>
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 text-cyan-400 rounded-xl border border-cyan-500/20 hover:bg-cyan-500/20 transition-all">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowComments(prev => prev === selectedPost.id ? null : selectedPost.id);
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 text-cyan-400 rounded-xl border border-cyan-500/20 hover:bg-cyan-500/20 transition-all"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                   </svg>
-                  <span className="font-bold">{selectedPost.comments}</span>
+                  <span className="font-bold">{postComments[selectedPost.id] !== undefined ? postComments[selectedPost.id] : selectedPost.comments}</span>
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-400 rounded-xl border border-green-500/20 hover:bg-green-500/20 transition-all">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleShare(selectedPost, e);
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-400 rounded-xl border border-green-500/20 hover:bg-green-500/20 transition-all"
+                >
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
                     <polyline points="16 6 12 2 8 6"/>
                     <line x1="12" y1="2" x2="12" y2="15"/>
                   </svg>
-                  <span className="font-bold">{selectedPost.shares}</span>
+                  <span className="font-bold">{postShares[selectedPost.id] !== undefined ? postShares[selectedPost.id] : selectedPost.shares}</span>
                 </button>
               </div>
 
+              {/* Comments Section */}
+              {showComments === selectedPost.id && (
+                <div className="pt-4 border-t border-white/5 space-y-4">
+                  <h4 className="font-bold text-lg">Comments</h4>
+                  <form onSubmit={(e) => handleSubmitComment(selectedPost.id, e)} className="space-y-3">
+                    <textarea
+                      value={commentInput[selectedPost.id] || ''}
+                      onChange={(e) => setCommentInput(prev => ({ ...prev, [selectedPost.id]: e.target.value }))}
+                      placeholder="Write a comment..."
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-500/50 resize-none"
+                      rows={3}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    <button
+                      type="submit"
+                      className="px-6 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-xl font-bold text-sm transition-all"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Post Comment
+                    </button>
+                  </form>
+                  <div className="space-y-3 mt-4">
+                    <div className="p-3 bg-white/5 rounded-xl">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-bold text-xs">
+                          U1
+                        </div>
+                        <span className="font-bold text-sm">Agent Nexus-42</span>
+                        <span className="text-xs text-gray-500">• 2 hours ago</span>
+                      </div>
+                      <p className="text-sm text-gray-300">Great update! Can't wait to try the new features.</p>
+                    </div>
+                    <div className="p-3 bg-white/5 rounded-xl">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center font-bold text-xs">
+                          U2
+                        </div>
+                        <span className="font-bold text-sm">Agent Nexus-15</span>
+                        <span className="text-xs text-gray-500">• 5 hours ago</span>
+                      </div>
+                      <p className="text-sm text-gray-300">This is exactly what I needed! Thanks BitNexus Team 🚀</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <button
-                onClick={() => setSelectedPost(null)}
+                onClick={() => {
+                  setSelectedPost(null);
+                  setShowComments(null);
+                }}
                 className="w-full py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
               >
                 Close

@@ -4,21 +4,141 @@ A modern, interactive landing page with a React-based demo dashboard for BitNexu
 
 ## ⚠️ LICENSE AND USAGE TERMS
 
-**PROPRIETARY SOFTWARE - NOT FOR USE IN OTHER PROJECTS**
+**PROPRIETARY SOFTWARE - PROTECTED BY MULTIPLE LAYERS OF INTELLECTUAL PROPERTY LAW**
 
-This codebase is proprietary and protected by copyright. **You are NOT allowed to use this code in your own projects** without explicit written permission.
+This codebase is proprietary and protected by copyright, trade secrets, and other intellectual property laws. **You are NOT allowed to use this code in your own projects** without explicit written permission and a signed development agreement.
 
-**PROHIBITED:**
+### Legal Protection Framework
+
+BitNexus is protected by comprehensive legal protections:
+
+#### Copyright Protection
+- ✅ **Automatic Copyright**: All code protected under copyright law upon creation
+- ✅ **Copyright Registration**: Registered with U.S. Copyright Office (for enforcement)
+- ✅ **International Protection**: Protected in 179+ countries under Berne Convention
+- ✅ **DMCA Protection**: Eligible for DMCA takedown procedures for unauthorized use
+
+**What's Protected:**
+- Source code (literal code)
+- Structure, Sequence, and Organization (SSO) of software
+- User interface elements
+- Documentation
+- Database structures
+
+#### Trade Secret Protection
+- ✅ **UTSA Framework**: Protected under Uniform Trade Secrets Act (49 states)
+- ✅ **Confidential Information**: Algorithms, processes, business logic
+- ✅ **NDA Requirements**: All developers and contractors must sign NDAs
+- ✅ **Access Controls**: Restricted access to proprietary code
+
+**Trade Secret Status:**
+- Core algorithms (AI content generation)
+- Business logic (commission calculations)
+- Security implementations
+- Proprietary integrations
+
+#### Patent Protection (Under Evaluation)
+- ⏳ Novel algorithms and processes (evaluation in progress)
+- ⏳ Decentralized affiliate revenue distribution system
+- ⏳ Automated staking bot processes
+- ⏳ Unique blockchain transparency mechanisms
+
+#### Trademark Protection
+- ⏳ "BitNexus" (word mark) - Registration in progress
+- ⏳ Logo/brand identity - Registration in progress
+- ⏳ Product names (MEV Bot, XAB Bot, NXC Credits)
+
+#### International IP Protection
+- ✅ **WIPO**: World Intellectual Property Organization treaties
+- ✅ **Berne Convention**: Copyright protection in 179+ countries
+- ✅ **EU Protection**: GDPR compliance (ISO 27701 certified), EU Copyright Directive, DSA compliance
+- ✅ **PCT Patent System**: Available for international patent protection
+
+### Contract Requirements
+
+**MANDATORY: A signed contract is required for:**
 - ❌ Using this code in your own projects
+- ❌ Developing applications based on this codebase
+- ❌ Integrating this code with other systems
+- ❌ Collaborating on development with developers
+- ❌ Any commercial or commercial-related use
 - ❌ Redistributing or selling this code
 - ❌ Creating derivative works based on this code
 - ❌ Copying substantial portions of this code into other projects
+- ❌ Reverse engineering or decompiling
+- ❌ Accessing or using proprietary algorithms or trade secrets
 
-**PERMITTED:**
+**PERMITTED (No Contract Required):**
 - ✅ Viewing the code for reference or educational purposes
-- ✅ Reporting bugs or contributing (subject to approval)
+- ✅ Reporting bugs or contributing (subject to approval and CLA)
+- ✅ Personal learning and study (no commercial use)
 
-For licensing inquiries or usage permissions, contact: josef@nordicglobalsolutions.com
+### Development Agreement
+
+**To use this codebase with developers or in development projects, you MUST:**
+
+1. **Contact the Vision/Developer** to discuss your use case
+2. **Sign a formal development agreement** before any code usage
+   - **Work-for-Hire Clause**: All code automatically owned by BitNexus
+   - **IP Assignment**: Developer assigns all IP rights
+   - **Non-Disclosure Agreement (NDA)**: Strict confidentiality terms
+   - **Non-Compete**: Restrictions on competing projects
+   - **Reverse Engineering Restrictions**: Explicit prohibition
+3. **Obtain explicit written permission** for each specific use case
+4. **Comply with all terms and conditions** outlined in the agreement
+
+**Without a signed contract, any use of this code is strictly prohibited and may result in legal action, including:**
+- Copyright infringement claims
+- Trade secret misappropriation claims
+- DMCA takedown notices
+- Injunctive relief (cease use)
+- Damages (actual + statutory up to $150,000 per work)
+- Attorney's fees
+
+### Enforcement & Legal Remedies
+
+**Monitoring & Enforcement:**
+- ✅ **Code Monitoring**: Regular scans for unauthorized code use
+- ✅ **Trademark Monitoring**: Watch services for trademark violations
+- ✅ **DMCA Takedown**: Fast removal of infringing content online
+- ✅ **Legal Action**: Full enforcement of IP rights when necessary
+
+**Legal Remedies Available:**
+- Injunctive relief (stop use immediately)
+- Statutory damages (up to $150,000 per copyrighted work)
+- Actual damages (lost profits, licensing fees)
+- Attorney's fees (if copyright registered)
+- Criminal penalties (in cases of willful infringement)
+- International enforcement (via WIPO and international treaties)
+
+### Contact Information
+
+**For licensing inquiries, development agreements, or usage permissions:**
+- **Email**: josef@nordicglobalsolutions.com
+- **Subject**: "BitNexus Development Agreement Request"
+
+**For legal matters or IP protection inquiries:**
+- **Email**: josef@nordicglobalsolutions.com
+- **Subject**: "BitNexus Legal Inquiry"
+
+### Comprehensive Legal Documentation
+
+For detailed information about all legal protections, see:
+- **[Legal Protections Documentation](./docs/Product%20docs/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework
+
+**Key Topics Covered:**
+- Copyright registration and enforcement
+- Trade secret protection (UTSA)
+- Patent protection strategies
+- Trademark registration
+- Licensing agreements (Development, EULA, API)
+- DMCA takedown procedures
+- International IP protection (WIPO, Berne Convention, EU laws)
+- Contract law protections
+- NDA requirements
+- Reverse engineering restrictions
+- Software escrow (for enterprise clients)
+- Monitoring and enforcement strategies
 
 See [LICENSE](LICENSE) for full terms and conditions.
 
@@ -178,6 +298,7 @@ See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed contribution guideli
 - **[Supabase Quick Start](./docs/SUPABASE_QUICK_START.md)** - Get started with Supabase in 5 minutes
 - **[Email Collection Setup](./docs/EMAIL_COLLECTION_SETUP.md)** - Database options for email signups
 - **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+- **[Legal Protections](./docs/Product%20docs/LEGAL_PROTECTIONS.md)** - Comprehensive IP protection framework (Copyright, Trade Secrets, Patents, Trademarks, DMCA, International Protection)
 
 ## 📁 Project Structure
 
@@ -296,13 +417,13 @@ BitNexus Landing Page/
 ## 🔧 Development
 
 ### Adding a New Page
-1. Create a new file in `src/pages/PageName.tsx` (or `frontend/src/pages/PageName.tsx` if files are moved)
-2. Add route to `AppRoute` enum in `src/types.ts` (or `frontend/src/types.ts`)
-3. Add case in `src/App.tsx` renderContent switch (or `frontend/src/App.tsx`)
-4. Optionally add navigation item in `src/components/Layout.tsx` (or `frontend/src/components/Layout.tsx`)
+1. Create a new file in `frontend/src/pages/PageName.tsx`
+2. Add route to `AppRoute` enum in `frontend/src/types.ts`
+3. Add case in `frontend/src/App.tsx` renderContent switch
+4. Optionally add navigation item in `frontend/src/components/Layout.tsx`
 
 ### Adding a New Icon
-1. Add icon component to `ICONS` object in `src/constants.tsx` (or `frontend/src/constants.tsx` if files are moved)
+1. Add icon component to `ICONS` object in `frontend/src/constants.tsx`
 2. Use SVG format with proper React props
 3. Use as `<ICONS.IconName />`
 
@@ -321,7 +442,7 @@ BitNexus Landing Page/
 - Development server (`server.js`) transpiles TypeScript files on demand
 
 ### Production
-- Run `npm run build` to create production build (runs from `frontend/` directory)
+- Run `npm run build` to create production build (runs from root, builds `frontend/`)
 - TypeScript files are pre-transpiled to JavaScript
 - Output goes to `frontend/dist/` directory
 - Backend functions are in `backend/netlify/functions/`
@@ -350,7 +471,82 @@ BitNexus Landing Page/
 - Verify Recharts is loaded (check import map)
 - Check browser console for errors
 
+## 👥 Vision & Development Team
+
+### Vision/Developer
+
+**Josef Lindbom**
+- Vision and Development Lead
+- Strategic direction and platform architecture
+- Contact: josef@nordicglobalsolutions.com
+
+### Chief Technology Officer (CTO)
+
+**Craig Martin**
+- Technology leadership and oversight
+- Technical architecture and implementation
+- System design and scalability
+- Contact: craig@nordicglobalsolutions.com
+
+---
+
 ## 📄 License
+
+**PROPRIETARY SOFTWARE - MULTIPLE LAYERS OF IP PROTECTION**
+
+This codebase is proprietary and protected by:
+
+- ✅ **Copyright**: Automatic + registered protection (U.S. and international)
+- ✅ **Trade Secrets**: UTSA framework for algorithms and processes
+- ✅ **Contracts**: Development agreements, NDAs, EULAs
+- ⏳ **Patents**: Novel algorithms under evaluation
+- ⏳ **Trademarks**: BitNexus brand and product names (registration in progress)
+
+**All Rights Reserved**
+
+This software is proprietary intellectual property. Unauthorized use, copying, modification, distribution, or commercial exploitation is strictly prohibited and subject to legal action.
+
+### Contract Required for Development Use
+
+A signed development agreement is mandatory for any use of this codebase in development projects or collaboration with developers. Without a signed contract, any use of this code is strictly prohibited and may result in:
+
+- Copyright infringement lawsuits
+- Trade secret misappropriation claims
+- DMCA takedown notices
+- Injunctive relief
+- Statutory damages (up to $150,000 per work)
+- Attorney's fees
+
+### Legal Protections Summary
+
+**Copyright:**
+- Automatic protection upon creation
+- Registered with U.S. Copyright Office
+- Protected in 179+ countries (Berne Convention)
+- DMCA eligible for takedown procedures
+
+**Trade Secrets:**
+- Protected under UTSA (49 states)
+- NDA requirements for all developers
+- Access controls and confidentiality measures
+- Potentially unlimited duration (as long as secret)
+
+**International Protection:**
+- WIPO treaties (193+ countries)
+- EU GDPR compliance (ISO 27701 certified)
+- EU Copyright Directive compliance
+- DSA (Digital Services Act) compliance
+
+**For licensing inquiries or development agreements, contact:**
+- **Email**: josef@nordicglobalsolutions.com
+- **Subject**: "BitNexus Development Agreement Request"
+
+**For legal matters or IP protection:**
+- **Email**: josef@nordicglobalsolutions.com
+- **Subject**: "BitNexus Legal Inquiry"
+
+**Comprehensive Legal Documentation:**
+- See [Legal Protections Documentation](./docs/Product%20docs/LEGAL_PROTECTIONS.md) for complete IP protection framework
 
 See [LICENSE](LICENSE) for full terms and conditions.
 

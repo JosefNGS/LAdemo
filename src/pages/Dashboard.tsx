@@ -25,6 +25,30 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
   const [activeTab, setActiveTab] = useState('Overview');
+  
+  // Leaderboard filter state
+  const [leaderboardFilter, setLeaderboardFilter] = useState<'Earnings' | 'Network' | 'Growth'>('Earnings');
+  
+  // Commission Calculator state
+  const [productPrice, setProductPrice] = useState<number>(234);
+  const [commissionRate, setCommissionRate] = useState<number>(10);
+  const [numberOfSales, setNumberOfSales] = useState<number>(1);
+  
+  
+  // Calculate commission values
+  const calculateCommission = () => {
+    const totalRevenue = productPrice * numberOfSales;
+    const commission = (totalRevenue * commissionRate) / 100;
+    const monthlyEstimate = (productPrice * 10 * commissionRate) / 100;
+    
+    return {
+      totalRevenue,
+      commission,
+      monthlyEstimate
+    };
+  };
+  
+  const commissionCalc = calculateCommission();
   const [showBulkLinkModal, setShowBulkLinkModal] = useState(false);
   const [showExportReportsModal, setShowExportReportsModal] = useState(false);
   const [showRevenueForecastModal, setShowRevenueForecastModal] = useState(false);
@@ -46,7 +70,7 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
   const [showAllActionsModal, setShowAllActionsModal] = useState(false);
   const [showAffiliateRevenueModal, setShowAffiliateRevenueModal] = useState(false);
 
-  const tabs = ['Overview', 'Due Diligence', 'Tools'];
+  const tabs = ['Overview', 'Tools'];
 
   return (
     <div className="space-y-6">
@@ -504,9 +528,36 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold font-display">Global Leaderboard</h3>
               <div className="flex gap-2">
-                <button className="px-3 py-1 bg-purple-600 text-white rounded-lg text-xs font-bold">Earnings</button>
-                <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">Network</button>
-                <button className="px-3 py-1 bg-white/5 text-gray-400 rounded-lg text-xs font-bold hover:bg-white/10">Growth</button>
+                <button 
+                  onClick={() => setLeaderboardFilter('Earnings')}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                    leaderboardFilter === 'Earnings'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                  }`}
+                >
+                  Earnings
+                </button>
+                <button 
+                  onClick={() => setLeaderboardFilter('Network')}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                    leaderboardFilter === 'Network'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                  }`}
+                >
+                  Network
+                </button>
+                <button 
+                  onClick={() => setLeaderboardFilter('Growth')}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                    leaderboardFilter === 'Growth'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                  }`}
+                >
+                  Growth
+                </button>
               </div>
             </div>
             <div className="space-y-3">
@@ -521,10 +572,10 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                 <div 
                   key={user.rank} 
                   onClick={() => setSelectedLeaderboardUser(user.name)}
-                  className={`flex items-center gap-4 p-4 rounded-2xl border transition-all cursor-pointer ${
+                  className={`flex items-center gap-4 p-4 rounded-2xl border transition-all cursor-pointer hover:scale-[1.02] hover:shadow-lg ${
                     user.isYou 
-                      ? 'bg-purple-500/10 border-purple-500/30 shadow-lg shadow-purple-500/20' 
-                      : 'bg-white/5 border-white/5 hover:border-purple-500/20'
+                      ? 'bg-purple-500/10 border-purple-500/30 shadow-lg shadow-purple-500/20 hover:border-purple-500/50' 
+                      : 'bg-white/5 border-white/5 hover:border-purple-500/30 hover:bg-white/10'
                   }`}
                 >
                   <div className="flex items-center gap-3 min-w-[60px]">
@@ -570,7 +621,10 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
             </div>
             <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
               <p className="text-xs text-gray-500">Your rank improved by 3 positions this week!</p>
-              <button className="text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors">
+              <button 
+                onClick={() => setActiveRoute && setActiveRoute(AppRoute.ALLIANCE)}
+                className="text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors"
+              >
                 View Full Leaderboard →
               </button>
             </div>
@@ -609,42 +663,6 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
             </div>
           </div>
         </>
-      )}
-
-      {activeTab === 'Due Diligence' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-           <div className="glass-card p-8 rounded-3xl space-y-4">
-              <h3 className="text-2xl font-bold">Project Audits</h3>
-              <p className="text-gray-400">View detailed reports from third-party security firms regarding our smart contracts and MEV/XAB bot logic.</p>
-              <div className="space-y-2">
-                 {['CertiK Audit 2024', 'OpenZeppelin Report', 'KPMG Fintech Review'].map(d => (
-                   <div 
-                     key={d} 
-                     onClick={() => setShowAuditModal(d)}
-                     className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer"
-                   >
-                      <span className="font-medium">{d}</span>
-                      <span className="text-cyan-400 text-xs font-bold">DOWNLOAD PDF</span>
-                   </div>
-                 ))}
-              </div>
-           </div>
-           <div className="glass-card p-8 rounded-3xl space-y-4">
-              <h3 className="text-2xl font-bold">Transparency Ledger</h3>
-              <div className="p-4 bg-black/40 rounded-2xl font-mono text-xs text-green-400 overflow-hidden leading-relaxed">
-                 [BLOCK_SYNC] 0x82...12A verified at 14:02:11<br/>
-                 [BOT_PROFIT] +0.124 NXC added to Liquidity Pool<br/>
-                 [SYSTEM] Integrity check PASSED (99.98%)<br/>
-                 [AUDIT] Continuous monitoring active...
-              </div>
-              <button 
-                onClick={() => setShowTransparencyLedgerModal(true)}
-                className="w-full py-4 bg-white/5 rounded-2xl font-bold hover:bg-white/10 transition-colors"
-              >
-                View On-Chain Ledger
-              </button>
-           </div>
-        </div>
       )}
 
       {activeTab === 'Tools' && (
@@ -751,6 +769,8 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <label className="text-sm font-bold text-gray-400 mb-2 block">Product Price ($)</label>
                   <input
                     type="number"
+                    value={productPrice}
+                    onChange={(e) => setProductPrice(Number(e.target.value) || 0)}
                     placeholder="0.00"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-green-500/50 text-lg font-bold"
                   />
@@ -759,7 +779,11 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <label className="text-sm font-bold text-gray-400 mb-2 block">Commission Rate (%)</label>
                   <input
                     type="number"
+                    value={commissionRate}
+                    onChange={(e) => setCommissionRate(Number(e.target.value) || 0)}
                     placeholder="10"
+                    min="0"
+                    max="100"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-green-500/50 text-lg font-bold"
                   />
                 </div>
@@ -767,27 +791,38 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                   <label className="text-sm font-bold text-gray-400 mb-2 block">Number of Sales</label>
                   <input
                     type="number"
+                    value={numberOfSales}
+                    onChange={(e) => setNumberOfSales(Number(e.target.value) || 0)}
                     placeholder="1"
+                    min="0"
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-green-500/50 text-lg font-bold"
                   />
                 </div>
               </div>
               <div className="p-6 bg-green-500/10 border border-green-500/20 rounded-xl">
                 <p className="text-xs text-gray-500 mb-2">Your Commission</p>
-                <p className="text-4xl font-bold text-green-400 mb-4">$0.00</p>
+                <p className="text-4xl font-bold text-green-400 mb-4">
+                  ${commissionCalc.commission.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-400">Total Revenue:</span>
-                    <span className="font-bold">$0.00</span>
+                    <span className="font-bold">
+                      ${commissionCalc.totalRevenue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Commission:</span>
-                    <span className="font-bold text-green-400">$0.00</span>
+                    <span className="font-bold text-green-400">
+                      ${commissionCalc.commission.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </span>
                   </div>
                   <div className="pt-2 border-t border-white/10">
                     <div className="flex justify-between">
                       <span className="text-gray-400">Monthly (10 sales):</span>
-                      <span className="font-bold text-cyan-400">$0.00</span>
+                      <span className="font-bold text-cyan-400">
+                        ${commissionCalc.monthlyEstimate.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      </span>
                     </div>
                   </div>
                 </div>

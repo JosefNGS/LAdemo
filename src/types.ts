@@ -28,7 +28,8 @@ export enum AppRoute {
   NEWS = 'news',
   USERS = 'users',
   SUPPORT = 'support',
-  FEED = 'feed'
+  FEED = 'feed',
+  GOVERNANCE = 'governance'
 }
 
 export interface Product {
@@ -54,5 +55,82 @@ export interface Message {
   text: string;
   timestamp: Date;
   isSelf: boolean;
+}
+
+// Trust System Types
+export type VerificationBadgeType = 
+  | 'email-verified' 
+  | 'phone-verified' 
+  | 'identity-verified' 
+  | 'social-linked'
+  | 'profile-complete'
+  | 'photo-verified'
+  | 'bio-verified'
+  | 'payment-verified'
+  | 'first-sale'
+  | 'active-member'
+  | 'content-creator'
+  | 'network-builder'
+  | 'verified-account'
+  | 'trusted-vendor'
+  | 'community-leader'
+  | 'platform-veteran';
+
+export interface VerificationBadge {
+  type: VerificationBadgeType;
+  name: string;
+  description: string;
+  icon: string;
+  verified: boolean;
+  verifiedAt?: string;
+}
+
+export type VerificationLevel = 'Basic' | 'Standard' | 'Enhanced' | 'Institutional';
+export type VendorCertificationLevel = 'Basic' | 'Verified' | 'Premium' | null;
+export type ProductCertificationType = 'Quality' | 'Security' | 'Value' | 'Trust' | null;
+
+export interface UserVerification {
+  emailVerified: boolean;
+  phoneVerified: boolean;
+  identityVerified: boolean;
+  kycCompleted: boolean;
+  verificationLevel: VerificationLevel;
+  badges: VerificationBadge[];
+  trustScore: number;
+  vendorCertification?: VendorCertificationLevel;
+}
+
+export interface GovernanceProposal {
+  id: string;
+  title: string;
+  description: string;
+  type: 'feature' | 'policy' | 'product' | 'budget' | 'partnership';
+  author: string;
+  createdAt: string;
+  discussionEndDate: string;
+  votingStartDate: string;
+  votingEndDate: string;
+  status: 'draft' | 'discussion' | 'voting' | 'passed' | 'rejected';
+  votesFor: number;
+  votesAgainst: number;
+  userVote?: 'for' | 'against' | null;
+  userVotingPower: number;
+}
+
+export interface ProductVote {
+  productId: string;
+  userId: string;
+  vote: 'approve' | 'reject';
+  timestamp: string;
+  comment?: string;
+}
+
+export interface ProductCertification {
+  qualityCertified: boolean;
+  securityCertified: boolean;
+  valueCertified: boolean;
+  trustCertified: boolean;
+  certifiedAt?: string;
+  certificationBadges: ProductCertificationType[];
 }
 

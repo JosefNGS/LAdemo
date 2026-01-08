@@ -2,8 +2,20 @@
 ## Comprehensive Page-by-Page Guide
 
 **Last Updated**: January 2026  
-**Version**: 2.0  
+**Version**: 2.2  
 **Status**: Complete - All Pages Documented
+
+**Recent Updates (January 2026)**:
+- Added Due Diligence tab to Marketplace with research process and product ranking system
+- Updated Marketplace action buttons to match Overview/Due Diligence tab styling
+- Added marketing asset images display functionality
+- Updated product grading system documentation (S, A+, A, A-, B+, B, B-, C+, C, C-, D, F)
+- Enhanced commission calculator functionality
+- Added ISO/IEC 27001 and ISO/IEC 27701 Information Security Certifications to Marketplace Due Diligence tab
+- Enhanced audit modal with detailed information for CertiK, OpenZeppelin, KPMG, ISO 27001, and ISO 27701
+- Added manual entry option for Outreach & Communication in Alliance (email and phone number inputs)
+- Updated landing page countdown to target January 21, 2026 with "Launch in." text
+- Implemented responsive layout improvements across all pages (mobile-first approach)
 
 ---
 
@@ -55,27 +67,41 @@
 ### Contents
 
 #### Hero Section
+- **Genesis Phase Badge**: "Genesis Phase: Calibration in Progress" badge at top
 - **BitNexus Logo**: Gradient text logo (cyan-purple-cyan)
-- **Main Headline**: "The Future of Affiliate Revenue is Decentralized"
+- **Main Headline**: "The Future of Decentralized Revenue"
 - **Subheadline**: Description of platform value proposition
-- **Countdown Timer**: Real-time countdown to launch date
+- **Launch Countdown Text**: "Launch in." text above countdown timer
+- **Countdown Timer**: Real-time countdown to January 21, 2026 (00:00:00)
   - Days, Hours, Minutes, Seconds display
   - Updates every second
-  - Styled with gradient text
+  - Responsive text sizes (text-2xl to text-7xl based on viewport)
+  - Styled with gradient text and animations
+  - Flex-wrap enabled for mobile devices
 
-#### Genesis Signup Section
-- **Email Input Field**:
-  - Placeholder: "Enter your terminal email..."
-  - White text with improved visibility
-  - Placeholder opacity: 60% for better readability
+#### Genesis Signup Section (Hype Section: Why Now?)
+- **Section Heading**: "Don't Get Left in the Old Economy"
+- **Description Text**: Explanation of Nexus launch and Founder-tier benefits
 - **Initiate Access Button**:
-  - Gradient purple-to-cyan button
-  - Shadow effect for visibility
-  - Triggers email collection
-- **Early Adopter Notice**:
-  - "Limited to 500 Early-Adopter licenses. 142 remaining."
-  - High visibility (80% opacity, bold text)
-  - "142 remaining" in extra bold for emphasis
+  - Large gradient cyan button with pulse animation
+  - Text: "⚡ INITIATE ACCESS NOW ⚡"
+  - Links to Google Form for registration
+  - Responsive sizing (full-width on mobile, auto on desktop)
+  - Touch target ≥44px for mobile
+- **Urgent Notice Section**:
+  - **⚠️ URGENT Line**: 
+    - Red pulsing "⚠️ URGENT:" text
+    - Followed by: "Limited to 500 Early-Adopter licenses."
+    - Responsive text sizes (text-base to text-3xl)
+  - **🔥 ONLY 142 REMAINING 🔥 Line**:
+    - Large gold text with pulsing animation
+    - Bouncing fire emojis on both sides
+    - "142" in extra-large text (text-2xl to text-6xl)
+    - Responsive sizing across all viewports
+  - **⏰ Spots are filling fast**:
+    - Italic, muted text at bottom
+    - Reminder about Founder-tier benefits
+    - Responsive text sizes (text-xs to text-base)
 
 #### Academy Modules Showcase
 - **Section Title**: "Academy Modules"
@@ -378,7 +404,14 @@
 **Header Section**:
 - **Title**: "Nexus Marketplace"
 - **Subtitle**: "Discover products and generate affiliate links"
-- **Submit Product Button**: Opens ProductUploadForm
+- **Tab Navigation** (styled as pill buttons in shared container):
+  - **Overview Tab**: Default view showing product grid
+  - **Due Diligence Tab**: Research process, product ranking system, audits, transparency ledger
+- **Quick Action Buttons** (styled as tabs matching Overview/Due Diligence style):
+  - **NXC Credits Shop**: Navigates to Token Shop page
+  - **Bot Lab**: Navigates to Bot Lab page
+  - **My Products**: Navigates to My Products page
+  - **+ Submit Product**: Opens ProductUploadForm modal
 
 **Search Bar**:
 - **Placeholder**: "Search products, bots, or courses..."
@@ -420,6 +453,63 @@
   - "View Details" (primary, purple)
   - Analytics icon button (secondary)
 
+**Due Diligence Tab**:
+- **Our Research Process Section**:
+  - Overview of proprietary research methodology
+  - Research recipe checklist:
+    - Comprehensive product analysis using evaluation framework
+    - Security assessment and verification (if applicable)
+    - Built-in security system evaluation for technical products
+    - Market validation and competitive analysis
+    - Value proposition and affiliate potential assessment
+    - Continuous monitoring and re-evaluation
+  - Security Evaluation details:
+    - Security architecture review
+    - Built-in security feature verification
+    - Vulnerability assessment
+    - Compliance and best practices review
+- **Product Ranking System**:
+  - Grade-based system: S, A+, A, A-, B+, B, B-, C+, C, C-, D, F
+  - Visual grade cards with color-coded gradients
+  - Grading criteria explanation
+  - Only products graded B- or higher featured in main catalog
+- **Project Audits**:
+  - Third-party security audit reports (CertiK, OpenZeppelin, KPMG)
+  - Clickable cards that open detailed modal with:
+    - **CertiK Audit 2024**: ✅ PASSED - December 2024, 99.98% Security Score, 12 Smart Contracts Audited
+      - Focus Areas: Smart contract logic, MEV bot algorithms, XAB bot staking, token distribution, access control
+      - Key Findings: Zero critical vulnerabilities, robust security architecture, comprehensive access controls
+    - **OpenZeppelin Report**: ✅ APPROVED - November 2024, 8 Core Contracts Audited
+      - Focus Areas: Code quality, reentrancy vulnerabilities, access control patterns, gas optimization, upgradeability
+      - Key Findings: Clean code structure, proper OpenZeppelin library usage, no reentrancy vulnerabilities
+      - Recommendations: Continue regular audits, implement additional monitoring, maintain documentation
+    - **KPMG Fintech Review**: ✅ COMPLIANT - January 2025, All Systems Reviewed
+      - Focus Areas: Regulatory compliance, AML/KYC procedures, financial reporting, risk management, data protection
+      - Key Findings: Strong compliance framework, transparent reporting, comprehensive risk management
+      - Recommendations: Enhance KYC procedures, expand compliance training, implement fraud detection
+  - Downloadable PDFs for all audit reports
+- **Information Security Certifications**:
+  - **ISO/IEC 27001 – Information Security Management**: ✅ CERTIFIED - January 2025
+    - Certification card with shield icon
+    - Description: "The single most important certification for global affiliate programs"
+    - Click to view detailed modal with:
+      - What It Proves: Formal security controls, data protection, access control, risk management
+      - Why It Matters: Critical for global programs, enterprise requirement, trust builder, risk reduction
+      - Recommendation: If choosing only one certification → ISO 27001 is essential
+    - Downloadable certificate available
+  - **ISO/IEC 27701 – Privacy Information Management**: ✅ CERTIFIED - January 2025
+    - Certification card with lock icon
+    - Description: "Extension of ISO 27001 focused on privacy"
+    - Click to view detailed modal with:
+      - What It Adds: Privacy governance, GDPR alignment, privacy by design, data subject rights
+      - Why It Matters: EU-focused markets, maturity indicator, regulated industries, competitive differentiator
+      - Extension of ISO 27001 for comprehensive security and privacy coverage
+    - Downloadable certificate available
+- **Transparency Ledger**:
+  - On-chain verification display
+  - System integrity checks
+  - Real-time blockchain sync information
+
 **Product Detail Drawer** (Modal):
 - Opens when "View Details" clicked
 - **Tabs**:
@@ -428,15 +518,15 @@
      - Earning potential details
      - Product specifications
   2. **Marketing Assets**:
-     - Banner images
-     - Social media templates
-     - Email templates
-     - Download buttons
+     - Banner images (Banner 1, Banner 2, Social Post, Email Template)
+     - Click-to-view and download functionality
+     - Hover overlays with asset information
+     - "Download All Assets" button
   3. **Affiliate Link**:
      - Generate link button
      - Generated link display
      - Copy to clipboard
-     - QR code display
+     - QR code display and download
 
 **Product Upload Form** (Modal):
 - Opens when "Submit Product" clicked
@@ -619,6 +709,41 @@
 - **User Info**: Hover for details
 - **Color Coding**: By tier or activity
 
+**Alliance Management Modal** (For Alliance Leaders):
+- Opens when managing an alliance
+- **Management Tabs**: Members, Settings, Analytics, Recruitment, Outreach
+- **Alliance Stats**: Members count, Total Earnings, Monthly Earnings, Created date
+
+**Outreach & Communication Tab** (Management Section):
+- **Send Message Interface**:
+  - **Message Type Selection**: 
+    - 📧 Email
+    - 💬 WhatsApp
+    - 💬 In-System
+    - 🔔 Notification
+  - **Notification Type** (when Notification selected):
+    - Event, Meeting, Announcement, Reminder
+  - **Recipients Selection**:
+    - **Alliance Members**: Send to all alliance members (shows member count, e.g., 89)
+    - **Full Network**: Send to entire network
+    - **Manual Entry**: Custom recipient list
+      - **Email Addresses** (for Email, In-System, Notification):
+        - Textarea for comma or line-separated emails
+        - Monospace font for readability
+        - Helper text: "Enter one or more email addresses separated by commas or new lines"
+        - Placeholder: `user1@example.com, user2@example.com`
+      - **Phone Numbers** (for WhatsApp, Notification):
+        - Textarea for comma or line-separated phone numbers
+        - Helper text: "Enter phone numbers in international format (e.g., +1234567890)"
+        - Placeholder: `+1234567890, +9876543210`
+      - **Optional Email for WhatsApp**: Additional email input for WhatsApp email links
+  - **Subject Field**: Text input for message subject
+  - **Message Field**: Textarea for message content (6 rows)
+  - **Send Button**: Sends message based on selected type and recipients
+    - Validation: Requires subject and message
+    - For manual entry: Validates at least one email/phone entered
+    - Shows success message with recipient count
+
 #### Features
 - Tier progression tracking
 - Referral code management
@@ -627,6 +752,9 @@
 - Leaderboard ranking
 - Real-time commission updates
 - Network tree visualization
+- Alliance management (for leaders)
+- Outreach & Communication system with multiple message types
+- Manual recipient entry with email and phone number support
 
 ---
 

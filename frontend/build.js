@@ -134,9 +134,9 @@ async function buildTypeScript() {
   
   // Verify source directory exists
   if (!fs.existsSync(srcDir)) {
-    console.error(`❌ Source directory not found: ${srcDir}`);
-    console.error(`   Checked frontend/src: ${fs.existsSync(frontendSrcDir) ? 'EXISTS' : 'NOT FOUND'}`);
-    console.error(`   Checked root/src: ${fs.existsSync(rootSrcDir) ? 'EXISTS' : 'NOT FOUND'}`);
+    console.error(`❌ Source directory not found`);
+    console.error(`   Checked frontend/src: ${frontendSrcDir} - ${fs.existsSync(frontendSrcDir) ? 'EXISTS' : 'NOT FOUND'}`);
+    console.error(`   Checked root/src: ${rootSrcDir} - ${fs.existsSync(rootSrcDir) ? 'EXISTS' : 'NOT FOUND'}`);
     throw new Error(`Source directory not found. Expected either ${frontendSrcDir} or ${rootSrcDir}`);
   }
 

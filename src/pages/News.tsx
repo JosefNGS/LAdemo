@@ -121,9 +121,18 @@ const News: React.FC = () => {
       {/* Featured Article */}
       {featuredArticle && selectedCategory === 'all' && (
         <div 
-          className="glass-card p-6 md:p-8 rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-600/10 to-cyan-600/10 cursor-pointer hover:border-purple-500/50 transition-all"
+          className="glass-card p-6 md:p-8 rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-600/10 to-cyan-600/10 cursor-pointer hover:border-purple-500/50 transition-all overflow-hidden"
           onClick={() => setSelectedArticle(featuredArticle)}
         >
+          {featuredArticle.image && (
+            <div className="w-full h-64 rounded-2xl mb-6 overflow-hidden">
+              <img 
+                src={featuredArticle.image} 
+                alt={featuredArticle.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
           <div className="flex items-center gap-2 mb-4">
             <span className="px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-bold uppercase">Featured</span>
             <span className="text-xs text-gray-400">{featuredArticle.category}</span>
@@ -157,10 +166,12 @@ const News: React.FC = () => {
               className="glass-card p-6 rounded-2xl border border-white/5 hover:border-purple-500/30 cursor-pointer transition-all group"
             >
               {article.image && (
-                <div className="w-full h-40 rounded-xl mb-4 overflow-hidden bg-gradient-to-br from-purple-600/20 to-cyan-600/20">
-                  <div className="w-full h-full flex items-center justify-center text-4xl opacity-20">
-                    📰
-                  </div>
+                <div className="w-full h-40 rounded-xl mb-4 overflow-hidden">
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               )}
               <div className="flex items-center gap-2 mb-3">
@@ -229,6 +240,16 @@ const News: React.FC = () => {
               </button>
             </div>
 
+            {selectedArticle.image && (
+              <div className="w-full h-80 rounded-2xl mb-6 overflow-hidden">
+                <img 
+                  src={selectedArticle.image} 
+                  alt={selectedArticle.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{selectedArticle.title}</h2>
             
             <div className="flex items-center gap-3 mb-6 pb-6 border-b border-white/10">

@@ -29,6 +29,7 @@ import News from './pages/News';
 import AllUsers from './pages/AllUsers';
 import Support from './pages/Support';
 import Feed from './pages/Feed';
+import Governance from './pages/Governance';
 import GettingStartedModal from './components/GettingStartedModal';
 import PlatformAdminUsers from './components/PlatformAdminUsers';
 import { AppRoute } from './types';
@@ -94,6 +95,7 @@ const App: React.FC = () => {
       case AppRoute.NEWS: return <News />;
       case AppRoute.USERS: return <AllUsers setActiveRoute={setActiveRoute} />;
       case AppRoute.SUPPORT: return <Support />;
+      case AppRoute.GOVERNANCE: return <Governance />;
       case AppRoute.ADMIN_VETTING: return <Vetting />;
       case AppRoute.ADMIN_USERS: return <Users />;
       case AppRoute.MOD_REPORTS: return <Reports />;
@@ -115,8 +117,11 @@ const App: React.FC = () => {
               <h3 className="text-2xl font-bold font-display">Agent Nexus-77</h3>
               <p className="text-gray-500 mt-1">Prime Core Member • Dec 2024</p>
               <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-4">
+                <span className="bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">ADMIN</span>
                 <span className="bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">LEGACY NODE</span>
                 <span className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">MASTER AFFILIATE</span>
+                <span className="bg-green-500/10 text-green-400 border border-green-500/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">✅ VERIFIED</span>
+                <span className="bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">⭐ PREMIUM VENDOR</span>
               </div>
             </div>
             <button className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl font-bold hover:bg-white/10 transition-all text-sm uppercase">
@@ -124,6 +129,51 @@ const App: React.FC = () => {
             </button>
           </div>
           
+          {/* Verification Status */}
+          <div className="glass-card p-6 rounded-[2rem] border-white/5">
+            <h4 className="font-bold mb-6 text-lg">Verification Status</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-gray-400">Trust Score</span>
+                  <span className="text-2xl font-bold text-cyan-400">92/100</span>
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-2">
+                  <div className="bg-gradient-to-r from-cyan-400 to-purple-600 h-2 rounded-full" style={{ width: '92%' }}></div>
+                </div>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-gray-400">Verification Level</span>
+                  <span className="text-lg font-bold text-purple-400">Gold</span>
+                </div>
+                <p className="text-xs text-gray-500">Enhanced Profile Verified</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { type: 'email-verified', name: 'Email Verified', icon: '✉️', verified: true },
+                { type: 'phone-verified', name: 'Phone Verified', icon: '📱', verified: true },
+                { type: 'identity-verified', name: 'Identity Verified', icon: '🆔', verified: true },
+                { type: 'profile-complete', name: 'Profile Complete', icon: '✅', verified: true },
+                { type: 'photo-verified', name: 'Photo Verified', icon: '📷', verified: true },
+                { type: 'payment-verified', name: 'Payment Verified', icon: '💳', verified: true },
+                { type: 'first-sale', name: 'First Sale', icon: '🎯', verified: true },
+                { type: 'active-member', name: 'Active Member', icon: '📈', verified: true },
+                { type: 'network-builder', name: 'Network Builder', icon: '👥', verified: true },
+              ].map((badge) => (
+                <div
+                  key={badge.type}
+                  className="flex items-center gap-2 px-3 py-2 bg-green-500/10 border border-green-500/20 rounded-lg"
+                  title={badge.name}
+                >
+                  <span className="text-sm">{badge.icon}</span>
+                  <span className="text-xs font-bold text-green-400">{badge.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="glass-card p-6 rounded-[2rem] border-white/5">
               <h4 className="font-bold mb-6 text-lg">Privacy Matrix</h4>
@@ -161,6 +211,49 @@ const App: React.FC = () => {
                 </button>
               </div>
             </div>
+          </div>
+
+          {/* KYC/AML Verification (Optional) */}
+          <div className="glass-card p-6 rounded-[2rem] border-white/5">
+            <h4 className="font-bold mb-4 text-lg">Identity Verification (Optional)</h4>
+            <p className="text-sm text-gray-400 mb-6">Complete KYC/AML verification to enhance your profile credibility and access premium features</p>
+            <div className="space-y-4 mb-6">
+              <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-lg">✅</span>
+                    <span className="font-bold text-green-400">Identity Verified</span>
+                  </div>
+                  <p className="text-xs text-gray-400">KYC/AML verification completed on Dec 15, 2024</p>
+                </div>
+                <span className="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-bold border border-green-500/30">Verified</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-gray-400">Verification Level</span>
+                    <span className="text-sm font-bold text-purple-400">Enhanced</span>
+                  </div>
+                  <p className="text-xs text-gray-500">Government ID + Selfie Verified</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-gray-400">AML Status</span>
+                    <span className="text-sm font-bold text-green-400">Clear</span>
+                  </div>
+                  <p className="text-xs text-gray-500">No sanctions or adverse media</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <button className="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-all">
+                View Certificate
+              </button>
+              <button className="flex-1 px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all">
+                Update Verification
+              </button>
+            </div>
+            <p className="text-xs text-gray-500 mt-4">🔒 Your verification data is encrypted and GDPR compliant</p>
           </div>
 
           {/* Social Media Connections */}
@@ -223,6 +316,11 @@ const App: React.FC = () => {
                 Connected accounts enable automatic content sharing from the Content Generator and cross-platform analytics tracking.
               </p>
             </div>
+          </div>
+
+          {/* Goals Section */}
+          <div className="mt-8">
+            <Goals />
           </div>
 
           {/* Platform Admin Users */}

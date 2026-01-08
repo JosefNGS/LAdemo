@@ -30,6 +30,10 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
     { id: AppRoute.MARKETPLACE, label: 'Marketplace', icon: ICONS.Marketplace },
     { id: AppRoute.EARN, label: 'Earn', icon: ICONS.Earn },
     { id: AppRoute.ALLIANCE, label: 'Alliance', icon: ICONS.Alliance },
+    { id: AppRoute.AFFILIATE, label: 'Affiliate Mgr', icon: ICONS.Affiliate },
+    { id: AppRoute.CONTENT_GENERATOR, label: 'Content Generator', icon: ICONS.ContentGenerator },
+    { id: AppRoute.ACADEMY, label: 'Academy', icon: ICONS.Academy },
+    { id: AppRoute.NEWS, label: 'News', icon: ICONS.News },
   ];
 
   const socialNav = [
@@ -38,14 +42,8 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
     { id: AppRoute.FRIENDS, label: 'Friends', icon: ICONS.Friends },
     { id: AppRoute.USERS, label: 'Users', icon: ICONS.Users },
     { id: AppRoute.FORUM, label: 'Forum', icon: ICONS.Forum },
-    { id: AppRoute.AFFILIATE, label: 'Affiliate Mgr', icon: ICONS.Affiliate },
-    { id: AppRoute.CONTENT_GENERATOR, label: 'Content Generator', icon: ICONS.ContentGenerator },
-    { id: AppRoute.GOALS, label: 'Goals', icon: ICONS.Dashboard },
-    { id: AppRoute.ACADEMY, label: 'Academy', icon: ICONS.Academy },
-    { id: AppRoute.ABOUT, label: 'About Us', icon: ICONS.About },
-    { id: AppRoute.NEWS, label: 'News', icon: ICONS.News },
+    { id: AppRoute.GOVERNANCE, label: 'Governance', icon: ICONS.Admin },
     { id: AppRoute.PROFILE, label: 'Profile', icon: ICONS.Profile },
-    { id: AppRoute.SUPPORT, label: 'Support', icon: ICONS.Support },
   ];
 
   const adminNav = [
@@ -128,10 +126,10 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
       <div className="mt-auto pt-6 border-t border-gray-800">
         <button 
           onClick={onOpenAI}
-          className="w-full bg-gradient-to-r from-purple-600 to-cyan-500 p-3 rounded-xl flex items-center justify-center gap-2 font-bold shadow-xl shadow-purple-900/20 hover:scale-[1.02] transition-transform text-sm"
+          className="w-full bg-gradient-to-r from-purple-600 to-cyan-500 p-2.5 rounded-xl flex items-center justify-center gap-2 font-bold shadow-lg shadow-purple-900/20 hover:shadow-xl transition-shadow text-sm"
         >
           <ICONS.NexusAI />
-          AI Command
+          <span className="whitespace-nowrap">AI Command</span>
         </button>
         <button 
           onClick={() => {
@@ -152,6 +150,28 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
         >
           <div className="w-8 h-8 rounded-full bg-purple-600/30 border border-purple-500/50" />
           <span className="text-sm font-bold">Profile Settings</span>
+        </button>
+        <button 
+          onClick={() => { setActiveRoute(AppRoute.ABOUT); setIsSidebarOpen(false); }}
+          className={`w-full mt-2 flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all ${
+            activeRoute === AppRoute.ABOUT
+              ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
+              : 'text-gray-400 hover:text-gray-200 hover:bg-white/5 border border-transparent hover:border-white/5'
+          }`}
+        >
+          <ICONS.About />
+          <span className="text-sm font-medium">About Us</span>
+        </button>
+        <button 
+          onClick={() => { setActiveRoute(AppRoute.SUPPORT); setIsSidebarOpen(false); }}
+          className={`w-full mt-2 flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all ${
+            activeRoute === AppRoute.SUPPORT
+              ? 'bg-purple-600/20 text-purple-400 border border-purple-500/30'
+              : 'text-gray-400 hover:text-gray-200 hover:bg-white/5 border border-transparent hover:border-white/5'
+          }`}
+        >
+          <ICONS.Support />
+          <span className="text-sm font-medium">Support</span>
         </button>
       </div>
     </div>

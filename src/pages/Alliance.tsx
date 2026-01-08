@@ -13,6 +13,27 @@ const Alliance: React.FC = () => {
   const [showNetworkModal, setShowNetworkModal] = useState(false);
   const [selectedStat, setSelectedStat] = useState<string | null>(null);
   const [selectedProductAlliance, setSelectedProductAlliance] = useState<string | null>(null);
+  
+  // Management tab state
+  const [managementTab, setManagementTab] = useState<'Members' | 'Settings' | 'Analytics' | 'Recruitment' | 'Outreach'>('Members');
+  
+  // Outreach states
+  const [showOutreachModal, setShowOutreachModal] = useState(false);
+  const [outreachType, setOutreachType] = useState<'email' | 'whatsapp' | 'system' | 'notification'>('email');
+  const [outreachRecipients, setOutreachRecipients] = useState<'members' | 'network' | 'manual'>('members');
+  const [outreachSubject, setOutreachSubject] = useState('');
+  const [outreachMessage, setOutreachMessage] = useState('');
+  const [outreachEventType, setOutreachEventType] = useState<'event' | 'meeting' | 'announcement' | 'reminder'>('event');
+  const [manualEmails, setManualEmails] = useState('');
+  const [manualPhones, setManualPhones] = useState('');
+  
+  // Invite members state
+  const [showInviteModal, setShowInviteModal] = useState(false);
+  const [inviteEmails, setInviteEmails] = useState('');
+  
+  // Settings states
+  const [publicAlliance, setPublicAlliance] = useState(true);
+  const [autoApprove, setAutoApprove] = useState(false);
 
   const copyReferralLink = () => {
     const link = 'https://bitnexus.io/join?ref=NEXUS-7781-BETA';
@@ -1517,24 +1538,35 @@ const Alliance: React.FC = () => {
 
             {/* Management Tabs */}
             <div className="flex gap-2 bg-white/5 p-1 rounded-xl mb-6">
-              {['Members', 'Settings', 'Analytics', 'Recruitment'].map((tab) => (
+              {['Members', 'Settings', 'Analytics', 'Recruitment', 'Outreach'].map((tab) => (
                 <button
                   key={tab}
-                  className="flex-1 py-2 rounded-lg text-sm font-bold transition-all bg-purple-600 text-white"
+                  onClick={() => setManagementTab(tab as any)}
+                  className={`flex-1 py-2 rounded-lg text-sm font-bold transition-all ${
+                    managementTab === tab
+                      ? 'bg-purple-600 text-white'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
                 >
                   {tab}
                 </button>
               ))}
             </div>
 
-            {/* Members List */}
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="font-bold text-lg">Alliance Members</h4>
-                <button className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-all">
-                  Invite Members
-                </button>
-              </div>
+            {/* Conditional Content Based on Tab */}
+            {managementTab === 'Members' && (
+              <>
+                {/* Members List */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h4 className="font-bold text-lg">Alliance Members</h4>
+                    <button 
+                      onClick={() => setShowInviteModal(true)}
+                      className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-all"
+                    >
+                      Invite Members
+                    </button>
+                  </div>
               <div className="space-y-2">
                 {[
                   { name: 'Agent Nexus-42', role: 'Co-Leader', earnings: 1240, joined: '2024-01-20' },
@@ -1556,7 +1588,12 @@ const Alliance: React.FC = () => {
                         <p className="text-xs text-gray-500">Earnings</p>
                         <p className="font-bold text-green-400">${member.earnings.toLocaleString()}</p>
                       </div>
-                      <button className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold transition-all">
+                      <button 
+                        onClick={() => {
+                          alert(`Managing ${member.name}\nRole: ${member.role}\nEarnings: $${member.earnings.toLocaleString()}\nJoined: ${member.joined}`);
+                        }}
+                        className="px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-xs font-bold transition-all"
+                      >
                         Manage
                       </button>
                     </div>
@@ -1564,44 +1601,342 @@ const Alliance: React.FC = () => {
                 ))}
               </div>
             </div>
+              </>
+            )}
 
-            {/* Alliance Settings */}
-            <div className="mb-6">
-              <h4 className="font-bold text-lg mb-4">Alliance Settings</h4>
-              <div className="space-y-4">
-                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold">Public Alliance</span>
-                    <div className="w-12 h-6 rounded-full bg-purple-600 relative cursor-pointer">
-                      <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-white transition-all" />
+            {managementTab === 'Settings' && (
+              <div className="mb-6">
+                <h4 className="font-bold text-lg mb-4">Alliance Settings</h4>
+                <div className="space-y-4">
+                  <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold">Public Alliance</span>
+                      <div 
+                        onClick={() => setPublicAlliance(!publicAlliance)}
+                        className={`w-12 h-6 rounded-full relative cursor-pointer transition-all ${
+                          publicAlliance ? 'bg-purple-600' : 'bg-gray-700'
+                        }`}
+                      >
+                        <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${
+                          publicAlliance ? 'right-1' : 'left-1'
+                        }`} />
+                      </div>
                     </div>
+                    <p className="text-xs text-gray-400">Allow anyone to join this alliance</p>
                   </div>
-                  <p className="text-xs text-gray-400">Allow anyone to join this alliance</p>
-                </div>
-                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold">Auto-approve Members</span>
-                    <div className="w-12 h-6 rounded-full bg-gray-700 relative cursor-pointer">
-                      <div className="absolute top-1 left-1 w-4 h-4 rounded-full bg-white transition-all" />
+                  <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold">Auto-approve Members</span>
+                      <div 
+                        onClick={() => setAutoApprove(!autoApprove)}
+                        className={`w-12 h-6 rounded-full relative cursor-pointer transition-all ${
+                          autoApprove ? 'bg-purple-600' : 'bg-gray-700'
+                        }`}
+                      >
+                        <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${
+                          autoApprove ? 'right-1' : 'left-1'
+                        }`} />
+                      </div>
                     </div>
+                    <p className="text-xs text-gray-400">Automatically approve new member requests</p>
                   </div>
-                  <p className="text-xs text-gray-400">Automatically approve new member requests</p>
-                </div>
-                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-bold">Commission Sharing</span>
-                    <div className="w-12 h-6 rounded-full bg-purple-600 relative cursor-pointer">
-                      <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-white transition-all" />
+                  <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-bold">Commission Sharing</span>
+                      <div className="w-12 h-6 rounded-full bg-purple-600 relative cursor-pointer">
+                        <div className="absolute top-1 right-1 w-4 h-4 rounded-full bg-white transition-all" />
+                      </div>
                     </div>
+                    <p className="text-xs text-gray-400">Share commissions with alliance members</p>
                   </div>
-                  <p className="text-xs text-gray-400">Share commissions with alliance members</p>
                 </div>
               </div>
-            </div>
+            )}
+
+            {managementTab === 'Analytics' && (
+              <div className="mb-6">
+                <h4 className="font-bold text-lg mb-4">Alliance Analytics</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <p className="text-xs text-gray-500 mb-1">Growth Rate</p>
+                    <p className="text-3xl font-bold text-green-400">+23.5%</p>
+                    <p className="text-xs text-gray-400 mt-1">vs last month</p>
+                  </div>
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <p className="text-xs text-gray-500 mb-1">Active Members</p>
+                    <p className="text-3xl font-bold text-cyan-400">89</p>
+                    <p className="text-xs text-gray-400 mt-1">62.7% of total</p>
+                  </div>
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <p className="text-xs text-gray-500 mb-1">Avg Earnings/Member</p>
+                    <p className="text-3xl font-bold text-purple-400">$880</p>
+                    <p className="text-xs text-gray-400 mt-1">This month</p>
+                  </div>
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <p className="text-xs text-gray-500 mb-1">Top Performer</p>
+                    <p className="text-xl font-bold text-yellow-400">Agent Nexus-42</p>
+                    <p className="text-xs text-gray-400 mt-1">$1,240 earnings</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {managementTab === 'Recruitment' && (
+              <div className="mb-6">
+                <h4 className="font-bold text-lg mb-4">Recruitment Tools</h4>
+                <div className="space-y-4">
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <h5 className="font-bold mb-2">Recruitment Link</h5>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        readOnly
+                        value={`https://bitnexus.io/join/alliance/${selectedAlliance?.id}`}
+                        className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-xl text-sm"
+                      />
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(`https://bitnexus.io/join/alliance/${selectedAlliance?.id}`);
+                          alert('Link copied!');
+                        }}
+                        className="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold text-sm transition-all"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <h5 className="font-bold mb-4">Recruitment Materials</h5>
+                    <div className="grid grid-cols-2 gap-3">
+                      {['Banner 1', 'Banner 2', 'Social Post', 'Email Template'].map((material) => (
+                        <button
+                          key={material}
+                          className="p-4 bg-white/5 hover:bg-white/10 rounded-xl border border-white/5 transition-all text-sm font-bold"
+                        >
+                          {material}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {managementTab === 'Outreach' && (
+              <div className="mb-6">
+                <h4 className="font-bold text-lg mb-4">Outreach & Communication</h4>
+                <div className="space-y-4">
+                  <div className="p-6 bg-white/5 rounded-xl border border-white/5">
+                    <h5 className="font-bold mb-4">Send Message</h5>
+                    <div className="space-y-4">
+                      <div>
+                        <label className="text-sm font-bold text-gray-400 mb-2 block">Message Type</label>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                          {[
+                            { type: 'email', label: 'Email', icon: '📧' },
+                            { type: 'whatsapp', label: 'WhatsApp', icon: '💬' },
+                            { type: 'system', label: 'In-System', icon: '💬' },
+                            { type: 'notification', label: 'Notification', icon: '🔔' }
+                          ].map((item) => (
+                            <button
+                              key={item.type}
+                              onClick={() => setOutreachType(item.type as any)}
+                              className={`p-3 rounded-xl border-2 transition-all ${
+                                outreachType === item.type
+                                  ? 'bg-purple-600/20 border-purple-500 text-white'
+                                  : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                              }`}
+                            >
+                              <div className="text-2xl mb-1">{item.icon}</div>
+                              <div className="text-xs font-bold">{item.label}</div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {outreachType === 'notification' && (
+                        <div>
+                          <label className="text-sm font-bold text-gray-400 mb-2 block">Notification Type</label>
+                          <div className="grid grid-cols-2 gap-2">
+                            {['event', 'meeting', 'announcement', 'reminder'].map((type) => (
+                              <button
+                                key={type}
+                                onClick={() => setOutreachEventType(type as any)}
+                                className={`p-2 rounded-xl text-sm font-bold transition-all ${
+                                  outreachEventType === type
+                                    ? 'bg-cyan-600 text-white'
+                                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                                }`}
+                              >
+                                {type.charAt(0).toUpperCase() + type.slice(1)}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div>
+                        <label className="text-sm font-bold text-gray-400 mb-2 block">Recipients</label>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-3">
+                          <button
+                            onClick={() => setOutreachRecipients('members')}
+                            className={`py-2 rounded-xl text-sm font-bold transition-all ${
+                              outreachRecipients === 'members'
+                                ? 'bg-purple-600 text-white'
+                                : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            Alliance Members ({selectedAlliance?.members || 89})
+                          </button>
+                          <button
+                            onClick={() => setOutreachRecipients('network')}
+                            className={`py-2 rounded-xl text-sm font-bold transition-all ${
+                              outreachRecipients === 'network'
+                                ? 'bg-purple-600 text-white'
+                                : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            Full Network
+                          </button>
+                          <button
+                            onClick={() => setOutreachRecipients('manual')}
+                            className={`py-2 rounded-xl text-sm font-bold transition-all ${
+                              outreachRecipients === 'manual'
+                                ? 'bg-purple-600 text-white'
+                                : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            Manual Entry
+                          </button>
+                        </div>
+
+                        {outreachRecipients === 'manual' && (
+                          <div className="space-y-3 mt-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                            {(outreachType === 'email' || outreachType === 'system' || outreachType === 'notification') && (
+                              <div>
+                                <label className="text-sm font-bold text-gray-400 mb-2 block">
+                                  Email Addresses <span className="text-gray-500 text-xs">(comma or line separated)</span>
+                                </label>
+                                <textarea
+                                  value={manualEmails}
+                                  onChange={(e) => setManualEmails(e.target.value)}
+                                  placeholder="user1@example.com, user2@example.com&#10;user3@example.com"
+                                  rows={4}
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-white placeholder:text-gray-500 resize-none font-mono text-sm"
+                                />
+                                <p className="text-xs text-gray-500 mt-1">
+                                  Enter one or more email addresses separated by commas or new lines
+                                </p>
+                              </div>
+                            )}
+
+                            {(outreachType === 'whatsapp' || outreachType === 'notification') && (
+                              <div>
+                                <label className="text-sm font-bold text-gray-400 mb-2 block">
+                                  Phone Numbers <span className="text-gray-500 text-xs">(comma or line separated)</span>
+                                </label>
+                                <textarea
+                                  value={manualPhones}
+                                  onChange={(e) => setManualPhones(e.target.value)}
+                                  placeholder="+1234567890, +9876543210&#10;+1122334455"
+                                  rows={4}
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-white placeholder:text-gray-500 resize-none font-mono text-sm"
+                                />
+                                <p className="text-xs text-gray-500 mt-1">
+                                  Enter phone numbers in international format (e.g., +1234567890)
+                                </p>
+                              </div>
+                            )}
+
+                            {outreachType === 'whatsapp' && (
+                              <div>
+                                <label className="text-sm font-bold text-gray-400 mb-2 block">
+                                  Email Addresses <span className="text-gray-500 text-xs">(optional, for WhatsApp email links)</span>
+                                </label>
+                                <textarea
+                                  value={manualEmails}
+                                  onChange={(e) => setManualEmails(e.target.value)}
+                                  placeholder="user1@example.com, user2@example.com"
+                                  rows={3}
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-white placeholder:text-gray-500 resize-none font-mono text-sm"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+
+                      <div>
+                        <label className="text-sm font-bold text-gray-400 mb-2 block">Subject</label>
+                        <input
+                          type="text"
+                          value={outreachSubject}
+                          onChange={(e) => setOutreachSubject(e.target.value)}
+                          placeholder="Enter message subject..."
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-white placeholder:text-gray-500"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-sm font-bold text-gray-400 mb-2 block">Message</label>
+                        <textarea
+                          value={outreachMessage}
+                          onChange={(e) => setOutreachMessage(e.target.value)}
+                          placeholder="Enter your message..."
+                          rows={6}
+                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-white placeholder:text-gray-500 resize-none"
+                        />
+                      </div>
+
+                      <button
+                        onClick={() => {
+                          if (!outreachSubject || !outreachMessage) {
+                            alert('Please fill in subject and message');
+                            return;
+                          }
+                          
+                          if (outreachRecipients === 'manual') {
+                            if (outreachType === 'email' || outreachType === 'system' || outreachType === 'notification') {
+                              if (!manualEmails.trim()) {
+                                alert('Please enter at least one email address');
+                                return;
+                              }
+                            }
+                            if (outreachType === 'whatsapp' && !manualPhones.trim()) {
+                              alert('Please enter at least one phone number');
+                              return;
+                            }
+                            
+                            const emailCount = manualEmails.split(/[,\n]/).filter(e => e.trim()).length;
+                            const phoneCount = manualPhones.split(/[,\n]/).filter(p => p.trim()).length;
+                            const recipientCount = outreachType === 'whatsapp' ? phoneCount : emailCount;
+                            
+                            alert(`${outreachType === 'email' ? 'Email' : outreachType === 'whatsapp' ? 'WhatsApp message' : outreachType === 'system' ? 'In-system message' : 'Notification'} sent to ${recipientCount} recipient(s)!`);
+                            setManualEmails('');
+                            setManualPhones('');
+                          } else {
+                            alert(`${outreachType === 'email' ? 'Email' : outreachType === 'whatsapp' ? 'WhatsApp message' : outreachType === 'system' ? 'In-system message' : 'Notification'} sent to ${outreachRecipients === 'members' ? 'alliance members' : 'full network'}!`);
+                          }
+                          
+                          setOutreachSubject('');
+                          setOutreachMessage('');
+                        }}
+                        className="w-full py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 rounded-xl font-bold transition-all"
+                      >
+                        Send {outreachType === 'email' ? 'Email' : outreachType === 'whatsapp' ? 'WhatsApp Message' : outreachType === 'system' ? 'In-System Message' : 'Notification'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className="flex gap-4 pt-4 border-t border-white/10">
               <button
-                onClick={() => setSelectedAlliance(null)}
+                onClick={() => {
+                  alert('Settings saved successfully!');
+                  setSelectedAlliance(null);
+                }}
                 className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
               >
                 Save Changes
@@ -2571,6 +2906,91 @@ const Alliance: React.FC = () => {
           </div>
         );
       })()}
+
+      {/* Invite Members Modal */}
+      {showInviteModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-2xl w-full">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold">Invite Members</h3>
+              <button
+                onClick={() => {
+                  setShowInviteModal(false);
+                  setInviteEmails('');
+                }}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="text-sm font-bold text-gray-400 mb-2 block">Email Addresses</label>
+                <textarea
+                  value={inviteEmails}
+                  onChange={(e) => setInviteEmails(e.target.value)}
+                  placeholder="Enter email addresses (one per line or comma-separated)&#10;example@email.com&#10;another@email.com"
+                  rows={6}
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500/50 text-white placeholder:text-gray-500 resize-none"
+                />
+                <p className="text-xs text-gray-500 mt-2">You can enter multiple emails separated by commas or new lines</p>
+              </div>
+
+              <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                <p className="text-xs text-gray-400 mb-1">Invitation Link</p>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value={`https://bitnexus.io/join/alliance/${selectedAlliance?.id || 'alliance-id'}`}
+                    className="flex-1 px-4 py-2 bg-black/40 border border-white/10 rounded-xl text-sm"
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(`https://bitnexus.io/join/alliance/${selectedAlliance?.id || 'alliance-id'}`);
+                      alert('Link copied!');
+                    }}
+                    className="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-xl font-bold text-sm transition-all"
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={() => {
+                    if (!inviteEmails.trim()) {
+                      alert('Please enter at least one email address');
+                      return;
+                    }
+                    const emailCount = inviteEmails.split(/[,\n]/).filter(e => e.trim()).length;
+                    alert(`Invitations sent to ${emailCount} member(s)!`);
+                    setShowInviteModal(false);
+                    setInviteEmails('');
+                  }}
+                  className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 rounded-xl font-bold transition-all"
+                >
+                  Send Invitations
+                </button>
+                <button
+                  onClick={() => {
+                    setShowInviteModal(false);
+                    setInviteEmails('');
+                  }}
+                  className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

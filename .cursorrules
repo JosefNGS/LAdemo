@@ -172,6 +172,76 @@ export default PageName;
 - **Animations**: Use Tailwind transitions (`transition-all`, `hover:scale-105`)
 - **Accessibility**: Use semantic HTML, proper ARIA labels
 
+### Responsive Layout Standards
+**MANDATORY**: All views must be responsive and work across all target viewports.
+
+#### Target Viewports (Must all work without overflow or zoom)
+- **Mobile**: 360 × 800
+- **Tablet (iPad portrait)**: 768 × 1024
+- **Tablet (iPad landscape)**: 1024 × 768
+- **Desktop**: 1440 × 900
+
+#### Step 1 — Diagnose before changing anything
+When fixing responsive issues, **ALWAYS** diagnose first:
+1. Identify all root causes of broken scaling or layout issues
+2. For each issue, list:
+   - File path
+   - Line number(s)
+   - What causes the problem (e.g. fixed width, 100vw, absolute positioning, scale/transform, overflow, flex/grid misconfiguration)
+3. **Do not refactor yet** - complete diagnosis first
+
+#### Step 2 — Fix with minimal, correct changes
+Apply the smallest possible changes to make the layout scale correctly.
+
+**Hard constraints (must follow)**:
+- ✅ **Mobile-first layout** - Always start with mobile, then enhance for larger screens
+- ✅ **No horizontal scrolling** at any viewport
+- ✅ **DO NOT use fixed px widths/heights** for layout containers (use %, rem, clamp(), vw, flexbox, or grid)
+- ✅ **Avoid width: 100vw** (use width: 100% instead)
+- ✅ **Avoid layout-critical position: absolute** - Use flexbox/grid when possible
+- ✅ **DO NOT use transform: scale() or zoom** - Causes overflow issues
+- ✅ **Images/media must use**:
+  ```css
+  max-width: 100%;
+  height: auto;
+  ```
+- ✅ **Ensure box-sizing: border-box** is respected (add `* { box-sizing: border-box; }` globally)
+
+#### Step 3 — Breakpoint behavior (explicit contract)
+
+**Mobile (<768px)**:
+- Single column layout
+- All content stacked vertically
+- No sidebars
+- Touch targets ≥ 44px (minimum height and width for interactive elements)
+
+**Tablet portrait (768–1023px)**:
+- Two-column layout if applicable
+- Side content stacks below main content if space is insufficient
+- Medium padding values
+- Medium font sizes
+
+**Tablet landscape / Desktop (≥1024px)**:
+- Multi-column layout allowed
+- Content centered with a max width between 1200–1440px
+- Full padding values
+- Full font sizes
+- Optimal spacing
+
+#### Step 4 — Verify & report
+After making responsive changes:
+1. **Confirm** there is no horizontal overflow at any target viewport
+2. **List exactly** what was changed and why
+3. **Provide** a short verification checklist for DevTools testing:
+   - Test Mobile (360 × 800) - no horizontal scroll
+   - Test Tablet Portrait (768 × 1024) - no horizontal scroll
+   - Test Tablet Landscape (1024 × 768) - no horizontal scroll
+   - Test Desktop (1440 × 900) - no horizontal scroll
+   - Verify touch targets ≥ 44px on mobile
+   - Verify text is readable without zoom
+
+**CRITICAL**: Do not redesign the UI. Fix scaling and responsiveness only.
+
 ### Specific Patterns
 
 #### Glass Card Pattern
@@ -263,6 +333,13 @@ export default PageName;
 - ❌ Don't forget responsive design (mobile-first)
 - ❌ Don't commit API keys to version control
 - ❌ Don't modify `server.js` without understanding esbuild bundling
+- ❌ **Responsive Layout**: Don't use fixed px widths/heights for layout containers
+- ❌ **Responsive Layout**: Don't use `width: 100vw` (use `width: 100%` instead)
+- ❌ **Responsive Layout**: Don't use `transform: scale()` or `zoom` for layout-critical elements (causes overflow)
+- ❌ **Responsive Layout**: Don't use `position: absolute` for layout-critical positioning (use flexbox/grid)
+- ❌ **Responsive Layout**: Don't skip mobile-first approach (start with mobile, enhance for larger screens)
+- ❌ **Responsive Layout**: Don't forget touch targets ≥ 44px on mobile
+- ❌ **Responsive Layout**: Don't allow horizontal scrolling at any viewport
 
 ## Design System Reference
 - **Primary Action Color**: Purple (`#7c3aed`)

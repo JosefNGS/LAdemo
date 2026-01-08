@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
+import { getMarketingAssetImage, getDefaultMarketingAssets, downloadMarketingAsset, downloadAllMarketingAssets, MarketingAssetType } from '../utils/marketingAssets';
 
 interface ProductDetailDrawerProps {
   product: Product & {
@@ -8,6 +9,14 @@ interface ProductDetailDrawerProps {
     timeTo1K?: number;
     description?: string;
     marketingAssets?: string[];
+    vendorCertification?: 'Basic' | 'Verified' | 'Premium' | null;
+    certifications?: {
+      qualityCertified?: boolean;
+      securityCertified?: boolean;
+      valueCertified?: boolean;
+      trustCertified?: boolean;
+    };
+    vendor?: string;
   };
   isOpen: boolean;
   onClose: () => void;
@@ -17,6 +26,7 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ product, isOp
   const [activeTab, setActiveTab] = useState<'overview' | 'assets' | 'link'>('overview');
   const [affiliateLink, setAffiliateLink] = useState('');
   const [linkGenerated, setLinkGenerated] = useState(false);
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   if (!isOpen) return null;
 
@@ -60,10 +70,21 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ product, isOp
           {/* Product Image */}
           <div className="relative h-64 rounded-2xl overflow-hidden mb-6">
             <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-            <div className="absolute top-4 left-4">
+            <div className="absolute top-4 left-4 flex flex-col gap-2">
               <span className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white border border-white/10">
                 {product.category}
               </span>
+              {product.vendorCertification && (
+                <span className={`px-2 py-1 rounded-full text-[9px] font-bold border ${
+                  product.vendorCertification === 'Premium' ? 'bg-purple-500/80 text-white border-purple-400' :
+                  product.vendorCertification === 'Verified' ? 'bg-cyan-500/80 text-white border-cyan-400' :
+                  'bg-yellow-500/80 text-white border-yellow-400'
+                }`}>
+                  {product.vendorCertification === 'Premium' ? '⭐ Premium Vendor' :
+                   product.vendorCertification === 'Verified' ? '✅ Verified Vendor' :
+                   '📦 Basic Vendor'}
+                </span>
+              )}
             </div>
             <div className="absolute bottom-4 right-4">
               <span className="text-xl font-bold font-display bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10">
@@ -84,7 +105,33 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ product, isOp
                 ))}
               </div>
             )}
-            <div className="flex items-center gap-4">
+            {/* Product Certification Badges */}
+            {product.certifications && (product.certifications.qualityCertified || product.certifications.securityCertified || product.certifications.valueCertified || product.certifications.trustCertified) && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                <p className="text-xs text-gray-500 font-bold w-full mb-1">Certifications:</p>
+                {product.certifications.qualityCertified && (
+                  <span className="px-3 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full text-xs font-bold flex items-center gap-1" title="Quality Certified - Passed comprehensive quality review">
+                    ✅ Quality Certified
+                  </span>
+                )}
+                {product.certifications.securityCertified && (
+                  <span className="px-3 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full text-xs font-bold flex items-center gap-1" title="Security Certified - Passed security assessment">
+                    🔒 Security Certified
+                  </span>
+                )}
+                {product.certifications.valueCertified && (
+                  <span className="px-3 py-1 bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 rounded-full text-xs font-bold flex items-center gap-1" title="Value Certified - Exceptional value proposition">
+                    💎 Value Certified
+                  </span>
+                )}
+                {product.certifications.trustCertified && (
+                  <span className="px-3 py-1 bg-purple-500/10 text-purple-400 border border-purple-500/20 rounded-full text-xs font-bold flex items-center gap-1" title="Trust Certified - Verified vendor and reliable delivery">
+                    ⭐ Trust Certified
+                  </span>
+                )}
+              </div>
+            )}
+            <div className="flex items-center gap-4 mb-4">
               <span className="px-4 py-2 bg-green-500/10 text-green-400 border border-green-500/20 rounded-xl text-sm font-bold">
                 EARN {product.commission}%
               </span>
@@ -96,6 +143,26 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ product, isOp
                 {product.status}
               </span>
             </div>
+            {/* Vendor Information */}
+            {product.vendor && (
+              <div className="p-4 bg-white/5 rounded-xl border border-white/5 mb-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">Vendor</p>
+                    <p className="font-bold text-sm">{product.vendor}</p>
+                  </div>
+                  {product.vendorCertification && (
+                    <span className={`px-3 py-1 rounded-lg text-xs font-bold border ${
+                      product.vendorCertification === 'Premium' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
+                      product.vendorCertification === 'Verified' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' :
+                      'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
+                    }`}>
+                      {product.vendorCertification} Vendor
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Tabs */}
@@ -170,30 +237,51 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ product, isOp
               <div className="space-y-4">
                 <h4 className="font-bold mb-4">Marketing Assets</h4>
                 <div className="grid grid-cols-2 gap-4">
-                  {product.marketingAssets && product.marketingAssets.length > 0 ? (
-                    product.marketingAssets.map((asset, idx) => (
-                      <div key={idx} className="aspect-video bg-white/5 rounded-xl border border-white/5 p-4 flex items-center justify-center">
-                        <span className="text-xs text-gray-500">{asset}</span>
+                  {(product.marketingAssets && product.marketingAssets.length > 0 
+                    ? product.marketingAssets 
+                    : getDefaultMarketingAssets()
+                  ).map((asset, idx) => {
+                    const assetType = asset as MarketingAssetType;
+                    const imageUrl = getMarketingAssetImage(product, assetType);
+                    const imageKey = `${product.id}-${assetType}`;
+                    const hasFailed = failedImages.has(imageKey);
+                    
+                    return (
+                      <div 
+                        key={idx} 
+                        className="group relative aspect-video bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-purple-500/30 transition-all cursor-pointer"
+                        onClick={() => downloadMarketingAsset(product, assetType)}
+                      >
+                        {!hasFailed ? (
+                          <img 
+                            src={imageUrl} 
+                            alt={asset}
+                            className="w-full h-full object-cover"
+                            onError={() => {
+                              setFailedImages(prev => new Set(prev).add(imageKey));
+                            }}
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <span className="text-xs text-gray-500">{asset}</span>
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-2">
+                          <div className="text-center">
+                            <p className="text-xs font-bold text-white mb-1">{asset}</p>
+                            <button className="text-xs text-cyan-400 hover:text-cyan-300 font-bold">
+                              Download
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    ))
-                  ) : (
-                    <>
-                      <div className="aspect-video bg-white/5 rounded-xl border border-white/5 p-4 flex items-center justify-center">
-                        <span className="text-xs text-gray-500">Banner 1</span>
-                      </div>
-                      <div className="aspect-video bg-white/5 rounded-xl border border-white/5 p-4 flex items-center justify-center">
-                        <span className="text-xs text-gray-500">Banner 2</span>
-                      </div>
-                      <div className="aspect-video bg-white/5 rounded-xl border border-white/5 p-4 flex items-center justify-center">
-                        <span className="text-xs text-gray-500">Social Post</span>
-                      </div>
-                      <div className="aspect-video bg-white/5 rounded-xl border border-white/5 p-4 flex items-center justify-center">
-                        <span className="text-xs text-gray-500">Email Template</span>
-                      </div>
-                    </>
-                  )}
+                    );
+                  })}
                 </div>
-                <button className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all text-sm">
+                <button 
+                  onClick={() => downloadAllMarketingAssets(product)}
+                  className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all text-sm"
+                >
                   Download All Assets
                 </button>
               </div>
