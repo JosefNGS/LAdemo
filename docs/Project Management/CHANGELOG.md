@@ -14,6 +14,26 @@ Every changelog entry MUST track who made the change:
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
 
+
+## [1.21.0] - January 2026
+
+### Added
+- **Comprehensive Rules Structure**: Created complete rules directory structure mirroring system organization [Cursor]
+  - **Service Rules**: Created rules for all 8 services (admin, netlify, supabase, github, n8n, discourse, erlang-ledger, golang-api)
+  - **Folder Rules**: Created rules for major folders (frontend, backend, dev_server, docs)
+  - **Services README**: Created ules/services/README.md with service rules overview
+  - **Updated Main README**: Enhanced ules/README.md with complete structure documentation
+- **Rules Management**: Added TODO and CHANGELOG to rules directory [Cursor]
+  - ules/TODO.md - Tracks tasks and improvements for rules directory
+  - ules/CHANGELOG.md - Tracks all changes to rules directory with developer tracking
+  - Both files follow project standards with mandatory developer tracking
+
+### Changed
+- **Rules Directory**: Expanded from framework rules to comprehensive system rules [Cursor]
+- **Rules Organization**: Organized rules to mirror system structure (services, folders, frameworks) [Cursor]
+- **Cursor Rules**: Updated .cursorrules with complete rules structure and references to TODO/CHANGELOG [Cursor]
+
+---
 ## [1.17.0] - January 2026
 
 ### Added
