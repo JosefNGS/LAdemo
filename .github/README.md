@@ -536,19 +536,11 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 
 ## 👥 Vision & Development Team
 
-### COO
+### COO & Development Vision Lead
 
-**Josef Lindbom** - *COO*
-- 🎯 **Role**: Chief Operating Officer
-- 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
-- 🏢 **Company**: Nordic Global Solutions
-- 📧 **Contact**: josef@nordicglobalsolutions.com
-
-### Development Vision Lead
-
-**Josef Lindbom** - *Development Vision Lead*
-- 🎯 **Role**: Development Vision Lead
-- 📐 **Responsibilities**: Development strategy, technical vision, product roadmap, development oversight
+**Josef Lindbom** - *COO & Development Vision Lead*
+- 🎯 **Roles**: Chief Operating Officer, Development Vision Lead
+- 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design, development strategy, technical vision, product roadmap, development oversight
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: josef@nordicglobalsolutions.com
 

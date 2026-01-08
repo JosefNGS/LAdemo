@@ -4,8 +4,7 @@
 **Version**: 1.2  
 **Date**: January 2026  
 **Status**: Production Ready - Launch Date: January 21, 2026  
-**COO**: Josef Lindbom (josef@nordicglobalsolutions.com)  
-**Development Vision Lead**: Josef Lindbom (josef@nordicglobalsolutions.com)  
+**COO & Development Vision Lead**: Josef Lindbom (josef@nordicglobalsolutions.com)  
 **CTO**: Craig Martin (craig@nordicglobalsolutions.com)  
 **Backend Developer**: Jonne Waselius (Jonne@nordicglobalsolutions.com)  
 **Office Manager**: Lee (Lee@nordicglobalsolutions.com)  
@@ -508,14 +507,10 @@ BitNexus provides a complete ecosystem where users can:
 
 ### Team
 
-#### COO
-- **Josef Lindbom** - COO
-  - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
-  - **Contact**: josef@nordicglobalsolutions.com
-
-#### Development Vision Lead
-- **Josef Lindbom** - Development Vision Lead
-  - **Responsibilities**: Development strategy, technical vision, product roadmap, development oversight
+#### COO & Development Vision Lead
+- **Josef Lindbom** - COO & Development Vision Lead
+  - **Roles**: Chief Operating Officer, Development Vision Lead
+  - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design, development strategy, technical vision, product roadmap, development oversight
   - **Contact**: josef@nordicglobalsolutions.com
 
 #### Chief Technology Officer (CTO)

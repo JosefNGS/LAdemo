@@ -1053,14 +1053,10 @@ Available in Credits Shop:
 
 ### Team
 
-#### COO
-- **Josef Lindbom** - COO
-  - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
-  - **Contact**: josef@nordicglobalsolutions.com
-
-#### Development Vision Lead
-- **Josef Lindbom** - Development Vision Lead
-  - **Responsibilities**: Development strategy, technical vision, product roadmap, development oversight
+#### COO & Development Vision Lead
+- **Josef Lindbom** - COO & Development Vision Lead
+  - **Roles**: Chief Operating Officer, Development Vision Lead
+  - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design, development strategy, technical vision, product roadmap, development oversight
   - **Contact**: josef@nordicglobalsolutions.com
 
 #### Chief Technology Officer (CTO)
