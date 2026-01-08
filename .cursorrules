@@ -33,6 +33,41 @@
 
 ---
 
+### 🔄 GITHUB FILES MUST MATCH SYSTEM FILES
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **`.github/LICENSE` MUST be identical to root `LICENSE` file**
+- **`.github/README.md` MUST be identical to root `README.md` file**
+- **When updating LICENSE or README.md, ALWAYS update both locations**
+
+**Synchronization Rules**:
+1. **When modifying `LICENSE` (root)**:
+   - **ALWAYS** copy the exact same content to `.github/LICENSE`
+   - Both files must be byte-for-byte identical
+   - No exceptions or variations
+
+2. **When modifying `README.md` (root)**:
+   - **ALWAYS** copy the exact same content to `.github/README.md`
+   - Both files must be byte-for-byte identical
+   - No exceptions or variations
+
+3. **Before committing LICENSE or README changes**:
+   - Verify both root and `.github/` versions are identical
+   - Use diff tools if necessary to ensure consistency
+   - Never commit if files differ
+
+4. **If files become out of sync**:
+   - Immediately update `.github/` version to match root version
+   - Root version is the source of truth
+   - Commit the synchronization fix immediately
+
+**File Pairs That Must Stay Synchronized**:
+- `LICENSE` ↔ `.github/LICENSE` (must be identical)
+- `README.md` ↔ `.github/README.md` (must be identical)
+
+**This rule ensures GitHub repository displays correct license and documentation information.**
+
+---
+
 ## Project Overview
 This is a React + TypeScript landing page with an interactive demo dashboard for BitNexus, a decentralized affiliate revenue platform.
 
@@ -324,6 +359,9 @@ After making responsive changes:
 
 ## Anti-Patterns to Avoid
 - ❌ **CRITICAL**: Don't create documentation files in root directory (use `docs/` folder)
+- ❌ **CRITICAL**: Don't update LICENSE or README.md without updating both root and `.github/` versions
+- ❌ **CRITICAL**: Don't let `.github/LICENSE` and `LICENSE` get out of sync
+- ❌ **CRITICAL**: Don't let `.github/README.md` and `README.md` get out of sync
 - ❌ Don't use inline styles (use Tailwind classes)
 - ❌ Don't create components in wrong directories
 - ❌ Don't use `any` type (use proper TypeScript types)
