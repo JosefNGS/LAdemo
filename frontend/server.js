@@ -137,17 +137,8 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
-    // Handle regular files - all files are now in frontend directory
+    // Handle regular files (HTML, CSS, JS, etc.) - all files are now in frontend directory
     const absolutePath = path.resolve(frontendRoot, cleanPath);
-    
-    if (!fs.existsSync(absolutePath)) {
-      res.writeHead(404, { 'Content-Type': 'text/html' });
-      res.end('<h1>404 - File Not Found</h1>');
-      return;
-    }
-
-    // Handle regular files (HTML, CSS, JS, etc.) - resolve from frontend directory
-    let absolutePath = path.resolve(frontendRoot, cleanPath);
     
     if (!fs.existsSync(absolutePath)) {
       res.writeHead(404, { 'Content-Type': 'text/html' });
