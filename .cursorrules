@@ -240,6 +240,39 @@
 - **UI & Features** → `docs/UI & Features/`
 - **Product docs** → `docs/Product docs/` (organized by topic)
 
+### 📋 README AND CHANGELOG - CRITICAL REQUIREMENT
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **ALL folders MUST have README.md and CHANGELOG.md**
+- **NO EXCEPTIONS** - This is CRITICAL for project organization and tracking
+- **When creating a new folder**: IMMEDIATELY create README.md and CHANGELOG.md
+- **When finding a folder without these files**: Create them immediately
+
+**README.md Requirements**:
+- **Purpose**: Explain folder purpose, structure, and usage
+- **Contents**: Folder overview, file organization, key files, documentation references
+- **Location**: Root of each folder (e.g., `frontend/README.md`, `backend/README.md`)
+
+**CHANGELOG.md Requirements**:
+- **Purpose**: Track all changes made within the folder
+- **Format**: Follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+- **Developer Tracking**: MANDATORY - Every entry must include `[Developer: Name]` or `[Cursor]` tag
+- **Location**: Root of each folder (e.g., `frontend/CHANGELOG.md`, `backend/CHANGELOG.md`)
+
+**Folders That MUST Have README.md and CHANGELOG.md**:
+- ✅ **All main folders** (`frontend/`, `backend/`, `docs/`, `rules/`, `dev_server/`, etc.)
+- ✅ **All service folders** (`backend/netlify/`, `docs/Services/admin/`, etc.)
+- ✅ **All documentation folders** (`docs/Core Documentation/`, `docs/Development/`, etc.)
+- ✅ **All rules folders** (`rules/agent-os/`, `rules/services/admin/`, etc.)
+- ✅ **All product doc folders** (`docs/Product docs/Business & Strategy/`, etc.)
+
+**CRITICAL Rules**:
+- ✅ **Create README.md and CHANGELOG.md** when creating a new folder
+- ✅ **Update CHANGELOG.md** when making changes in the folder
+- ✅ **Keep README.md updated** when folder structure changes
+- ❌ **NEVER create a folder without README.md and CHANGELOG.md**
+- ❌ **NEVER skip updating CHANGELOG.md** when making changes
+- ❌ **NEVER leave folders without these files** - Create them immediately
+
 ### 📚 INSTRUCTIONS FOLDER - CRITICAL STRUCTURE
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **`instructions/` folder contains external frameworks and instruction sets**

@@ -51,6 +51,8 @@
 - ✅ **Service documentation** - Required for each service
 - ✅ **Changelog updates** - Mandatory for all changes
 - ✅ **Developer tracking** - Required in all changelogs
+- ✅ **README.md and CHANGELOG.md** - REQUIRED in ALL folders (MANDATORY - NO EXCEPTIONS)
 - ❌ **Never create docs in root** - Must be in `docs/`
 - ❌ **Never skip changelog updates** - It's mandatory
 - ❌ **Never skip developer tracking** - Required in changelogs
+- ❌ **Never create a folder without README.md and CHANGELOG.md** - It's mandatory
