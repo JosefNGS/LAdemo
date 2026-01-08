@@ -80,6 +80,7 @@ const parseTaskFile = (content: string, teamMemberId: string): TaskFileData => {
     
     // Check for task items (- [ ] or - [x]) - more flexible pattern
     // Matches: - [ ] task, - [x] task, - [ ] **bold task**, - [ ] **VERIFY**: task, etc.
+    // IMPORTANT: Only match lines that start with "- [ " (not nested lists like "  - item")
     const taskMatch = line.match(/^-\s+\[([ xX])\]\s+(.+)$/);
     if (taskMatch) {
       const isCompleted = taskMatch[1].toLowerCase() === 'x';
@@ -87,6 +88,15 @@ const parseTaskFile = (content: string, teamMemberId: string): TaskFileData => {
       
       // Skip lines that are just section markers or empty
       if (!taskLabel || taskLabel.length < 3) continue;
+      
+      // Skip if this line ends with ":" and might have nested items (check next line)
+      // But don't skip if it's a complete task
+      if (taskLabel.endsWith(':') && i + 1 < lines.length) {
+        const nextLine = lines[i + 1]?.trim() || '';
+        // If next line is a nested list item (starts with spaces and dash), this is a parent item
+        // We'll include it as a task but might want to handle it differently
+        // For now, include it
+      }
       
       // Remove markdown formatting (bold, italic, code, links)
       let cleanLabel = taskLabel
