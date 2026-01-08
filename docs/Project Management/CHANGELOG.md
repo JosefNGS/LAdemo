@@ -14,6 +14,185 @@ Every changelog entry MUST track who made the change:
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
 
+## [1.17.0] - January 2026
+
+### Added
+- **START_HERE.md Updates**: Added critical rules about keeping root clean and developer responsibility [Cursor]
+  - Added "KEEP ROOT CLEAN" section emphasizing file placement responsibility
+  - Added "DEVELOPER RESPONSIBILITY" section requiring developers to keep themselves updated
+  - Added "FOLLOW TODOLISTS" section making todolist following mandatory
+  - Updated checklists to include todolist checking and file location verification
+  - Updated "Common Mistakes" and "Do These" sections with root clean and responsibility rules
+- **Developer Responsibility Rules**: Established that developers are responsible for following all rules and maintaining project structure [Cursor]
+
+### Changed
+- **START_HERE.md**: Enhanced with developer responsibility and root clean rules [Cursor]
+- **Quick Reference Checklist**: Updated to include todolist checking and responsibility acknowledgment [Cursor]
+
+---
+
+## [1.16.0] - January 2026
+
+### Added
+- **Development Server Changelog**: Created `dev_server/CHANGELOG.md` for tracking development server changes [Cursor]
+- **STRUCTURE.md Updates**: Added CHANGELOG.md to dev_server folder structure [Cursor]
+
+---
+
+## [1.15.0] - January 2026
+
+### Added
+- **Stop Files**: Created stop scripts for all start files [Cursor]
+  - `stop.bat` / `stop.sh` - Stop simple development server (Windows/Mac-Linux)
+  - `dev_server/stop_dev_server.bat` / `dev_server/stop_dev_server.sh` - Stop full dev server (Windows/Mac-Linux)
+- **Cross-Platform Anti-Patterns**: Added cross-platform violations to Anti-Patterns section [Cursor]
+  - Don't hardcode Windows-specific paths
+  - Don't use platform-specific commands without alternatives
+  - Don't create start files without stop files
+- **Stop Files Rules**: Updated START_FILES_RULES.md to include stop files requirement [Cursor]
+- **STRUCTURE.md Updates**: Added stop files to project structure documentation [Cursor]
+- **Cursor Rules Updates**: Added stop files to start files rules and cross-platform violations to Anti-Patterns [Cursor]
+
+### Changed
+- **Start Files Rules**: Updated to require stop files for every start file [Cursor]
+- **Anti-Patterns Section**: Expanded with cross-platform compatibility violations [Cursor]
+
+---
+
+## [1.14.0] - January 2026
+
+### Added
+- **Start Files Critical Rules**: Created comprehensive rules for development server start files [Cursor]
+  - Defined exactly TWO allowed start files: `start.bat` (simple) and `dev_server/start_dev_server.bat` (full)
+  - Established mandatory rule: System MUST NOT have several start files
+  - Created `docs/Setup & Configuration/START_FILES_RULES.md` with complete rules
+  - Created `dev_server/start_dev_server.bat` for full Docker Compose development server
+- **start_dev_server.bat**: Created full development server launcher in dev_server folder [Cursor]
+  - Starts ALL services using Docker Compose
+  - Checks for Docker and Docker Compose before starting
+  - Handles both `docker compose` and `docker-compose` commands
+  - Provides clear error messages and troubleshooting
+- **STRUCTURE.md Updates**: Added start_dev_server.bat to dev_server folder structure [Cursor]
+- **Cursor Rules Updates**: Added Start Files critical rules section to cursor rules [Cursor]
+
+### Changed
+- **start.bat Documentation**: Updated STRUCTURE.md to clarify start.bat is for simple start only [Cursor]
+- **Start Files Rules**: Established critical rules preventing multiple start files [Cursor]
+
+---
+
+## [1.13.0] - January 2026
+
+### Added
+- **Admin View & Task Management Service Rules**: Created critical service rules for Admin View UI and database synchronization [Cursor]
+  - Real-time synchronization requirements between UI and database
+  - Automatic refresh mechanisms (mount, tab switch, window focus, polling)
+  - Error handling and recovery rules
+  - LocalStorage fallback mechanism
+  - Data consistency validation rules
+  - Task service integration requirements
+  - Database schema requirements
+  - Monitoring and alerting guidelines
+- **Admin Service Documentation**: Created `docs/Services/admin/SERVICE_RULES.md` with comprehensive synchronization rules [Cursor]
+- **Admin Service Changelog**: Created `docs/Services/admin/CHANGELOG.md` for service-specific change tracking [Cursor]
+- **STRUCTURE.md Updates**: Added Admin service rules to service rules documentation section [Cursor]
+- **Cursor Rules Updates**: Added Admin View & Task Management service rules to cursor rules [Cursor]
+
+### Changed
+- **Service Rules Documentation**: Updated STRUCTURE.md and .cursorrules to include Admin View & Task Management service rules [Cursor]
+
+---
+
+## [1.12.0] - January 2026
+
+### Added
+- **Development Server Folder Structure**: Created complete dev_server folder with all required files [Cursor]
+  - Dockerfile - Docker container definition for development
+  - docker-compose.yml - Multi-service Docker Compose configuration
+  - .dockerignore - Files to exclude from Docker build
+  - docker-entrypoint.sh - Container entrypoint script
+  - config/ folder with server.config.js and env.example
+  - README.md - Comprehensive development server documentation
+- **STRUCTURE.md Updates**: Added Development Server section to folder purpose documentation [Cursor]
+- **Docker Configuration**: Created Dockerfile, docker-compose.yml, and .dockerignore in dev_server folder [Cursor]
+- **Development Server Config**: Created config/ folder with server.config.js and env.example [Cursor]
+- **Docker Entrypoint Script**: Created docker-entrypoint.sh for container initialization [Cursor]
+- **dev_server README**: Created comprehensive README.md for development server folder [Cursor]
+
+### Changed
+- **dev_server Folder**: Populated empty dev_server folder with complete development server structure [Cursor]
+
+---
+
+## [1.11.0] - January 2026
+
+### Added
+- **Development Documentation Responsibilities**: Added development documentation responsibilities to Craig Martin (CTO) [Cursor]
+- **CRAIG_TASKS.md Update**: Added development documentation section to Craig's task tracking [Cursor]
+
+### Changed
+- **STRUCTURE.md**: Updated Craig Martin's documentation responsibilities to include development documentation [Cursor]
+- **TEAM_DOCUMENTATION_RESPONSIBILITIES.md**: Added comprehensive development documentation section to Craig Martin's responsibilities [Cursor]
+  - Development planning documentation
+  - Architecture documentation
+  - Implementation plans
+  - Developer guides
+  - Development workflow documentation
+  - Code organization and structure
+  - Development best practices
+  - Technical decision documentation
+
+---
+
+## [1.10.0] - January 2026
+
+### Changed
+- **Removed NorthStar Nexus Option**: Updated all documentation to remove "NorthStar Nexus" as rebranding option [Cursor]
+- **Added Alternative Name Suggestions**: Added comprehensive alternative name suggestions in brand identity sections [Cursor]
+- **Brand Identity Updates**: Updated Team_Questions_From_Research.md with alternative name categories (Nordic-themed, Nexus-themed, trust-themed, innovation-themed) [Cursor]
+- **Gemini Report Updates**: Removed NorthStar Nexus references and added alternative name suggestions [Cursor]
+- **Deep Research Updates**: Updated Deep_Research_Source_Material.md to remove NorthStar Nexus and add alternatives [Cursor]
+
+### Important Notes
+- **NorthStar Nexus is NOT an option**: BitNexus has no connection to NorthStar - all references removed
+- **Alternative Name Categories Added**: Nordic-themed, Nexus-themed, trust-themed, innovation-themed name suggestions provided
+- **Brand Identity Questions Updated**: All brand identity questions now focus on independent alternative names
+
+---
+
+## [1.9.0] - January 2026
+
+### Added
+- **Complete STRUCTURE.md Update**: Comprehensive update to STRUCTURE.md (version 2.0) with ALL files and folders in system [Cursor]
+- **Full File Inventory**: Added complete file listing including all 35+ frontend pages, all components, all documentation files [Cursor]
+- **GitHub Folder Structure**: Added complete .github folder structure with workflows, templates, and config files [Cursor]
+- **Investor Ready Complete Structure**: Added complete Investor Ready folder structure with all 15 folders and their contents [Cursor]
+- **Services Complete Structure**: Added complete Services folder structure with all 7 services and their documentation [Cursor]
+- **File Count Summary**: Added file count summary section to STRUCTURE.md [Cursor]
+
+### Changed
+- **STRUCTURE.md Version**: Updated to version 2.0 to reflect comprehensive structure update [Cursor]
+- **Documentation Organization**: Enhanced all documentation sections with complete file listings [Cursor]
+- **Folder Purpose Sections**: Expanded folder purpose sections with detailed file listings [Cursor]
+
+---
+
+## [1.8.0] - January 2026
+
+### Added
+- **Investor Ready Structure**: Added complete Investor Ready folder structure (15 folders) to STRUCTURE.md [Cursor]
+- **15_Deep_Research Documentation**: Added 15_Deep_Research folder structure with all 4 documents to STRUCTURE.md [Cursor]
+  - Deep_Research_Source_Material.md - Centralized research repository
+  - Gemini_Deep_Due_Diligence_Report.md - Gemini AI due diligence report
+  - Claude_Verification_Report.md - Claude AI verification report
+  - Team_Questions_From_Research.md - Q&A document for team responses
+
+### Changed
+- **STRUCTURE.md Version**: Updated to version 1.1 to reflect new Investor Ready structure [Cursor]
+- **Documentation Section**: Enhanced documentation section to include Investor Ready folder details [Cursor]
+
+---
+
 ## [1.0.0] - January 2026
 
 ### Added

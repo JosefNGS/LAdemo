@@ -20,19 +20,28 @@
 ## 👤 Role & Responsibilities
 
 ### Primary Responsibilities:
+- **Development Documentation**: Development planning, architecture, implementation plans, and developer guides
 - **Hosting Services**: Infrastructure, deployment, and hosting management
 - **Discourse (Forum)**: Forum service setup, configuration, and integration
 - **n8n**: Workflow automation platform setup, configuration, and integration
 - **Technology Leadership**: Technical architecture and system design
 - **Security Oversight**: Security architecture and compliance
 - **Main Branch Protection**: Review and merge all Pull Requests to main branch
+- **Mac Start Files**: Responsible for Mac start files (start.sh, start_dev_server.sh, etc.)
 
 ### Key Documentation to Maintain:
-- `docs/Services/netlify/DEPLOYMENT.md`
-- `docs/Core Documentation/TECH_STACK.md`
-- `docs/Services/github/VERSION_CONTROL.md`
-- `docs/Services/n8n/` (when implemented)
-- `docs/Services/discourse/` (when implemented)
+- **Development Documentation**:
+  - `docs/Development/DEVELOPER_DOCS.md`
+  - `docs/Development/IMPLEMENTATION_PLAN.md`
+  - `docs/Development/AFFILIATE_PROGRAM_ARCHITECTURE.md`
+  - `docs/Development/Development planning docs/`
+  - All development planning and architecture documentation
+- **Infrastructure Documentation**:
+  - `docs/Services/netlify/DEPLOYMENT.md`
+  - `docs/Core Documentation/TECH_STACK.md`
+  - `docs/Services/github/VERSION_CONTROL.md`
+  - `docs/Services/n8n/` (when implemented)
+  - `docs/Services/discourse/` (when implemented)
 
 ---
 
@@ -71,6 +80,20 @@
 ---
 
 ### 📌 High Priority Tasks
+
+#### Research Questions Answers
+- [ ] **Complete CRAIG_ANSWERS.md document** - Answer all assigned questions from Team_Questions_From_Research.md
+- [ ] **MiCA Authorization** - Provide status, budget, and requirements for MiCA compliance (HIGH PRIORITY)
+- [ ] **CARF Tax Reporting Compliance** - Provide status, budget, and implementation plan (HIGH PRIORITY)
+- [ ] **Security Audit Documentation** - Document completed audits and provide downloadable reports (HIGH PRIORITY)
+- [ ] **Technology Stack Verification** - Verify and document exact technology versions
+- [ ] **NorthStarOS and Solins Architecture** - Provide technical details for investor materials
+- [ ] **Blockchain Infrastructure** - Document blockchain network, MEV protection, and infrastructure
+- [ ] **ISO Certification Documentation** - Document certifications, status, and costs
+- [ ] **Update answer document status** - Mark completed sections in CRAIG_ANSWERS.md
+- [ ] **Review answers with team** - Coordinate with other team members on related questions
+
+**Answer Document Location**: `docs/Product docs/Investor Ready/15_Deep_Research/CRAIG_ANSWERS.md`
 
 #### BMAD Method Implementation
 - [ ] **Research and understand BMAD methodology** (Build-Measure-Analyze-Deploy or similar framework)
@@ -195,6 +218,16 @@
 ---
 
 ## 🔐 Main Branch Protection
+
+### Development Documentation Responsibilities
+
+**As CTO, you are responsible for**:
+- Maintaining all development documentation in `docs/Development/`
+- Keeping implementation plans up-to-date
+- Documenting architecture decisions
+- Maintaining developer guides
+- Coordinating development planning documentation
+- Ensuring development documentation follows structure guidelines
 
 ### Pull Request Review Process
 

@@ -54,6 +54,16 @@ This document defines documentation responsibilities for each team member. All d
 ### Craig Martin - CTO
 
 **Primary Documentation Areas**:
+- **Development Documentation**
+  - Development planning documentation
+  - Architecture documentation
+  - Implementation plans
+  - Developer guides
+  - Development workflow documentation
+  - Code organization and structure
+  - Development best practices
+  - Technical decision documentation
+
 - **Hosting Services Documentation**
   - Netlify deployment documentation
   - Server infrastructure documentation
@@ -82,6 +92,11 @@ This document defines documentation responsibilities for each team member. All d
   - Performance optimization guides
 
 **Key Documents to Maintain**:
+- `docs/Development/` (all development documentation)
+  - `docs/Development/DEVELOPER_DOCS.md`
+  - `docs/Development/IMPLEMENTATION_PLAN.md`
+  - `docs/Development/AFFILIATE_PROGRAM_ARCHITECTURE.md`
+  - `docs/Development/Development planning docs/`
 - `docs/DEPLOYMENT.md`
 - `docs/TECH_STACK.md`
 - `docs/backend/n8n/` (when implemented)
@@ -229,7 +244,8 @@ Before committing documentation changes:
 
 **For Structure Questions**: Refer to `docs/STRUCTURE.md`  
 **For Documentation Coordination**: Contact Josef Lindbom  
-**For Technical Documentation**: Contact Craig Martin  
+**For Development Documentation**: Contact Craig Martin (CTO)  
+**For Technical Documentation**: Contact Craig Martin (CTO)  
 **For Backend Documentation**: Contact Jonne Waselius
 
 ---

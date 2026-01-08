@@ -28,7 +28,7 @@
 **Contact**: josef@nordicglobalsolutions.com
 
 #### Primary Responsibilities:
-- **UX/UI Design**: User experience and interface design
+- **UX/UI Design**: User experience and interface design - **Josef updates everything on UI/UX**
 - **User Flow Logic**: Complete user journey mapping and flow logic
 - **Overall Platform Logic**: Platform architecture, business logic, and system design
 - **Strategic Direction**: Product vision and roadmap

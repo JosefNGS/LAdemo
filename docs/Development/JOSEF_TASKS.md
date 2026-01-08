@@ -25,6 +25,7 @@
 - **Overall Platform Logic**: Platform architecture, business logic, and system design
 - **Strategic Direction**: Product vision and roadmap
 - **Development Strategy**: Technical vision and development oversight
+- **Windows Start Files**: Responsible for Windows start files (start.bat, start_dev_server.bat, etc.)
 
 ### Key Documentation to Maintain:
 - `docs/Product docs/Technical Documentation/COMPLETE_UI_DOCUMENTATION.md`
@@ -76,6 +77,26 @@
 ---
 
 ### 📌 High Priority Tasks
+
+#### Windows Start Files
+- [ ] **Maintain Windows start files** - Keep `start.bat` and `start_dev_server.bat` up-to-date
+- [ ] **Test Windows start files** - Ensure start files work correctly on Windows systems
+- [ ] **Update Windows start files** - Update when project structure or dependencies change
+- [ ] **Document Windows start files** - Document usage and requirements
+- [ ] **Cross-platform compatibility** - Ensure Windows start files work with other platform files
+- [ ] **Troubleshoot Windows issues** - Resolve Windows-specific start file issues
+
+#### Research Questions Answers
+- [ ] **Complete JOSEF_ANSWERS.md document** - Answer all assigned questions from Team_Questions_From_Research.md
+- [ ] **Brand Identity & Rebranding Strategy** - Provide answers for brand contamination assessment and rebranding decision (URGENT)
+- [ ] **Market Data Corrections** - Provide corrected DeFi TVL and TAM figures
+- [ ] **Investor Materials Updates** - Identify priority updates and assign responsibilities
+- [ ] **Launch Strategy** - Define recommended launch strategy and milestones
+- [ ] **Risk Mitigation** - Identify top 5 risks and mitigation strategies
+- [ ] **Update answer document status** - Mark completed sections in JOSEF_ANSWERS.md
+- [ ] **Review answers with team** - Coordinate with other team members on related questions
+
+**Answer Document Location**: `docs/Product docs/Investor Ready/15_Deep_Research/JOSEF_ANSWERS.md`
 
 #### UX/UI Enhancements
 - [ ] User experience optimization

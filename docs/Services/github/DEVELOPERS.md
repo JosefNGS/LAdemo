@@ -55,7 +55,26 @@
   - API Development
   - Ports & Services
   - Google Sync
+  - Junior Developer Mentorship (Cory)
+  - Database Setup & Maintenance
+  - Linux Start Files
 - **Access Level**: Backend Development Access
+- **Branch Permissions**: Can create feature branches, cannot merge to main
+- **Last Active**: January 2026
+
+### Cory
+- **Role**: Junior Developer
+- **Email**: (To be added)
+- **GitHub Username**: (To be added)
+- **Status**: ✅ Active Developer
+- **Mentor**: Jonne Waselius (Backend Developer)
+- **Primary Responsibilities**:
+  - Junior Development
+  - Code Implementation
+  - Testing
+  - Documentation
+  - Learning & Growth
+- **Access Level**: Junior Development Access
 - **Branch Permissions**: Can create feature branches, cannot merge to main
 - **Last Active**: January 2026
 
@@ -115,21 +134,30 @@ When a developer leaves the project:
 - **Can manage repository settings**
 - **Can manage branch protection rules**
 
-### Active Developers (Josef, Jonne)
+### Active Developers (Josef, Jonne, Cory)
 - **Full Development Access**
 - **Can create branches**
 - **Can create Pull Requests**
 - **Cannot merge to main** (must go through PR review)
 - **Cannot modify branch protection rules**
 
+### Junior Developer (Cory)
+- **Junior Development Access**
+- **Can create branches**
+- **Can create Pull Requests**
+- **Cannot merge to main** (must go through PR review)
+- **Code reviews required from mentor (Jonne)**
+- **Mentor guidance required for complex tasks**
+
 ---
 
 ## 📊 Developer Activity Tracking
 
-### Current Active Developers: 3
+### Current Active Developers: 4
 - Josef Lindbom (COO & Development Vision Lead)
 - Craig Martin (CTO)
 - Jonne Waselius (Backend Developer)
+- Cory (Junior Developer)
 
 ### Inactive Developers: 0
 

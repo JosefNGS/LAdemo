@@ -767,7 +767,9 @@
 - Legacy abandoned token (BitcoinNode/BTNX)
 - Multiple unrelated entities using the name
 
-**Strategic Recommendation**: Execute strategic rebrand to "NorthStar Nexus" or similar to sanitize digital identity and leverage cleaner "NorthStarOS" trademark.
+**Strategic Recommendation**: Execute strategic rebrand to a clean, uncontaminated brand name. Suggested alternatives include Nordic-themed names (NordicTrade, NordicFinance), Nexus-themed names (AffiliateNexus, FinanceNexus), trust-themed names (TrustTrade, SecureAffiliate), or innovation-themed names (NextGenFinance, FutureAffiliate).
+
+**⚠️ IMPORTANT**: NorthStar Nexus is NOT an option - BitNexus has no connection to NorthStar.
 
 **Last Verified**: January 8, 2026  
 **Next Update**: When rebranding decision is made  
@@ -807,7 +809,13 @@ This comprehensive due diligence report serves as the foundational knowledge bas
 4. **Marketing Agency**: bitnexus.in operates as a marketing agency in India
 5. **Chrome Extension**: Gaming utility tool using the BitNexus name
 
-**Strategic Recommendation**: The Pitch Deck must explicitly disassociate the new system from these legacy artifacts. Consider strategic rebrand to "NorthStar Nexus" or similar derivative to leverage the cleaner reputation of the "NorthStarOS" trademark.
+**Strategic Recommendation**: The Pitch Deck must explicitly disassociate the new system from these legacy artifacts. Consider strategic rebrand to a clean, professionally branded alternative name.
+
+**⚠️ IMPORTANT**: NorthStar Nexus is NOT an option - BitNexus has no connection to NorthStar. Suggested alternative name categories:
+- **Nordic-themed**: NordicTrade, NordicFinance, NordicAffiliate, NordicWealth
+- **Nexus-themed**: AffiliateNexus, FinanceNexus, WealthNexus, TradeNexus
+- **Trust-themed**: TrustTrade, SecureAffiliate, VerifiedFinance
+- **Innovation-themed**: NextGenFinance, FutureAffiliate, SmartWealth
 
 #### Corporate Governance: The Nordic Trust Thesis
 
@@ -956,7 +964,9 @@ The core innovation is not merely the blockchain layer but the NorthStarOS, desc
 - **Narrative**: While competitors flee the EU, BitNexus is built for it. "Fully MiCA Compliant & CARF Ready." Creates defensive moat unregulated competitors cannot cross
 
 **Slide 4: The Brand Evolution (Crucial)**
-- **Action**: Acknowledge "BitNexus" legacy noise but pivot to "NorthStar Nexus" or similar. "A new identity for a new standard of finance"
+- **Action**: Acknowledge "BitNexus" legacy noise but pivot to a clean, professionally branded alternative name. "A new identity for a new standard of finance"
+
+**⚠️ IMPORTANT**: NorthStar Nexus is NOT an option - BitNexus has no connection to NorthStar. Consider Nordic-themed, Nexus-themed, trust-themed, or innovation-themed alternatives.
 
 #### Conclusion and Strategic Recommendations
 
@@ -974,7 +984,9 @@ The core innovation is not merely the blockchain layer but the NorthStarOS, desc
 
 **Immediate Next Steps**:
 1. **Legal**: Engage Finnish counsel (e.g., Castrén & Snellman) to initiate CASP authorization process immediately
-2. **Brand**: Conduct trademark clearance search for "NorthStar Nexus" and secure domains
+2. **Brand**: Conduct trademark clearance searches for alternative brand names and secure domains. Suggested name categories: Nordic-themed, Nexus-themed, trust-themed, or innovation-themed names.
+
+**⚠️ IMPORTANT**: NorthStar Nexus is NOT an option - BitNexus has no connection to NorthStar.
 3. **Tech**: Prototype "Solins" agent integration with Jito Block Engine to verify MEV capture capabilities
 4. **Tax**: Integrate CARF-compliant data logging module into backend immediately
 

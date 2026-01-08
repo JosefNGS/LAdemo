@@ -968,4 +968,3 @@ BitNexus is protected by multiple layers of intellectual property law and legal 
 **Nordic Global Websites**:
 - 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
 - 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
-

@@ -27,6 +27,9 @@
 - **API Development**: RESTful API design and implementation
 - **Ports & Services**: Service ports, endpoints, and API routing
 - **Google Sync**: Google services integration and synchronization
+- **Junior Developer Mentorship**: Mentor and guide Junior Developer (Cory) - to-do lists, information flow, and development support
+- **Database Management**: Set up and maintain all project databases
+- **Linux Start Files**: Responsible for Linux start files (start.sh, start_dev_server.sh, etc.)
 
 ### Key Documentation to Maintain:
 - `docs/Setup & Configuration/API_SETUP.md`
@@ -63,6 +66,52 @@
 ---
 
 ### 📌 High Priority Tasks
+
+#### Junior Developer Mentorship (Cory)
+- [ ] **Mentor Junior Developer Cory** - Provide guidance, support, and oversight
+- [ ] **Create and maintain to-do lists** for Cory with clear, actionable tasks
+- [ ] **Ensure information flow** - Keep Cory informed about project updates, changes, and requirements
+- [ ] **Code reviews** - Review Cory's code and provide constructive feedback
+- [ ] **Task assignment** - Assign appropriate development tasks to Cory
+- [ ] **Progress tracking** - Monitor Cory's progress and provide support
+- [ ] **Learning guidance** - Help Cory develop skills and knowledge
+- [ ] **Problem-solving support** - Help Cory when stuck or blocked
+- [ ] **Regular check-ins** - Schedule regular meetings to discuss progress and challenges
+- [ ] **Documentation** - Ensure Cory has access to all necessary documentation
+- [ ] **Onboarding** - Help Cory complete onboarding checklist
+- [ ] **Communication** - Maintain clear communication channels with Cory
+
+**Cory's Task Document**: `docs/Development/CORY_TASKS.md`
+
+#### Database Setup & Maintenance
+- [ ] **Set up all project databases** - Create and configure database schemas
+- [ ] **Maintain database schemas** - Keep database structures up-to-date
+- [ ] **Database migrations** - Create and manage database migration files
+- [ ] **Database backups** - Set up and maintain database backup systems
+- [ ] **Database optimization** - Optimize database performance and queries
+- [ ] **Database documentation** - Document database schemas and structures
+- [ ] **Database security** - Ensure database security and access controls
+- [ ] **Team Answers Database** - Set up database for research questions answers (see TEAM_ANSWERS_DATABASE_SCHEMA.md)
+- [ ] **Database monitoring** - Monitor database performance and health
+- [ ] **Database troubleshooting** - Resolve database issues and errors
+
+#### Linux Start Files
+- [ ] **Maintain Linux start files** - Keep `start.sh` and `start_dev_server.sh` up-to-date
+- [ ] **Test Linux start files** - Ensure start files work correctly on Linux systems
+- [ ] **Update Linux start files** - Update when project structure or dependencies change
+- [ ] **Document Linux start files** - Document usage and requirements
+- [ ] **Cross-platform compatibility** - Ensure Linux start files work with other platform files
+- [ ] **Troubleshoot Linux issues** - Resolve Linux-specific start file issues
+
+#### Research Questions Answers
+- [ ] **Complete JONNE_ANSWERS.md document** - Answer all assigned questions from Team_Questions_From_Research.md
+- [ ] **Technology Stack Verification** - Verify and document backend technology stack and versions
+- [ ] **NorthStarOS and Solins Architecture** - Provide backend architecture and API integration details
+- [ ] **Blockchain Infrastructure** - Document backend infrastructure, APIs, and database schema for blockchain
+- [ ] **Update answer document status** - Mark completed sections in JONNE_ANSWERS.md
+- [ ] **Review answers with team** - Coordinate with other team members on related questions
+
+**Answer Document Location**: `docs/Product docs/Investor Ready/15_Deep_Research/JONNE_ANSWERS.md`
 
 #### Office Discord Setup & Documentation
 - [ ] **Create comprehensive documentation** on how to use the office Discord setup

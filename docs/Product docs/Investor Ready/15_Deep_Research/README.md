@@ -24,6 +24,24 @@ This folder contains AI-generated research and analysis from Claude and Gemini t
 - **Purpose**: Comprehensive Q&A document for team to answer questions arising from research reports
 - **Content**: 20 question categories covering brand strategy, market data corrections, regulatory compliance, technical architecture, financial projections, team governance, and strategic planning
 - **Usage**: Team members should review and complete responses to prepare for investor questions and due diligence
+
+### Team Answer Documents
+- **Status**: ✅ Available - Individual answer documents for each team member
+- **Purpose**: Separate answer documents for each team member to complete their assigned questions
+- **Documents**:
+  - `JOSEF_ANSWERS.md` - Answers for Josef Lindbom (COO & Development Vision Lead)
+  - `CRAIG_ANSWERS.md` - Answers for Craig Martin (CTO)
+  - `JONNE_ANSWERS.md` - Answers for Jonne Waselius (Backend Developer)
+  - `SVEIN_ANSWERS.md` - Answers for Svein Nilsen (Investor/Vision - Sales)
+  - `LEE_ANSWERS.md` - Answers for Lee (Office Manager - Sales)
+- **Usage**: Each team member should complete their assigned questions in their respective answer document
+- **Integration**: Answers will be integrated into admin view and database for tracking and management
+
+### Team Answers Database Schema
+- **Status**: ✅ Available as `TEAM_ANSWERS_DATABASE_SCHEMA.md`
+- **Purpose**: Database schema design for storing and managing team member answers
+- **Content**: Complete database structure including tables, relationships, indexes, and query examples
+- **Usage**: Reference for implementing database to store answers and integrate with admin view
 - **Content**: 
   - Market research and analysis
   - Competitive intelligence

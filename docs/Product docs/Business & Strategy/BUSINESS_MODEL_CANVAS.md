@@ -1016,4 +1016,3 @@ The business model is designed for:
 - 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
 
 **Contact**: josef@nordicglobalsolutions.com
-

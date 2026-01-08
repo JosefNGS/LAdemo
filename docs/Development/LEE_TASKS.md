@@ -60,6 +60,15 @@
 
 ### 📌 High Priority Tasks
 
+#### Research Questions Answers
+- [ ] **Complete LEE_ANSWERS.md document** - Answer all assigned questions from Team_Questions_From_Research.md
+- [ ] **Investor Materials Updates** - Provide administrative support and documentation organization
+- [ ] **Research Document Integration** - Organize research documents and establish maintenance processes
+- [ ] **Update answer document status** - Mark completed sections in LEE_ANSWERS.md
+- [ ] **Review answers with team** - Coordinate with other team members on related questions
+
+**Answer Document Location**: `docs/Product docs/Investor Ready/15_Deep_Research/LEE_ANSWERS.md`
+
 #### Office Management
 - [ ] Office operations and procedures documentation
 - [ ] Administrative systems setup and maintenance

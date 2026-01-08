@@ -139,6 +139,30 @@ export const teamProfiles: TeamMemberProfile[] = [
     contact: {
       email: 'Lee@nordicglobalsolutions.com'
     }
+  },
+  {
+    id: 'cory',
+    name: 'Cory',
+    role: 'Junior Developer',
+    email: '(To be added)',
+    bio: 'Junior developer learning and contributing to development tasks under mentorship. Focuses on code implementation, testing, and documentation.',
+    avatar: 'C',
+    responsibilities: [
+      'Junior Development',
+      'Code Implementation',
+      'Testing',
+      'Documentation',
+      'Learning & Growth'
+    ],
+    skills: [
+      'Learning & Development',
+      'Code Implementation',
+      'Testing',
+      'Documentation'
+    ],
+    contact: {
+      email: '(To be added)'
+    }
   }
 ];
 

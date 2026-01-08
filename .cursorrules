@@ -90,6 +90,68 @@
 
 **All active developers must join the Admin & Developer Discord server for team communication.**
 
+### 📋 TASK FILE SYNCHRONIZATION - CRITICAL RULES
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **Task markdown files MUST automatically sync with database**
+- **UI and database MUST always reflect changes in markdown files**
+- **NO manual sync required** - System must auto-update
+
+**Task File Locations** (MUST be kept synchronized):
+- `docs/Development/JOSEF_TASKS.md`
+- `docs/Development/CRAIG_TASKS.md`
+- `docs/Development/JONNE_TASKS.md`
+- `docs/Development/SVEIN_TASKS.md`
+- `docs/Development/LEE_TASKS.md`
+- `docs/Development/CORY_TASKS.md`
+
+**Synchronization Requirements**:
+1. **Auto-Sync Service**: `taskSyncService.ts` automatically syncs markdown files to database
+2. **Real-Time Updates**: Database updates when markdown files change
+3. **UI Alignment**: All team member buttons in AdminView must be aligned and consistent
+4. **Button Alignment**: All "View Task Checklist" buttons must align at the bottom of cards
+5. **Auto-Detection**: System detects markdown file changes and syncs automatically
+6. **Preserve State**: Verification status and completion metadata preserved during sync
+7. **Error Handling**: Sync errors must be logged but not block UI functionality
+
+**Implementation Rules**:
+- ✅ **Auto-sync runs every 30 seconds** when AdminView is active
+- ✅ **Force sync on tab switch** to tasks tab
+- ✅ **Sync on task file load** in TaskChecklistView
+- ✅ **Cards use flexbox** with `flex flex-col h-full` for proper alignment
+- ✅ **Buttons use `mt-auto`** to align at bottom of cards
+- ✅ **All cards same height** using grid layout
+- ✅ **Database is source of truth** for completion/verification status
+- ✅ **Markdown files are source of truth** for task definitions
+
+**CRITICAL**: When editing task markdown files, changes automatically sync to database. No manual database updates required.
+
+### 🚀 START FILES - CRITICAL RULES
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **System MUST NOT have several start files**
+- **Exactly TWO start files allowed**:
+  1. **`start.bat`** / **`start.sh`** (Root) - Simple start (basic development server, no Docker)
+  2. **`dev_server/start_dev_server.bat`** / **`dev_server/start_dev_server.sh`** - Full development server (starts EVERYTHING with Docker Compose)
+- **NO other start files allowed** - This is CRITICAL
+
+**Start File Rules**:
+- ✅ **`start.bat`** (Windows) / **`start.sh`** (Mac/Linux) - Simple start, detects best server (Node.js → Python → PHP), no Docker
+- ✅ **`stop.bat`** (Windows) / **`stop.sh`** (Mac/Linux) - Stop simple server (stops processes on port 8000)
+- ✅ **`dev_server/start_dev_server.bat`** (Windows) / **`dev_server/start_dev_server.sh`** (Mac/Linux) - Full start, Docker Compose, starts ALL services
+- ✅ **`dev_server/stop_dev_server.bat`** (Windows) / **`dev_server/stop_dev_server.sh`** (Mac/Linux) - Stop full dev server (stops all Docker containers)
+- ❌ **NO additional start files** (e.g., `start_frontend.bat`, `start_backend.bat`, `run.bat`, `launch.bat`)
+- ❌ **NO start files in other locations** (frontend/, backend/, service folders)
+- ❌ **NO service-specific start files** (use Docker Compose commands instead)
+- ❌ **NO platform-specific start files** (must support Windows, Mac, and Linux)
+- ❌ **NO start files without corresponding stop files** (every start file must have a stop file)
+
+**Cross-Platform Requirements**:
+- ✅ **Windows**: `.bat` files for batch scripts
+- ✅ **Mac/Linux**: `.sh` files for shell scripts
+- ✅ **Both platforms must have identical functionality**
+- ✅ **Start scripts must detect platform and use appropriate commands**
+
+**See `docs/Setup & Configuration/START_FILES_RULES.md` for complete start files rules.**
+
 ### 🖥️ DEVELOPMENT SERVER - CRITICAL LOCATION
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **ALL development server files MUST be in**: `Dev server/` folder
@@ -134,6 +196,7 @@
 - **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
 - **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
 - **Golang API**: `docs/Services/golang-api/SERVICE_RULES.md`
+- **Admin View & Task Management**: `docs/Services/admin/SERVICE_RULES.md` (CRITICAL - UI/Database sync rules)
 
 **When working with a service**:
 1. **Check the service rules** first
@@ -153,6 +216,7 @@
 - **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
 - **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
 - **Golang API**: `docs/Services/golang-api/SERVICE_RULES.md`
+- **Admin View & Task Management**: `docs/Services/admin/SERVICE_RULES.md` (CRITICAL - UI/Database sync rules)
 
 ### 📁 PROJECT STRUCTURE - MAIN SOURCE
 **MANDATORY RULE - STRICTLY ENFORCED**:
@@ -265,6 +329,61 @@
 
 **This rule ensures GitHub repository displays correct license and documentation information.**
 
+### 🌐 CROSS-PLATFORM COMPATIBILITY - CRITICAL
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **System MUST work on Windows, Mac, and Linux**
+- **All code MUST be cross-platform compatible**
+- **NO platform-specific code** unless absolutely necessary
+- **All scripts MUST have Windows (.bat) and Unix (.sh) versions**
+
+**Cross-Platform Requirements**:
+- ✅ **Windows Support**: All features must work on Windows 10/11
+- ✅ **Mac Support**: All features must work on macOS (latest versions)
+- ✅ **Linux Support**: All features must work on major Linux distributions (Ubuntu, Debian, etc.)
+- ✅ **Path Handling**: Use cross-platform path handling (avoid hardcoded paths)
+- ✅ **File Separators**: Use `/` for paths or platform-agnostic path libraries
+- ✅ **Line Endings**: Handle both CRLF (Windows) and LF (Unix) line endings
+- ✅ **Scripts**: Provide both `.bat` (Windows) and `.sh` (Mac/Linux) versions
+- ✅ **Docker**: Use Docker for platform-agnostic development environment
+
+**Platform-Specific Considerations**:
+- **Windows**: Use `.bat` files, handle Windows paths (`C:\`), PowerShell compatibility
+- **Mac/Linux**: Use `.sh` files, handle Unix paths (`/`), bash compatibility
+- **Docker**: Use Docker Compose for consistent environment across all platforms
+- **Node.js**: Use Node.js APIs that are cross-platform (avoid platform-specific APIs)
+
+**Testing Requirements**:
+- ✅ **Test on Windows** before committing
+- ✅ **Test on Mac** (if available) or verify Mac compatibility
+- ✅ **Test on Linux** (if available) or verify Linux compatibility
+- ✅ **Test Docker setup** on all platforms
+- ✅ **Verify scripts work** on all platforms
+
+**Forbidden Actions**:
+- ❌ **CRITICAL**: Hardcoding Windows-specific paths (e.g., `C:\Users\...`)
+- ❌ **CRITICAL**: Using Windows-only commands in scripts
+- ❌ **CRITICAL**: Using Mac/Linux-only commands in scripts
+- ❌ **CRITICAL**: Platform-specific file operations without fallbacks
+- ❌ **CRITICAL**: Assuming a specific platform in code
+
+**Path Handling Examples**:
+```javascript
+// ❌ BAD - Platform-specific
+const path = 'C:\\Users\\josef\\project';
+
+// ✅ GOOD - Cross-platform
+const path = require('path');
+const projectPath = path.join(__dirname, 'project');
+
+// ✅ GOOD - Environment variable
+const userHome = process.env.HOME || process.env.USERPROFILE;
+```
+
+**Script Examples**:
+- **Windows**: `start.bat`, `start_dev_server.bat`
+- **Mac/Linux**: `start.sh`, `start_dev_server.sh`
+- **Both must have identical functionality**
+
 ---
 
 ## Project Overview
@@ -278,6 +397,7 @@ This is a React + TypeScript landing page with an interactive demo dashboard for
 - **Build**: ES Modules with on-the-fly TypeScript transpilation (esbuild)
 - **Dev Server**: Node.js server.js with TypeScript support, fallback to Python/PHP
 - **Fonts**: Orbitron (futuristic), Inter (sans), Space Grotesk (display)
+- **Platform Support**: Windows, Mac, and Linux (cross-platform compatible)
 
 ## File Structure
 
@@ -550,10 +670,17 @@ After making responsive changes:
 ## Common Tasks
 
 ### Starting the Development Server
-1. Run `start.bat` (Windows) - automatically handles server selection
-2. Server will open browser at `http://localhost:8000`
-3. For TypeScript support, ensure Node.js is installed
-4. Check `docs/TROUBLESHOOTING.md` if server fails to start
+1. **Windows**: Run `start.bat` - automatically handles server selection
+2. **Mac/Linux**: Run `start.sh` - automatically handles server selection
+3. Server will open browser at `http://localhost:8000`
+4. For TypeScript support, ensure Node.js is installed
+5. Check `docs/TROUBLESHOOTING.md` if server fails to start
+6. For full development environment (Docker): Run `dev_server/start_dev_server.bat` (Windows) or `dev_server/start_dev_server.sh` (Mac/Linux)
+
+### Stopping the Development Server
+1. **Simple Server**: Run `stop.bat` (Windows) or `stop.sh` (Mac/Linux) - stops processes on port 8000
+2. **Full Dev Server**: Run `dev_server/stop_dev_server.bat` (Windows) or `dev_server/stop_dev_server.sh` (Mac/Linux) - stops all Docker containers
+3. **Alternative**: Press Ctrl+C in the terminal running the server
 
 ### Adding a New Page
 1. Create file in `frontend/src/pages/PageName.tsx`
@@ -605,6 +732,14 @@ After making responsive changes:
 - ❌ Don't forget responsive design (mobile-first)
 - ❌ Don't commit API keys to version control
 - ❌ Don't modify `server.js` without understanding esbuild bundling
+- ❌ **CRITICAL**: Don't hardcode Windows-specific paths (e.g., `C:\Users\...`)
+- ❌ **CRITICAL**: Don't use Windows-only commands in scripts (must work on Mac/Linux)
+- ❌ **CRITICAL**: Don't use Mac/Linux-only commands in scripts (must work on Windows)
+- ❌ **CRITICAL**: Don't create platform-specific code without cross-platform alternatives
+- ❌ **CRITICAL**: Don't assume a specific platform in code (always check platform)
+- ❌ **CRITICAL**: Don't use platform-specific file operations without fallbacks
+- ❌ **CRITICAL**: Don't create start files without corresponding stop files
+- ❌ **CRITICAL**: Don't create stop files without corresponding start files
 - ❌ **Responsive Layout**: Don't use fixed px widths/heights for layout containers
 - ❌ **Responsive Layout**: Don't use `width: 100vw` (use `width: 100%` instead)
 - ❌ **Responsive Layout**: Don't use `transform: scale()` or `zoom` for layout-critical elements (causes overflow)
@@ -612,6 +747,14 @@ After making responsive changes:
 - ❌ **Responsive Layout**: Don't skip mobile-first approach (start with mobile, enhance for larger screens)
 - ❌ **Responsive Layout**: Don't forget touch targets ≥ 44px on mobile
 - ❌ **Responsive Layout**: Don't allow horizontal scrolling at any viewport
+- ❌ **CRITICAL**: Don't hardcode Windows-specific paths (e.g., `C:\Users\...`)
+- ❌ **CRITICAL**: Don't use Windows-only commands in scripts (must work on Mac/Linux)
+- ❌ **CRITICAL**: Don't use Mac/Linux-only commands in scripts (must work on Windows)
+- ❌ **CRITICAL**: Don't create platform-specific code without cross-platform alternatives
+- ❌ **CRITICAL**: Don't assume a specific platform in code (always check platform)
+- ❌ **CRITICAL**: Don't use platform-specific file operations without fallbacks
+- ❌ **CRITICAL**: Don't create start files without corresponding stop files
+- ❌ **CRITICAL**: Don't create stop files without corresponding start files
 
 ## Design System Reference
 - **Primary Action Color**: Purple (`#7c3aed`)
@@ -627,10 +770,12 @@ After making responsive changes:
 ## Development Server
 
 ### Running the Project Locally
-- **Primary**: Use `start.bat` (Windows) - automatically detects and uses best available server
+- **Windows**: Use `start.bat` - automatically detects and uses best available server
+- **Mac/Linux**: Use `start.sh` - automatically detects and uses best available server
 - **Node.js**: `node server.js` - transpiles TypeScript on the fly using esbuild
 - **Python**: `python -m http.server 8000` - static file server (TypeScript won't work)
 - **Fallback**: `npx http-server -p 8000` - if Node.js server fails
+- **Full Environment**: Use `dev_server/start_dev_server.bat` (Windows) or `dev_server/start_dev_server.sh` (Mac/Linux) for Docker Compose
 
 ### TypeScript Transpilation
 - **Development**: `server.js` uses esbuild to transpile `.ts` and `.tsx` files on demand

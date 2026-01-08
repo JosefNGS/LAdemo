@@ -668,4 +668,3 @@ NXC Credits are the lifeblood of the BitNexus platform, enabling:
 - 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
 
 **Contact**: josef@nordicglobalsolutions.com
-

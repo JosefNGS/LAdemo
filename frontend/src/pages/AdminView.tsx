@@ -7,6 +7,7 @@ import TaskChecklistView from './TaskChecklistView';
 import Vetting from './Vetting';
 import Users from './Users';
 import Reports from './Reports';
+import { autoSyncService } from '../services/taskSyncService';
 
 interface AdminViewProps {
   setActiveRoute: (route: AppRoute) => void;
@@ -27,7 +28,26 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
     } else {
       setShowLoginModal(true);
     }
+
+    // Start auto-sync service when AdminView mounts
+    if (adminAuth === 'true') {
+      autoSyncService.start(30000); // Check every 30 seconds
+    }
+
+    // Cleanup: stop auto-sync when component unmounts
+    return () => {
+      autoSyncService.stop();
+    };
   }, []);
+
+  useEffect(() => {
+    // Sync tasks when switching to tasks tab
+    if (isAuthenticated && activeTab === 'tasks') {
+      autoSyncService.forceSyncAll().catch(err => {
+        console.error('Error during force sync:', err);
+      });
+    }
+  }, [isAuthenticated, activeTab]);
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
@@ -133,45 +153,67 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
         {activeTab === 'tasks' && (
           <div className="space-y-6">
             <div className="glass-card p-6 rounded-2xl border border-white/5">
-              <h2 className="text-xl font-bold mb-4">Team Task Management</h2>
-              <p className="text-gray-500 mb-6">
+              <h2 className="text-2xl font-bold mb-2">Team Task Management</h2>
+              <p className="text-gray-400 mb-6">
                 All tasks completed by Josef must be verified by each task owner. Check the task status and verify completion.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
                 {teamProfiles.map((member) => {
                   const isJosef = member.id === 'josef';
+                  // Get task file name based on member ID
+                  const getTaskFileName = (id: string) => {
+                    const mapping: { [key: string]: string } = {
+                      'josef': 'JOSEF_TASKS.md',
+                      'craig': 'CRAIG_TASKS.md',
+                      'jonne': 'JONNE_TASKS.md',
+                      'svein': 'SVEIN_TASKS.md',
+                      'lee': 'LEE_TASKS.md',
+                      'cory': 'CORY_TASKS.md'
+                    };
+                    return mapping[id] || `${id.toUpperCase()}_TASKS.md`;
+                  };
+
                   return (
                     <div
                       key={member.id}
-                      className="glass-card p-4 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all"
+                      className="glass-card p-5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer flex flex-col h-full"
+                      onClick={() => {
+                        setSelectedTeamMember(member.id);
+                        setActiveTab('checklist' as any);
+                      }}
                     >
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center text-lg font-bold">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center text-lg font-bold text-white shadow-lg flex-shrink-0">
                           {member.avatar}
                         </div>
-                        <div>
-                          <h3 className="font-bold">{member.name}</h3>
-                          <p className="text-xs text-gray-500">{member.role}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-lg truncate">{member.name}</h3>
+                          <p className="text-xs text-gray-400 mt-0.5 line-clamp-2">{member.role}</p>
                         </div>
                       </div>
-                      <div className="space-y-2 text-sm mb-3">
+                      
+                      <div className="space-y-3 mb-4 flex-1">
                         <div className="flex items-center gap-2">
-                          <span className={isJosef ? "text-green-400" : "text-yellow-400"}>
+                          <span className={`text-xl flex-shrink-0 ${isJosef ? "text-green-400" : "text-yellow-400"}`}>
                             {isJosef ? "✓" : "⚠"}
                           </span>
-                          <span>{isJosef ? "Tasks completed by Josef" : "Verification required"}</span>
+                          <span className={`text-sm font-medium ${isJosef ? "text-green-400" : "text-yellow-400"}`}>
+                            {isJosef ? "Tasks completed by Josef" : "Verification required"}
+                          </span>
                         </div>
-                        <div className="text-gray-500 text-xs">
-                          See: docs/Development/{member.name.toUpperCase().split(' ')[0]}_TASKS.md
+                        <div className="text-gray-500 text-xs font-mono bg-white/5 px-2 py-1 rounded border border-white/5 break-all">
+                          See: docs/Development/{getTaskFileName(member.id)}
                         </div>
                       </div>
+                      
                       <button
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           setSelectedTeamMember(member.id);
                           setActiveTab('checklist' as any);
                         }}
-                        className="w-full px-3 py-2 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 text-purple-400 rounded-lg text-sm font-medium transition-all"
+                        className="w-full px-4 py-2.5 bg-gradient-to-r from-purple-600/20 to-cyan-500/20 hover:from-purple-600/30 hover:to-cyan-500/30 border border-purple-500/30 text-purple-300 rounded-lg text-sm font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/20 mt-auto"
                       >
                         View Task Checklist
                       </button>
@@ -181,8 +223,17 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
               </div>
 
               {/* Task Checklist View */}
-              {activeTab === 'checklist' && (
+              {activeTab === 'checklist' && selectedTeamMember && (
                 <div className="mt-6">
+                  <button
+                    onClick={() => {
+                      setActiveTab('tasks');
+                      setSelectedTeamMember(null);
+                    }}
+                    className="mb-4 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 rounded-lg text-sm font-medium transition-all"
+                  >
+                    ← Back to Team Tasks
+                  </button>
                   <TaskChecklistView
                     teamMember={selectedTeamMember}
                     setActiveRoute={setActiveRoute}
@@ -190,11 +241,13 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
                 </div>
               )}
 
-              <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
-                <p className="text-sm text-yellow-400">
-                  <strong>Note:</strong> All tasks marked as completed by Josef must be verified by the respective task owner (Craig, Jonne, Svein, or Lee) before being considered fully complete.
-                </p>
-              </div>
+              {activeTab === 'tasks' && (
+                <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
+                  <p className="text-sm text-yellow-400">
+                    <strong>Note:</strong> All tasks marked as completed by Josef must be verified by the respective task owner (Craig, Jonne, Svein, or Lee) before being considered fully complete.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )}

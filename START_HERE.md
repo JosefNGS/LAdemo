@@ -39,6 +39,30 @@ Before making ANY changes, you MUST understand these critical rules:
    - **Development server files** → `Dev server/` folder ONLY
    - **Documentation** → `docs/` folder (organized by purpose)
 
+5. **KEEP ROOT CLEAN - CRITICAL RULE**
+   - **Files MUST be where they belong** - No exceptions
+   - **Root directory must stay clean** - Only approved files allowed
+   - **You are responsible** for placing files in correct locations
+   - **Check `docs/Core Documentation/STRUCTURE.md`** before creating any file
+   - **If unsure where a file belongs** - Check structure docs first, ask team if needed
+   - **Move misplaced files immediately** - Don't leave files in wrong locations
+
+6. **DEVELOPER RESPONSIBILITY**
+   - **You are responsible** for keeping yourself updated with project rules
+   - **You are responsible** for following all rules and guidelines
+   - **You are responsible** for reading and understanding documentation
+   - **You are responsible** for maintaining project structure
+   - **You are responsible** for updating documentation when needed
+   - **No excuses** - Rules are documented, follow them
+
+7. **FOLLOW TODOLISTS - MANDATORY**
+   - **You MUST follow todolists** assigned to you
+   - **Check your task files** in `docs/Development/` regularly
+   - **Update task status** as you complete work
+   - **Follow task priorities** and deadlines
+   - **Report blockers** in Discord if tasks cannot be completed
+   - **Task files location**: `docs/Development/[YOUR_NAME]_TASKS.md`
+
 ### 📌 WORKFLOW STANDARDIZATION
 
 **This is how we work. This document defines our standard workflow and processes.**
@@ -67,12 +91,15 @@ If anyone wants to work differently or proposes changes to this workflow, **it m
 
 ### Before Every Change
 
+- [ ] **Check your todolist** in `docs/Development/[YOUR_NAME]_TASKS.md` (MANDATORY)
+- [ ] **Verify file location** - Check `docs/Core Documentation/STRUCTURE.md` if unsure
 - [ ] **Create feature branch**: `git checkout -b feature/your-feature-name`
-- [ ] **Make your changes**
+- [ ] **Make your changes** (files in correct locations)
 - [ ] **Test your changes** (no console errors, functionality works)
 - [ ] **Update CHANGELOG.md** with ALL changes (MANDATORY)
 - [ ] **Update documentation** if needed
 - [ ] **Create push change documentation** (see template)
+- [ ] **Update task status** in your task file if applicable
 - [ ] **Commit changes** with clear message
 - [ ] **Create Pull Request** (never push directly to main)
 
@@ -231,6 +258,25 @@ All documentation is in the `docs/` folder, organized by purpose:
 
 ## 🏗️ Project Structure Rules
 
+### 🔴 KEEP ROOT CLEAN - YOUR RESPONSIBILITY
+
+**CRITICAL RULE**: The root directory must stay clean. Files MUST be where they belong.
+
+**Your Responsibilities**:
+- ✅ **Check structure docs** before creating any file
+- ✅ **Place files in correct locations** according to `docs/Core Documentation/STRUCTURE.md`
+- ✅ **Move misplaced files immediately** if you find them
+- ✅ **Ask team if unsure** where a file belongs
+- ❌ **NEVER create files in root** unless they're in the approved list
+- ❌ **NEVER leave files in wrong locations** - Fix immediately
+
+**If you find files in wrong location**:
+1. **Check `docs/Core Documentation/STRUCTURE.md`** to find correct location
+2. **Move file to correct location** immediately
+3. **Update any references** to the moved file
+4. **Update CHANGELOG.md** if file location changed
+5. **Never leave it for someone else** - You found it, you fix it
+
 ### Critical Structure Rules
 
 1. **Frontend Files** → `frontend/` folder
@@ -255,10 +301,13 @@ All documentation is in the `docs/` folder, organized by purpose:
    - `LICENSE` (must match `.github/LICENSE`)
    - `package.json` (dependencies)
    - `netlify.toml` (Netlify config)
-   - `start.bat` (dev launcher)
+   - `start.bat` / `start.sh` (dev launcher)
+   - `stop.bat` / `stop.sh` (stop dev server)
    - `.cursorrules` (IDE rules)
    - `.gitignore` (Git ignore rules)
    - `START_HERE.md` (this file)
+
+**⚠️ CRITICAL**: If you find files in root that don't belong here, **move them immediately** to the correct location. You are responsible for keeping root clean.
 
 **For complete structure details, see**: `docs/Core Documentation/STRUCTURE.md`
 
@@ -329,9 +378,19 @@ git push origin feature/your-feature-name
 ### Developer Resources
 
 - **Developer Tasks**: `docs/Development/` (individual task files)
+  - **YOUR TASK FILE**: `docs/Development/[YOUR_NAME]_TASKS.md` - **YOU MUST FOLLOW THIS**
+  - **Check your tasks regularly** - This is MANDATORY
+  - **Update task status** as you complete work
+  - **Follow task priorities** and deadlines
 - **Tech Stack**: `docs/Core Documentation/TECH_STACK.md`
-- **TODO**: `docs/Project Management/TODO.md`
+- **TODO**: `docs/Project Management/TODO.md` - Project-wide todo list
 - **Troubleshooting**: `docs/Setup & Configuration/TROUBLESHOOTING.md`
+
+**⚠️ CRITICAL - FOLLOW TODOLISTS**:
+- **You MUST check your task file** before starting work
+- **You MUST follow assigned tasks** and priorities
+- **You MUST update task status** as you complete work
+- **You MUST report blockers** if tasks cannot be completed
 
 ---
 
@@ -341,7 +400,7 @@ git push origin feature/your-feature-name
 
 - **Josef Lindbom** (COO & Development Vision Lead)
   - Email: josef@nordicglobalsolutions.com
-  - Responsibilities: UX/UI, user flow logic, overall platform logic
+  - Responsibilities: UX/UI (updates everything on UI/UX), user flow logic, overall platform logic
 
 - **Craig Martin** (CTO)
   - Email: craig@nordicglobalsolutions.com
@@ -391,12 +450,20 @@ The office Discord setup includes a comprehensive reporting system for all funct
 - ❌ **Don't create files in root directory** (follow folder structure)
 - ❌ **Don't create documentation in root** (use `docs/` folder)
 - ❌ **Don't place dev server files in root** (use `Dev server/` folder)
+- ❌ **Don't leave files in wrong locations** - Move them immediately
+- ❌ **Don't ignore your todolist** - You MUST follow assigned tasks
+- ❌ **Don't skip checking structure docs** - Always verify file location
+- ❌ **Don't blame others for misplaced files** - You are responsible
 - ❌ **Don't commit broken or untested code**
 - ❌ **Don't commit API keys or sensitive data**
 - ❌ **Don't update changelog after committing** (must be done BEFORE)
 
 ### ✅ DO THESE
 
+- ✅ **Always check your todolist** before starting work (`docs/Development/[YOUR_NAME]_TASKS.md`)
+- ✅ **Always verify file location** before creating files (check `docs/Core Documentation/STRUCTURE.md`)
+- ✅ **Always place files in correct locations** - Keep root clean
+- ✅ **Always move misplaced files** if you find them - Don't leave for others
 - ✅ **Always update CHANGELOG.md** before committing with developer tracking
 - ✅ **Always create feature branch** for changes
 - ✅ **Always test your code** before committing
@@ -405,6 +472,7 @@ The office Discord setup includes a comprehensive reporting system for all funct
 - ✅ **Always request CTO review** before merging to main
 - ✅ **Always update documentation** when making changes
 - ✅ **Always follow coding standards** (`.cursorrules`)
+- ✅ **Always take responsibility** for following rules and maintaining structure
 
 ---
 
@@ -437,9 +505,11 @@ The office Discord setup includes a comprehensive reporting system for all funct
 
 - [ ] Read `.cursorrules`
 - [ ] Read `docs/Core Documentation/STRUCTURE.md`
+- [ ] **Check your todolist** in `docs/Development/[YOUR_NAME]_TASKS.md` (MANDATORY)
 - [ ] Join Admin & Developer Discord
 - [ ] Register in `docs/Services/github/DEVELOPERS.md`
 - [ ] Set up development environment
+- [ ] Understand your responsibility to keep root clean and follow rules
 
 ### Before Every Commit
 
@@ -481,11 +551,13 @@ The office Discord setup includes a comprehensive reporting system for all funct
 
 ## 📝 Summary
 
-**Remember these three critical rules:**
+**Remember these critical rules:**
 
 1. **CHANGELOG.md MUST ALWAYS BE UPDATED** - Every change, no exceptions
 2. **NEVER push directly to main** - Always use Pull Request workflow
-3. **Follow project structure** - All files in correct locations
+3. **KEEP ROOT CLEAN** - Files MUST be where they belong, you are responsible
+4. **FOLLOW YOUR TODOLIST** - Check `docs/Development/[YOUR_NAME]_TASKS.md` regularly
+5. **YOU ARE RESPONSIBLE** - For following rules, maintaining structure, and keeping yourself updated
 
 **Welcome to the team! 🚀**
 

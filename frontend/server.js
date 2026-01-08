@@ -137,6 +137,25 @@ const server = http.createServer(async (req, res) => {
       }
     }
 
+    // Handle docs folder requests (for task files)
+    if (cleanPath.startsWith('docs/')) {
+      const absolutePath = path.resolve(projectRoot, cleanPath);
+      
+      if (!fs.existsSync(absolutePath)) {
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end('<h1>404 - File Not Found</h1>');
+        return;
+      }
+
+      const content = fs.readFileSync(absolutePath, 'utf8');
+      res.writeHead(200, {
+        'Content-Type': extname === '.md' ? 'text/markdown' : contentType,
+        'Access-Control-Allow-Origin': '*',
+      });
+      res.end(content);
+      return;
+    }
+
     // Handle regular files (HTML, CSS, JS, etc.) - all files are now in frontend directory
     const absolutePath = path.resolve(frontendRoot, cleanPath);
     
