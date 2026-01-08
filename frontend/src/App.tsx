@@ -30,6 +30,7 @@ import AllUsers from './pages/AllUsers';
 import Support from './pages/Support';
 import Feed from './pages/Feed';
 import Governance from './pages/Governance';
+import AdminView from './pages/AdminView';
 import GettingStartedModal from './components/GettingStartedModal';
 import PlatformAdminUsers from './components/PlatformAdminUsers';
 import { AppRoute } from './types';

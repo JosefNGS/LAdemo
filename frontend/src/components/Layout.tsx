@@ -47,9 +47,7 @@ const Layout: React.FC<LayoutProps> = ({ children, activeRoute, setActiveRoute, 
   ];
 
   const adminNav = [
-    { id: AppRoute.ADMIN_VETTING, label: 'Vetting', icon: ICONS.Admin },
-    { id: AppRoute.ADMIN_USERS, label: 'Users', icon: ICONS.Admin },
-    { id: AppRoute.MOD_REPORTS, label: 'Reports', icon: ICONS.Admin },
+    { id: AppRoute.ADMIN_VIEW, label: 'Admin View', icon: ICONS.Admin },
   ];
 
   const NavContent = () => (
