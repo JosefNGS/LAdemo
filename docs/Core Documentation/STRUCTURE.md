@@ -51,41 +51,32 @@ BitNexus Landing Page/
 ├── docs/                           # Documentation folder
 │   ├── Product docs/                # Product documentation (organized by topic)
 │   │   ├── Pitch Deck & Presentations/  # Pitch decks and presentation materials
+│   │   │   ├── PITCH_DECK.md
+│   │   │   ├── PITCH_DECK_SPEAKER_NOTES.md
+│   │   │   ├── PRODUCT_PRESENTATION.md
+│   │   │   └── PRODUCT_PRESENTATION_SLIDES.md
 │   │   ├── Business & Strategy/          # Business planning and strategy docs
+│   │   │   ├── BITNEXUS_ONE_PAGER.md
+│   │   │   ├── BUSINESS_MODEL_CANVAS.md
+│   │   │   ├── MARKET_ANALYSIS.md
+│   │   │   ├── REVENUE_PLAN.md
+│   │   │   └── SWOT_ANALYSIS.md
 │   │   ├── Technical Documentation/      # Technical specs and documentation
+│   │   │   ├── COMPLETE_UI_DOCUMENTATION.md
+│   │   │   ├── PLATFORM_OVERVIEW.md
+│   │   │   ├── TRUST_BUILDING_SYSTEM.md
+│   │   │   └── USER_FLOW_LOGIC.md
 │   │   ├── Legal & Compliance/           # Legal protection documentation
+│   │   │   └── LEGAL_PROTECTIONS.md
 │   │   └── Tokenomics/                    # Tokenomics and credit system
-│   │
-│   ├── Services/                    # Service-specific documentation (one folder per service)
-│   │   ├── netlify/                 # Netlify service documentation
-│   │   ├── supabase/                # Supabase service documentation
-│   │   ├── github/                  # GitHub service documentation
-│   │   ├── n8n/                     # n8n automation service documentation (planned)
-│   │   └── discourse/               # Discourse forum service documentation (planned)
-│   │
-│   ├── Development/                 # Development planning and implementation docs
-│   │   ├── Development planning docs/  # Planning documents
-│   │   ├── DEVELOPER_DOCS.md       # Developer documentation
-│   │   └── TEAM_DOCUMENTATION_RESPONSIBILITIES.md
-│   │
-│   ├── Setup & Configuration/       # Setup, configuration, and troubleshooting
-│   │   ├── API_SETUP.md            # API configuration guides
-│   │   ├── SETUP_CHECKLIST.md      # Setup checklists
-│   │   └── TROUBLESHOOTING.md      # Troubleshooting guides
-│   │
-│   ├── Project Management/          # Project tracking and status
-│   │   ├── TODO.md                 # Project task tracking and roadmap
-│   │   ├── PROJECT_STATUS.md       # Project status and overview
-│   │   └── CHANGELOG.md            # Project changelog
-│   │
-│   ├── Core Documentation/         # Core system documentation
-│   │   ├── STRUCTURE.md            # Project structure reference
-│   │   ├── DOCS_STRUCTURE.md      # Documentation structure reference
-│   │   └── TECH_STACK.md           # Technology stack documentation
-│   │
-│   └── UI & Features/              # UI and feature documentation
-│       ├── COMPLETE_UI_DOCUMENTATION.md
-│       └── (UI and feature docs)
+│   │       └── NXC_CREDITS_EXPLANATION.md
+│   ├── STRUCTURE.md                 # This file - Main structure reference
+│   ├── TECH_STACK.md                # Technology stack documentation
+│   ├── TODO.md                      # Project task tracking and roadmap
+│   ├── DEPLOYMENT.md                # Netlify deployment guide
+│   ├── API_SETUP.md                 # Gemini API configuration guide
+│   ├── PROJECT_STATUS.md            # Project status and overview
+│   └── ... (other docs)
 │
 ├── .github/                        # GitHub-specific files
 │   ├── LICENSE                      # Must match root LICENSE

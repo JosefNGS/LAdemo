@@ -29,15 +29,16 @@
 
 ### 📁 PROJECT STRUCTURE - MAIN SOURCE
 **MANDATORY RULE - STRICTLY ENFORCED**:
-- **`docs/STRUCTURE.md` is the MAIN SOURCE for project structure**
-- **ALWAYS refer to `docs/STRUCTURE.md` when organizing files or folders**
-- **This file defines the complete folder organization and file structure**
-- **All files MUST follow the structure defined in `docs/STRUCTURE.md`**
+- **`docs/Core Documentation/STRUCTURE.md` is the MAIN SOURCE for project structure**
+- **`docs/Core Documentation/DOCS_STRUCTURE.md` is the MAIN SOURCE for documentation organization**
+- **ALWAYS refer to these files when organizing files or folders**
+- **All files MUST follow the structure defined in these files**
 
 **When in doubt about file placement**:
-1. **Check `docs/STRUCTURE.md` first**
-2. **Follow the structure defined there**
-3. **Update `docs/STRUCTURE.md` if adding new folder types**
+1. **Check `docs/Core Documentation/STRUCTURE.md` for project structure**
+2. **Check `docs/Core Documentation/DOCS_STRUCTURE.md` for documentation organization**
+3. **Follow the structure defined there**
+4. **Update these files if adding new folder types**
 
 ### 🚫 NO RANDOM FILES IN ROOT DIRECTORY
 **MANDATORY RULE - STRICTLY ENFORCED**:
