@@ -22,7 +22,7 @@
 - [ ] Code is tested and working
 - [ ] No console errors
 - [ ] Documentation updated (if needed)
-- [ ] Follows project structure (`docs/STRUCTURE.md`)
+- [ ] Follows project structure (`docs/Core Documentation/STRUCTURE.md`)
 - [ ] Follows coding standards (`.cursorrules`)
 
 **See `docs/VERSION_CONTROL.md` for complete Git workflow guidelines.**
@@ -39,6 +39,15 @@
 2. **Check `docs/Core Documentation/DOCS_STRUCTURE.md` for documentation organization**
 3. **Follow the structure defined there**
 4. **Update these files if adding new folder types**
+
+**Documentation Organization**:
+- **Service docs** → `docs/Services/service-name/` (one folder per service)
+- **Development docs** → `docs/Development/`
+- **Setup docs** → `docs/Setup & Configuration/`
+- **Project management** → `docs/Project Management/`
+- **Core docs** → `docs/Core Documentation/`
+- **UI & Features** → `docs/UI & Features/`
+- **Product docs** → `docs/Product docs/` (organized by topic)
 
 ### 🚫 NO RANDOM FILES IN ROOT DIRECTORY
 **MANDATORY RULE - STRICTLY ENFORCED**:
@@ -60,7 +69,7 @@
 - ❌ **NO other files in root** - Move to appropriate folder immediately
 
 **If you find files in root that don't belong**:
-1. **Check `docs/STRUCTURE.md`** to determine correct location
+1. **Check `docs/Core Documentation/STRUCTURE.md`** to determine correct location
 2. **Move file to appropriate folder** immediately
 3. **Update any references** to the moved file
 4. **Never leave files in root** that don't belong there

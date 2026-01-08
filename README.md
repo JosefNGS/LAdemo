@@ -408,8 +408,20 @@ BitNexus Landing Page/
 │   │   │   └── LEGAL_PROTECTIONS.md
 │   │   └── Tokenomics/                  # Tokenomics and credit system
 │   │       └── NXC_CREDITS_EXPLANATION.md
-│   ├── TECH_STACK.md                    # Technology stack documentation
-│   ├── TODO.md                          # Project task tracking and roadmap
+│   ├── Services/                        # Service-specific documentation (one folder per service)
+│   │   ├── netlify/                     # Netlify service documentation
+│   │   ├── supabase/                    # Supabase service documentation
+│   │   ├── github/                      # GitHub service documentation
+│   │   ├── n8n/                         # n8n automation service documentation (planned)
+│   │   └── discourse/                    # Discourse forum service documentation (planned)
+│   ├── Development/                     # Development planning and implementation docs
+│   ├── Setup & Configuration/           # Setup, configuration, and troubleshooting
+│   ├── Project Management/              # Project tracking and status
+│   ├── Core Documentation/              # Core system documentation
+│   │   ├── STRUCTURE.md                 # Project structure reference
+│   │   ├── DOCS_STRUCTURE.md            # Documentation structure reference
+│   │   └── TECH_STACK.md                # Technology stack documentation
+│   ├── UI & Features/                  # UI and feature documentation
 │   └── ... (other docs)
 ├── package.json            # Node.js dependencies
 ├── netlify.toml            # Netlify configuration
