@@ -536,10 +536,10 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 
 ## 👥 Vision & Development Team
 
-### COO/CEO
+### COO
 
-**Josef Lindbom** - *COO/CEO*
-- 🎯 **Role**: Chief Operating Officer / Chief Executive Officer
+**Josef Lindbom** - *COO*
+- 🎯 **Role**: Chief Operating Officer
 - 📐 **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
 - 🏢 **Company**: Nordic Global Solutions
 - 📧 **Contact**: josef@nordicglobalsolutions.com

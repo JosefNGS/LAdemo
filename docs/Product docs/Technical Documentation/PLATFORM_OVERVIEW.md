@@ -1053,8 +1053,8 @@ Available in Credits Shop:
 
 ### Team
 
-#### COO/CEO
-- **Josef Lindbom** - COO/CEO
+#### COO
+- **Josef Lindbom** - COO
   - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
   - **Contact**: josef@nordicglobalsolutions.com
 

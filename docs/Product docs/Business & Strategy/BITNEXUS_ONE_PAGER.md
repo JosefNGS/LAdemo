@@ -219,8 +219,8 @@ Traditional affiliate platforms extract 30-50% of earnings through fees, require
 
 ## Team
 
-### COO/CEO
-- **Josef Lindbom** - COO/CEO
+### COO
+- **Josef Lindbom** - COO
   - **Responsibilities**: Strategic direction, platform architecture, product vision, business development, UI/UX design
   - **Contact**: josef@nordicglobalsolutions.com
 
