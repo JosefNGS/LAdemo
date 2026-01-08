@@ -567,6 +567,7 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 - 🎯 **Role**: Chief Technology Officer
 - 📐 **Responsibilities**: Technology leadership, technical architecture, system design, scalability, security oversight
 - 🏢 **Company**: Nordic Global Solutions
+- 🌐 **Website**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
 - 📧 **Contact**: craig@nordicglobalsolutions.com
 
 ### Backend Developer
@@ -575,6 +576,7 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 - 🎯 **Role**: Backend Developer
 - 📐 **Responsibilities**: Backend development, API implementation, server-side logic, database integration
 - 🏢 **Company**: Nordic Global Solutions
+- 🌐 **Website**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
 - 📧 **Contact**: Jonne@nordicglobalsolutions.com
 
 ### Office Manager
@@ -583,6 +585,7 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 - 🎯 **Role**: Office Manager
 - 📐 **Responsibilities**: Office administration, operations management, organizational coordination, sales
 - 🏢 **Company**: Nordic Global Solutions
+- 🌐 **Website**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
 - 📧 **Contact**: Lee@nordicglobalsolutions.com
 
 ### Investor/Vision
@@ -591,7 +594,18 @@ For complete technology stack details, see [Tech Stack Documentation](./docs/TEC
 - 🎯 **Role**: Investor/Vision
 - 📐 **Responsibilities**: Strategic investment, vision alignment, business development, sales
 - 🏢 **Company**: Nordic Global Solutions
+- 🌐 **Website**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
 - 📧 **Contact**: Svein@nordicglobalsolutions.com
+
+### Community & Communication
+
+**Nordic Global Discord Servers**:
+- 🎯 **Official Nordic Global Discord**: [Join Official Server](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [Join Admin/Dev Server](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
 
 ### Development Collaboration
 

@@ -574,7 +574,7 @@
 
 🌐 **Platform**: [bitnexus.io](https://bitnexus.io)  
 📚 **Documentation**: [docs.html](docs.html)  
-💬 **Community**: Discord (coming soon)  
+💬 **Community**: [Join Official Discord](https://discord.gg/UhsYV4aytG)  
 📧 **Email**: support@bitnexus.io
 
 **Resources**:

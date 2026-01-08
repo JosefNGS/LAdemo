@@ -61,6 +61,20 @@
 
 ---
 
+## 💬 Team Communication
+
+**Nordic Global Discord Servers**:
+- 🎯 **Official Nordic Global Discord**: [https://discord.gg/UhsYV4aytG](https://discord.gg/UhsYV4aytG) - Community server for all users and affiliates
+- 🔐 **Admin & Developer Discord**: [https://discord.gg/YRYJMGsrW2](https://discord.gg/YRYJMGsrW2) - Private server for admins and developers only
+
+**Nordic Global Websites**:
+- 🌐 **Nordic Global Solutions**: [www.nordicglobalsolutions.com](https://www.nordicglobalsolutions.com)
+- 🌐 **Nordic Global Trade**: [www.nordicglobaltrade.com](https://www.nordicglobaltrade.com)
+
+**All active developers must join the Admin & Developer Discord server for team communication.**
+
+---
+
 ## 📋 Developer Onboarding Checklist
 
 When a new developer joins the project:
@@ -72,7 +86,7 @@ When a new developer joins the project:
 - [ ] Share project structure documentation
 - [ ] Share coding standards (`.cursorrules`)
 - [ ] Share version control guidelines (`docs/Services/github/VERSION_CONTROL.md`)
-- [ ] Add developer to team communication channels
+- [ ] **Add developer to Admin & Developer Discord server** (https://discord.gg/YRYJMGsrW2)
 - [ ] Update `README.md` with developer information
 - [ ] Update `.cursorrules` if needed
 
