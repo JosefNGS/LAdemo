@@ -1,6 +1,14 @@
 # BMAD-METHOD Workflow Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/BMAD-METHOD/` for complete BMAD-METHOD documentation and guidelines.
+
 **Source**: `instructions/BMAD-METHOD/`
+
+**Complete Documentation**: See `instructions/BMAD-METHOD/docs/` for:
+- `instructions/BMAD-METHOD/docs/explanation/` - Concept explanations
+- `instructions/BMAD-METHOD/docs/how-to/` - How-to guides
+- `instructions/BMAD-METHOD/docs/reference/` - Reference documentation
+- `instructions/BMAD-METHOD/docs/tutorials/` - Tutorial materials
 
 ## Overview
 

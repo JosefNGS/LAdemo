@@ -1,6 +1,10 @@
 # Agent OS Deployment Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` for complete Agent OS documentation and guidelines.
+
 **Source**: `instructions/.agent-os/standards/deployment-requirements.md`
+
+**Complete Documentation**: See `instructions/.agent-os/standards/deployment-requirements.md` for complete deployment requirements and guidelines.
 
 ## Overview
 

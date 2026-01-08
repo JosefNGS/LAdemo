@@ -1,6 +1,10 @@
 # BMAD-METHOD Structure Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/BMAD-METHOD/` for complete BMAD-METHOD documentation and guidelines.
+
 **Source**: `instructions/BMAD-METHOD/`
+
+**Complete Documentation**: See `instructions/BMAD-METHOD/` for complete framework structure and organization.
 
 ## Framework Structure
 

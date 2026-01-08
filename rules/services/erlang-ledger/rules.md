@@ -1,6 +1,18 @@
 # Erlang/Elixir Ledger Service Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Security rules, blockchain security, code standards
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Architecture workflow guidelines
+
+**Framework References**:
+- `instructions/.agent-os/standards/security-rules/` - Complete security guidelines
+- `instructions/.agent-os/standards/code-style.md` - Code standards
+- `instructions/BMAD-METHOD/docs/explanation/architecture/` - Architecture guidelines
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Development workflow guidelines
 
 ## Critical Rules
 

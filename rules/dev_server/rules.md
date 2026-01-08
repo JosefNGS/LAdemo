@@ -1,6 +1,18 @@
 # Development Server Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Core Documentation/STRUCTURE.md` and `docs/Setup & Configuration/DOCKER_SETUP.md`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Deployment requirements, Docker guidelines, container security
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Development environment setup workflows
+
+**Framework References**:
+- `instructions/.agent-os/standards/deployment-requirements.md` - Complete deployment guidelines
+- `instructions/.agent-os/standards/security-rules/` - Container security guidelines
+- `instructions/BMAD-METHOD/docs/how-to/installation/` - Installation and setup guides
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Development workflow guidelines
 
 ## Critical Rules
 

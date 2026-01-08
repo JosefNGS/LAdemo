@@ -1,6 +1,13 @@
 # Agent OS Code Style Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` for complete Agent OS documentation and guidelines.
+
 **Source**: `instructions/.agent-os/standards/code-style.md`
+
+**Complete Documentation**: See `instructions/.agent-os/standards/code-style/` for detailed style guides:
+- `instructions/.agent-os/standards/code-style/html-style.md` - HTML formatting rules
+- `instructions/.agent-os/standards/code-style/css-style.md` - CSS/Tailwind style rules
+- `instructions/.agent-os/standards/code-style/javascript-style.md` - JavaScript style rules
 
 ## General Formatting
 

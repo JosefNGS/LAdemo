@@ -1,6 +1,14 @@
 # Rules Directory
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/` for complete framework documentation and guidelines.
+
 This directory contains system-specific rules extracted from the frameworks in the `instructions/` folder and from the project's own documentation.
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Complete Agent OS framework documentation
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Complete BMAD-METHOD framework documentation
+
+**These rule files are quick references** - Always check `instructions/` for complete, up-to-date documentation.
 
 ## Structure
 

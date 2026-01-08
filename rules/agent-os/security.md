@@ -1,6 +1,17 @@
 # Agent OS Security Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` for complete Agent OS documentation and guidelines.
+
 **Source**: `instructions/.agent-os/standards/security-rules/core-principles.md`
+
+**Complete Documentation**: See `instructions/.agent-os/standards/security-rules/` for all security rules:
+- `instructions/.agent-os/standards/security-rules/core-principles.md` - Core security principles
+- `instructions/.agent-os/standards/security-rules/dangerous-flows.md` - Dangerous flow patterns
+- `instructions/.agent-os/standards/security-rules/mcp-security.md` - MCP security rules
+- `instructions/.agent-os/standards/security-rules/sql.md` - SQL security
+- `instructions/.agent-os/standards/security-rules/ssrf.md` - SSRF prevention
+- `instructions/.agent-os/standards/security-rules/xxe.md` - XXE prevention
+- `instructions/.agent-os/standards/security-rules/rust.md` - Rust security
 
 ## Core Security Principles
 

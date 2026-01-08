@@ -1,6 +1,20 @@
 # Backend Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Core Documentation/STRUCTURE.md` and service rules
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Security rules, deployment requirements, code standards
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Backend development workflows, architecture guidelines
+
+**Framework References**:
+- `instructions/.agent-os/standards/security-rules/` - Complete security guidelines
+- `instructions/.agent-os/standards/deployment-requirements.md` - Complete deployment guidelines
+- `instructions/.agent-os/standards/code-style.md` - Code standards
+- `instructions/.agent-os/standards/best-practices.md` - Best practices
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Backend development workflows
+- `instructions/BMAD-METHOD/docs/explanation/architecture/` - Architecture patterns
 
 ## Critical Rules
 

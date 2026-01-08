@@ -1,6 +1,18 @@
 # Admin View & Task Management Service Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Services/admin/SERVICE_RULES.md`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Code standards, security, deployment, best practices
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Workflow guidelines, structure, agent usage
+
+**Framework References**:
+- `instructions/.agent-os/standards/` - Code standards and best practices
+- `instructions/.agent-os/standards/security-rules/` - Security guidelines
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Workflow guidelines
+- `instructions/BMAD-METHOD/docs/explanation/` - Framework concepts
 
 ## Critical Rules
 

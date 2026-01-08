@@ -1,6 +1,18 @@
 # Netlify Service Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Services/netlify/SERVICE_RULES.md`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Deployment requirements, code standards, security
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Workflow guidelines for deployment processes
+
+**Framework References**:
+- `instructions/.agent-os/standards/deployment-requirements.md` - Complete deployment guidelines
+- `instructions/.agent-os/standards/code-style.md` - Code standards
+- `instructions/.agent-os/standards/security-rules/` - Security guidelines
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Deployment workflow guidelines
 
 ## Critical Rules
 

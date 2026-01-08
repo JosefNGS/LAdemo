@@ -1,6 +1,18 @@
 # GitHub Service Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Services/github/SERVICE_RULES.md`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Code standards, best practices, security
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Workflow guidelines, version control workflows
+
+**Framework References**:
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Complete workflow guidelines
+- `instructions/BMAD-METHOD/docs/reference/workflows/` - Workflow reference documentation
+- `instructions/.agent-os/standards/code-style.md` - Code standards
+- `instructions/.agent-os/standards/best-practices.md` - Best practices
 
 ## Critical Rules
 

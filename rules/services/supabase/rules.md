@@ -1,6 +1,18 @@
 # Supabase Service Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Services/supabase/SERVICE_RULES.md`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Security rules, code standards, database best practices
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Workflow guidelines for database operations
+
+**Framework References**:
+- `instructions/.agent-os/standards/security-rules/` - Complete security guidelines
+- `instructions/.agent-os/standards/security-rules/sql.md` - SQL security rules
+- `instructions/.agent-os/standards/code-style.md` - Code standards
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Database workflow guidelines
 
 ## Critical Rules
 

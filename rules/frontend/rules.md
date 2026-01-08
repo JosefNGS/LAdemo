@@ -1,6 +1,21 @@
 # Frontend Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Core Documentation/STRUCTURE.md` and `.cursorrules`
+
+**Complete Framework Documentation**:
+- **Agent OS**: `instructions/.agent-os/` - Code style, best practices, security, HTML/CSS/JS guidelines
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Frontend development workflows, UI/UX guidelines
+
+**Framework References**:
+- `instructions/.agent-os/standards/code-style/` - Complete HTML, CSS, and JavaScript style guides
+- `instructions/.agent-os/standards/code-style/html-style.md` - HTML formatting rules
+- `instructions/.agent-os/standards/code-style/css-style.md` - CSS/Tailwind style rules
+- `instructions/.agent-os/standards/code-style/javascript-style.md` - JavaScript style rules
+- `instructions/.agent-os/standards/best-practices.md` - Development best practices
+- `instructions/.agent-os/standards/security-rules/` - Security guidelines
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Frontend development workflows
 
 ## Critical Rules
 

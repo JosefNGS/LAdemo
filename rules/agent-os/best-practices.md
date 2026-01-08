@@ -1,6 +1,10 @@
 # Agent OS Best Practices
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` for complete Agent OS documentation and guidelines.
+
 **Source**: `instructions/.agent-os/standards/best-practices.md`
+
+**Complete Documentation**: See `instructions/.agent-os/standards/` for all Agent OS standards and best practices.
 
 ## Core Principles
 

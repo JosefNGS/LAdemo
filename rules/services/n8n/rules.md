@@ -1,6 +1,18 @@
 # n8n Service Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Services/n8n/SERVICE_RULES.md`
+
+**Complete Framework Documentation**:
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Workflow guidelines, automation patterns
+- **Agent OS**: `instructions/.agent-os/` - Security rules, code standards, integration best practices
+
+**Framework References**:
+- `instructions/BMAD-METHOD/docs/how-to/workflows/` - Complete workflow guidelines
+- `instructions/BMAD-METHOD/docs/explanation/workflows/` - Workflow concepts
+- `instructions/.agent-os/standards/security-rules/` - Security guidelines for integrations
+- `instructions/.agent-os/standards/code-style.md` - Code standards
 
 ## Critical Rules
 

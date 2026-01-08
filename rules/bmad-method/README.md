@@ -1,8 +1,17 @@
 # BMAD-METHOD Framework Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/BMAD-METHOD/` for complete BMAD-METHOD documentation and guidelines.
+
 ## Overview
 
 This directory contains rules extracted from the BMAD-METHOD framework located in `instructions/BMAD-METHOD/`.
+
+**Complete Documentation**: See `instructions/BMAD-METHOD/` for:
+- `instructions/BMAD-METHOD/docs/` - Complete BMAD documentation
+- `instructions/BMAD-METHOD/src/` - Framework source code
+- `instructions/BMAD-METHOD/tools/` - Development tools
+- `instructions/BMAD-METHOD/samples/` - Sample modules
+- `instructions/BMAD-METHOD/README.md` - Framework overview
 
 BMAD-METHOD (Build More, Architect Dreams) is an AI-driven agile development framework that provides:
 - 21 specialized AI agents across 4 official modules

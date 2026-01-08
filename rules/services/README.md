@@ -1,6 +1,12 @@
 # Service Rules Directory
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for framework guidelines when working with services.
+
 This directory contains rules extracted from service-specific documentation in `docs/Services/`.
+
+**Framework References**:
+- `instructions/.agent-os/standards/` - Code standards, security, deployment
+- `instructions/BMAD-METHOD/docs/` - Workflow guidelines and best practices
 
 ## Services
 

@@ -1,6 +1,19 @@
 # Documentation Rules
 
+**⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
+
 **Source**: `docs/Core Documentation/DOCS_STRUCTURE.md` and `.cursorrules`
+
+**Complete Framework Documentation**:
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Documentation structure, style guides, organization
+- **Agent OS**: `instructions/.agent-os/` - Code documentation standards, best practices
+
+**Framework References**:
+- `instructions/BMAD-METHOD/docs/` - Complete documentation structure and guidelines
+- `instructions/BMAD-METHOD/docs/_STYLE_GUIDE.md` - Documentation style guide
+- `instructions/.agent-os/standards/code-style.md` - Code documentation standards
+- `instructions/.agent-os/standards/best-practices.md` - Documentation best practices
+- `instructions/.agent-os/instructions/core/` - Documentation workflow instructions
 
 ## Critical Rules
 
