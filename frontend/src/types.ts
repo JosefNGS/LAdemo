@@ -29,7 +29,8 @@ export enum AppRoute {
   USERS = 'users',
   SUPPORT = 'support',
   FEED = 'feed',
-  GOVERNANCE = 'governance'
+  GOVERNANCE = 'governance',
+  ADMIN_VIEW = 'admin-view'
 }
 
 export interface Product {
