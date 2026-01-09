@@ -125,6 +125,16 @@
 
 **CRITICAL**: When editing task markdown files, changes automatically sync to database. No manual database updates required.
 
+### 📋 TASK OWNERSHIP - CRITICAL RULES
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **Every task MUST have a clear owner** (person or role) – NO unowned tasks
+- **Owners must be specified using a consistent pattern**, e.g. `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Jonne]`, `[Owner: Lee]`, `[Owner: Svein]`, `[Owner: Cory]`, or `[Owner: Role]` (e.g. `[Owner: Backend]`, `[Owner: CTO]`, `[Owner: Sales]`, `[Owner: Frontend]`, `[Owner: Team]`)
+- **Shared tasks must list all responsible owners** or clearly state `[Owner: Shared]` with primary contact
+- **When adding a new task, you MUST assign an owner immediately**
+- **When moving tasks between people, update the owner tag** in both `docs/Project Management/TODO.md` and in the person's task doc (`docs/Development/[NAME]_TASKS.md`)
+
+**CRITICAL**: All tasks in `docs/Project Management/TODO.md` and individual task files MUST have explicit ownership. No task should exist without an owner assignment.
+
 ### 🚀 START FILES - CRITICAL RULES
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **System MUST NOT have several start files**

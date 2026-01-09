@@ -15,6 +15,17 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.31.0] - January 2026
+
+### Added
+- **Task Ownership Rules in .cursorrules**: Added mandatory task ownership requirements to `.cursorrules` [Cursor]
+  - Created new \"TASK OWNERSHIP - CRITICAL RULES\" section
+  - Every task must have a clear owner (person or role) – NO unowned tasks
+  - Owners must use consistent pattern: `[Owner: Name]` or `[Owner: Role]` (e.g. `[Owner: Sales]`, `[Owner: Frontend]`, `[Owner: Team]`)
+  - Shared tasks must list all owners or use `[Owner: Shared]` with primary contact
+  - New tasks must be assigned an owner immediately
+  - When moving tasks, update owner tag in both TODO.md and person's task doc
+
 ## [1.30.0] - January 2026
 
 ### Changed
