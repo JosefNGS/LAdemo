@@ -186,6 +186,14 @@
 - [ ] Link-campaign and QR-campaign relationships
 - [ ] Product tracking metrics tables
 
+#### PostgreSQL / Postgres Stack (Planned)
+- [ ] Design overall PostgreSQL strategy across Supabase and additional Postgres instances
+- [ ] Evaluate requirements for dedicated Postgres with vector extension (e.g., `pgvector`) based on TECH_STACK roadmap
+- [ ] Propose schema patterns for vector-based similarity search (embeddings tables, indexes, query patterns)
+- [ ] Define migration and synchronization approach between Supabase (core data) and extra Postgres/vector database
+- [ ] Document Postgres and vector database architecture in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/supabase/`
+- [ ] Create initial PoC for vector search (e.g., semantic product or document search) using Postgres + vector extension
+
 #### n8n API Integration
 - [ ] n8n API endpoint creation
 - [ ] Workflow API integration

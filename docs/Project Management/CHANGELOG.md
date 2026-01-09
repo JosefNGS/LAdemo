@@ -15,6 +15,15 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.25.0] - January 2026
+
+### Added
+- **Jonne Tasks - PostgreSQL & Vector Stack Responsibilities**: Updated `docs/Development/JONNE_TASKS.md` with Postgres/vector database tasks [Cursor]
+  - Added a \"PostgreSQL / Postgres Stack (Planned)\" section for Jonne
+  - Tasks include overall Postgres strategy, vector DB evaluation (e.g., `pgvector`), schema patterns, migration/sync approach, documentation, and a vector search proof-of-concept
+
+---
+
 ## [1.24.0] - January 2026
 
 ### Added
