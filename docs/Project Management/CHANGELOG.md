@@ -18,6 +18,15 @@ Every changelog entry MUST track who made the change:
 ## [1.68.0] - January 2026
 
 ### Added
+- **NorthStar Structure Licensing Information**: Added comprehensive licensing information about the fundamental structure from NGS made by NorthStar [Developer: Josef Lindbom]
+  - Added licensing section to START_HERE.md explaining structure ownership and usage requirements [Developer: Josef Lindbom]
+  - Added contact information for structure licensing (Josef Lindbom and Craig Martin) [Developer: Josef Lindbom]
+  - Added structure licensing information to README.md [Developer: Josef Lindbom]
+  - Updated START_HERE.md to include sections for different audiences (developers, project managers, stakeholders, contributors) [Developer: Josef Lindbom]
+  - Clarified that structure use requires written contract from NorthStar [Developer: Josef Lindbom]
+  - Added NorthStar repository link and team information [Developer: Josef Lindbom]
+
+### Changed
 - **User Profiles for All Users**: Created complete user profiles for all 10 users in AllUsers page [Developer: Josef Lindbom]
   - Added Agent Nexus-66 and Agent Nexus-22 profiles to userProfiles.ts [Developer: Josef Lindbom]
   - Updated existing user data to match current platform statistics [Developer: Josef Lindbom]
