@@ -3,7 +3,9 @@
 
 **Last Updated**: January 2026  
 **Version**: 1.0  
-**Status**: CRITICAL - Service Rules
+**Status**: ⚠️ **ALPHA PHASE** - Temporary hosting solution, migration to AWS planned
+
+**⚠️ IMPORTANT**: Netlify is currently in **ALPHA PHASE**. Migration to AWS servers is planned after alpha phase completion for better control, scalability, and production capabilities.
 
 **Service Owner**: Craig Martin (CTO)  
 **Contact**: craig@nordicglobalsolutions.com

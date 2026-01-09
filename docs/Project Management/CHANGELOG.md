@@ -15,6 +15,19 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.29.0] - January 2026
+
+### Changed
+- **Netlify Status - Alpha Phase**: Updated all documentation to indicate Netlify is in ALPHA PHASE with planned migration to AWS servers [Cursor]
+  - Updated `docs/Core Documentation/TECH_STACK.md` - Added alpha phase status and AWS migration plan
+  - Updated `docs/Core Documentation/TECH_STACK_EVALUATION.md` - Updated Netlify evaluation with alpha phase status
+  - Updated `docs/Core Documentation/TECH_STACK_SUGGESTIONS.md` - Added alpha phase notes and AWS migration plan
+  - Updated `docs/Services/netlify/SERVICE_RULES.md` - Added alpha phase status header
+  - All Netlify references now indicate temporary alpha-phase solution
+  - AWS migration plan documented (EC2, ECS, Lambda, CloudFront, RDS)
+
+---
+
 ## [1.28.0] - January 2026
 
 ### Added
