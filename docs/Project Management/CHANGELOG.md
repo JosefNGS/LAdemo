@@ -15,6 +15,15 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.24.0] - January 2026
+
+### Added
+- **Craig Tasks - Phoenix/Elixir Backend Responsibilities**: Updated `docs/Development/CRAIG_TASKS.md` with Phoenix & Elixir stack tasks [Cursor]
+  - Added a \"Phoenix & Elixir Backend Stack (Planned)\" section for Craig
+  - Tasks include evaluating Elixir + Phoenix, designing architecture, integration patterns, deployment strategy, documentation, and an initial proof-of-concept service
+
+---
+
 ## [1.23.0] - January 2026
 
 ### Added

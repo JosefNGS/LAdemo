@@ -133,6 +133,14 @@
 - [ ] Server infrastructure planning
 - [ ] Performance optimization
 
+#### Phoenix & Elixir Backend Stack (Planned)
+- [ ] Evaluate Elixir + Phoenix as core backend framework for high-concurrency services (aligned with TECH_STACK roadmap)
+- [ ] Design architecture for Phoenix services that sit on top of the Erlang/Elixir ledger stack
+- [ ] Define integration pattern between Phoenix APIs and existing Netlify/Go services
+- [ ] Choose deployment strategy for Phoenix apps (hosting, clustering, monitoring)
+- [ ] Document Phoenix/Elixir stack in `docs/Core Documentation/TECH_STACK.md` and related service docs
+- [ ] Create initial Phoenix proof-of-concept service (API + simple real-time channel)
+
 #### Discourse (Forum) Setup
 - [ ] Create `backend/discourse/` folder structure
 - [ ] Discourse installation and configuration
