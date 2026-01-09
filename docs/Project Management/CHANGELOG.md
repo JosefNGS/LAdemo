@@ -18,6 +18,7 @@ Every changelog entry MUST track who made the change:
 ## [1.68.0] - January 2026
 
 ### Fixed
+- **User Profile Avatar**: Changed Agent Nexus-77 avatar from '77' to 'AN' for more professional appearance [Developer: Josef Lindbom]
 - **Netlify Build Error**: Fixed missing dependency error in submit-email-supabase.js [Developer: Josef Lindbom]
   - Changed incorrect import from `@PostgreSQL/PostgreSQL-js` to `@supabase/supabase-js` [Developer: Josef Lindbom]
   - Updated environment variable names from `PostgreSQL_URL`/`PostgreSQL_ANON_KEY` to `SUPABASE_URL`/`SUPABASE_ANON_KEY` [Developer: Josef Lindbom]

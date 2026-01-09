@@ -120,7 +120,7 @@ export const userProfiles: UserProfile[] = [
     joined: '2024-06-15',
     earnings: 2450,
     networkSize: 42,
-    avatar: '77',
+    avatar: 'AN',
     bio: 'Active community member building network and exploring platform features. Prime Core Member since December 2024.',
     achievements: [
       'Reached Silver tier',
