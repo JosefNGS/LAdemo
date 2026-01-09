@@ -17,6 +17,14 @@ Every changelog entry MUST track who made the change:
 ## [Unreleased]
 
 ### Added
+- Push documentation for statistic-updates branch (2026-01-09) [Developer: Josef Lindbom]
+  - UI improvements: Admin Vetting, Generate Link modal, Full Rankings modal [Developer: Josef Lindbom]
+  - Supabase database service setup for Team Task Management [Developer: Josef Lindbom]
+  - CHANGELOG index document with 91 changelogs cataloged [Developer: Josef Lindbom]
+  - Server fixes for URL decoding [Developer: Josef Lindbom]
+  - LocalStorage backend service [Developer: Josef Lindbom]
+
+### Added (Previous)
 - Initial push documentation changelog [Developer: Josef Lindbom]
 
 ---
