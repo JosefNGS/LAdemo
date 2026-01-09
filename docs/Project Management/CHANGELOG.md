@@ -17,6 +17,13 @@ Every changelog entry MUST track who made the change:
 
 ## [1.68.0] - January 2026
 
+### Fixed
+- **Netlify Build Error**: Fixed missing dependency error in submit-email-supabase.js [Developer: Josef Lindbom]
+  - Changed incorrect import from `@PostgreSQL/PostgreSQL-js` to `@supabase/supabase-js` [Developer: Josef Lindbom]
+  - Updated environment variable names from `PostgreSQL_URL`/`PostgreSQL_ANON_KEY` to `SUPABASE_URL`/`SUPABASE_ANON_KEY` [Developer: Josef Lindbom]
+  - Updated variable names from `PostgreSQL` to `supabase` throughout the function [Developer: Josef Lindbom]
+  - Function now uses correct Supabase package that exists in package.json [Developer: Josef Lindbom]
+
 ### Added
 - **Merged to Main Branch**: Merged statistic-updates branch to main branch [Developer: Josef Lindbom]
   - Fast-forward merge completed successfully [Developer: Josef Lindbom]

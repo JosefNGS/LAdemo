@@ -1,7 +1,7 @@
-// Netlify serverless function to save email addresses to PostgreSQL
-// Requires @PostgreSQL/PostgreSQL-js package
+// Netlify serverless function to save email addresses to Supabase (PostgreSQL)
+// Requires @supabase/supabase-js package
 
-const { createClient } = require('@PostgreSQL/PostgreSQL-js');
+const { createClient } = require('@supabase/supabase-js');
 
 exports.handler = async (event, context) => {
   // Handle CORS preflight
@@ -31,8 +31,8 @@ exports.handler = async (event, context) => {
 
   try {
     // Validate environment variables
-    if (!process.env.PostgreSQL_URL || !process.env.PostgreSQL_ANON_KEY) {
-      console.error('Missing PostgreSQL environment variables');
+    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+      console.error('Missing Supabase environment variables');
       return {
         statusCode: 500,
         headers: {
@@ -41,15 +41,15 @@ exports.handler = async (event, context) => {
         },
         body: JSON.stringify({
           error: 'Server configuration error',
-          message: 'PostgreSQL credentials not configured',
+          message: 'Supabase credentials not configured',
         }),
       };
     }
 
-    // Initialize PostgreSQL client
-    const PostgreSQL = createClient(
-      process.env.PostgreSQL_URL,
-      process.env.PostgreSQL_ANON_KEY
+    // Initialize Supabase client
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_ANON_KEY
     );
 
     // Parse the request body
@@ -113,7 +113,7 @@ exports.handler = async (event, context) => {
     const userAgent = event.headers['user-agent'] || 'unknown';
 
     // Check if email already exists
-    const { data: existingEmail, error: checkError } = await PostgreSQL
+    const { data: existingEmail, error: checkError } = await supabase
       .from('email_submissions')
       .select('email')
       .eq('email', email)
@@ -140,8 +140,8 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Insert signup data into PostgreSQL
-    const { data, error } = await PostgreSQL
+    // Insert signup data into Supabase
+    const { data, error } = await supabase
       .from('email_submissions')
       .insert([
         {
@@ -158,7 +158,7 @@ exports.handler = async (event, context) => {
       .select();
 
     if (error) {
-      console.error('PostgreSQL insert error:', error);
+      console.error('Supabase insert error:', error);
       return {
         statusCode: 500,
         headers: {
