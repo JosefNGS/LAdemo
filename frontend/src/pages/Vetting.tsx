@@ -1,11 +1,34 @@
 import React, { useState } from 'react';
 import { ICONS } from '../constants';
+import { useNotifications } from '../contexts/NotificationContext';
+
+interface Product {
+  id: string;
+  name: string;
+  category: string;
+  submitter: string;
+  submitted: string;
+  price: number;
+  votesFor?: number;
+  votesAgainst?: number;
+  approvalRate?: number;
+  userVote?: 'approve' | 'reject' | null;
+  status?: string;
+  approved?: string;
+  rejected?: string;
+  reason?: string;
+  description?: string;
+  features?: string[];
+  requirements?: string[];
+}
 
 const Vetting: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'pending' | 'community' | 'approved' | 'rejected'>('pending');
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const { addNotification } = useNotifications();
 
-  const pendingItems = [
+  const [pendingItems, setPendingItems] = useState<Product[]>([
     { 
       id: '1', 
       name: 'Crypto Trading Bot Pro', 
@@ -15,7 +38,10 @@ const Vetting: React.FC = () => {
       price: 299,
       votesFor: 0,
       votesAgainst: 0,
-      userVote: null as 'approve' | 'reject' | null
+      userVote: null,
+      description: 'Advanced cryptocurrency trading bot with AI-powered market analysis and automated trading strategies.',
+      features: ['AI Market Analysis', 'Automated Trading', 'Risk Management', 'Multi-Exchange Support'],
+      requirements: ['Verified Account', 'Minimum $1000 Balance']
     },
     { 
       id: '2', 
@@ -26,7 +52,10 @@ const Vetting: React.FC = () => {
       price: 149,
       votesFor: 0,
       votesAgainst: 0,
-      userVote: null
+      userVote: null,
+      description: 'AI-powered content generation tool for creating marketing materials, social media posts, and blog content.',
+      features: ['AI Content Generation', 'Multiple Templates', 'SEO Optimization', 'Brand Voice Customization'],
+      requirements: ['Active Subscription', 'Content Guidelines Compliance']
     },
     { 
       id: '3', 
@@ -37,11 +66,14 @@ const Vetting: React.FC = () => {
       price: 199,
       votesFor: 0,
       votesAgainst: 0,
-      userVote: null
+      userVote: null,
+      description: 'Comprehensive portfolio tracking and analytics tool for monitoring cryptocurrency investments and performance.',
+      features: ['Real-Time Tracking', 'Performance Analytics', 'Tax Reporting', 'Multi-Wallet Support'],
+      requirements: ['API Access', 'Wallet Connection']
     },
-  ];
+  ]);
 
-  const communityItems = [
+  const [communityItems, setCommunityItems] = useState<Product[]>([
     { 
       id: '4', 
       name: 'MEV Bot Pro License', 
@@ -68,15 +100,90 @@ const Vetting: React.FC = () => {
       userVote: null,
       status: 'community-review'
     },
-  ];
+  ]);
 
-  const approvedItems = [
-    { id: '4', name: 'Nexus Node License', category: 'Infrastructure', submitter: 'Agent Nexus-Admin', approved: '3 days ago', price: 499 },
-  ];
+  const [approvedItems, setApprovedItems] = useState<Product[]>([
+    { id: '6', name: 'Nexus Node License', category: 'Infrastructure', submitter: 'Agent Nexus-Admin', approved: '3 days ago', price: 499 },
+  ]);
 
-  const rejectedItems = [
-    { id: '5', name: 'Suspicious Tool', category: 'Unknown', submitter: 'Agent Nexus-11', rejected: '1 week ago', reason: 'Security concerns' },
-  ];
+  const [rejectedItems, setRejectedItems] = useState<Product[]>([
+    { id: '7', name: 'Suspicious Tool', category: 'Unknown', submitter: 'Agent Nexus-11', rejected: '1 week ago', reason: 'Security concerns' },
+  ]);
+
+  const handleApprove = (product: Product, e?: any) => {
+    // Prevent event bubbling
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    
+    // Remove from pending - only remove the specific product by ID
+    setPendingItems(prev => {
+      const filtered = prev.filter(p => p.id !== product.id);
+      console.log('Approving product:', product.id, 'Remaining:', filtered.length);
+      return filtered;
+    });
+    
+    // Add to approved with timestamp
+    const approvedProduct: Product = {
+      ...product,
+      approved: 'just now'
+    };
+    setApprovedItems(prev => [...prev, approvedProduct]);
+    
+    // Switch to approved tab
+    setActiveTab('approved');
+    
+    // Show notification
+    addNotification({
+      type: 'success',
+      title: 'Product Approved',
+      message: `${product.name} has been approved and moved to the marketplace.`,
+    });
+  };
+
+  const handleReject = (product: Product, e?: any) => {
+    // Prevent event bubbling
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    
+    // Remove from pending - only remove the specific product by ID
+    setPendingItems(prev => {
+      const filtered = prev.filter(p => p.id !== product.id);
+      console.log('Rejecting product:', product.id, 'Remaining:', filtered.length);
+      return filtered;
+    });
+    
+    // Add to rejected with timestamp and reason
+    const rejectedProduct: Product = {
+      ...product,
+      rejected: 'just now',
+      reason: 'Does not meet quality standards'
+    };
+    setRejectedItems(prev => [...prev, rejectedProduct]);
+    
+    // Switch to rejected tab
+    setActiveTab('rejected');
+    
+    // Show notification
+    addNotification({
+      type: 'error',
+      title: 'Product Rejected',
+      message: `${product.name} has been rejected. Reason: ${rejectedProduct.reason}`,
+    });
+  };
+
+  const handleReview = (product: Product) => {
+    setSelectedProduct(product);
+    setShowReviewModal(true);
+  };
+
+  const handleCloseReviewModal = () => {
+    setShowReviewModal(false);
+    setSelectedProduct(null);
+  };
 
   return (
     <div className="space-y-6">
@@ -110,7 +217,7 @@ const Vetting: React.FC = () => {
             onClick={() => setActiveTab(tab.id as any)}
             className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               activeTab === tab.id
-                ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
                 : 'text-gray-400 hover:text-gray-200'
             }`}
           >
@@ -183,9 +290,23 @@ const Vetting: React.FC = () => {
                     <>
                       <button 
                         onClick={() => {
-                          alert(`Vote FOR submitted for ${item.name}!`);
-                          item.userVote = 'approve';
-                          item.votesFor++;
+                          setCommunityItems(prev => prev.map(p => 
+                            p.id === item.id 
+                              ? { 
+                                  ...p, 
+                                  userVote: 'approve' as const,
+                                  votesFor: (p.votesFor || 0) + 1,
+                                  approvalRate: p.votesFor && p.votesAgainst 
+                                    ? Math.round(((p.votesFor + 1) / ((p.votesFor + 1) + p.votesAgainst)) * 100)
+                                    : 100
+                                }
+                              : p
+                          ));
+                          addNotification({
+                            type: 'success',
+                            title: 'Vote Submitted',
+                            message: `You voted to approve ${item.name}`,
+                          });
                         }}
                         className="px-4 py-2 bg-green-600 hover:bg-green-500 rounded-xl font-bold text-sm transition-all"
                       >
@@ -193,9 +314,23 @@ const Vetting: React.FC = () => {
                       </button>
                       <button 
                         onClick={() => {
-                          alert(`Vote REJECT submitted for ${item.name}!`);
-                          item.userVote = 'reject';
-                          item.votesAgainst++;
+                          setCommunityItems(prev => prev.map(p => 
+                            p.id === item.id 
+                              ? { 
+                                  ...p, 
+                                  userVote: 'reject' as const,
+                                  votesAgainst: (p.votesAgainst || 0) + 1,
+                                  approvalRate: p.votesFor && p.votesAgainst 
+                                    ? Math.round((p.votesFor / (p.votesFor + (p.votesAgainst + 1))) * 100)
+                                    : 0
+                                }
+                              : p
+                          ));
+                          addNotification({
+                            type: 'info',
+                            title: 'Vote Submitted',
+                            message: `You voted to reject ${item.name}`,
+                          });
                         }}
                         className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-xl font-bold text-sm transition-all"
                       >
@@ -207,7 +342,10 @@ const Vetting: React.FC = () => {
                       You voted {item.userVote.toUpperCase()}
                     </div>
                   )}
-                  <button className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl font-bold text-sm transition-all">
+                  <button 
+                    onClick={() => handleReview(item)}
+                    className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl font-bold text-sm transition-all"
+                  >
                     View Details
                   </button>
                 </div>
@@ -249,13 +387,25 @@ const Vetting: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button className="px-4 py-2 bg-green-600 hover:bg-green-500 rounded-xl font-bold text-sm transition-all">
+                  <button 
+                    onClick={(e) => handleApprove(item, e)}
+                    className="px-4 py-2 bg-green-600 hover:bg-green-500 rounded-xl font-bold text-sm transition-all"
+                  >
                     Approve
                   </button>
-                  <button className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-xl font-bold text-sm transition-all">
+                  <button 
+                    onClick={(e) => handleReject(item, e)}
+                    className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-xl font-bold text-sm transition-all"
+                  >
                     Reject
                   </button>
-                  <button className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl font-bold text-sm transition-all">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleReview(item);
+                    }}
+                    className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl font-bold text-sm transition-all"
+                  >
                     Review
                   </button>
                 </div>
@@ -308,6 +458,126 @@ const Vetting: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Review Modal */}
+      {showReviewModal && selectedProduct && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-2xl font-bold">{selectedProduct.name}</h3>
+                <p className="text-gray-500 text-sm mt-1">Product Review Details</p>
+              </div>
+              <button
+                onClick={handleCloseReviewModal}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              {/* Product Info */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Category</p>
+                  <p className="font-bold">{selectedProduct.category}</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Price</p>
+                  <p className="font-bold text-green-400">${selectedProduct.price}</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Submitted by</p>
+                  <p className="font-bold">{selectedProduct.submitter}</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Submitted</p>
+                  <p className="font-bold">{selectedProduct.submitted}</p>
+                </div>
+              </div>
+
+              {/* Description */}
+              {selectedProduct.description && (
+                <div>
+                  <h4 className="font-bold text-lg mb-3">Description</h4>
+                  <p className="text-gray-300 bg-white/5 p-4 rounded-xl">{selectedProduct.description}</p>
+                </div>
+              )}
+
+              {/* Features */}
+              {selectedProduct.features && selectedProduct.features.length > 0 && (
+                <div>
+                  <h4 className="font-bold text-lg mb-3">Key Features</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {selectedProduct.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 p-3 bg-white/5 rounded-xl">
+                        <span className="text-green-400">✓</span>
+                        <span className="text-gray-300">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Requirements */}
+              {selectedProduct.requirements && selectedProduct.requirements.length > 0 && (
+                <div>
+                  <h4 className="font-bold text-lg mb-3">Requirements</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {selectedProduct.requirements.map((req, idx) => (
+                      <div key={idx} className="flex items-center gap-2 p-3 bg-white/5 rounded-xl">
+                        <span className="text-yellow-400">⚠</span>
+                        <span className="text-gray-300">{req}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="flex gap-4 pt-6 border-t border-white/10">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (selectedProduct) {
+                      handleApprove(selectedProduct, e);
+                      handleCloseReviewModal();
+                    }
+                  }}
+                  className="flex-1 px-6 py-3 bg-green-600 hover:bg-green-500 rounded-xl font-bold transition-all"
+                >
+                  Approve Product
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (selectedProduct) {
+                      handleReject(selectedProduct, e);
+                      handleCloseReviewModal();
+                    }
+                  }}
+                  className="flex-1 px-6 py-3 bg-red-600 hover:bg-red-500 rounded-xl font-bold transition-all"
+                >
+                  Reject Product
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCloseReviewModal();
+                  }}
+                  className="px-6 py-3 bg-white/5 hover:bg-white/10 rounded-xl font-bold transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

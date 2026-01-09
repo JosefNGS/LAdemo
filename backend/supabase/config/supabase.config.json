@@ -1,0 +1,74 @@
+{
+  "name": "bitnexus-task-management",
+  "version": "1.0.0",
+  "description": "Supabase database configuration for BitNexus Team Task Management",
+  "database": {
+    "version": "15.0",
+    "extensions": [
+      "uuid-ossp",
+      "pgcrypto"
+    ]
+  },
+  "tables": [
+    {
+      "name": "team_members",
+      "description": "Stores team member information and roles",
+      "migration": "002_team_members.sql"
+    },
+    {
+      "name": "team_tasks",
+      "description": "Stores task information, completion status, and verification data",
+      "migration": "003_team_tasks.sql"
+    }
+  ],
+  "indexes": [
+    {
+      "name": "idx_team_members_member_id",
+      "table": "team_members",
+      "columns": ["member_id"]
+    },
+    {
+      "name": "idx_team_tasks_team_member",
+      "table": "team_tasks",
+      "columns": ["team_member"]
+    },
+    {
+      "name": "idx_team_tasks_task_key",
+      "table": "team_tasks",
+      "columns": ["task_key"]
+    },
+    {
+      "name": "idx_team_tasks_completed",
+      "table": "team_tasks",
+      "columns": ["completed"],
+      "partial": true
+    },
+    {
+      "name": "idx_team_tasks_verified",
+      "table": "team_tasks",
+      "columns": ["verified"],
+      "partial": true
+    }
+  ],
+  "rls": {
+    "enabled": true,
+    "policies": [
+      "Allow authenticated users to read team members",
+      "Allow authenticated users to read team tasks",
+      "Allow authenticated users to insert team tasks",
+      "Allow authenticated users to update team tasks",
+      "Allow authenticated users to delete team tasks",
+      "Allow service role full access to team_members",
+      "Allow service role full access to team_tasks"
+    ]
+  },
+  "migrations": {
+    "order": [
+      "001_initial_schema.sql",
+      "002_team_members.sql",
+      "003_team_tasks.sql",
+      "004_indexes.sql",
+      "005_rls_policies.sql"
+    ]
+  }
+}

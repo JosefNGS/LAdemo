@@ -15,6 +15,7 @@ const Alliance: React.FC = () => {
   const [selectedProductAlliance, setSelectedProductAlliance] = useState<string | null>(null);
   const [showMembersModal, setShowMembersModal] = useState(false);
   const [selectedAllianceForMembers, setSelectedAllianceForMembers] = useState<any>(null);
+  const [showFullRankingsModal, setShowFullRankingsModal] = useState(false);
   
   // Management tab state
   const [managementTab, setManagementTab] = useState<'Members' | 'Settings' | 'Analytics' | 'Recruitment' | 'Outreach'>('Members');
@@ -564,7 +565,10 @@ const Alliance: React.FC = () => {
                   <p className="text-2xl font-bold text-purple-400">#127</p>
                   <p className="text-xs text-green-400 mt-1">↑ Moved up 8 positions this month</p>
                 </div>
-                <button className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all">
+                <button 
+                  onClick={() => setShowFullRankingsModal(true)}
+                  className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+                >
                   View Full Rankings
                 </button>
               </div>
@@ -1012,7 +1016,10 @@ const Alliance: React.FC = () => {
                   <p className="text-2xl font-bold text-purple-400">#127</p>
                   <p className="text-xs text-green-400 mt-1">↑ Moved up 8 positions this month</p>
                 </div>
-                <button className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all">
+                <button 
+                  onClick={() => setShowFullRankingsModal(true)}
+                  className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+                >
                   View Full Rankings
                 </button>
               </div>
@@ -3140,6 +3147,159 @@ const Alliance: React.FC = () => {
                   Cancel
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Full Rankings Modal */}
+      {showFullRankingsModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-2xl font-bold font-display">Global Hall of Fame</h3>
+                <p className="text-gray-500 text-sm mt-1">Top Network Performance Rankings (Monthly)</p>
+              </div>
+              <button
+                onClick={() => setShowFullRankingsModal(false)}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {/* Top 20 Rankings */}
+              {[
+                { rank: 1, name: 'TKR-CYBERX', earnings: '$1,106,689', multiplier: '2X', tier: 'Platinum', badge: '🥇', leader: 'Agent Nexus-01', members: 2847, totalEarnings: '$12,450,000', growth: '+18.5%', topProducts: ['MEV Bot Pro', 'XAB Bot Pro', 'Nexus Private Node'], strategy: 'Focus on high-value bot licenses and automated trading systems', joined: '2022-03-15', token: 'TKR' },
+                { rank: 2, name: 'NEX-VOYAGER', earnings: '$928,450', multiplier: '5X', tier: 'Platinum', badge: '🥈', leader: 'Agent Nexus-02', members: 2156, totalEarnings: '$9,820,000', growth: '+15.2%', topProducts: ['NXC Trading Masterclass', 'Blockchain Marketing Kit', 'MEV Bot Pro'], strategy: 'Educational products and comprehensive training programs', joined: '2022-05-20', token: 'NEX' },
+                { rank: 3, name: 'ALPHA-CORE', earnings: '$812,000', multiplier: '0X', tier: 'Platinum', badge: '🥉', leader: 'Agent Nexus-03', members: 1892, totalEarnings: '$8,150,000', growth: '+12.8%', topProducts: ['XAB Bot Pro', 'Elite Performance Apparel', 'Academy Courses'], strategy: 'Diversified product portfolio with strong team building', joined: '2022-07-10', token: 'ALP' },
+                { rank: 4, name: 'STORM-DEV', earnings: '$745,210', multiplier: '0X', tier: 'Gold', badge: '', leader: 'Agent Nexus-04', members: 1654, totalEarnings: '$6,890,000', growth: '+9.5%', topProducts: ['MEV Bot Pro', 'Content Generator', 'Crypto Health Formula'], strategy: 'Content-driven marketing with automation tools', joined: '2022-09-05', token: 'STO' },
+                { rank: 5, name: 'CRYPT-ZERO', earnings: '$692,110', multiplier: '0X', tier: 'Gold', badge: '', leader: 'Agent Nexus-05', members: 1423, totalEarnings: '$5,920,000', growth: '+8.3%', topProducts: ['NXC Trading Masterclass', 'MEV Bot Pro', 'Nexus Private Node'], strategy: 'Strategic product selection with focus on recurring income', joined: '2022-11-18', token: 'CRY' },
+                { rank: 6, name: 'QUANTUM-NET', earnings: '$645,320', multiplier: '0X', tier: 'Gold', badge: '', leader: 'Agent Nexus-06', members: 1289, totalEarnings: '$5,120,000', growth: '+7.8%', topProducts: ['MEV Bot Pro', 'XAB Bot Pro'], strategy: 'Automation-focused network', joined: '2023-01-12', token: 'QUA' },
+                { rank: 7, name: 'NEXUS-PRIME', earnings: '$598,450', multiplier: '0X', tier: 'Gold', badge: '', leader: 'Agent Nexus-07', members: 1156, totalEarnings: '$4,680,000', growth: '+6.9%', topProducts: ['NXC Trading Masterclass', 'Academy Courses'], strategy: 'Education-first approach', joined: '2023-02-28', token: 'NEP' },
+                { rank: 8, name: 'CRYPTO-ELITE', earnings: '$556,780', multiplier: '0X', tier: 'Gold', badge: '', leader: 'Agent Nexus-08', members: 1034, totalEarnings: '$4,250,000', growth: '+6.2%', topProducts: ['MEV Bot Pro', 'Blockchain Marketing Kit'], strategy: 'High-value product focus', joined: '2023-04-15', token: 'CEL' },
+                { rank: 9, name: 'BLOCK-VENTURE', earnings: '$521,230', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-09', members: 987, totalEarnings: '$3,890,000', growth: '+5.5%', topProducts: ['XAB Bot Pro', 'Crypto Health Formula'], strategy: 'Diversified portfolio', joined: '2023-05-22', token: 'BLV' },
+                { rank: 10, name: 'DIGITAL-FORCE', earnings: '$489,560', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-10', members: 912, totalEarnings: '$3,560,000', growth: '+5.1%', topProducts: ['MEV Bot Pro', 'Nexus Private Node'], strategy: 'Infrastructure products', joined: '2023-06-10', token: 'DIF' },
+                { rank: 11, name: 'NEXUS-ALPHA', earnings: '$462,340', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-11', members: 856, totalEarnings: '$3,280,000', growth: '+4.8%', topProducts: ['NXC Trading Masterclass', 'MEV Bot Pro'], strategy: 'Balanced product mix', joined: '2023-07-18', token: 'NEA' },
+                { rank: 12, name: 'CRYPTO-KINGS', earnings: '$438,920', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-12', members: 801, totalEarnings: '$3,050,000', growth: '+4.5%', topProducts: ['XAB Bot Pro', 'Academy Courses'], strategy: 'Educational focus', joined: '2023-08-25', token: 'CRK' },
+                { rank: 13, name: 'BLOCK-MASTERS', earnings: '$415,670', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-13', members: 754, totalEarnings: '$2,890,000', growth: '+4.2%', topProducts: ['MEV Bot Pro', 'Blockchain Marketing Kit'], strategy: 'Marketing tools emphasis', joined: '2023-09-12', token: 'BLM' },
+                { rank: 14, name: 'NEXUS-LEGEND', earnings: '$394,230', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-14', members: 712, totalEarnings: '$2,720,000', growth: '+3.9%', topProducts: ['XAB Bot Pro', 'Crypto Health Formula'], strategy: 'Health and automation', joined: '2023-10-05', token: 'NEL' },
+                { rank: 15, name: 'QUANTUM-LEAD', earnings: '$375,890', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-15', members: 678, totalEarnings: '$2,580,000', growth: '+3.6%', topProducts: ['MEV Bot Pro', 'Nexus Private Node'], strategy: 'Bot and infrastructure', joined: '2023-11-20', token: 'QUL' },
+                { rank: 16, name: 'CRYPTO-PRO', earnings: '$358,450', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-16', members: 645, totalEarnings: '$2,450,000', growth: '+3.3%', topProducts: ['NXC Trading Masterclass', 'MEV Bot Pro'], strategy: 'Education and automation', joined: '2023-12-08', token: 'CRP' },
+                { rank: 17, name: 'NEXUS-FORCE', earnings: '$342,120', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-17', members: 612, totalEarnings: '$2,340,000', growth: '+3.0%', topProducts: ['XAB Bot Pro', 'Academy Courses'], strategy: 'Training programs', joined: '2024-01-15', token: 'NEF' },
+                { rank: 18, name: 'BLOCK-ELITE', earnings: '$326,780', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-18', members: 589, totalEarnings: '$2,230,000', growth: '+2.8%', topProducts: ['MEV Bot Pro', 'Blockchain Marketing Kit'], strategy: 'Marketing automation', joined: '2024-02-22', token: 'BLE' },
+                { rank: 19, name: 'CRYPTO-NEXUS', earnings: '$312,450', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-19', members: 567, totalEarnings: '$2,120,000', growth: '+2.5%', topProducts: ['XAB Bot Pro', 'Crypto Health Formula'], strategy: 'Diverse product range', joined: '2024-03-10', token: 'CRN' },
+                { rank: 20, name: 'QUANTUM-NEXUS', earnings: '$298,920', multiplier: '0X', tier: 'Silver', badge: '', leader: 'Agent Nexus-20', members: 545, totalEarnings: '$2,010,000', growth: '+2.3%', topProducts: ['MEV Bot Pro', 'Nexus Private Node'], strategy: 'Infrastructure focus', joined: '2024-04-18', token: 'QUN' },
+                { rank: 127, name: 'Your Network', earnings: '$14,210', multiplier: '0X', tier: 'Gold', badge: '', leader: 'You', members: 42, totalEarnings: '$57,530', growth: '+15.2%', topProducts: ['NXC Trading Masterclass', 'MEV Bot Pro'], strategy: 'Growing network', joined: '2024-01-15', token: 'YOU' },
+              ].map((network) => (
+                <div 
+                  key={network.rank}
+                  className={`flex items-center gap-4 p-5 rounded-2xl border transition-all ${
+                    network.rank <= 3 
+                      ? 'bg-gradient-to-r from-purple-500/10 to-cyan-500/10 border-purple-500/30' 
+                      : network.rank === 127
+                      ? 'bg-yellow-500/10 border-yellow-500/30'
+                      : 'bg-white/5 border-white/5 hover:border-purple-500/20'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 min-w-[80px]">
+                    {network.badge ? (
+                      <span className="text-3xl">{network.badge}</span>
+                    ) : (
+                      <span className={`text-xl font-bold ${network.rank === 127 ? 'text-yellow-400' : 'text-purple-400'}`}>
+                        #{network.rank}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <h4 className="text-lg font-bold font-display">{network.name}</h4>
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        network.tier === 'Platinum' 
+                          ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30' 
+                          : network.tier === 'Gold'
+                          ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                          : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
+                      }`}>
+                        {network.tier}
+                      </span>
+                      {network.multiplier !== '0X' && (
+                        <span className="px-2 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded text-xs font-bold">
+                          {network.multiplier} BONUS
+                        </span>
+                      )}
+                      {network.rank === 127 && (
+                        <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 rounded text-xs font-bold">
+                          YOU
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-4 text-sm mb-2">
+                      <span className="text-gray-400">Monthly Earnings:</span>
+                      <span className="text-2xl font-bold text-green-400">{network.earnings}</span>
+                    </div>
+                    {network.rank <= 5 && (
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs mt-3 pt-3 border-t border-white/5">
+                        <div>
+                          <p className="text-gray-500">Members</p>
+                          <p className="font-bold text-cyan-400">{network.members.toLocaleString()}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Total Earnings</p>
+                          <p className="font-bold text-green-400">{network.totalEarnings}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Growth</p>
+                          <p className="font-bold text-green-400">{network.growth}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Leader</p>
+                          <p className="font-bold">{network.leader}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-right">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 via-purple-600 to-purple-900 flex items-center justify-center font-bold text-lg border-2 border-white/10">
+                      {network.token || network.name.split('-')[0].substring(0, 3)}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* User's Rank Highlight */}
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <div className="p-6 bg-gradient-to-r from-yellow-500/10 to-purple-500/10 border border-yellow-500/30 rounded-2xl">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-400 mb-1">Your Network Rank</p>
+                      <p className="text-3xl font-bold text-yellow-400">#127</p>
+                      <p className="text-sm text-green-400 mt-2">↑ Moved up 8 positions this month</p>
+                      <p className="text-xs text-gray-400 mt-1">Keep building your network to climb higher!</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-gray-500 mb-1">Your Monthly Earnings</p>
+                      <p className="text-2xl font-bold text-green-400">$14,210</p>
+                      <p className="text-xs text-gray-400 mt-1">Next rank: #119</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex gap-4 pt-6 mt-6 border-t border-white/5">
+              <button
+                onClick={() => setShowFullRankingsModal(false)}
+                className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+              >
+                Close Rankings
+              </button>
             </div>
           </div>
         </div>

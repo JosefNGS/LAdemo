@@ -86,6 +86,9 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
   ]);
   const [showAllActionsModal, setShowAllActionsModal] = useState(false);
   const [showAffiliateRevenueModal, setShowAffiliateRevenueModal] = useState(false);
+  const [showGenerateLinkModal, setShowGenerateLinkModal] = useState(false);
+  const [generatedLink, setGeneratedLink] = useState<string | null>(null);
+  const [copiedLink, setCopiedLink] = useState(false);
   
   // Link Performance Tracker state
   const [trackedLinks, setTrackedLinks] = useState([
@@ -440,7 +443,13 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                  <button 
                    onClick={(e) => {
                      e.stopPropagation();
-                     if (setActiveRoute) setActiveRoute(AppRoute.MARKETPLACE);
+                     // Generate a unique affiliate link
+                     const userId = '7781'; // This would come from user context in production
+                     const randomId = Math.random().toString(36).substring(2, 8);
+                     const newLink = `https://bitnex.us/ref/${userId}/${randomId}`;
+                     setGeneratedLink(newLink);
+                     setShowGenerateLinkModal(true);
+                     setCopiedLink(false);
                    }}
                    className="bg-purple-600 hover:bg-purple-500 px-6 py-3 rounded-xl transition-all font-semibold shadow-lg shadow-purple-900/40"
                  >
@@ -4158,6 +4167,125 @@ const Dashboard: React.FC<DashboardProps> = ({ setActiveRoute }) => {
                 </button>
                 <button
                   onClick={() => setShowAffiliateRevenueModal(false)}
+                  className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Generate Link Modal */}
+      {showGenerateLinkModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-2xl w-full">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-2xl font-bold">Generate Affiliate Link</h3>
+                <p className="text-gray-500 text-sm mt-1">Your unique affiliate link is ready to share</p>
+              </div>
+              <button
+                onClick={() => {
+                  setShowGenerateLinkModal(false);
+                  setGeneratedLink(null);
+                  setCopiedLink(false);
+                }}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              {/* Generated Link Display */}
+              <div className="p-6 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 border border-purple-500/20 rounded-2xl">
+                <p className="text-xs text-purple-400 font-bold mb-3">Your Affiliate Link</p>
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 p-4 bg-white/5 rounded-xl border border-white/10">
+                    <code className="text-sm text-cyan-400 font-mono break-all">{generatedLink}</code>
+                  </div>
+                  <button
+                    onClick={() => {
+                      if (generatedLink) {
+                        navigator.clipboard.writeText(generatedLink);
+                        setCopiedLink(true);
+                        addNotification({
+                          type: 'success',
+                          title: 'Link Copied!',
+                          message: 'Affiliate link copied to clipboard',
+                        });
+                        setTimeout(() => setCopiedLink(false), 2000);
+                      }
+                    }}
+                    className="px-6 py-4 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all whitespace-nowrap"
+                  >
+                    {copiedLink ? '✓ Copied!' : 'Copy Link'}
+                  </button>
+                </div>
+              </div>
+
+              {/* Link Information */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-xs text-gray-500 mb-1">Commission Rate</p>
+                  <p className="text-2xl font-bold text-green-400">25%</p>
+                  <p className="text-xs text-gray-400 mt-1">Standard rate</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-xs text-gray-500 mb-1">Link Status</p>
+                  <p className="text-2xl font-bold text-cyan-400">Active</p>
+                  <p className="text-xs text-gray-400 mt-1">Ready to share</p>
+                </div>
+              </div>
+
+              {/* Usage Instructions */}
+              <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+                <h5 className="font-bold text-cyan-400 mb-3 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                  </svg>
+                  How to Use Your Link
+                </h5>
+                <ul className="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                  <li>Share this link on social media, in emails, or on your website</li>
+                  <li>All purchases made through this link will earn you commission</li>
+                  <li>Track performance in your Affiliate Manager dashboard</li>
+                  <li>You can generate multiple links for different products or campaigns</li>
+                </ul>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4 pt-4 border-t border-white/5">
+                <button
+                  onClick={() => {
+                    if (setActiveRoute) setActiveRoute(AppRoute.AFFILIATE);
+                    setShowGenerateLinkModal(false);
+                  }}
+                  className="flex-1 py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl font-bold transition-all"
+                >
+                  View All Links
+                </button>
+                <button
+                  onClick={() => {
+                    if (setActiveRoute) setActiveRoute(AppRoute.MARKETPLACE);
+                    setShowGenerateLinkModal(false);
+                  }}
+                  className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 rounded-xl font-bold transition-all"
+                >
+                  Generate Product Link
+                </button>
+                <button
+                  onClick={() => {
+                    setShowGenerateLinkModal(false);
+                    setGeneratedLink(null);
+                    setCopiedLink(false);
+                  }}
                   className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
                 >
                   Close

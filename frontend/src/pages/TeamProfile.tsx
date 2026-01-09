@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TeamMemberProfile } from '../types';
 import { AppRoute } from '../types';
 
@@ -8,6 +8,12 @@ interface TeamProfileProps {
 }
 
 const TeamProfile: React.FC<TeamProfileProps> = ({ profile, setActiveRoute }) => {
+  const [showProposalModal, setShowProposalModal] = useState(false);
+  
+  // Calculate potential value (example calculation for team members)
+  const potentialValue = Math.floor(Math.random() * 5000) + 2000; // Example: $2000-$7000
+  const combinedAudience = 500; // Example combined audience
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -112,6 +118,144 @@ const TeamProfile: React.FC<TeamProfileProps> = ({ profile, setActiveRoute }) =>
                 GitHub
               </a>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Actions */}
+      <div className="flex gap-4">
+        <button
+          onClick={() => setShowProposalModal(true)}
+          className="flex-1 px-6 py-3 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/30 text-cyan-400 rounded-xl font-bold transition-all flex items-center justify-center gap-2"
+        >
+          <span>🤝</span>
+          Send Proposal
+        </button>
+      </div>
+
+      {/* Send Proposal Modal */}
+      {showProposalModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl">🤝</span>
+                <div>
+                  <h3 className="text-2xl font-bold">Joint Venture</h3>
+                  <p className="text-gray-400 text-sm">with {profile.name}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowProposalModal(false)}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              {/* Opportunity Overview */}
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
+                <h4 className="text-lg font-bold mb-2">Opportunity Overview</h4>
+                <p className="text-gray-300 leading-relaxed">
+                  Combine your marketing efforts with {profile.name} to reach a larger audience and maximize revenue potential.
+                </p>
+              </div>
+
+              {/* Potential Value */}
+              <div className="p-6 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 rounded-2xl border border-purple-500/30">
+                <p className="text-sm text-gray-400 mb-1">Potential Value</p>
+                <p className="text-3xl font-bold text-purple-400">${potentialValue.toLocaleString()} potential</p>
+              </div>
+
+              {/* Key Benefits */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-bold">Key Benefits</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3 p-3 bg-white/5 rounded-xl">
+                    <span className="text-green-400 text-xl">✓</span>
+                    <p className="text-gray-300">Access to {combinedAudience}+ combined audience</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-white/5 rounded-xl">
+                    <span className="text-green-400 text-xl">✓</span>
+                    <p className="text-gray-300">Shared marketing costs</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-white/5 rounded-xl">
+                    <span className="text-green-400 text-xl">✓</span>
+                    <p className="text-gray-300">Higher conversion rates through trust</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-white/5 rounded-xl">
+                    <span className="text-green-400 text-xl">✓</span>
+                    <p className="text-gray-300">Cross-promotion opportunities</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Plan */}
+              <div className="space-y-4">
+                <h4 className="text-lg font-bold">Action Plan</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">1</span>
+                    <p className="text-gray-300">Schedule initial strategy call</p>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">2</span>
+                    <p className="text-gray-300">Identify top 3 products to promote</p>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">3</span>
+                    <p className="text-gray-300">Create joint marketing campaign</p>
+                  </div>
+                  <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">4</span>
+                    <p className="text-gray-300">Set up revenue sharing agreement</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Partner Profile */}
+              <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
+                <h4 className="text-lg font-bold mb-4">Partner Profile</h4>
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center text-2xl font-bold">
+                    {profile.avatar}
+                  </div>
+                  <div>
+                    <p className="font-bold text-lg">{profile.name}</p>
+                    <p className="text-sm text-gray-400">
+                      {profile.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex gap-4 pt-4">
+                <button
+                  onClick={() => {
+                    window.location.href = `mailto:${profile.contact.email}?subject=Collaboration Proposal`;
+                    setShowProposalModal(false);
+                  }}
+                  className="flex-1 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
+                >
+                  Message Partner
+                </button>
+                <button
+                  onClick={() => {
+                    // Here you would typically send the proposal via API
+                    alert(`Proposal sent to ${profile.name}!`);
+                    setShowProposalModal(false);
+                  }}
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 rounded-xl font-bold transition-all"
+                >
+                  Send Proposal
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

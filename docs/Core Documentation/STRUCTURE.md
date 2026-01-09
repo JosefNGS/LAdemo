@@ -145,6 +145,28 @@ BitNexus Landing Page/
 │   │       ├── submit-email.js
 │   │       ├── submit-email-airtable.js
 │   │       └── submit-email-supabase.js
+│   ├── localstorage/                   # LocalStorage browser memory management
+│   │   ├── README.md                   # LocalStorage service overview
+│   │   ├── CHANGELOG.md                # LocalStorage service changelog
+│   │   ├── services/                   # Service implementations (planned)
+│   │   └── types/                      # TypeScript type definitions (planned)
+│   ├── supabase/                       # Supabase PostgreSQL database service
+│   │   ├── README.md                   # Supabase service overview
+│   │   ├── CHANGELOG.md                # Supabase service changelog
+│   │   ├── migrations/                 # SQL migration files
+│   │   │   ├── 001_initial_schema.sql # Initial database schema
+│   │   │   ├── 002_team_members.sql   # Team members table
+│   │   │   ├── 003_team_tasks.sql     # Team tasks table
+│   │   │   ├── 004_indexes.sql        # Performance indexes
+│   │   │   └── 005_rls_policies.sql   # Row Level Security policies
+│   │   ├── schema/                     # Database schema definitions
+│   │   │   ├── team_members.sql       # Team members schema
+│   │   │   ├── team_tasks.sql         # Team tasks schema
+│   │   │   └── types.sql              # Custom types and enums
+│   │   ├── config/                     # Configuration files
+│   │   │   └── supabase.config.json   # Supabase configuration
+│   │   └── functions/                   # Database functions
+│   │       └── README.md               # Functions documentation
 │   ├── phoenix/                        # Phoenix web framework (planned)
 │   │   └── bitnexus_api/              # Phoenix application
 │   │       ├── lib/                    # Application code
@@ -605,11 +627,13 @@ BitNexus Landing Page/
 
 **Backend Structure Rules**:
 1. **Netlify Functions**: `backend/netlify/functions/` - Serverless functions
-2. **Phoenix**: `backend/phoenix/` - Phoenix web framework (HTTP API, WebSocket) (planned)
-3. **Elixir**: `backend/elixir/` - Elixir services (business logic, BEAM VM) (planned)
-4. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
-5. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
-6. **Future Services**: Each new service gets its own folder under `backend/`
+2. **LocalStorage Service**: `backend/localstorage/` - Browser memory management and data synchronization
+3. **Supabase Database**: `backend/supabase/` - PostgreSQL database for Team Task Management
+4. **Phoenix**: `backend/phoenix/` - Phoenix web framework (HTTP API, WebSocket) (planned)
+4. **Elixir**: `backend/elixir/` - Elixir services (business logic, BEAM VM) (planned)
+5. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
+6. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
+7. **Future Services**: Each new service gets its own folder under `backend/`
    - Example: `backend/erlang-ledger/` for blockchain ledger service
    - Example: `backend/golang-api/` for Go API services
 
@@ -703,6 +727,8 @@ BitNexus Landing Page/
 ### Backend (`backend/`)
 **Purpose**: All backend services (one folder per service)
 - **Netlify**: Serverless functions (`backend/netlify/functions/`)
+- **LocalStorage**: Browser memory management (`backend/localstorage/`)
+- **Supabase**: PostgreSQL database (`backend/supabase/`) - Team Task Management
 - **n8n**: Workflow automation (planned)
 - **Discourse**: Forum service (planned)
 - **Other services**: Each service gets its own folder
@@ -1019,10 +1045,12 @@ Before committing changes, verify:
 **This document is the authoritative source for project structure. Always refer to this file when organizing files or folders.**
 
 **Last Updated**: January 2026  
-**Version**: 2.4  
+**Version**: 2.6  
 **Next Review**: February 2026
 
 **Recent Updates**:
+- Added `backend/supabase/` folder structure (PostgreSQL database for Team Task Management)
+- Added `backend/localstorage/` folder structure (browser memory management service)
 - Added `developers/` folder structure (developer profiles - source of truth)
 - Added `instructions/NSR/` folder structure (NorthStar Rules - Project Generation Framework)
 - Added `instructions/NSR/src/` folder structure (NSR framework source: templates, rules, workflows, standards)

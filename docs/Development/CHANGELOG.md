@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **⚠️ CRITICAL - MANDATORY DEVELOPER TRACKING**:
 Every changelog entry MUST track who made the change:
-- **Developer entries**: `[Developer: Name]` - e.g., `[Developer: Josef Lindbom]`
+- **Developer entries**: `[Developer: Full Name]` - e.g., `[Developer: Josef Lindbom]`, `[Developer: Craig Martin]`, `[Developer: Jonne Waselius]`, `[Developer: Cory]`
 - **Cursor/AI entries**: `[Cursor]` - e.g., `[Cursor]`
-- **Format**: `- Description of change [Developer: Name]` or `- Description of change [Cursor]`
+- **Format**: `- Description of change [Developer: Full Name]` or `- Description of change [Cursor]`
 - **Purpose**: Accountability, tracking, audit trail, and responsibility assignment
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
@@ -17,28 +17,28 @@ Every changelog entry MUST track who made the change:
 ## [Unreleased]
 
 ### Added
-- Created development Bmad Planning docs folder with BMAD-METHOD framework documents [Cursor]
-- Created Product_Brief.md - Initial product analysis and vision document [Cursor]
-- Created PRD.md - Comprehensive Product Requirements Document with 100 FRs and 52 NFRs [Cursor]
-- Created UX_Design_Specification.md - User experience and interaction design specifications [Cursor]
-- Created Architecture_Decision_Document.md - Technical architecture decisions (8 ADRs) [Cursor]
-- Created Epic_Breakdown.md - Implementation epics and stories (15 epics) [Cursor]
-- Created Project_Context.md - Critical rules and patterns for AI agents and developers [Cursor]
-- Created README.md for development Bmad Planning docs folder [Cursor]
-- Created RULES.md - Mandatory BMAD-METHOD compliance rules for development Bmad Planning docs folder [Cursor]
-- Created CHANGELOG.md - Changelog for development Bmad Planning docs folder [Cursor]
-- Updated README.md to emphasize BMAD-METHOD compliance requirements [Cursor]
-- Updated RULES.md to reference CHANGELOG.md location [Cursor]
-- Moved PRD.md to development Bmad Planning docs folder [Cursor]
-- Renamed folder from "Development planning docs" to "development Bmad Planning docs" [Cursor]
-- Created FRONTEND_OWNER.md - Frontend owner responsibilities and task tracking [Cursor]
-- Created BACKEND_OWNER.md - Backend owner responsibilities and task tracking [Cursor]
-- Created SECURITY_OWNER.md - Security owner responsibilities and task tracking [Cursor]
-- Created CTO_OWNER.md - CTO owner responsibilities and task tracking [Developer: Josef]
-- Created SALES_OWNER.md - Sales owner responsibilities and task tracking [Developer: Josef]
-- Created TEAM_OWNER.md - Team owner responsibilities and task tracking [Developer: Josef]
-- Initial development documentation changelog [Cursor]
-- Updated CHANGELOG.md to enforce developer/Cursor tracking in all entries [Developer: Josef]
+- Created development Bmad Planning docs folder with BMAD-METHOD framework documents [Developer: Josef Lindbom]
+- Created Product_Brief.md - Initial product analysis and vision document [Developer: Josef Lindbom]
+- Created PRD.md - Comprehensive Product Requirements Document with 100 FRs and 52 NFRs [Developer: Josef Lindbom]
+- Created UX_Design_Specification.md - User experience and interaction design specifications [Developer: Josef Lindbom]
+- Created Architecture_Decision_Document.md - Technical architecture decisions (8 ADRs) [Developer: Josef Lindbom]
+- Created Epic_Breakdown.md - Implementation epics and stories (15 epics) [Developer: Josef Lindbom]
+- Created Project_Context.md - Critical rules and patterns for AI agents and developers [Developer: Josef Lindbom]
+- Created README.md for development Bmad Planning docs folder [Developer: Josef Lindbom]
+- Created RULES.md - Mandatory BMAD-METHOD compliance rules for development Bmad Planning docs folder [Developer: Josef Lindbom]
+- Created CHANGELOG.md - Changelog for development Bmad Planning docs folder [Developer: Josef Lindbom]
+- Updated README.md to emphasize BMAD-METHOD compliance requirements [Developer: Josef Lindbom]
+- Updated RULES.md to reference CHANGELOG.md location [Developer: Josef Lindbom]
+- Moved PRD.md to development Bmad Planning docs folder [Developer: Josef Lindbom]
+- Renamed folder from "Development planning docs" to "development Bmad Planning docs" [Developer: Josef Lindbom]
+- Created FRONTEND_OWNER.md - Frontend owner responsibilities and task tracking [Developer: Josef Lindbom]
+- Created BACKEND_OWNER.md - Backend owner responsibilities and task tracking [Developer: Josef Lindbom]
+- Created SECURITY_OWNER.md - Security owner responsibilities and task tracking [Developer: Josef Lindbom]
+- Created CTO_OWNER.md - CTO owner responsibilities and task tracking [Developer: Josef Lindbom]
+- Created SALES_OWNER.md - Sales owner responsibilities and task tracking [Developer: Josef Lindbom]
+- Created TEAM_OWNER.md - Team owner responsibilities and task tracking [Developer: Josef Lindbom]
+- Initial development documentation changelog [Developer: Josef Lindbom]
+- Updated CHANGELOG.md to enforce developer/Cursor tracking in all entries [Developer: Josef Lindbom]
 
 ---
 

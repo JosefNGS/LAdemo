@@ -96,7 +96,14 @@ const BEST_PRACTICES_FILES: Record<string, { path: string; name: string; icon: s
 // Load best practices markdown file
 const loadBestPractice = async (filePath: string): Promise<string> => {
   try {
-    const response = await fetch(`/${filePath}`);
+    // Properly encode the path - split by / and encode each segment separately
+    // This handles special characters like & in folder names
+    const encodedPath = filePath
+      .split('/')
+      .map(segment => encodeURIComponent(segment))
+      .join('/');
+    
+    const response = await fetch(`/${encodedPath}`);
     if (!response.ok) {
       throw new Error(`Failed to load: ${response.statusText}`);
     }

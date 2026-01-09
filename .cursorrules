@@ -261,17 +261,20 @@ Please provide answers to these questions so I can proceed safely and in complia
   - All service CHANGELOG.md files (e.g., `docs/Services/*/CHANGELOG.md`)
   - All folder CHANGELOG.md files (e.g., `frontend/CHANGELOG.md`, `backend/CHANGELOG.md`)
   - **ALL CHANGELOG files in the project**
-- **Developer Tracking Format**: Each entry must include `[Developer: Name]` or `[Cursor]` tag
-- **Developer Examples**: `[Developer: Josef]`, `[Developer: Josef Lindbom]`, `[Developer: Craig]`, `[Developer: Jonne]`
+- **Developer Tracking Format**: Each entry must include `[Developer: Full Name]` or `[Cursor]` tag
+- **Developer Examples**: `[Developer: Josef Lindbom]`, `[Developer: Craig Martin]`, `[Developer: Jonne Waselius]`, `[Developer: Cory]`
 - **Cursor/AI Examples**: `[Cursor]` (for changes made by Cursor/AI assistant)
 - **Purpose**: Accountability, tracking, audit trail, and responsibility assignment
+- **CRITICAL**: ALL sub-bullet points must also include developer tracking - NO EXCEPTIONS
 - **Example Format**:
   ```markdown
   ### Added
-  - New feature description [Developer: Josef]
-  - Another feature [Cursor]
-  - Bug fix [Developer: Craig]
-  - Documentation update [Developer: Jonne]
+  - New feature description [Developer: Josef Lindbom]
+    - Sub-feature detail [Developer: Josef Lindbom]
+    - Another detail [Developer: Josef Lindbom]
+  - Another feature [Developer: Craig Martin]
+  - Bug fix [Developer: Jonne Waselius]
+  - Documentation update [Developer: Josef Lindbom]
   ```
 - **Location**: `docs/Project Management/CHANGELOG.md` (and all other CHANGELOG.md files)
 - **This is MANDATORY and STRICTLY ENFORCED - NO EXCEPTIONS**

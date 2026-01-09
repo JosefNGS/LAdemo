@@ -6,6 +6,13 @@ This directory contains all backend services, organized with one folder per serv
 
 - **`netlify/`** - Netlify serverless functions
   - `functions/` - Serverless function files
+- **`localstorage/`** - LocalStorage browser memory management service
+  - Handles browser localStorage operations and synchronization
+- **`supabase/`** - Supabase PostgreSQL database service
+  - `migrations/` - SQL migration files for database schema
+  - `schema/` - Database schema definitions
+  - `config/` - Configuration files
+  - Handles Team Task Management database operations
 - **Future Services** (one folder per service):
   - `PostgreSQL/` - PostgreSQL database service
   - `n8n/` - n8n automation service

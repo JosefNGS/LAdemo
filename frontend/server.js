@@ -102,6 +102,14 @@ const server = http.createServer(async (req, res) => {
   let filePath = req.url.split('?')[0]; // Remove query params
   if (filePath === '/') filePath = '/index.html';
   
+  // Decode URL-encoded path (handles special characters like & in folder names)
+  try {
+    filePath = decodeURIComponent(filePath);
+  } catch (e) {
+    // If decoding fails, use original path
+    console.warn('Failed to decode URL path:', filePath, e.message);
+  }
+  
   // Remove leading slash for path resolution
   const cleanPath = filePath.startsWith('/') ? filePath.slice(1) : filePath;
 

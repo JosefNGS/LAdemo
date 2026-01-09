@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ICONS } from '../constants';
+import { AppRoute } from '../types';
+import { navigateToUserProfile } from '../utils/profileNavigation';
 
 interface FeedPost {
   id: string;

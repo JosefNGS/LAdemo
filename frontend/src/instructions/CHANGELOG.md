@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **⚠️ CRITICAL - MANDATORY DEVELOPER TRACKING**:
 Every changelog entry MUST track who made the change:
-- **Developer entries**: `[Developer: Name]` - e.g., `[Developer: Josef Lindbom]`
+- **Developer entries**: `[Developer: Full Name]` - e.g., `[Developer: Josef Lindbom]`, `[Developer: Craig Martin]`, `[Developer: Jonne Waselius]`, `[Developer: Cory]`
 - **Cursor/AI entries**: `[Cursor]` - e.g., `[Cursor]`
-- **Format**: `- Description of change [Developer: Name]` or `- Description of change [Cursor]`
+- **Format**: `- Description of change [Developer: Full Name]` or `- Description of change [Cursor]`
 - **Purpose**: Accountability, tracking, audit trail, and responsibility assignment
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
@@ -19,9 +19,9 @@ Every changelog entry MUST track who made the change:
 ## [1.0.0] - January 2026
 
 ### Added
-- Created README.md for `frontend/src/instructions/` folder [Cursor]
-- Created CHANGELOG.md for `frontend/src/instructions/` folder [Cursor]
-- Instructions folder now has required README.md and CHANGELOG.md files [Cursor]
+- Created README.md for `frontend/src/instructions/` folder [Developer: Josef Lindbom]
+- Created CHANGELOG.md for `frontend/src/instructions/` folder [Developer: Josef Lindbom]
+- Instructions folder now has required README.md and CHANGELOG.md files [Developer: Josef Lindbom]
 
 ---
 

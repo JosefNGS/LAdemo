@@ -95,7 +95,7 @@ const App: React.FC = () => {
       case AppRoute.FEED: return <Feed setActiveRoute={setActiveRoute} />;
       case AppRoute.CHAT: return <Chat />;
       case AppRoute.FORUM: return <Forum />;
-      case AppRoute.AFFILIATE: return <AffiliateManager />;
+      case AppRoute.AFFILIATE: return <AffiliateManager setActiveRoute={setActiveRoute} />;
       case AppRoute.CONTENT_GENERATOR: return <ContentGenerator setActiveRoute={setActiveRoute} />;
       case AppRoute.GOALS: return <Goals />;
       case AppRoute.FRIENDS: return <Friends setActiveRoute={setActiveRoute} />;

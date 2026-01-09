@@ -234,25 +234,6 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
                 })}
               </div>
 
-              {/* Task Checklist View */}
-              {activeTab === 'checklist' && selectedTeamMember && (
-                <div className="mt-6">
-                  <button
-                    onClick={() => {
-                      setActiveTab('tasks');
-                      setSelectedTeamMember(null);
-                    }}
-                    className="mb-4 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 rounded-lg text-sm font-medium transition-all"
-                  >
-                    ← Back to Team Tasks
-                  </button>
-                  <TaskChecklistView
-                    teamMember={selectedTeamMember}
-                    setActiveRoute={setActiveRoute}
-                  />
-                </div>
-              )}
-
               {activeTab === 'tasks' && (
                 <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
                   <p className="text-sm text-yellow-400">
@@ -264,8 +245,29 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
           </div>
         )}
 
+        {/* Task Checklist View - Rendered separately when checklist tab is active */}
+        {activeTab === 'checklist' && selectedTeamMember && (
+          <div className="space-y-6">
+            <div className="glass-card p-6 rounded-2xl border border-white/5">
+              <button
+                onClick={() => {
+                  setActiveTab('tasks');
+                  setSelectedTeamMember(null);
+                }}
+                className="mb-4 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 rounded-lg text-sm font-medium transition-all"
+              >
+                ← Back to Team Tasks
+              </button>
+              <TaskChecklistView
+                teamMember={selectedTeamMember}
+                setActiveRoute={setActiveRoute}
+              />
+            </div>
+          </div>
+        )}
+
         {activeTab === 'vetting' && <Vetting />}
-        {activeTab === 'users' && <Users />}
+        {activeTab === 'users' && <Users setActiveRoute={setActiveRoute} />}
         {activeTab === 'reports' && <Reports />}
         
         {activeTab === 'networks' && (
