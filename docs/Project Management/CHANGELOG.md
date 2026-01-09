@@ -15,6 +15,15 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.68.0] - January 2026
+
+### Added
+- **Merged to Main Branch**: Merged statistic-updates branch to main branch [Developer: Josef Lindbom]
+  - Fast-forward merge completed successfully [Developer: Josef Lindbom]
+  - 343 files changed: 33,382 insertions, 4,144 deletions [Developer: Josef Lindbom]
+  - All UI improvements, database setup, and documentation updates now in main [Developer: Josef Lindbom]
+  - Main branch updated with all recent changes [Developer: Josef Lindbom]
+
 ## [1.67.0] - January 2026
 
 ### Added
