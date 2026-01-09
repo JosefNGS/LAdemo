@@ -33,7 +33,7 @@
 
 ### Key Documentation to Maintain:
 - `docs/Setup & Configuration/API_SETUP.md`
-- `docs/Services/supabase/` (database documentation)
+- `docs/Services/PostgreSQL/` (database documentation)
 - `docs/Services/netlify/functions/` (function documentation)
 - `docs/Services/n8n/` (API integration documentation)
 - API endpoint documentation (to be created)
@@ -49,7 +49,7 @@
 #### Backend Services
 - [ ] **VERIFY**: Netlify Functions setup (Completed by Josef - needs verification)
 - [ ] **VERIFY**: Email collection functions (Completed by Josef - needs verification)
-- [ ] **VERIFY**: Supabase integration setup (Completed by Josef - needs verification)
+- [ ] **VERIFY**: PostgreSQL integration setup (Completed by Josef - needs verification)
 - [ ] **VERIFY**: Basic API structure (Completed by Josef - needs verification)
 
 ---
@@ -173,7 +173,7 @@
 - [ ] Real-time event handling
 
 #### Database Integration
-- [ ] Supabase database schema
+- [ ] PostgreSQL database schema
 - [ ] Database queries optimization
 - [ ] Data migration scripts
 - [ ] Database backup system
@@ -187,11 +187,11 @@
 - [ ] Product tracking metrics tables
 
 #### PostgreSQL / Postgres Stack (Planned)
-- [ ] Design overall PostgreSQL strategy across Supabase and additional Postgres instances
+- [ ] Design overall PostgreSQL strategy across PostgreSQL and additional Postgres instances
 - [ ] Evaluate requirements for dedicated Postgres with vector extension (e.g., `pgvector`) based on TECH_STACK roadmap
 - [ ] Propose schema patterns for vector-based similarity search (embeddings tables, indexes, query patterns)
-- [ ] Define migration and synchronization approach between Supabase (core data) and extra Postgres/vector database
-- [ ] Document Postgres and vector database architecture in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/supabase/`
+- [ ] Define migration and synchronization approach between PostgreSQL (core data) and extra Postgres/vector database
+- [ ] Document Postgres and vector database architecture in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/PostgreSQL/`
 - [ ] Create initial PoC for vector search (e.g., semantic product or document search) using Postgres + vector extension
 
 #### n8n API Integration

@@ -199,7 +199,7 @@
 
 **Service Rules Documentation**:
 - **Netlify**: `docs/Services/netlify/SERVICE_RULES.md`
-- **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
+- **PostgreSQL**: `docs/Services/supabase/SERVICE_RULES.md`
 - **GitHub**: `docs/Services/github/SERVICE_RULES.md`
   - **Developer Registry**: `docs/Services/github/DEVELOPERS.md` (CRITICAL - tracks all active developers)
 - **n8n**: `docs/Services/n8n/SERVICE_RULES.md`
@@ -216,7 +216,7 @@
 
 **Service Rules Locations**:
 - **Netlify**: `docs/Services/netlify/SERVICE_RULES.md`
-- **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
+- **PostgreSQL**: `docs/Services/supabase/SERVICE_RULES.md`
 - **GitHub**: `docs/Services/github/SERVICE_RULES.md`
   - **Developer Registry**: `docs/Services/github/DEVELOPERS.md` (CRITICAL)
   - **Version Control**: `docs/Services/github/VERSION_CONTROL.md`
@@ -317,7 +317,7 @@ rules/
 │   ├── README.md         # Services rules overview
 │   ├── admin/            # Admin View & Task Management
 │   ├── netlify/          # Netlify deployment
-│   ├── supabase/         # Supabase database
+│   ├── supabase/         # PostgreSQL database
 │   ├── github/           # GitHub version control
 │   ├── n8n/              # n8n automation
 │   ├── discourse/        # Discourse forum

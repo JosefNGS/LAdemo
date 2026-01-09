@@ -133,8 +133,8 @@ GROUP BY team_member_id;
 
 ## 🚀 Implementation Notes
 
-1. **Database**: Use Supabase PostgreSQL database
-2. **Location**: `backend/supabase/migrations/` - Create migration file
+1. **Database**: Use PostgreSQL PostgreSQL database
+2. **Location**: `backend/PostgreSQL/migrations/` - Create migration file
 3. **API Endpoints**: Create REST API endpoints for CRUD operations
 4. **Admin View**: Integrate into AdminView component
 5. **Sync**: Sync with answer documents in `docs/Product docs/Investor Ready/15_Deep_Research/`

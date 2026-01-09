@@ -70,7 +70,7 @@ BitNexus provides a complete ecosystem where users can:
 - **Styling**: Glassmorphism design with responsive mobile-first approach
 - **Charts**: Recharts 3.6.0 for data visualization
 - **AI**: Google Gemini API (@google/genai v1.34.0) integration
-- **Database**: Supabase (PostgreSQL with real-time capabilities)
+- **Database**: PostgreSQL (PostgreSQL with real-time capabilities)
 - **Deployment**: Netlify with CI/CD automation, global CDN
 - **Build System**: esbuild 0.19.0 (on-the-fly TypeScript transpilation)
 - **Blockchain**: Smart contract integration for transparency ledger
@@ -578,7 +578,7 @@ BitNexus represents a paradigm shift in how individuals achieve financial freedo
 - Added team information (Vision/Developer: Josef Lindbom, CTO: Craig Martin)
 - Enhanced Security & Trust section with detailed ISO certification descriptions
 - Added comprehensive legal protections information (Copyright, Trade Secrets, NDAs, DMCA, International IP)
-- Updated Technology Stack with complete tech stack details (esbuild, ES Modules, Supabase)
+- Updated Technology Stack with complete tech stack details (esbuild, ES Modules, PostgreSQL)
 - Added legal requirements and contract information for developers
 - Updated contact information with legal inquiry procedures
 - Enhanced security audit details with scope and results

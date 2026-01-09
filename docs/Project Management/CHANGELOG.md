@@ -145,7 +145,7 @@ Every changelog entry MUST track who made the change:
 - **README.md and CHANGELOG.md in All Folders**: Created README.md and CHANGELOG.md files for all folders [Cursor]
   - **Main Folders**: Added README.md and CHANGELOG.md to `frontend/`, `backend/`, `docs/Core Documentation/`, `docs/Development/`, `docs/Setup & Configuration/`, `docs/UI & Features/`, `docs/Product docs/`, `docs/Product docs/Business & Strategy/`
   - **Rules Folders**: Added README.md and CHANGELOG.md to `rules/agent-os/`, `rules/bmad-method/`, `rules/frontend/`, `rules/backend/`, `rules/dev_server/`, `rules/docs/`
-  - **Service Rules Folders**: Added README.md and CHANGELOG.md to all 8 service rule folders (`rules/services/admin/`, `rules/services/netlify/`, `rules/services/supabase/`, `rules/services/github/`, `rules/services/n8n/`, `rules/services/discourse/`, `rules/services/erlang-ledger/`, `rules/services/golang-api/`)
+  - **Service Rules Folders**: Added README.md and CHANGELOG.md to all 8 service rule folders (`rules/services/admin/`, `rules/services/netlify/`, `rules/services/PostgreSQL/`, `rules/services/github/`, `rules/services/n8n/`, `rules/services/discourse/`, `rules/services/erlang-ledger/`, `rules/services/golang-api/`)
   - **Backend Service Folders**: Added README.md and CHANGELOG.md to `backend/netlify/`
 - **Critical Rule Added**: Updated `.cursorrules` to require README.md and CHANGELOG.md in ALL folders [Cursor]
   - Added "README AND CHANGELOG - CRITICAL REQUIREMENT" section to `.cursorrules`
@@ -162,7 +162,7 @@ Every changelog entry MUST track who made the change:
 
 ### Added
 - **Comprehensive Rules Structure**: Created complete rules directory structure mirroring system organization [Cursor]
-  - **Service Rules**: Created rules for all 8 services (admin, netlify, supabase, github, n8n, discourse, erlang-ledger, golang-api)
+  - **Service Rules**: Created rules for all 8 services (admin, netlify, PostgreSQL, github, n8n, discourse, erlang-ledger, golang-api)
   - **Folder Rules**: Created rules for major folders (frontend, backend, dev_server, docs)
   - **Services README**: Created 
 ules/services/README.md with service rules overview
@@ -463,7 +463,7 @@ ules/CHANGELOG.md - Tracks all changes to rules directory with developer trackin
 - **START_HERE.md Developer Guide**: Comprehensive developer onboarding document in root directory [Cursor]
 - **Investor Ready Documentation Structure**: Complete folder structure for investor materials (14 folders) [Cursor]
 - **Investor Ready README Files**: Comprehensive documentation for each investor folder [Cursor]
-- **Service-Specific Changelogs**: Created CHANGELOG.md files for all services (Netlify, GitHub, Supabase, n8n, Discourse, Erlang-Ledger, Golang-API) with developer tracking requirement [Cursor]
+- **Service-Specific Changelogs**: Created CHANGELOG.md files for all services (Netlify, GitHub, PostgreSQL, n8n, Discourse, Erlang-Ledger, Golang-API) with developer tracking requirement [Cursor]
 - **Fixed JavaScript Errors**: Resolved `useNotifications` undefined error in Dashboard [Cursor]
 - **Fixed Missing Imports**: Added TeamProfile and teamProfiles imports to App.tsx [Cursor]
 - **Fixed Missing State**: Added authView state variable to App.tsx [Cursor]

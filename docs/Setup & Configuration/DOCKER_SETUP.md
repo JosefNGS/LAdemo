@@ -84,8 +84,8 @@ services:
     command: node frontend/server.js
 
   # Future services can be added here:
-  # supabase:
-  #   image: supabase/postgres:latest
+  # PostgreSQL:
+  #   image: PostgreSQL/postgres:latest
   #   ports:
   #     - "5432:5432"
   #   environment:
@@ -140,8 +140,8 @@ Create `Dev server/.env` (optional):
 ```env
 NODE_ENV=development
 PORT=8000
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_supabase_key
+PostgreSQL_URL=your_PostgreSQL_url
+PostgreSQL_ANON_KEY=your_PostgreSQL_key
 GEMINI_API_KEY=your_gemini_key
 ```
 

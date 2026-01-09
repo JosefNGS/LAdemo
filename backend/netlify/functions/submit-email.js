@@ -51,7 +51,7 @@ exports.handler = async (event, context) => {
     // For now, we'll use a simple approach with environment variables or a service
     
     // Option 1: Save to Airtable (recommended for simple use)
-    // Option 2: Save to Firebase/Supabase
+    // Option 2: Save to Firebase/PostgreSQL
     // Option 3: Save to a JSON file (not recommended for production)
     // Option 4: Send to an email service like SendGrid/Mailchimp
     

@@ -1,69 +1,69 @@
 /**
- * Supabase Service
- * Client-side service for interacting with Supabase database
+ * PostgreSQL Service
+ * Client-side service for interacting with PostgreSQL database
  */
 
-// Supabase client configuration
+// PostgreSQL client configuration
 // These values should be set in environment variables or passed from the backend
-export interface SupabaseConfig {
+export interface PostgreSQLConfig {
   url: string;
   anonKey: string;
 }
 
-// Initialize Supabase client (will be set dynamically)
-let supabaseClient: any = null;
-let supabaseConfig: SupabaseConfig | null = null;
+// Initialize PostgreSQL client (will be set dynamically)
+let postgresqlClient: any = null;
+let postgresqlConfig: PostgreSQLConfig | null = null;
 
 /**
- * Initialize Supabase client
+ * Initialize PostgreSQL client
  * Call this once when the app loads
  */
-export const initSupabase = async (config: SupabaseConfig) => {
+export const initPostgreSQL = async (config: PostgreSQLConfig) => {
   try {
-    // Dynamically import @supabase/supabase-js
-    const { createClient } = await import('https://esm.sh/@supabase/supabase-js@2');
+    // Dynamically import @PostgreSQL/PostgreSQL-js (PostgreSQL client library)
+    const { createClient } = await import('https://esm.sh/@PostgreSQL/PostgreSQL-js@2');
     
-    supabaseConfig = config;
-    supabaseClient = createClient(config.url, config.anonKey);
+    postgresqlConfig = config;
+    postgresqlClient = createClient(config.url, config.anonKey);
     
-    return supabaseClient;
+    return postgresqlClient;
   } catch (error) {
-    console.error('Failed to initialize Supabase:', error);
+    console.error('Failed to initialize PostgreSQL:', error);
     throw error;
   }
 };
 
 /**
- * Get Supabase client instance
+ * Get PostgreSQL client instance
  */
-export const getSupabaseClient = () => {
-  if (!supabaseClient) {
-    throw new Error('Supabase client not initialized. Call initSupabase() first.');
+export const getPostgreSQLClient = () => {
+  if (!postgresqlClient) {
+    throw new Error('PostgreSQL client not initialized. Call initPostgreSQL() first.');
   }
-  return supabaseClient;
+  return postgresqlClient;
 };
 
 /**
- * Check if Supabase is initialized
+ * Check if PostgreSQL is initialized
  */
-export const isSupabaseInitialized = () => {
-  return supabaseClient !== null;
+export const isPostgreSQLInitialized = () => {
+  return postgresqlClient !== null;
 };
 
 /**
- * Save email to Supabase
+ * Save email to PostgreSQL
  */
-export const saveEmailToSupabase = async (email: string, metadata?: {
+export const saveEmailToPostgreSQL = async (email: string, metadata?: {
   source?: string;
   ipAddress?: string;
   userAgent?: string;
 }) => {
-  if (!supabaseClient) {
-    throw new Error('Supabase client not initialized');
+  if (!postgresqlClient) {
+    throw new Error('PostgreSQL client not initialized');
   }
 
   try {
-    const { data, error } = await supabaseClient
+    const { data, error } = await postgresqlClient
       .from('email_submissions')
       .insert([
         {
@@ -83,7 +83,7 @@ export const saveEmailToSupabase = async (email: string, metadata?: {
 
     return { success: true, data };
   } catch (error: any) {
-    console.error('Error saving email to Supabase:', error);
+    console.error('Error saving email to PostgreSQL:', error);
     throw error;
   }
 };
@@ -92,12 +92,12 @@ export const saveEmailToSupabase = async (email: string, metadata?: {
  * Check if email already exists
  */
 export const checkEmailExists = async (email: string): Promise<boolean> => {
-  if (!supabaseClient) {
-    throw new Error('Supabase client not initialized');
+  if (!postgresqlClient) {
+    throw new Error('PostgreSQL client not initialized');
   }
 
   try {
-    const { data, error } = await supabaseClient
+    const { data, error } = await postgresqlClient
       .from('email_submissions')
       .select('email')
       .eq('email', email)
@@ -109,7 +109,7 @@ export const checkEmailExists = async (email: string): Promise<boolean> => {
 
     return data && data.length > 0;
   } catch (error: any) {
-    console.error('Error checking email in Supabase:', error);
+    console.error('Error checking email in PostgreSQL:', error);
     throw error;
   }
 };
@@ -122,12 +122,12 @@ export const getEmailSubmissions = async (filters?: {
   source?: string;
   limit?: number;
 }) => {
-  if (!supabaseClient) {
-    throw new Error('Supabase client not initialized');
+  if (!postgresqlClient) {
+    throw new Error('PostgreSQL client not initialized');
   }
 
   try {
-    let query = supabaseClient
+    let query = postgresqlClient
       .from('email_submissions')
       .select('*')
       .order('created_at', { ascending: false });
@@ -152,7 +152,7 @@ export const getEmailSubmissions = async (filters?: {
 
     return { success: true, data };
   } catch (error: any) {
-    console.error('Error fetching emails from Supabase:', error);
+    console.error('Error fetching emails from PostgreSQL:', error);
     throw error;
   }
 };

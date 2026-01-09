@@ -29,7 +29,7 @@ rules/
 │   ├── README.md         # Services rules overview
 │   ├── admin/            # Admin View & Task Management
 │   ├── netlify/          # Netlify deployment
-│   ├── supabase/         # Supabase database
+│   ├── PostgreSQL/         # PostgreSQL database
 │   ├── github/           # GitHub version control
 │   ├── n8n/              # n8n automation
 │   ├── discourse/        # Discourse forum

@@ -66,7 +66,7 @@ This document outlines the complete user flow logic for the BitNexus platform, c
 - Browse academy modules
 - Click "Try Demo" → Opens React app in demo mode
 - Click "Initiate Access" → Opens signup modal
-- Fill signup form (Name, Email, Phone) → Submits to Supabase
+- Fill signup form (Name, Email, Phone) → Submits to PostgreSQL
 
 **Flow Outcomes**:
 - **Demo Mode**: User can explore without account (limited features)

@@ -22,7 +22,7 @@ This document verifies that the BitNexus Landing Page is properly configured for
 
 [functions]
   submit-email.timeout = 10
-  submit-email-supabase.timeout = 10
+  submit-email-PostgreSQL.timeout = 10
 
 [[redirects]]
   from = "/*"
@@ -63,7 +63,7 @@ The build script:
 
 Functions are located at:
 - `backend/netlify/functions/submit-email.js`
-- `backend/netlify/functions/submit-email-supabase.js`
+- `backend/netlify/functions/submit-email-PostgreSQL.js`
 - `backend/netlify/functions/submit-email-airtable.js`
 
 **Status**: ✅ Correctly located
@@ -88,8 +88,8 @@ frontend/
 ### 7. Environment Variables (Netlify Dashboard)
 
 Required environment variables:
-- `SUPABASE_URL` (if using Supabase)
-- `SUPABASE_ANON_KEY` (if using Supabase)
+- `PostgreSQL_URL` (if using PostgreSQL)
+- `PostgreSQL_ANON_KEY` (if using PostgreSQL)
 - `GEMINI_API_KEY` (optional, for AI features)
 
 **Status**: ⚠️ Must be set in Netlify Dashboard
@@ -125,8 +125,8 @@ If not auto-detected, manually set:
 In Netlify Dashboard → Site settings → Environment variables:
 
 ```
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your-anon-key
+PostgreSQL_URL=https://your-project.PostgreSQL.co
+PostgreSQL_ANON_KEY=your-anon-key
 GEMINI_API_KEY=your-gemini-key (optional)
 ```
 
@@ -159,7 +159,7 @@ ls backend/netlify/functions/
 
 Expected files:
 - `submit-email.js`
-- `submit-email-supabase.js`
+- `submit-email-PostgreSQL.js`
 - `submit-email-airtable.js`
 
 ### Test 3: Test SPA Routing
@@ -174,7 +174,7 @@ After deployment:
 
 1. Submit the signup form on the landing page
 2. Check Netlify function logs
-3. Verify data is saved (if using Supabase/Airtable)
+3. Verify data is saved (if using PostgreSQL/Airtable)
 
 ## ⚠️ Common Issues
 

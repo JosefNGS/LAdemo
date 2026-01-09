@@ -87,7 +87,7 @@
 - ❌ **CRITICAL**: Modifying start files to do more than their defined purpose
 - ❌ **CRITICAL**: Creating start scripts with different names (e.g., `run.bat`, `launch.bat`, `dev.bat`)
 - ❌ **CRITICAL**: Duplicating start functionality in multiple files
-- ❌ **CRITICAL**: Creating service-specific start files (e.g., `start_supabase.bat`, `start_n8n.bat`)
+- ❌ **CRITICAL**: Creating service-specific start files (e.g., `start_PostgreSQL.bat`, `start_n8n.bat`)
 
 **If you need to start a specific service**:
 - Use `start_dev_server.bat` and configure `docker-compose.yml` to start only needed services
@@ -112,7 +112,7 @@
 - ❌ **NO start files in `frontend/`**
 - ❌ **NO start files in `backend/`**
 - ❌ **NO start files in `docs/`**
-- ❌ **NO start files in service folders** (e.g., `backend/netlify/`, `backend/supabase/`)
+- ❌ **NO start files in service folders** (e.g., `backend/netlify/`, `backend/PostgreSQL/`)
 - ❌ **NO start files in any other location**
 
 ---

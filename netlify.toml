@@ -12,7 +12,7 @@
 [functions]
   # Function timeout settings (in seconds)
   submit-email.timeout = 10
-  submit-email-supabase.timeout = 10
+  submit-email-PostgreSQL.timeout = 10
 
 [[redirects]]
   from = "/*"

@@ -54,7 +54,7 @@ git push
     "esbuild": "^0.19.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0"
+    "@PostgreSQL/PostgreSQL-js": "^2.39.0"
   }
 }
 ```

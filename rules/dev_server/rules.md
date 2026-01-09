@@ -74,7 +74,7 @@
 - ❌ **CRITICAL**: Creating additional start files (e.g., `start_frontend.bat`, `start_backend.bat`)
 - ❌ **CRITICAL**: Creating start files in other locations
 - ❌ **CRITICAL**: Creating start scripts with different names (e.g., `run.bat`, `launch.bat`)
-- ❌ **CRITICAL**: Creating service-specific start files (e.g., `start_supabase.bat`)
+- ❌ **CRITICAL**: Creating service-specific start files (e.g., `start_PostgreSQL.bat`)
 - ❌ **CRITICAL**: Creating start files without corresponding stop files
 - ❌ **CRITICAL**: Creating stop files without corresponding start files
 

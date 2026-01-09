@@ -7,7 +7,7 @@ This directory contains Netlify serverless functions.
 - **`functions/`** - Serverless function files
   - `submit-email.js` - Email submission handler
   - `submit-email-airtable.js` - Airtable email submission
-  - `submit-email-supabase.js` - Supabase email submission
+  - `submit-email-PostgreSQL.js` - PostgreSQL email submission
 
 ## Configuration
 

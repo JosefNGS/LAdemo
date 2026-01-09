@@ -77,7 +77,7 @@ Every changelog entry MUST track who made the change:
 - **Comprehensive Service Rules**: Created rules for all 8 services [Cursor]
   - `services/admin/rules.md` - Admin View & Task Management rules
   - `services/netlify/rules.md` - Netlify deployment rules
-  - `services/supabase/rules.md` - Supabase database rules
+  - `services/PostgreSQL/rules.md` - PostgreSQL database rules
   - `services/github/rules.md` - GitHub version control rules
   - `services/n8n/rules.md` - n8n automation rules
   - `services/discourse/rules.md` - Discourse forum rules

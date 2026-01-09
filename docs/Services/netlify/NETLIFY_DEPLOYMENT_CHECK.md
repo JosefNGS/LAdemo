@@ -136,7 +136,7 @@ git ls-files frontend/build.js
    - Files in root `src/` will be available
 
 2. **Runs `npm install`**
-   - Installs `esbuild` and `@supabase/supabase-js`
+   - Installs `esbuild` and `@PostgreSQL/PostgreSQL-js`
    - Creates `node_modules/`
 
 3. **Runs `npm run build`**

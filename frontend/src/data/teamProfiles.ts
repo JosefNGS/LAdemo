@@ -80,7 +80,7 @@ export const teamProfiles: TeamMemberProfile[] = [
       'Real-Time Systems',
       'Authentication',
       'Node.js',
-      'Supabase'
+      'PostgreSQL'
     ],
     contact: {
       email: 'Jonne@nordicglobalsolutions.com'

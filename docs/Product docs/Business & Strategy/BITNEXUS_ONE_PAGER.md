@@ -102,7 +102,7 @@ Traditional affiliate platforms extract 30-50% of earnings through fees, require
 **Technology**: React 19.2.3 + TypeScript • Tailwind CSS • Blockchain Integration  
 **Deployment**: Netlify (Global CDN) • Serverless Functions  
 **AI**: Google Gemini API  
-**Database**: Supabase (PostgreSQL with real-time capabilities)
+**Database**: PostgreSQL (PostgreSQL with real-time capabilities)
 
 ---
 

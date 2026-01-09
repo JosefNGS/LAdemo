@@ -1,4 +1,4 @@
-# Supabase Setup Guide
+# PostgreSQL Setup Guide
 ## Database Integration for BitNexus
 
 **Last Updated**: January 2026  
@@ -8,11 +8,11 @@
 
 ## Overview
 
-This guide explains how to set up and configure Supabase as the database backend for BitNexus. Supabase provides a PostgreSQL database with real-time capabilities, authentication, and storage.
+This guide explains how to set up and configure PostgreSQL as the database backend for BitNexus. PostgreSQL provides a PostgreSQL database with real-time capabilities, authentication, and storage.
 
 ---
 
-## Why Supabase?
+## Why PostgreSQL?
 
 - **Open Source**: Built on PostgreSQL
 - **Generous Free Tier**: 500MB database, 2GB bandwidth
@@ -24,10 +24,10 @@ This guide explains how to set up and configure Supabase as the database backend
 
 ---
 
-## Step 1: Create Supabase Project
+## Step 1: Create PostgreSQL Project
 
 1. **Sign Up/Login**:
-   - Go to [supabase.com](https://supabase.com)
+   - Go to [PostgreSQL.com](https://PostgreSQL.com)
    - Sign up or log in to your account
 
 2. **Create New Project**:
@@ -49,7 +49,7 @@ This guide explains how to set up and configure Supabase as the database backend
 ### Email Submissions Table
 
 1. **Open SQL Editor**:
-   - In Supabase dashboard, click "SQL Editor" in left sidebar
+   - In PostgreSQL dashboard, click "SQL Editor" in left sidebar
    - Click "New Query"
 
 2. **Run Migration**:
@@ -111,7 +111,7 @@ You can create additional tables for:
    - Click "API" in settings menu
 
 2. **Copy Credentials**:
-   - **Project URL**: `https://xxxxx.supabase.co`
+   - **Project URL**: `https://xxxxx.PostgreSQL.co`
    - **anon/public key**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`
    - **service_role key**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` (keep secret!)
 
@@ -127,8 +127,8 @@ You can create additional tables for:
 
 2. **Add Variables**:
    ```
-   SUPABASE_URL=https://xxxxx.supabase.co
-   SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+   PostgreSQL_URL=https://xxxxx.PostgreSQL.co
+   PostgreSQL_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
    ```
 
 3. **Save Changes**
@@ -138,8 +138,8 @@ You can create additional tables for:
 Add to `netlify.toml`:
 ```toml
 [build.environment]
-  SUPABASE_URL = "https://xxxxx.supabase.co"
-  SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  PostgreSQL_URL = "https://xxxxx.PostgreSQL.co"
+  PostgreSQL_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 ```
 
 **Note**: Don't commit secrets to git! Use environment variables.
@@ -150,10 +150,10 @@ Add to `netlify.toml`:
 
 ### For Netlify Functions
 
-The Supabase function requires the `@supabase/supabase-js` package:
+The PostgreSQL function requires the `@PostgreSQL/PostgreSQL-js` package:
 
 ```bash
-npm install @supabase/supabase-js
+npm install @PostgreSQL/PostgreSQL-js
 ```
 
 This should be installed in your project root. Netlify will automatically bundle it with your functions.
@@ -163,11 +163,11 @@ This should be installed in your project root. Netlify will automatically bundle
 ## Step 6: Update Email Submission Function
 
 1. **Rename Function** (optional):
-   - Rename `netlify/functions/submit-email-supabase.js` to `netlify/functions/submit-email.js`
-   - Or update the fetch URL in `index.html` to use `submit-email-supabase`
+   - Rename `netlify/functions/submit-email-PostgreSQL.js` to `netlify/functions/submit-email.js`
+   - Or update the fetch URL in `index.html` to use `submit-email-PostgreSQL`
 
 2. **Verify Function**:
-   - The function is already configured to use Supabase
+   - The function is already configured to use PostgreSQL
    - It will automatically use environment variables
 
 ---
@@ -184,8 +184,8 @@ This should be installed in your project root. Netlify will automatically bundle
 2. **Set Environment Variables Locally**:
    Create `.env` file in project root:
    ```
-   SUPABASE_URL=https://xxxxx.supabase.co
-   SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+   PostgreSQL_URL=https://xxxxx.PostgreSQL.co
+   PostgreSQL_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
    ```
 
 3. **Run Locally**:
@@ -196,7 +196,7 @@ This should be installed in your project root. Netlify will automatically bundle
 4. **Test Form**:
    - Open `http://localhost:8888`
    - Submit test email
-   - Check Supabase dashboard → Table Editor → email_submissions
+   - Check PostgreSQL dashboard → Table Editor → email_submissions
 
 ### Production Testing
 
@@ -207,13 +207,13 @@ This should be installed in your project root. Netlify will automatically bundle
 
 2. **Test on Live Site**:
    - Submit test email from landing page
-   - Check Supabase dashboard to verify email was saved
+   - Check PostgreSQL dashboard to verify email was saved
 
 ---
 
-## Step 8: Verify Data in Supabase
+## Step 8: Verify Data in PostgreSQL
 
-1. **Open Supabase Dashboard**:
+1. **Open PostgreSQL Dashboard**:
    - Go to your project
    - Click "Table Editor" in left sidebar
 
@@ -233,28 +233,28 @@ This should be installed in your project root. Netlify will automatically bundle
 
 ## Frontend Integration (Optional)
 
-If you want to use Supabase directly from the frontend:
+If you want to use PostgreSQL directly from the frontend:
 
-1. **Add Supabase Service**:
-   - The service is already created at `src/services/supabaseService.ts`
+1. **Add PostgreSQL Service**:
+   - The service is already created at `src/services/PostgreSQLService.ts`
    - Initialize it in your app:
 
    ```typescript
-   import { initSupabase } from './services/supabaseService';
+   import { initPostgreSQL } from './services/PostgreSQLService';
 
    // In your app initialization
-   await initSupabase({
-     url: 'https://xxxxx.supabase.co',
+   await initPostgreSQL({
+     url: 'https://xxxxx.PostgreSQL.co',
      anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
    });
    ```
 
 2. **Use Service**:
    ```typescript
-   import { saveEmailToSupabase, checkEmailExists } from './services/supabaseService';
+   import { saveEmailToPostgreSQL, checkEmailExists } from './services/PostgreSQLService';
 
    // Save email
-   await saveEmailToSupabase(email, {
+   await saveEmailToPostgreSQL(email, {
      source: 'landing_page',
      ipAddress: '...',
      userAgent: '...'
@@ -282,7 +282,7 @@ If you want to use Supabase directly from the frontend:
 
 3. **Rate Limiting**:
    - Add rate limiting to prevent spam
-   - Use Supabase's built-in rate limiting or add custom logic
+   - Use PostgreSQL's built-in rate limiting or add custom logic
 
 4. **Email Validation**:
    - Already implemented in the function
@@ -299,7 +299,7 @@ If you want to use Supabase directly from the frontend:
    - Look for errors
 
 2. **Verify Environment Variables**:
-   - Ensure `SUPABASE_URL` and `SUPABASE_ANON_KEY` are set
+   - Ensure `PostgreSQL_URL` and `PostgreSQL_ANON_KEY` are set
    - Check for typos
 
 3. **Check Database Permissions**:
@@ -308,7 +308,7 @@ If you want to use Supabase directly from the frontend:
 
 4. **Test Connection**:
    ```sql
-   -- In Supabase SQL Editor
+   -- In PostgreSQL SQL Editor
    SELECT * FROM email_submissions LIMIT 1;
    ```
 
@@ -339,8 +339,8 @@ If you want to use Supabase directly from the frontend:
 
 ## Resources
 
-- [Supabase Documentation](https://supabase.com/docs)
-- [Supabase JavaScript Client](https://supabase.com/docs/reference/javascript/introduction)
+- [PostgreSQL Documentation](https://PostgreSQL.com/docs)
+- [PostgreSQL JavaScript Client](https://PostgreSQL.com/docs/reference/javascript/introduction)
 - [Netlify Functions](https://docs.netlify.com/functions/overview/)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
@@ -349,11 +349,11 @@ If you want to use Supabase directly from the frontend:
 ## Support
 
 For issues:
-1. Check Supabase dashboard logs
+1. Check PostgreSQL dashboard logs
 2. Check Netlify function logs
 3. Verify environment variables
-4. Test SQL queries in Supabase SQL Editor
-5. Review Supabase documentation
+4. Test SQL queries in PostgreSQL SQL Editor
+5. Review PostgreSQL documentation
 
 ---
 

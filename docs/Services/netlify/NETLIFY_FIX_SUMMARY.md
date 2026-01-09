@@ -36,7 +36,7 @@ BitNexus Landing Page/
 ├── netlify/                ✅ Serverless functions
 │   └── functions/
 │       ├── submit-email.js
-│       ├── submit-email-supabase.js
+│       ├── submit-email-PostgreSQL.js
 │       └── submit-email-airtable.js
 ├── frontend/
 │   ├── build.js            ✅ Updated to handle both locations

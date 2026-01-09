@@ -61,7 +61,7 @@
 - ✅ **NO manual refresh required** - System must auto-sync
 
 **Implementation Requirements**:
-- Use **real-time subscriptions** (Supabase Realtime) when Supabase is available
+- Use **real-time subscriptions** (PostgreSQL Realtime) when PostgreSQL is available
 - Implement **automatic polling** (every 5-10 seconds) as fallback
 - Use **event-driven updates** for immediate UI refresh after database operations
 - Implement **optimistic UI updates** with rollback on failure
@@ -69,7 +69,7 @@
 ### 2. Data Consistency Rules
 
 **MANDATORY RULES**:
-- ✅ **Single Source of Truth**: Database (Supabase) is the authoritative source
+- ✅ **Single Source of Truth**: Database (PostgreSQL) is the authoritative source
 - ✅ **UI MUST always match database state** - No stale data allowed
 - ✅ **Conflict Resolution**: Database state takes precedence over UI state
 - ✅ **Data Validation**: All task operations must validate against database schema
@@ -89,7 +89,7 @@
 - ✅ **Auto-refresh on tab switch** - Reload when switching to Tasks tab
 - ✅ **Auto-refresh on window focus** - Reload when browser window regains focus
 - ✅ **Manual refresh button** - Always available for user-initiated refresh
-- ✅ **Real-time updates** - Use Supabase Realtime subscriptions when available
+- ✅ **Real-time updates** - Use PostgreSQL Realtime subscriptions when available
 
 **Refresh Triggers**:
 1. **Component Mount**: `useEffect` hook on AdminView mount
@@ -97,13 +97,13 @@
 3. **Tab Switch**: When switching to 'tasks' tab in AdminView
 4. **Window Focus**: `window.addEventListener('focus')` event
 5. **Polling Interval**: Every 5-10 seconds (configurable)
-6. **Real-time Events**: Supabase Realtime subscription events
+6. **Real-time Events**: PostgreSQL Realtime subscription events
 7. **Manual Refresh**: User clicks "Refresh" button
 
 ### 4. Error Handling and Recovery
 
 **MANDATORY RULES**:
-- ✅ **Graceful Degradation**: Fallback to localStorage if Supabase unavailable
+- ✅ **Graceful Degradation**: Fallback to localStorage if PostgreSQL unavailable
 - ✅ **Error Notifications**: Display user-friendly error messages
 - ✅ **Retry Logic**: Automatic retry on network failures (3 attempts)
 - ✅ **Data Recovery**: Restore from localStorage if database sync fails
@@ -111,8 +111,8 @@
 - ✅ **Logging**: Log all errors for debugging and monitoring
 
 **Error Handling Flow**:
-1. **Try Supabase first** - Primary data source
-2. **Fallback to localStorage** - If Supabase fails
+1. **Try PostgreSQL first** - Primary data source
+2. **Fallback to localStorage** - If PostgreSQL fails
 3. **Show error notification** - Inform user of sync issues
 4. **Retry automatically** - Attempt to reconnect/sync
 5. **Log error details** - For debugging and monitoring
@@ -124,7 +124,7 @@
 - ✅ **NO direct database access** from components
 - ✅ **NO direct localStorage access** from components
 - ✅ **Centralized task management** - Single service for all task operations
-- ✅ **Consistent API** - Same interface for Supabase and localStorage
+- ✅ **Consistent API** - Same interface for PostgreSQL and localStorage
 
 **Task Service Requirements**:
 - `loadTasks()` - Load tasks from database/localStorage
@@ -153,7 +153,7 @@
 ### 7. Database Schema Requirements
 
 **MANDATORY RULES**:
-- ✅ **`team_tasks` table MUST exist in Supabase**
+- ✅ **`team_tasks` table MUST exist in PostgreSQL**
 - ✅ **Schema MUST match Task interface** in `taskService.ts`
 - ✅ **Indexes MUST be created** for performance (team_member, task_key)
 - ✅ **Timestamps MUST be tracked** (created_at, updated_at)
@@ -176,18 +176,18 @@
 ### 8. LocalStorage Fallback Rules
 
 **MANDATORY RULES**:
-- ✅ **LocalStorage MUST be used when Supabase unavailable**
-- ✅ **LocalStorage data MUST sync to Supabase when connection restored**
+- ✅ **LocalStorage MUST be used when PostgreSQL unavailable**
+- ✅ **LocalStorage data MUST sync to PostgreSQL when connection restored**
 - ✅ **LocalStorage keys MUST follow naming convention**: `bitnexus_tasks_{teamMember}`
 - ✅ **LocalStorage data MUST be validated** before use
-- ✅ **LocalStorage MUST be cleared** after successful Supabase sync
+- ✅ **LocalStorage MUST be cleared** after successful PostgreSQL sync
 
 **Fallback Behavior**:
-1. **Try Supabase first** - Primary data source
-2. **If Supabase fails** - Use localStorage
-3. **When Supabase available** - Sync localStorage to Supabase
+1. **Try PostgreSQL first** - Primary data source
+2. **If PostgreSQL fails** - Use localStorage
+3. **When PostgreSQL available** - Sync localStorage to PostgreSQL
 4. **After sync** - Clear localStorage for that team member
-5. **Continue using Supabase** - Primary source going forward
+5. **Continue using PostgreSQL** - Primary source going forward
 
 ---
 
@@ -198,7 +198,7 @@ User Action (Task Update)
     ↓
 Component calls taskService.toggleTask()
     ↓
-taskService.saveTask() → Try Supabase
+taskService.saveTask() → Try PostgreSQL
     ↓
     ├─ Success → Update UI immediately
     │   ↓
@@ -212,9 +212,9 @@ taskService.saveTask() → Try Supabase
         ↓
         Show error notification
         ↓
-        Retry Supabase sync (background)
+        Retry PostgreSQL sync (background)
         ↓
-        When successful → Sync localStorage to Supabase
+        When successful → Sync localStorage to PostgreSQL
 ```
 
 ---
@@ -222,7 +222,7 @@ taskService.saveTask() → Try Supabase
 ## 📋 Implementation Checklist
 
 ### Before Deploying Admin View Changes:
-- [ ] Real-time subscriptions configured (Supabase Realtime)
+- [ ] Real-time subscriptions configured (PostgreSQL Realtime)
 - [ ] Polling fallback implemented (5-10 second interval)
 - [ ] Auto-refresh on component mount working
 - [ ] Auto-refresh on tab switch working
@@ -240,16 +240,16 @@ taskService.saveTask() → Try Supabase
 - [ ] Conflict resolution implemented
 
 ### Testing Requirements:
-- [ ] Test with Supabase connected
-- [ ] Test with Supabase disconnected (localStorage fallback)
+- [ ] Test with PostgreSQL connected
+- [ ] Test with PostgreSQL disconnected (localStorage fallback)
 - [ ] Test concurrent updates (multiple users)
 - [ ] Test network failures and recovery
 - [ ] Test data consistency after operations
-- [ ] Test real-time updates (if Supabase Realtime enabled)
+- [ ] Test real-time updates (if PostgreSQL Realtime enabled)
 - [ ] Test polling fallback mechanism
 - [ ] Test manual refresh functionality
 - [ ] Test error notifications
-- [ ] Test localStorage sync to Supabase
+- [ ] Test localStorage sync to PostgreSQL
 
 ---
 
@@ -261,7 +261,7 @@ taskService.saveTask() → Try Supabase
 - ❌ **CRITICAL**: Stale data in UI (not refreshing from database)
 - ❌ **CRITICAL**: UI state not matching database state
 - ❌ **CRITICAL**: No error handling for sync failures
-- ❌ **CRITICAL**: No fallback mechanism when Supabase unavailable
+- ❌ **CRITICAL**: No fallback mechanism when PostgreSQL unavailable
 - ❌ **CRITICAL**: Manual refresh required for data updates
 - ❌ **CRITICAL**: No real-time or polling updates
 - ❌ **CRITICAL**: Task operations not going through taskService
@@ -297,17 +297,17 @@ useEffect(() => {
 ```typescript
 export const saveTask = async (task: Task): Promise<boolean> => {
   try {
-    // Try Supabase first
-    if (isSupabaseInitialized()) {
-      const supabase = getSupabaseClient();
-      // ... save to Supabase ...
+    // Try PostgreSQL first
+    if (isPostgreSQLInitialized()) {
+      const PostgreSQL = getPostgreSQLClient();
+      // ... save to PostgreSQL ...
       
       // Trigger UI update event
       window.dispatchEvent(new CustomEvent('task-updated', { detail: task }));
       return true;
     }
   } catch (error) {
-    console.warn('Supabase save failed, falling back to localStorage:', error);
+    console.warn('PostgreSQL save failed, falling back to localStorage:', error);
   }
   
   // Fallback to localStorage
@@ -360,9 +360,9 @@ useEffect(() => {
 - **Task Service**: `frontend/src/services/taskService.ts`
 - **Admin View Component**: `frontend/src/pages/AdminView.tsx`
 - **Task Checklist Component**: `frontend/src/components/TeamTaskChecklist.tsx`
-- **Supabase Service**: `frontend/src/services/supabaseService.ts`
-- **Supabase Setup**: `docs/Services/supabase/SUPABASE_SETUP.md`
-- **Database Schema**: `docs/Services/supabase/supabase-migration.sql`
+- **PostgreSQL Service**: `frontend/src/services/PostgreSQLService.ts`
+- **PostgreSQL Setup**: `docs/Services/PostgreSQL/PostgreSQL_SETUP.md`
+- **Database Schema**: `docs/Services/PostgreSQL/PostgreSQL-migration.sql`
 
 ---
 

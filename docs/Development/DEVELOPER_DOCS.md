@@ -80,7 +80,7 @@
 
 - **n8n Automation**: `backend/n8n/`
   - Workflow configurations
-  - Integration with Supabase, Gemini AI, payment gateways
+  - Integration with PostgreSQL, Gemini AI, payment gateways
   - Commission calculation workflows
   - Notification workflows
   - Data sync workflows
@@ -252,7 +252,7 @@ All team member responsibilities are synchronized with:
 
 ### Jonne's Stack:
 - Node.js (backend)
-- Supabase (database)
+- PostgreSQL (database)
 - Netlify Functions (serverless)
 - n8n API (automation)
 - Google APIs (integration)

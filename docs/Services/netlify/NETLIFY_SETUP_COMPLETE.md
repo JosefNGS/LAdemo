@@ -62,7 +62,7 @@ BitNexus Landing Page/
 
 [functions]
   submit-email.timeout = 10
-  submit-email-supabase.timeout = 10
+  submit-email-PostgreSQL.timeout = 10
 
 [[redirects]]
   from = "/*"
@@ -129,8 +129,8 @@ netlify deploy --prod
 
 In Netlify Dashboard → Site settings → Environment variables:
 
-- `SUPABASE_URL` (if using Supabase)
-- `SUPABASE_ANON_KEY` (if using Supabase)
+- `PostgreSQL_URL` (if using PostgreSQL)
+- `PostgreSQL_ANON_KEY` (if using PostgreSQL)
 - `GEMINI_API_KEY` (optional, for AI features)
 
 ## ✅ Verification Checklist
@@ -150,7 +150,7 @@ Before deploying, verify:
 
 - **Deployment Guide**: `docs/DEPLOYMENT.md`
 - **Netlify Verification**: `docs/NETLIFY_VERIFICATION.md`
-- **Supabase Setup**: `docs/SUPABASE_SETUP.md`
+- **PostgreSQL Setup**: `docs/PostgreSQL_SETUP.md`
 
 ## 🎯 What's Ready
 

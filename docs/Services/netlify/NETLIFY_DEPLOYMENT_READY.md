@@ -18,7 +18,7 @@
 
 2. **`package.json`** ✅
    - Build script: `cd frontend && node build.js` ✅
-   - Dependencies: `esbuild`, `@supabase/supabase-js` ✅
+   - Dependencies: `esbuild`, `@PostgreSQL/PostgreSQL-js` ✅
 
 3. **`frontend/build.js`** ✅
    - **Automatically detects source files** in both locations:
@@ -74,7 +74,7 @@
 
 2. **Runs `npm install`**
    ```
-   ✅ Installs esbuild and @supabase/supabase-js
+   ✅ Installs esbuild and @PostgreSQL/PostgreSQL-js
    ✅ Creates node_modules/
    ```
 

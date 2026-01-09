@@ -96,7 +96,7 @@ This SWOT analysis evaluates BitNexus, a decentralized affiliate revenue platfor
 - **CDN Dependencies**: External services (esm.sh, Tailwind CDN) could impact availability
 - **Blockchain Integration**: MEV bot and staking require blockchain infrastructure (network fees, congestion risks)
 - **Scalability Unknown**: Unproven at scale with large user base (target: 12,400+ users)
-- **Database Dependency**: Relies on Supabase for data persistence
+- **Database Dependency**: Relies on PostgreSQL for data persistence
 
 ### 3. **Regulatory Risks**
 - **Crypto Regulations**: Uncertain regulatory environment for tokens (though ISO certifications help)
@@ -120,7 +120,7 @@ This SWOT analysis evaluates BitNexus, a decentralized affiliate revenue platfor
 ### 6. **Technical Limitations**
 - **AI Cost Management**: AI usage credits (10 NXC per generation) need careful cost control
 - **Performance at Scale**: Unproven performance with thousands of concurrent users
-- **Data Management**: User data, transactions, network trees need robust systems (Supabase helps)
+- **Data Management**: User data, transactions, network trees need robust systems (PostgreSQL helps)
 - **Mobile App Gap**: Currently web-only, mobile apps could expand reach (roadmap item)
 
 ### 7. **Financial Model Questions**

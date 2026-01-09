@@ -526,7 +526,7 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
                     <ul className="space-y-2 text-sm text-gray-300">
                       <li>• Netlify: <code className="bg-white/10 px-2 py-1 rounded">docs/Services/netlify/SERVICE_RULES.md</code></li>
                       <li>• GitHub: <code className="bg-white/10 px-2 py-1 rounded">docs/Services/github/SERVICE_RULES.md</code></li>
-                      <li>• Supabase: <code className="bg-white/10 px-2 py-1 rounded">docs/Services/supabase/SERVICE_RULES.md</code></li>
+                      <li>• PostgreSQL: <code className="bg-white/10 px-2 py-1 rounded">docs/Services/PostgreSQL/SERVICE_RULES.md</code></li>
                       <li>• n8n: <code className="bg-white/10 px-2 py-1 rounded">docs/Services/n8n/SERVICE_RULES.md</code></li>
                     </ul>
                   </div>

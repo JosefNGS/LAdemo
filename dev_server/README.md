@@ -72,8 +72,8 @@ Create `.env` file in this folder (optional):
 ```env
 NODE_ENV=development
 PORT=8000
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_supabase_key
+PostgreSQL_URL=your_PostgreSQL_url
+PostgreSQL_ANON_KEY=your_PostgreSQL_key
 GEMINI_API_KEY=your_gemini_key
 ```
 

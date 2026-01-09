@@ -405,7 +405,7 @@ git push origin feature/your-feature-name
 
 - **Netlify**: `docs/Services/netlify/SERVICE_RULES.md` (⚠️ **ALPHA PHASE** - Migration to AWS planned)
 - **GitHub**: `docs/Services/github/SERVICE_RULES.md`
-- **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
+- **PostgreSQL**: `docs/Services/supabase/SERVICE_RULES.md`
 - **n8n**: `docs/Services/n8n/SERVICE_RULES.md`
 - **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
 - **Admin View & Task Management**: `docs/Services/admin/SERVICE_RULES.md` (CRITICAL - UI/Database sync rules)

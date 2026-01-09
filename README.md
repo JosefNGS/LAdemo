@@ -294,8 +294,8 @@ See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed contribution guideli
 - **[TODO List](./docs/TODO.md)** - Project task tracking and roadmap
 - **[Deployment Guide](./docs/DEPLOYMENT.md)** - Netlify deployment instructions
 - **[API Setup](./docs/API_SETUP.md)** - Gemini API configuration guide
-- **[Supabase Setup](./docs/SUPABASE_SETUP.md)** - Complete Supabase database integration guide
-- **[Supabase Quick Start](./docs/SUPABASE_QUICK_START.md)** - Get started with Supabase in 5 minutes
+- **[PostgreSQL Setup](./docs/PostgreSQL_SETUP.md)** - Complete PostgreSQL database integration guide
+- **[PostgreSQL Quick Start](./docs/PostgreSQL_QUICK_START.md)** - Get started with PostgreSQL in 5 minutes
 - **[Email Collection Setup](./docs/EMAIL_COLLECTION_SETUP.md)** - Database options for email signups
 - **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
 
@@ -369,7 +369,7 @@ BitNexus Landing Page/
 │   │   │   └── CartContext.tsx # Shopping cart state
 │   │   └── services/        # API services
 │   │       ├── geminiService.ts    # AI service
-│   │       └── supabaseService.ts # Supabase database client
+│   │       └── PostgreSQLService.ts # PostgreSQL database client
 │   ├── public/             # Static assets
 │   │   └── _redirects      # Netlify SPA routing
 │   ├── build.js            # Production build script
@@ -380,7 +380,7 @@ BitNexus Landing Page/
 │   │   └── functions/      # Serverless functions
 │   │       ├── submit-email.js
 │   │       ├── submit-email-airtable.js
-│   │       └── submit-email-supabase.js
+│   │       └── submit-email-PostgreSQL.js
 │   ├── n8n/                # n8n automation service (planned)
 │   │   └── workflows/      # n8n workflow configurations
 │   ├── discourse/          # Discourse forum service (planned)
@@ -410,7 +410,7 @@ BitNexus Landing Page/
 │   │       └── NXC_CREDITS_EXPLANATION.md
 │   ├── Services/                        # Service-specific documentation (one folder per service)
 │   │   ├── netlify/                     # Netlify service documentation
-│   │   ├── supabase/                    # Supabase service documentation
+│   │   ├── PostgreSQL/                    # PostgreSQL service documentation
 │   │   ├── github/                      # GitHub service documentation
 │   │   ├── n8n/                         # n8n automation service documentation (planned)
 │   │   └── discourse/                    # Discourse forum service documentation (planned)
@@ -441,7 +441,7 @@ BitNexus Landing Page/
 
 ### Backend
 - **Netlify Functions** - Serverless backend functions (Node.js 20)
-- **Supabase** - PostgreSQL database with real-time capabilities
+- **PostgreSQL** - PostgreSQL database with real-time capabilities
 
 ### Future/Planned Technologies
 - **Erlang/Elixir** - Blockchain ledger implementation (custom transparency ledger)

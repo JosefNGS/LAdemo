@@ -7,7 +7,7 @@
 ### Production Dependencies
 ```json
 {
-  "@supabase/supabase-js": "^2.39.0",
+  "@PostgreSQL/PostgreSQL-js": "^2.39.0",
   "esbuild": "^0.19.0",
   "react": "^19.0.0",
   "react-dom": "^19.0.0",
@@ -41,8 +41,8 @@ These are also loaded via CDN in `index.html` (for development):
 - **Latest**: 0.24.x available (optional upgrade)
 - **Action**: Current version works fine; upgrade optional
 
-### ✅ @supabase/supabase-js (^2.39.0)
-- **Purpose**: Supabase client for email collection
+### ✅ @PostgreSQL/PostgreSQL-js (^2.39.0)
+- **Purpose**: PostgreSQL client for email collection
 - **Status**: Stable, working correctly
 - **Latest**: 2.47.x available (optional upgrade)
 - **Action**: Current version works fine; upgrade optional
@@ -80,7 +80,7 @@ npm audit
 npm update
 
 # Update to latest major versions (breaking changes possible)
-npm install @supabase/supabase-js@latest esbuild@latest
+npm install @PostgreSQL/PostgreSQL-js@latest esbuild@latest
 ```
 
 ## Node.js Version
@@ -109,7 +109,7 @@ npm audit fix --force
 1. ✅ **Current setup is working** - no urgent updates needed
 2. 🔄 **Optional**: Update to latest patch versions: `npm update`
 3. 🔄 **Optional**: Upgrade to esbuild 0.24.x for latest features
-4. 🔄 **Optional**: Upgrade to @supabase/supabase-js 2.47.x
+4. 🔄 **Optional**: Upgrade to @PostgreSQL/PostgreSQL-js 2.47.x
 5. ⚠️ **Security**: Run `npm audit fix` to address the moderate vulnerability
 
 ## Update Strategy
@@ -123,7 +123,7 @@ npm update
 ### Major Version Updates (Test First)
 ```bash
 # Update to latest major versions
-npm install @supabase/supabase-js@latest esbuild@latest
+npm install @PostgreSQL/PostgreSQL-js@latest esbuild@latest
 
 # Test build after updating
 npm run build

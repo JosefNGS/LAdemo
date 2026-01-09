@@ -7,7 +7,7 @@ This directory contains all backend services, organized with one folder per serv
 - **`netlify/`** - Netlify serverless functions
   - `functions/` - Serverless function files
 - **Future Services** (one folder per service):
-  - `supabase/` - Supabase database service
+  - `PostgreSQL/` - PostgreSQL database service
   - `n8n/` - n8n automation service
   - `discourse/` - Discourse forum service
   - `erlang-ledger/` - Erlang/Elixir blockchain ledger
@@ -16,7 +16,7 @@ This directory contains all backend services, organized with one folder per serv
 ## Service Organization Rules
 
 - **One folder per service** - No mixing of services
-- **Service folders named after service** (e.g., `netlify/`, `supabase/`, `n8n/`)
+- **Service folders named after service** (e.g., `netlify/`, `PostgreSQL/`, `n8n/`)
 - **Each service has its own documentation** in `docs/Services/[service-name]/`
 - **Each service should have README.md and CHANGELOG.md** in its folder
 

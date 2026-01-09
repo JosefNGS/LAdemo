@@ -1,6 +1,6 @@
-# Supabase Service Rules Changelog
+# PostgreSQL Service Rules Changelog
 
-All notable changes to Supabase service rules will be documented in this file.
+All notable changes to PostgreSQL service rules will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -17,13 +17,13 @@ Every changelog entry MUST track who made the change:
 ## [Unreleased]
 
 ### Added
-- Initial Supabase service rules changelog [Cursor]
+- Initial PostgreSQL service rules changelog [Cursor]
 
 ---
 
 ## Notes
 
-- **Location**: `rules/services/supabase/CHANGELOG.md`
-- **Source**: Rules extracted from `docs/Services/supabase/SERVICE_RULES.md`
+- **Location**: `rules/services/PostgreSQL/CHANGELOG.md`
+- **Source**: Rules extracted from `docs/Services/PostgreSQL/SERVICE_RULES.md`
 - **Maintained By**: Development Team
-- **Update Frequency**: Update when Supabase service rules change
+- **Update Frequency**: Update when PostgreSQL service rules change

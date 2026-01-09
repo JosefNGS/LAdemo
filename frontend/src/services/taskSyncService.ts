@@ -6,7 +6,7 @@
 
 import { loadTaskFile, ParsedTask } from './taskFileService';
 import { loadTasks, saveTask, Task } from './taskService';
-import { isSupabaseInitialized, getSupabaseClient } from './supabaseService';
+import { isPostgreSQLInitialized, getPostgreSQLClient } from './postgresqlService';
 
 /**
  * Sync tasks from markdown file to database
@@ -68,9 +68,9 @@ export const syncTasksFromMarkdown = async (teamMemberId: string): Promise<{ syn
       if (!markdownTaskKeys.has(existingTask.taskKey)) {
         // Task removed from markdown - remove from database
         try {
-          if (isSupabaseInitialized()) {
-            const supabase = getSupabaseClient();
-            await supabase
+          if (isPostgreSQLInitialized()) {
+            const postgresql = getPostgreSQLClient();
+            await postgresql
               .from('team_tasks')
               .delete()
               .eq('team_member', teamMemberId)

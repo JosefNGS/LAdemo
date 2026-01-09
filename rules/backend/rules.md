@@ -21,11 +21,11 @@
 ### Backend Location
 - **All backend files MUST be in**: `backend/`
 - **One folder per service** - No mixing of services
-- **Service folders named after service** (e.g., `netlify/`, `supabase/`, `n8n/`)
+- **Service folders named after service** (e.g., `netlify/`, `PostgreSQL/`, `n8n/`)
 
 ### Service Organization
 - **Netlify Functions**: `backend/netlify/functions/` - Serverless functions
-- **Supabase**: `backend/supabase/` - Database service (when implemented)
+- **PostgreSQL**: `backend/PostgreSQL/` - Database service (when implemented)
 - **n8n**: `backend/n8n/` - Workflow automation service
 - **Discourse**: `backend/discourse/` - Forum service
 - **Erlang/Elixir Ledger**: `backend/erlang-ledger/` - Blockchain ledger

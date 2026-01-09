@@ -143,7 +143,7 @@
 
 **Recommendation**: ⚠️ **TEMPORARY** - Use for alpha phase, migrate to AWS for production
 
-#### Supabase (PostgreSQL)
+#### PostgreSQL (PostgreSQL)
 **Evaluation Score**: ⭐⭐⭐⭐⭐ (5/5)
 
 **Strengths**:
@@ -246,7 +246,7 @@
 - **Monitoring**: Standard PostgreSQL monitoring tools
 
 **Integration & Compatibility**: ⭐⭐⭐⭐⭐
-- **Existing Stack**: Perfect integration with Supabase (PostgreSQL)
+- **Existing Stack**: Perfect integration with PostgreSQL (PostgreSQL)
 - **APIs**: Standard PostgreSQL APIs
 - **Data Format**: Standard vector formats (arrays, embeddings)
 - **Migration**: Easy (PostgreSQL extension)
@@ -264,9 +264,9 @@
 - **Standards**: Based on PostgreSQL (long-term support)
 
 **Key Advantages for BitNexus**:
-- ✅ **Familiar Stack**: Team already uses PostgreSQL (Supabase)
+- ✅ **Familiar Stack**: Team already uses PostgreSQL (PostgreSQL)
 - ✅ **Cost-Effective**: No additional database infrastructure needed
-- ✅ **Integration**: Seamless with existing Supabase setup
+- ✅ **Integration**: Seamless with existing PostgreSQL setup
 - ✅ **Flexibility**: Can combine relational and vector data
 - ✅ **Proven**: Used by major companies for vector search
 

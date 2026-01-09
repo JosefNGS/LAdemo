@@ -28,8 +28,8 @@ This document tracks tasks and improvements needed for the rules directory.
 - [ ] Update rules if deployment process changes
 - [ ] Update rules if function structure changes
 
-### Supabase Service
-- [ ] Review `services/supabase/rules.md` when Supabase is implemented
+### PostgreSQL Service
+- [ ] Review `services/PostgreSQL/rules.md` when PostgreSQL is implemented
 - [ ] Update rules when database schema is finalized
 - [ ] Update rules when migration process is established
 

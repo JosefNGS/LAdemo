@@ -30,14 +30,14 @@
 - ✅ **Cost-Effective**: Open source, no licensing fees
 - ✅ **Proven**: Used by WhatsApp, Bet365, Klarna at scale
 - ✅ **Integration**: Native integration with Erlang/Elixir ledger
-- ✅ **Familiar**: PostgreSQL already in use (Supabase)
+- ✅ **Familiar**: PostgreSQL already in use (PostgreSQL)
 
 **Stack Components**:
 1. **Frontend**: React 19 + TypeScript + Tailwind CSS (current - keep)
 2. **Backend API**: Phoenix + Elixir (new - for high-concurrency services)
 3. **Hosting**: Netlify (current - **ALPHA PHASE**, migrate to AWS servers)
 4. **Serverless**: Netlify Functions (current - **ALPHA PHASE**, migrate to AWS Lambda/ECS)
-5. **Primary Database**: Supabase PostgreSQL (current - keep)
+5. **Primary Database**: PostgreSQL PostgreSQL (current - keep)
 6. **Vector Database**: PostgreSQL + pgvector (new - for semantic search)
 7. **Blockchain Ledger**: Erlang/Elixir + BEAM VM (new - for transparency)
 8. **Automation**: n8n (planned - for workflows)
@@ -136,7 +136,7 @@
 
 ## Database Suggestions
 
-### Primary Database: Supabase PostgreSQL (Current) ⭐⭐⭐⭐⭐
+### Primary Database: PostgreSQL PostgreSQL (Current) ⭐⭐⭐⭐⭐
 
 **Recommendation**: ✅ **KEEP** - Excellent choice, continue using
 
@@ -158,7 +158,7 @@
 **Advantages**:
 - ✅ Familiar stack (PostgreSQL)
 - ✅ Cost-effective (no additional infrastructure)
-- ✅ Excellent integration with Supabase
+- ✅ Excellent integration with PostgreSQL
 - ✅ Can combine relational and vector data
 - ✅ Open source
 - ✅ Good performance with proper indexes
@@ -420,8 +420,8 @@
 - Expand use cases
 
 **Migration Strategy**:
-- ✅ Start with dedicated instance (separate from Supabase)
-- ✅ Sync data between Supabase and vector DB
+- ✅ Start with dedicated instance (separate from PostgreSQL)
+- ✅ Sync data between PostgreSQL and vector DB
 - ✅ Gradually migrate search functionality
 - ✅ Monitor performance and costs
 

@@ -116,7 +116,7 @@ const TaskChecklistView: React.FC<TaskChecklistViewProps> = ({ teamMember, setAc
           <strong>Source:</strong> docs/Development/{teamMember.toUpperCase()}_TASKS.md
         </p>
         <p className="text-xs text-gray-500 mt-1">
-          Tasks are loaded directly from the task file. Checkboxes sync with localStorage/Supabase.
+          Tasks are loaded directly from the task file. Checkboxes sync with localStorage/PostgreSQL.
         </p>
       </div>
 

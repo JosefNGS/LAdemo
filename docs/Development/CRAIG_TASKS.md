@@ -146,7 +146,7 @@
 - [ ] Review Jonne's proposed PostgreSQL/vector designs and ensure alignment with `docs/Core Documentation/TECH_STACK.md`
 - [ ] Decide on self-hosted vs managed vector database approach and document the decision
 - [ ] Define production readiness checklist for the chosen vector database (backups, monitoring, security, performance)
-- [ ] Document final vector database choice and rationale in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/supabase/`
+- [ ] Document final vector database choice and rationale in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/PostgreSQL/`
 
 #### Discourse (Forum) Setup
 - [ ] Create `backend/discourse/` folder structure
@@ -160,7 +160,7 @@
 - [ ] Create `backend/n8n/` folder structure
 - [ ] n8n installation and configuration
 - [ ] Workflow configurations
-- [ ] Integration with Supabase
+- [ ] Integration with PostgreSQL
 - [ ] Integration with Gemini AI
 - [ ] Integration with payment gateways
 - [ ] Commission calculation workflows

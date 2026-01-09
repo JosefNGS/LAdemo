@@ -28,16 +28,16 @@ services:
       - bitnexus-dev-network
 
   # Future services can be added here:
-  # supabase:
-  #   image: supabase/postgres:latest
-  #   container_name: bitnexus-dev-supabase
+  # PostgreSQL:
+  #   image: PostgreSQL/postgres:latest
+  #   container_name: bitnexus-dev-PostgreSQL
   #   ports:
   #     - "5432:5432"
   #   environment:
   #     - POSTGRES_PASSWORD=your_password
   #     - POSTGRES_DB=bitnexus_dev
   #   volumes:
-  #     - supabase-data:/var/lib/postgresql/data
+  #     - PostgreSQL-data:/var/lib/postgresql/data
   #   networks:
   #     - bitnexus-dev-network
 
@@ -46,5 +46,5 @@ networks:
     driver: bridge
 
 # volumes:
-#   supabase-data:
+#   PostgreSQL-data:
 

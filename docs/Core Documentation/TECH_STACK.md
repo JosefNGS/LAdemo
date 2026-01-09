@@ -36,7 +36,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 - **Backend**: Netlify Serverless Functions (Node.js 20) - **ALPHA PHASE**, Planned: AWS servers + Phoenix/Elixir + Go (Golang) for high-performance services
 - **Automation**: n8n (workflow automation and integrations)
 - **Blockchain Ledger**: Erlang/Elixir + BEAM VM (custom transparency ledger)
-- **Database**: Supabase (PostgreSQL)
+- **Database**: PostgreSQL (PostgreSQL)
 - **Planned Backend Framework**: Elixir + Phoenix for high-concurrency API and ledger services
 - **Planned Vector Database**: Additional PostgreSQL instance with vector support (e.g., `pgvector`) for embeddings and similarity search
 - **AI**: Google Gemini API
@@ -66,7 +66,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 │  ┌──────┴──────────┐      ┌───────┴──────────┐         │
 │  │  CDN Services   │      │  External APIs   │         │
 │  │  • React ESM    │      │  • Gemini AI     │         │
-│  │  • Tailwind CSS │      │  • Supabase      │         │
+│  │  • Tailwind CSS │      │  • PostgreSQL      │         │
 │  │  • Recharts     │      │  • QR Server     │         │
 │  │  • Google Fonts │      │  • Zoom          │         │
 │  └─────────────────┘      └──────────────────┘         │
@@ -99,7 +99,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 2. **Application Layer**: React Components, Services, State Management
 3. **API Layer**: Netlify Functions, Go Services, External API Integrations
 4. **Automation Layer**: n8n (workflow automation, integrations, webhooks)
-5. **Data Layer**: Supabase (PostgreSQL), Blockchain (Smart Contracts + Custom Ledger)
+5. **Data Layer**: PostgreSQL (PostgreSQL), Blockchain (Smart Contracts + Custom Ledger)
 6. **Blockchain Layer**: Erlang/Elixir Ledger (BEAM VM), P2P Network, Consensus
 7. **Infrastructure Layer**: Netlify, CDN, Serverless Functions
 
@@ -236,9 +236,9 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
      - Integration: Airtable API
      - Timeout: 10 seconds
   
-  3. **submit-email-supabase.js**
-     - Purpose: Submit email to Supabase database
-     - Integration: Supabase Client (@supabase/supabase-js)
+  3. **submit-email-PostgreSQL.js**
+     - Purpose: Submit email to PostgreSQL database
+     - Integration: PostgreSQL Client (@PostgreSQL/PostgreSQL-js)
      - Timeout: 10 seconds
      - Data: Email, metadata
 
@@ -589,9 +589,9 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 ### Database Services
 
-#### Supabase
+#### PostgreSQL
 - **Purpose**: PostgreSQL database with real-time capabilities
-- **Client**: `@supabase/supabase-js` (v2.39.0)
+- **Client**: `@PostgreSQL/PostgreSQL-js` (v2.39.0)
 - **Features**:
   - PostgreSQL database
   - Real-time subscriptions
@@ -599,11 +599,11 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Authentication (future)
   - Storage (future)
 - **Usage**:
-  - Email collection (`submit-email-supabase.js`)
+  - Email collection (`submit-email-PostgreSQL.js`)
   - User data storage
   - Product data storage
   - Transaction records
-- **Location**: `backend/netlify/functions/submit-email-supabase.js`
+- **Location**: `backend/netlify/functions/submit-email-PostgreSQL.js`
 
 #### Airtable (Alternative)
 - **Purpose**: Alternative database/CRM for email collection
@@ -628,7 +628,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Error handling and retries
   - Workflow versioning
 - **Use Cases**:
-  - **API Integrations**: Connect multiple services (Supabase, Gemini AI, payment gateways)
+  - **API Integrations**: Connect multiple services (PostgreSQL, Gemini AI, payment gateways)
   - **Workflow Automation**: Automate repetitive tasks
   - **Data Processing**: Transform and process data between systems
   - **Webhook Handling**: Process incoming webhooks from external services
@@ -639,7 +639,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - **User Onboarding**: Automated user onboarding workflows
   - **Content Publishing**: Automated content generation and publishing
 - **Integration Points**:
-  - **Supabase**: Database operations, triggers, webhooks
+  - **PostgreSQL**: Database operations, triggers, webhooks
   - **Google Gemini API**: AI content generation workflows
   - **Email Services**: Automated email sending (transactional, marketing)
   - **Payment Gateways**: Payment processing workflows
@@ -701,7 +701,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 ### Primary Database
 
-#### Supabase (PostgreSQL)
+#### PostgreSQL (PostgreSQL)
 - **Type**: PostgreSQL database
 - **Features**:
   - Relational database
@@ -732,7 +732,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Clustering and segmentation of users and affiliates
   - Anomaly detection and pattern analysis
 - **Notes**:
-  - Operates alongside Supabase as an additional specialized database
+  - Operates alongside PostgreSQL as an additional specialized database
   - Designed for read-heavy, vector-search workloads
 
 ### Data Models (Inferred)
@@ -766,7 +766,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 ### Storage (Future)
 
-- **Supabase Storage**: File uploads (marketing assets, user content)
+- **PostgreSQL Storage**: File uploads (marketing assets, user content)
 - **CDN Storage**: Static assets, images
 
 ---
@@ -864,7 +864,7 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 - **Consensus**: RAFT or custom consensus mechanism
 - **Storage**: Mnesia (distributed database) or persistent storage
 - **API Layer**: REST API or GraphQL for frontend integration
-- **Integration**: Connect to Supabase for transaction metadata
+- **Integration**: Connect to PostgreSQL for transaction metadata
 
 ### Security Audits
 - **CertiK**: Smart contract security audit (99.98% score, December 2024)
@@ -1050,7 +1050,7 @@ frontend/dist/
 - **Execution**: Fast execution with Node.js 20
 
 #### Database Performance
-- **Connection Pooling**: Supabase handles connection pooling
+- **Connection Pooling**: PostgreSQL handles connection pooling
 - **Indexing**: Optimized database indexes
 - **Query Optimization**: Efficient queries for real-time features
 
@@ -1098,8 +1098,8 @@ frontend/dist/
 
 ### Production Dependencies
 
-#### @supabase/supabase-js (v2.39.0)
-- **Purpose**: Supabase client for database operations
+#### @PostgreSQL/PostgreSQL-js (v2.39.0)
+- **Purpose**: PostgreSQL client for database operations
 - **Usage**: Database queries, real-time subscriptions
 - **Location**: Used in serverless functions
 
@@ -1209,7 +1209,7 @@ frontend/dist/
 - **HTTPS**: Automatic HTTPS
 - **Easy Setup**: Simple configuration
 
-### Why Supabase?
+### Why PostgreSQL?
 - **PostgreSQL**: Robust relational database
 - **Real-Time**: Built-in real-time subscriptions
 - **Open Source**: Open source and self-hostable
@@ -1390,7 +1390,7 @@ BitNexus Landing Page/
 │   │   └── functions/             # Serverless functions
 │   │       ├── submit-email.js
 │   │       ├── submit-email-airtable.js
-│   │       └── submit-email-supabase.js
+│   │       └── submit-email-PostgreSQL.js
 │   ├── n8n/                       # n8n automation service (planned)
 │   │   └── workflows/             # n8n workflow configurations
 │   ├── discourse/                 # Discourse forum service (planned)
@@ -1416,16 +1416,16 @@ BitNexus Landing Page/
   - Or: Environment variable
 
 #### Optional Variables
-- **SUPABASE_URL**: Supabase project URL
-- **SUPABASE_ANON_KEY**: Supabase anonymous key
+- **PostgreSQL_URL**: PostgreSQL project URL
+- **PostgreSQL_ANON_KEY**: PostgreSQL anonymous key
 - **AIRTABLE_API_KEY**: Airtable API key (if using Airtable)
 
 ### Production Environment (Netlify)
 
 #### Required Variables
 - **GEMINI_API_KEY**: Google Gemini API key (set in Netlify dashboard)
-- **SUPABASE_URL**: Supabase project URL
-- **SUPABASE_ANON_KEY**: Supabase anonymous key
+- **PostgreSQL_URL**: PostgreSQL project URL
+- **PostgreSQL_ANON_KEY**: PostgreSQL anonymous key
 
 #### Security
 - **API Keys**: Stored in Netlify environment variables
@@ -1523,7 +1523,7 @@ BitNexus Landing Page/
 ### Data Security
 
 #### Encryption
-- **At Rest**: Database encryption (Supabase)
+- **At Rest**: Database encryption (PostgreSQL)
 - **In Transit**: HTTPS for all communications
 - **Sensitive Data**: Encrypt sensitive user data
 
@@ -1551,7 +1551,7 @@ BitNexus Landing Page/
 #### Performance Monitoring
 - **Page Load Times**: Monitor via browser DevTools
 - **Function Execution**: Monitor via Netlify dashboard
-- **Database Performance**: Monitor via Supabase dashboard
+- **Database Performance**: Monitor via PostgreSQL dashboard
 
 #### Error Monitoring
 - **Future**: Integrate error tracking service (Sentry)
@@ -1566,12 +1566,12 @@ BitNexus Landing Page/
 
 #### Horizontal Scaling
 - **Serverless**: Automatic scaling via Netlify
-- **Database**: Supabase handles database scaling
+- **Database**: PostgreSQL handles database scaling
 - **CDN**: Global CDN provides scaling
 
 #### Vertical Scaling
 - **Function Memory**: Increase if needed (Netlify limits)
-- **Database**: Upgrade Supabase plan if needed
+- **Database**: Upgrade PostgreSQL plan if needed
 - **CDN**: Netlify CDN scales automatically
 
 ### Migration Paths
@@ -1584,7 +1584,7 @@ BitNexus Landing Page/
 5. Monitor and optimize
 
 #### Future Migrations
-- **Database Migration**: Supabase migration tools
+- **Database Migration**: PostgreSQL migration tools
 - **Code Migration**: Git-based deployment
 - **Configuration Migration**: Environment variables
 
@@ -1614,8 +1614,8 @@ BitNexus Landing Page/
 - **Serverless Functions**: Included at no extra cost
 - **CDN**: Global CDN included
 
-#### Supabase vs Firebase vs AWS RDS
-- **Supabase**: Chosen for PostgreSQL and real-time features
+#### PostgreSQL vs Firebase vs AWS RDS
+- **PostgreSQL**: Chosen for PostgreSQL and real-time features
 - **Open Source**: Self-hostable if needed
 - **Developer Experience**: Excellent documentation
 

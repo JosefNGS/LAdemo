@@ -12,7 +12,7 @@ This directory contains rules extracted from service-specific documentation in `
 
 - **`admin/`** - Admin View & Task Management service rules
 - **`netlify/`** - Netlify deployment and serverless functions rules
-- **`supabase/`** - Supabase database service rules
+- **`PostgreSQL/`** - PostgreSQL database service rules
 - **`github/`** - GitHub version control and workflow rules
 - **`n8n/`** - n8n automation workflow rules
 - **`discourse/`** - Discourse forum service rules

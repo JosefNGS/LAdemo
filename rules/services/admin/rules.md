@@ -60,7 +60,7 @@
 - ✅ **NO manual refresh required** - System must auto-sync
 
 **Implementation Requirements**:
-- Use **real-time subscriptions** (Supabase Realtime) when Supabase is available
+- Use **real-time subscriptions** (PostgreSQL Realtime) when PostgreSQL is available
 - Implement **automatic polling** (every 5-10 seconds) as fallback
 - Use **event-driven updates** for immediate UI refresh after database operations
 - Implement **optimistic UI updates** with rollback on failure
@@ -68,7 +68,7 @@
 ### 2. Data Consistency Rules
 
 **MANDATORY RULES**:
-- ✅ **Single Source of Truth**: Database (Supabase) is the authoritative source
+- ✅ **Single Source of Truth**: Database (PostgreSQL) is the authoritative source
 - ✅ **UI MUST always match database state** - No stale data allowed
 - ✅ **Conflict Resolution**: Database state takes precedence over UI state
 - ✅ **Data Validation**: All task operations must validate against database schema
@@ -82,12 +82,12 @@
 - ✅ **Auto-refresh on tab switch** - Reload when switching to Tasks tab
 - ✅ **Auto-refresh on window focus** - Reload when browser window regains focus
 - ✅ **Manual refresh button** - Always available for user-initiated refresh
-- ✅ **Real-time updates** - Use Supabase Realtime subscriptions when available
+- ✅ **Real-time updates** - Use PostgreSQL Realtime subscriptions when available
 
 ### 4. Error Handling and Recovery
 
 **MANDATORY RULES**:
-- ✅ **Graceful Degradation**: Fallback to localStorage if Supabase unavailable
+- ✅ **Graceful Degradation**: Fallback to localStorage if PostgreSQL unavailable
 - ✅ **Error Notifications**: Display user-friendly error messages
 - ✅ **Retry Logic**: Automatic retry on network failures (3 attempts)
 - ✅ **Data Recovery**: Restore from localStorage if database sync fails
@@ -101,16 +101,16 @@
 - ✅ **NO direct database access** from components
 - ✅ **NO direct localStorage access** from components
 - ✅ **Centralized task management** - Single service for all task operations
-- ✅ **Consistent API** - Same interface for Supabase and localStorage
+- ✅ **Consistent API** - Same interface for PostgreSQL and localStorage
 
 ### 6. LocalStorage Fallback Rules
 
 **MANDATORY RULES**:
-- ✅ **LocalStorage MUST be used when Supabase unavailable**
-- ✅ **LocalStorage data MUST sync to Supabase when connection restored**
+- ✅ **LocalStorage MUST be used when PostgreSQL unavailable**
+- ✅ **LocalStorage data MUST sync to PostgreSQL when connection restored**
 - ✅ **LocalStorage keys MUST follow naming convention**: `bitnexus_tasks_{teamMember}`
 - ✅ **LocalStorage data MUST be validated** before use
-- ✅ **LocalStorage MUST be cleared** after successful Supabase sync
+- ✅ **LocalStorage MUST be cleared** after successful PostgreSQL sync
 
 ## CRITICAL Violations
 
@@ -120,7 +120,7 @@
 - ❌ **CRITICAL**: Stale data in UI (not refreshing from database)
 - ❌ **CRITICAL**: UI state not matching database state
 - ❌ **CRITICAL**: No error handling for sync failures
-- ❌ **CRITICAL**: No fallback mechanism when Supabase unavailable
+- ❌ **CRITICAL**: No fallback mechanism when PostgreSQL unavailable
 - ❌ **CRITICAL**: Manual refresh required for data updates
 - ❌ **CRITICAL**: No real-time or polling updates
 - ❌ **CRITICAL**: Task operations not going through taskService
@@ -131,5 +131,5 @@
 - **Task Service**: `frontend/src/services/taskService.ts`
 - **Admin View Component**: `frontend/src/pages/AdminView.tsx`
 - **Task Checklist Component**: `frontend/src/components/TeamTaskChecklist.tsx`
-- **Supabase Service**: `frontend/src/services/supabaseService.ts`
+- **PostgreSQL Service**: `frontend/src/services/PostgreSQLService.ts`
 - **Complete Rules**: `docs/Services/admin/SERVICE_RULES.md`

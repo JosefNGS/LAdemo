@@ -319,7 +319,7 @@
 
 **Backend Services**:
 - Netlify serverless functions
-- Supabase (database and authentication)
+- PostgreSQL (database and authentication)
 - n8n (workflow automation)
 - Discourse (community forum)
 - Erlang/Elixir Ledger (blockchain ledger)

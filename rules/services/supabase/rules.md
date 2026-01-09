@@ -1,8 +1,8 @@
-# Supabase Service Rules
+# PostgreSQL Service Rules
 
 **⚠️ PRIMARY GUIDE**: Always refer to `instructions/.agent-os/` and `instructions/BMAD-METHOD/` for complete framework documentation and guidelines.
 
-**Source**: `docs/Services/supabase/SERVICE_RULES.md`
+**Source**: `docs/Services/PostgreSQL/SERVICE_RULES.md`
 
 **Complete Framework Documentation**:
 - **Agent OS**: `instructions/.agent-os/` - Security rules, code standards, database best practices
@@ -17,14 +17,14 @@
 ## Critical Rules
 
 ### Service Location
-- **All Supabase service files MUST be in**: `backend/supabase/` (when implemented)
-- **Database migrations**: `backend/supabase/migrations/`
+- **All PostgreSQL service files MUST be in**: `backend/postgresql/` (when implemented)
+- **Database migrations**: `backend/postgresql/migrations/`
 - **One folder per service** - No mixing with other services
 
 ### File Organization
-- **Migrations**: `backend/supabase/migrations/*.sql`
-- **Configuration**: `backend/supabase/config/`
-- **Documentation**: `docs/Services/supabase/`
+- **Migrations**: `backend/postgresql/migrations/*.sql`
+- **Configuration**: `backend/postgresql/config/`
+- **Documentation**: `docs/Services/postgresql/`
 
 ### Database Rules
 - **Schema changes** require migrations
@@ -40,7 +40,7 @@
 
 ## CRITICAL Rules
 
-- ✅ **Migrations in `backend/supabase/migrations/`** - Correct location
+- ✅ **Migrations in `backend/postgresql/migrations/`** - Correct location
 - ✅ **Version migrations** - Always version and document
 - ✅ **Test migrations** - Test in development first
 - ✅ **Backup before changes** - Always backup before major schema changes

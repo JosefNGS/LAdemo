@@ -43,7 +43,7 @@ This document provides guidance for creating system architecture diagrams that v
 **Components**:
 - **Frontend Layer**: React 19.2.3, TypeScript, Tailwind CSS
 - **Backend Layer**: Node.js, API services
-- **Database Layer**: Supabase (PostgreSQL)
+- **Database Layer**: PostgreSQL (PostgreSQL)
 - **Blockchain Layer**: Ethereum/Solana integration
 - **AI Services**: Content Generator, NexusHub AI
 - **External Services**: Payment processing, analytics
@@ -106,7 +106,7 @@ This document provides guidance for creating system architecture diagrams that v
 **Hosting**:
 - **Frontend**: Netlify (CDN, edge functions)
 - **Backend**: Cloud infrastructure (AWS/GCP/Azure)
-- **Database**: Supabase (managed PostgreSQL)
+- **Database**: PostgreSQL (managed PostgreSQL)
 - **Blockchain**: Ethereum/Solana networks
 
 **Services**:
@@ -137,7 +137,7 @@ This document provides guidance for creating system architecture diagrams that v
 - Node.js
 - Express/Fastify
 - TypeScript
-- Supabase (database)
+- PostgreSQL (database)
 - Blockchain SDKs
 
 **Infrastructure**:

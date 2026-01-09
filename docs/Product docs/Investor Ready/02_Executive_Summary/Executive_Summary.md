@@ -164,7 +164,7 @@ BitNexus eliminates the complexity of using multiple platforms by providing:
 │  │         External Integrations                │      │
 │  ├──────────────────────────────────────────────┤      │
 │  │  • Google Gemini API (AI Content)            │      │
-│  │  • Supabase (Database)                       │      │
+│  │  • PostgreSQL (Database)                       │      │
 │  │  • Blockchain (Smart Contracts)              │      │
 │  │  • QR Server API (QR Code Generation)        │      │
 │  │  • Zoom (Live Training Events)               │      │
@@ -178,7 +178,7 @@ BitNexus eliminates the complexity of using multiple platforms by providing:
 - **Styling**: Tailwind CSS (glassmorphism design system)
 - **Charts & Visualization**: Recharts 3.6.0
 - **AI Integration**: Google Gemini API (@google/genai)
-- **Database**: Supabase (PostgreSQL with real-time capabilities)
+- **Database**: PostgreSQL (PostgreSQL with real-time capabilities)
 - **Serverless Functions**: Netlify Functions (Node.js)
 - **Build System**: ES Modules with on-the-fly TypeScript transpilation (esbuild)
 - **Deployment**: Netlify with CI/CD automation
@@ -195,7 +195,7 @@ BitNexus eliminates the complexity of using multiple platforms by providing:
 
 **Service Layer**:
 - Gemini AI service for content generation
-- Supabase service for database operations
+- PostgreSQL service for database operations
 - Marketing assets utility for image generation
 - Type definitions for type safety
 
@@ -544,9 +544,9 @@ BitNexus eliminates the complexity of using multiple platforms by providing:
 ### Backend
 
 - **Serverless Functions**: Netlify Functions (Node.js 18)
-- **Database**: Supabase (PostgreSQL with real-time capabilities)
+- **Database**: PostgreSQL (PostgreSQL with real-time capabilities)
 - **API Integration**: Google Gemini API (@google/genai)
-- **Email Collection**: Netlify function with Supabase/Airtable support
+- **Email Collection**: Netlify function with PostgreSQL/Airtable support
 
 ### Blockchain & Smart Contracts
 
@@ -559,7 +559,7 @@ BitNexus eliminates the complexity of using multiple platforms by providing:
 ### Third-Party Services
 
 - **AI Content**: Google Gemini API
-- **Database**: Supabase
+- **Database**: PostgreSQL
 - **QR Codes**: QR Server API
 - **Live Training**: Zoom integration
 - **Deployment**: Netlify with CI/CD

@@ -1,9 +1,9 @@
 /**
  * Task Service
- * Handles task checkbox state with Supabase database integration and localStorage fallback
+ * Handles task checkbox state with PostgreSQL database integration and localStorage fallback
  */
 
-import { isSupabaseInitialized, getSupabaseClient } from './supabaseService';
+import { isPostgreSQLInitialized, getPostgreSQLClient } from './postgresqlService';
 
 export interface Task {
   id: string;
@@ -28,21 +28,21 @@ const getStorageKey = (teamMember: string): string => {
 };
 
 /**
- * Load tasks from Supabase or localStorage
+ * Load tasks from PostgreSQL or localStorage
  */
 export const loadTasks = async (teamMember: string): Promise<Task[]> => {
   try {
-    // Try Supabase first
-    if (isSupabaseInitialized()) {
-      const supabase = getSupabaseClient();
-      const { data, error } = await supabase
+    // Try PostgreSQL first
+    if (isPostgreSQLInitialized()) {
+      const postgresql = getPostgreSQLClient();
+      const { data, error } = await postgresql
         .from('team_tasks')
         .select('*')
         .eq('team_member', teamMember)
         .order('task_key', { ascending: true });
 
       if (!error && data) {
-        // Transform Supabase data to Task format
+        // Transform PostgreSQL data to Task format
         return data.map((item: any) => ({
           id: item.id,
           teamMember: item.team_member,
@@ -58,7 +58,7 @@ export const loadTasks = async (teamMember: string): Promise<Task[]> => {
       }
     }
   } catch (error) {
-    console.warn('Supabase load failed, falling back to localStorage:', error);
+    console.warn('PostgreSQL load failed, falling back to localStorage:', error);
   }
 
   // Fallback to localStorage
@@ -75,16 +75,16 @@ export const loadTasks = async (teamMember: string): Promise<Task[]> => {
 };
 
 /**
- * Save task to Supabase or localStorage
+ * Save task to PostgreSQL or localStorage
  */
 export const saveTask = async (task: Task): Promise<boolean> => {
   try {
-    // Try Supabase first
-    if (isSupabaseInitialized()) {
-      const supabase = getSupabaseClient();
+    // Try PostgreSQL first
+    if (isPostgreSQLInitialized()) {
+      const postgresql = getPostgreSQLClient();
       
       // Check if task exists
-      const { data: existing } = await supabase
+      const { data: existing } = await postgresql
         .from('team_tasks')
         .select('id')
         .eq('team_member', task.teamMember)
@@ -93,7 +93,7 @@ export const saveTask = async (task: Task): Promise<boolean> => {
 
       if (existing) {
         // Update existing task
-        const { error } = await supabase
+        const { error } = await postgresql
           .from('team_tasks')
           .update({
             completed: task.completed,
@@ -112,7 +112,7 @@ export const saveTask = async (task: Task): Promise<boolean> => {
         }
       } else {
         // Insert new task
-        const { error } = await supabase
+        const { error } = await postgresql
           .from('team_tasks')
           .insert({
             team_member: task.teamMember,
@@ -134,7 +134,7 @@ export const saveTask = async (task: Task): Promise<boolean> => {
       }
     }
   } catch (error) {
-    console.warn('Supabase save failed, falling back to localStorage:', error);
+    console.warn('PostgreSQL save failed, falling back to localStorage:', error);
   }
 
   // Fallback to localStorage

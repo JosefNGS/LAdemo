@@ -685,7 +685,7 @@ A: Phased rollout starting with 500 early adopters, then 5K, 50K, 500K users. Mo
 
 ### Slide B: Technology Stack
 - React 19.2.3 + TypeScript
-- Supabase database
+- PostgreSQL database
 - Google Gemini AI
 - Netlify deployment
 

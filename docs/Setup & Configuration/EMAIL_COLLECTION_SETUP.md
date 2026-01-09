@@ -128,30 +128,30 @@ The landing page email collection form now saves emails to a database via a Netl
 
 ---
 
-### Option 3: Supabase (Recommended)
+### Option 3: PostgreSQL (Recommended)
 
 **Pros**: Open source, PostgreSQL, generous free tier, real-time capabilities  
 **Cons**: Requires database setup
 
 #### Quick Setup:
 
-1. **Follow the complete guide**: See `docs/SUPABASE_SETUP.md` for detailed instructions
+1. **Follow the complete guide**: See `docs/PostgreSQL_SETUP.md` for detailed instructions
 
 2. **Quick Steps**:
-   - Create project at [supabase.com](https://supabase.com)
-   - Run SQL migration from `docs/supabase-migration.sql`
+   - Create project at [PostgreSQL.com](https://PostgreSQL.com)
+   - Run SQL migration from `docs/PostgreSQL-migration.sql`
    - Get API credentials from Project Settings → API
    - Add environment variables to Netlify:
-     - `SUPABASE_URL`: Your project URL
-     - `SUPABASE_ANON_KEY`: Your anon key
-   - Use `backend/netlify/functions/submit-email-supabase.js` (or rename to `submit-email.js`)
+     - `PostgreSQL_URL`: Your project URL
+     - `PostgreSQL_ANON_KEY`: Your anon key
+   - Use `backend/netlify/functions/submit-email-PostgreSQL.js` (or rename to `submit-email.js`)
 
 3. **Install Dependencies**:
    ```bash
-   npm install @supabase/supabase-js
+   npm install @PostgreSQL/PostgreSQL-js
    ```
 
-**For complete setup instructions, see `docs/SUPABASE_SETUP.md`**
+**For complete setup instructions, see `docs/PostgreSQL_SETUP.md`**
 
 ---
 
@@ -213,10 +213,10 @@ FIREBASE_PRIVATE_KEY=your_private_key
 FIREBASE_CLIENT_EMAIL=your_client_email
 ```
 
-### For Supabase:
+### For PostgreSQL:
 ```
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_ANON_KEY=your_anon_key
+PostgreSQL_URL=https://your-project.PostgreSQL.co
+PostgreSQL_ANON_KEY=your_anon_key
 ```
 
 ---

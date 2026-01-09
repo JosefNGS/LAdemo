@@ -36,7 +36,7 @@ This document provides a summary of major vendor contracts and service agreement
 
 ---
 
-### Supabase (Database)
+### PostgreSQL (Database)
 
 **Service**: Managed PostgreSQL database  
 **Contract Type**: Monthly subscription  

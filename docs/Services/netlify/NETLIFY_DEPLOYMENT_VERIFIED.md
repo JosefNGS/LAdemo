@@ -52,7 +52,7 @@
 ### 4. Functions Location ✅
 - Current location: `netlify/functions/` (root)
 - `netlify.toml` configured: `functions = "netlify/functions"` ✅
-- Functions exist: ✅ `submit-email.js`, `submit-email-supabase.js`, `submit-email-airtable.js`
+- Functions exist: ✅ `submit-email.js`, `submit-email-PostgreSQL.js`, `submit-email-airtable.js`
 
 **Status**: ✅ **PERFECT** - Matches configuration
 
@@ -100,7 +100,7 @@ BitNexus Landing Page/
 
 2. **Runs `npm install`**
    ```
-   ✅ Installs esbuild and @supabase/supabase-js
+   ✅ Installs esbuild and @PostgreSQL/PostgreSQL-js
    ```
 
 3. **Runs `npm run build`**
@@ -198,8 +198,8 @@ git commit -m "Add all source files for Netlify deployment"
    - Click "Deploy"
 
 4. **Set Environment Variables** (if needed):
-   - `SUPABASE_URL`
-   - `SUPABASE_ANON_KEY`
+   - `PostgreSQL_URL`
+   - `PostgreSQL_ANON_KEY`
    - `GEMINI_API_KEY` (optional)
 
 ---

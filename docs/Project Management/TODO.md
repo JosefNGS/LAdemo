@@ -112,7 +112,7 @@
 - [x] CI/CD workflows
 - [x] Frontend/Backend folder structure
 - [x] Server path resolution for both locations
-- [x] Supabase integration setup
+- [x] PostgreSQL integration setup
 - [x] **Reorganize Project Structure** ✅ **COMPLETED**
   - [x] Move all frontend files to `frontend/` directory ✅
     - [x] Move `src/` folder → `frontend/src/` ✅
@@ -172,7 +172,7 @@
 - [x] Pitch Deck
 - [x] Revenue Plan (with updated pricing and self-paced courses)
 - [x] Netlify Verification guide
-- [x] Supabase Setup guide
+- [x] PostgreSQL Setup guide
 - [x] All documentation aligned with MEV/XAB Bot distinction
 - [x] All documentation aligned with updated course pricing
 - [x] Date management rules added to .cursorrules
@@ -333,7 +333,7 @@
 - [ ] Earnings tracking API
 - [ ] Network tree API
 - [ ] MEV Bot & XAB Bot staking API
-- [ ] Supabase email collection integration (function ready)
+- [ ] PostgreSQL email collection integration (function ready)
 
 ### Phoenix & Elixir Backend Stack (Planned)
 - [ ] **Evaluate Elixir + Phoenix** as core backend framework for high-concurrency services (aligned with TECH_STACK roadmap)
@@ -348,11 +348,11 @@
 - [ ] Plan Phoenix Channels/LiveView integration (future real-time features)
 
 ### PostgreSQL & Vector Database Stack (Planned)
-- [ ] **Design overall PostgreSQL strategy** across Supabase and additional Postgres instances
+- [ ] **Design overall PostgreSQL strategy** across PostgreSQL and additional Postgres instances
 - [ ] **Evaluate requirements** for dedicated Postgres with vector extension (e.g., `pgvector`) based on TECH_STACK roadmap
 - [ ] **Propose schema patterns** for vector-based similarity search (embeddings tables, indexes, query patterns)
-- [ ] **Define migration and synchronization approach** between Supabase (core data) and extra Postgres/vector database
-- [ ] **Document Postgres and vector database architecture** in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/supabase/`
+- [ ] **Define migration and synchronization approach** between PostgreSQL (core data) and extra Postgres/vector database
+- [ ] **Document Postgres and vector database architecture** in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/PostgreSQL/`
 - [ ] **Create initial PoC** for vector search (e.g., semantic product or document search) using Postgres + vector extension
 - [ ] **CRITICAL**: Craig to validate and approve the official vector database technology choice
 - [ ] Set up dedicated PostgreSQL instance with vector extension
@@ -534,7 +534,7 @@
   - [ ] `backend/n8n/` - n8n automation service
     - [ ] Create `backend/n8n/` folder structure
     - [ ] n8n workflow configurations
-    - [ ] Integration with Supabase, Gemini AI, payment gateways
+    - [ ] Integration with PostgreSQL, Gemini AI, payment gateways
     - [ ] Commission calculation workflows
     - [ ] Notification workflows
     - [ ] Data sync workflows
@@ -1177,7 +1177,7 @@
 - Added Governance page with decentralized voting system
 - Enhanced Vetting page with community-driven product approval
 - Organized project into frontend/ and backend/ folders (structure ready, files not moved yet - future task)
-- Added Supabase integration setup
+- Added PostgreSQL integration setup
 - Updated Revenue Plan with self-paced courses
 - Added date management rules to .cursorrules
 - Fixed server path resolution for both folder structures

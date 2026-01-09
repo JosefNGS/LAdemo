@@ -28,10 +28,10 @@ docs/
 │   │   ├── NETLIFY_DEPLOYMENT_*.md (all Netlify deployment docs)
 │   │   └── NETLIFY_*.md (all Netlify-related docs)
 │   │
-│   ├── supabase/                    # Supabase service documentation
-│   │   ├── SUPABASE_SETUP.md
-│   │   ├── SUPABASE_QUICK_START.md
-│   │   └── supabase-migration.sql
+│   ├── PostgreSQL/                    # PostgreSQL service documentation
+│   │   ├── PostgreSQL_SETUP.md
+│   │   ├── PostgreSQL_QUICK_START.md
+│   │   └── PostgreSQL-migration.sql
 │   │
 │   ├── github/                      # GitHub service documentation
 │   │   ├── GITHUB_SETUP.md
@@ -98,11 +98,11 @@ docs/
 **MANDATORY**:
 - **ALL service-specific documentation MUST be in `docs/Services/service-name/`**
 - **One folder per service** - No mixing of services in the same folder
-- **Service folders should be named after the service** (e.g., `netlify/`, `supabase/`, `github/`)
+- **Service folders should be named after the service** (e.g., `netlify/`, `PostgreSQL/`, `github/`)
 
 **Service Documentation Rules**:
 1. **Netlify**: All Netlify-related docs go in `docs/Services/netlify/`
-2. **Supabase**: All Supabase-related docs go in `docs/Services/supabase/`
+2. **PostgreSQL**: All PostgreSQL-related docs go in `docs/Services/PostgreSQL/`
 3. **GitHub**: All GitHub-related docs go in `docs/Services/github/`
 4. **n8n**: All n8n-related docs go in `docs/Services/n8n/` (when implemented)
 5. **Discourse**: All Discourse-related docs go in `docs/Services/discourse/` (when implemented)
@@ -147,7 +147,7 @@ docs/
 ### `docs/Services/`
 **Purpose**: Service-specific documentation (one folder per service)
 - Netlify deployment and hosting
-- Supabase database setup
+- PostgreSQL database setup
 - GitHub version control
 - n8n automation (planned)
 - Discourse forum (planned)

@@ -74,7 +74,7 @@ BitNexus Landing Page/
 │   │   │   └── teamProfiles.ts
 │   │   ├── services/                   # API services and utilities
 │   │   │   ├── geminiService.ts
-│   │   │   ├── supabaseService.ts
+│   │   │   ├── PostgreSQLService.ts
 │   │   │   └── taskService.ts
 │   │   └── utils/                      # Utility functions
 │   │       └── marketingAssets.ts
@@ -112,7 +112,7 @@ BitNexus Landing Page/
 │       └── functions/                  # Serverless functions
 │           ├── submit-email.js
 │           ├── submit-email-airtable.js
-│           └── submit-email-supabase.js
+│           └── submit-email-PostgreSQL.js
 │
 ├── docs/                               # Documentation folder
 │   ├── Core Documentation/             # Core system documentation
@@ -258,12 +258,12 @@ BitNexus Landing Page/
 │   │   │   ├── NETLIFY_SETUP.md
 │   │   │   ├── NETLIFY_VERIFICATION.md
 │   │   │   └── SERVICE_RULES.md
-│   │   └── supabase/                  # Supabase service documentation
+│   │   └── PostgreSQL/                  # PostgreSQL service documentation
 │   │       ├── CHANGELOG.md
 │   │       ├── SERVICE_RULES.md
-│   │       ├── SUPABASE_QUICK_START.md
-│   │       ├── SUPABASE_SETUP.md
-│   │       └── supabase-migration.sql
+│   │       ├── PostgreSQL_QUICK_START.md
+│   │       ├── PostgreSQL_SETUP.md
+│   │       └── PostgreSQL-migration.sql
 │   │
 │   ├── Setup & Configuration/         # Setup, configuration, and troubleshooting
 │   │   ├── API_SETUP.md
@@ -374,7 +374,7 @@ BitNexus Landing Page/
 
 **Service Rules Files**:
 - `docs/Services/netlify/SERVICE_RULES.md` - Netlify service rules
-- `docs/Services/supabase/SERVICE_RULES.md` - Supabase service rules
+- `docs/Services/PostgreSQL/SERVICE_RULES.md` - PostgreSQL service rules
 - `docs/Services/github/SERVICE_RULES.md` - GitHub service rules
 - `docs/Services/n8n/SERVICE_RULES.md` - n8n service rules
 - `docs/Services/discourse/SERVICE_RULES.md` - Discourse service rules
@@ -436,7 +436,7 @@ BitNexus Landing Page/
   - **Pages**: 35+ page components (Dashboard, Marketplace, Alliance, Forum, etc.)
   - **Components**: Reusable UI components (Layout, ProductDetailDrawer, etc.)
   - **Contexts**: React contexts (CartContext, NotificationContext)
-  - **Services**: API services (Gemini, Supabase, Task services)
+  - **Services**: API services (Gemini, PostgreSQL, Task services)
   - **Utils**: Utility functions (marketing assets, etc.)
   - **Data**: Data files (team profiles, etc.)
 - **Static assets**: Images, fonts, etc. in `public/`
@@ -480,7 +480,7 @@ BitNexus Landing Page/
 - **DOCUMENTATION_INDEX.md**: Documentation index
 
 #### Services (`docs/Services/`)
-- **One folder per service**: netlify, supabase, github, n8n, discourse, erlang-ledger, golang-api
+- **One folder per service**: netlify, PostgreSQL, github, n8n, discourse, erlang-ledger, golang-api
 - **Each service folder contains**:
   - SERVICE_RULES.md (mandatory)
   - CHANGELOG.md (mandatory)

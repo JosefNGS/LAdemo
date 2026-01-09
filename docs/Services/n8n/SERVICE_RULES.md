@@ -29,7 +29,7 @@
 - **Backup workflows** regularly
 
 ### Integration Rules
-- **Supabase integration** - Use environment variables
+- **PostgreSQL integration** - Use environment variables
 - **Gemini AI integration** - Use API keys from environment
 - **Payment gateways** - Secure credential storage
 - **Commission calculations** - Document formulas
