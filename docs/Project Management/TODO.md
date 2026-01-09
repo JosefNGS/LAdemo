@@ -335,6 +335,32 @@
 - [ ] MEV Bot & XAB Bot staking API
 - [ ] Supabase email collection integration (function ready)
 
+### Phoenix & Elixir Backend Stack (Planned)
+- [ ] **Evaluate Elixir + Phoenix** as core backend framework for high-concurrency services (aligned with TECH_STACK roadmap)
+- [ ] **Design architecture** for Phoenix services that sit on top of the Erlang/Elixir ledger stack
+- [ ] **Define integration pattern** between Phoenix APIs and existing Netlify/Go services
+- [ ] **Choose deployment strategy** for Phoenix apps (hosting, clustering, monitoring)
+- [ ] **Document Phoenix/Elixir stack** in `docs/Core Documentation/TECH_STACK.md` and related service docs
+- [ ] **Create initial Phoenix proof-of-concept** service (API + simple real-time channel)
+- [ ] Set up Phoenix development environment
+- [ ] Configure Phoenix for BEAM VM concurrency
+- [ ] Implement Phoenix API endpoints for ledger data access
+- [ ] Plan Phoenix Channels/LiveView integration (future real-time features)
+
+### PostgreSQL & Vector Database Stack (Planned)
+- [ ] **Design overall PostgreSQL strategy** across Supabase and additional Postgres instances
+- [ ] **Evaluate requirements** for dedicated Postgres with vector extension (e.g., `pgvector`) based on TECH_STACK roadmap
+- [ ] **Propose schema patterns** for vector-based similarity search (embeddings tables, indexes, query patterns)
+- [ ] **Define migration and synchronization approach** between Supabase (core data) and extra Postgres/vector database
+- [ ] **Document Postgres and vector database architecture** in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/supabase/`
+- [ ] **Create initial PoC** for vector search (e.g., semantic product or document search) using Postgres + vector extension
+- [ ] **CRITICAL**: Craig to validate and approve the official vector database technology choice
+- [ ] Set up dedicated PostgreSQL instance with vector extension
+- [ ] Create vector database schema and indexes
+- [ ] Implement vector embedding generation pipeline
+- [ ] Build vector similarity search queries
+- [ ] Test vector database performance and scalability
+
 ### Blockchain & Transparency Ledger
 - [ ] **Implement custom blockchain ledger using Erlang/Elixir**
   - [ ] Research Erlang/Elixir blockchain implementation patterns
@@ -524,6 +550,15 @@
     - [ ] Block creation and validation logic
     - [ ] Hash chain verification
     - [ ] Transaction recording functionality
+  - [ ] `backend/phoenix-elixir/` - Phoenix/Elixir backend services (Planned)
+    - [ ] Create `backend/phoenix-elixir/` folder structure
+    - [ ] Set up Phoenix project structure
+    - [ ] Configure Phoenix for high-concurrency APIs
+    - [ ] Design architecture for Phoenix services on top of Erlang/Elixir ledger
+    - [ ] Implement integration pattern with existing Netlify/Go services
+    - [ ] Set up Phoenix Channels for real-time features (future)
+    - [ ] Create initial Phoenix proof-of-concept service (API + simple real-time channel)
+    - [ ] Document Phoenix/Elixir stack in `docs/Core Documentation/TECH_STACK.md`
   - [ ] `backend/golang-api/` - Go API services
     - [ ] Create `backend/golang-api/` folder structure
     - [ ] High-performance API servers
