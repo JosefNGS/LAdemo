@@ -108,11 +108,17 @@ BitNexus Landing Page/
 │       └── env.example                 # Example environment variables
 │
 ├── backend/                            # Backend services (one folder per service)
-│   └── netlify/                        # Netlify serverless functions
-│       └── functions/                  # Serverless functions
-│           ├── submit-email.js
-│           ├── submit-email-airtable.js
-│           └── submit-email-PostgreSQL.js
+│   ├── netlify/                        # Netlify serverless functions
+│   │   └── functions/                  # Serverless functions
+│   │       ├── submit-email.js
+│   │       ├── submit-email-airtable.js
+│   │       └── submit-email-PostgreSQL.js
+│   └── phoenix-elixir/                 # Phoenix & Elixir backend (planned)
+│       └── bitnexus_api/              # Phoenix application
+│           ├── lib/                    # Application code
+│           ├── config/                 # Configuration
+│           ├── priv/repo/migrations/   # Database migrations
+│           └── test/                   # Tests
 │
 ├── docs/                               # Documentation folder
 │   ├── Core Documentation/             # Core system documentation
@@ -223,6 +229,14 @@ BitNexus Landing Page/
 │   │   ├── erlang-ledger/             # Erlang/Elixir blockchain ledger
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SERVICE_RULES.md
+│   │   ├── phoenix-elixir/            # Phoenix & Elixir backend service
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── SETUP_GUIDE.md
+│   │   │   └── README.md
 │   │   ├── github/                    # GitHub service documentation
 │   │   │   ├── BITNEXUS_DOCS_README.md
 │   │   │   ├── BITNEXUS_DOCS_SYNC.md
@@ -360,9 +374,10 @@ BitNexus Landing Page/
 
 **Backend Structure Rules**:
 1. **Netlify Functions**: `backend/netlify/functions/` - Serverless functions
-2. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
-3. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
-4. **Future Services**: Each new service gets its own folder under `backend/`
+2. **Phoenix & Elixir**: `backend/phoenix-elixir/` - Phoenix/Elixir backend API (planned)
+3. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
+4. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
+5. **Future Services**: Each new service gets its own folder under `backend/`
    - Example: `backend/erlang-ledger/` for blockchain ledger service
    - Example: `backend/golang-api/` for Go API services
 
@@ -379,6 +394,11 @@ BitNexus Landing Page/
 - `docs/Services/n8n/SERVICE_RULES.md` - n8n service rules
 - `docs/Services/discourse/SERVICE_RULES.md` - Discourse service rules
 - `docs/Services/erlang-ledger/SERVICE_RULES.md` - Erlang/Elixir ledger service rules
+- `docs/Services/phoenix-elixir/SERVICE_RULES.md` - Phoenix & Elixir backend service rules (CRITICAL)
+- `docs/Services/phoenix-elixir/IMPLEMENTATION_GUIDE.md` - Complete Phoenix/Elixir implementation guide
+- `docs/Services/phoenix-elixir/ARCHITECTURE.md` - Phoenix/Elixir system architecture
+- `docs/Services/phoenix-elixir/INTEGRATION_GUIDE.md` - Integration with existing system
+- `docs/Services/phoenix-elixir/SETUP_GUIDE.md` - Quick setup guide
 - `docs/Services/golang-api/SERVICE_RULES.md` - Golang API service rules
 - `docs/Services/admin/SERVICE_RULES.md` - Admin View & Task Management service rules (CRITICAL)
 

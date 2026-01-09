@@ -410,6 +410,7 @@ git push origin feature/your-feature-name
 - **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
 - **Admin View & Task Management**: `docs/Services/admin/SERVICE_RULES.md` (CRITICAL - UI/Database sync rules)
 - **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
+- **Phoenix & Elixir**: `docs/Services/phoenix-elixir/SERVICE_RULES.md` (CRITICAL - Backend implementation)
 - **Golang API**: `docs/Services/golang-api/SERVICE_RULES.md`
 
 ### Framework Documentation

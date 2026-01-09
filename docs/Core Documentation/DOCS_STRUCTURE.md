@@ -32,6 +32,14 @@ docs/
 │   │   ├── PostgreSQL_SETUP.md
 │   │   ├── PostgreSQL_QUICK_START.md
 │   │   └── PostgreSQL-migration.sql
+│   ├── phoenix-elixir/                # Phoenix & Elixir backend service
+│   │   ├── SERVICE_RULES.md
+│   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── INTEGRATION_GUIDE.md
+│   │   ├── SETUP_GUIDE.md
+│   │   ├── README.md
+│   │   └── CHANGELOG.md
 │   │
 │   ├── github/                      # GitHub service documentation
 │   │   ├── GITHUB_SETUP.md

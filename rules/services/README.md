@@ -13,6 +13,7 @@ This directory contains rules extracted from service-specific documentation in `
 - **`admin/`** - Admin View & Task Management service rules
 - **`netlify/`** - Netlify deployment and serverless functions rules
 - **`PostgreSQL/`** - PostgreSQL database service rules
+- **`phoenix-elixir/`** - Phoenix & Elixir backend service rules
 - **`github/`** - GitHub version control and workflow rules
 - **`n8n/`** - n8n automation workflow rules
 - **`discourse/`** - Discourse forum service rules
