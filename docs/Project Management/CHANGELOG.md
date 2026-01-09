@@ -22,7 +22,8 @@ Every changelog entry MUST track who made the change:
   - Added \"MANDATORY RULE - TASK OWNERSHIP\" under Task Assignment
   - Every task must have a clear owner (person or role) using `[Owner: Name]` or `[Owner: Role]`
   - New tasks must be assigned an owner immediately
-  - When tasks are moved between people, owners must be updated here and in the person’s task doc
+  - When tasks are moved between people, owners must be updated here and in the person's task doc
+  - Expanded role-based owner pattern to include `[Owner: Sales]`, `[Owner: Frontend]`, and `[Owner: Team]` options
 
 ---
 

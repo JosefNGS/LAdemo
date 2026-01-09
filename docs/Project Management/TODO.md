@@ -1136,7 +1136,7 @@
 ### Task Assignment
 - **MANDATORY RULE - TASK OWNERSHIP**:
   - ✅ **Every task MUST have a clear owner** (person or role) – NO unowned tasks
-  - ✅ Owners must be specified using a consistent pattern, e.g. `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Jonne]`, `[Owner: Lee]`, `[Owner: Svein]`, `[Owner: Cory]`, or `[Owner: Role]` (e.g. `[Owner: Backend]`, `[Owner: CTO]`)
+  - ✅ Owners must be specified using a consistent pattern, e.g. `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Jonne]`, `[Owner: Lee]`, `[Owner: Svein]`, `[Owner: Cory]`, or `[Owner: Role]` (e.g. `[Owner: Backend]`, `[Owner: CTO]`, `[Owner: Sales]`, `[Owner: Frontend]`, `[Owner: Team]`)
   - ✅ Shared tasks must list all responsible owners or clearly state `[Owner: Shared]` with primary contact
   - ✅ When adding a new task, you MUST assign an owner immediately
   - ✅ When moving tasks between people, update the owner tag here and in the person’s task doc\n- Tasks should be assigned to specific team members\n- Each task should have an estimated time\n- Tasks should be broken down into smaller subtasks when needed
