@@ -40,11 +40,46 @@
 - **All PRs must have** clear description
 - **All PRs must have** change documentation
 
+## 👥 Active Developers
+
+**CRITICAL**: All active developers must be registered in `docs/Services/github/DEVELOPERS.md`.
+
+**Current Active Developers**:
+- **Josef Lindbom** (COO & Development Vision Lead) - josef@nordicglobalsolutions.com
+- **Craig Martin** (CTO) - craig@nordicglobalsolutions.com
+- **Jonne Waselius** (Backend Developer) - Jonne@nordicglobalsolutions.com
+
+**Developer Tracking**:
+- All developers must be listed in `docs/Services/github/DEVELOPERS.md`
+- Developer information must be kept up-to-date
+- Access levels must be clearly defined
+- Branch permissions must be documented
+
+## Service-Specific Checklist
+
+Before pushing to GitHub:
+- [ ] Change documentation created
+- [ ] Documentation saved in `docs/Services/github/push-docs/`
+- [ ] Documentation included in commit
+- [ ] Branch is not main (use feature branch)
+- [ ] Pull Request created (if merging to main)
+
 ## CRITICAL Rules
 
 - ✅ **Use feature branches** - Never push directly to main
 - ✅ **Create change documentation** - Required for every push
 - ✅ **CTO review required** - All PRs must be reviewed
 - ✅ **Pass automated checks** - All PRs must pass CI/CD
+- ✅ **Register developers** - All active developers must be in DEVELOPERS.md
 - ❌ **Never push directly to main** - Always use Pull Requests
 - ❌ **Never skip change documentation** - It's mandatory
+- ❌ **Never skip developer registration** - Required for all developers
+
+## Related Documentation
+
+- **Version Control**: `docs/Services/github/VERSION_CONTROL.md`
+- **Push Instructions**: `docs/Services/github/GITHUB_PUSH_INSTRUCTIONS.md`
+- **Setup Guide**: `docs/Services/github/GITHUB_SETUP.md`
+- **Change Documentation Template**: `docs/Services/github/PUSH_CHANGE_DOCUMENTATION_TEMPLATE.md`
+- **Developer Registry**: `docs/Services/github/DEVELOPERS.md`
+- **Complete Rules**: `docs/Services/github/SERVICE_RULES.md`

@@ -14,6 +14,45 @@ Every changelog entry MUST track who made the change:
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
 
+## [1.4.0] - January 2026
+
+### Changed
+- **Admin Service Rules**: Comprehensive update from `docs/Services/admin/SERVICE_RULES.md` [Cursor]
+  - Added detailed synchronization requirements (real-time, polling, error handling)
+  - Added data consistency rules and conflict resolution
+  - Added update triggers and refresh mechanisms
+  - Added localStorage fallback rules
+  - Added task service integration requirements
+  - Added critical violations section
+  - Expanded from basic rules to comprehensive service rules
+
+- **Netlify Service Rules**: Updated with alpha phase status and migration plan [Cursor]
+  - Added ALPHA PHASE status warning
+  - Added AWS migration plan documentation
+  - Added service-specific checklist
+  - Added related documentation links
+  - Expanded deployment rules and code standards
+
+- **Development Server Rules**: Comprehensive update from `docs/Setup & Configuration/START_FILES_RULES.md` [Cursor]
+  - Added mandatory start files rules (exactly TWO start files allowed)
+  - Added start file definitions and purposes
+  - Added forbidden actions section
+  - Added cross-platform requirements
+  - Expanded Docker setup documentation
+
+- **GitHub Service Rules**: Enhanced with active developers section [Cursor]
+  - Added active developers list
+  - Added developer tracking requirements
+  - Added service-specific checklist
+  - Added related documentation links
+
+### Added
+- **Detailed Service Rules**: Expanded service rules with comprehensive information from docs [Cursor]
+  - Admin service: Real-time sync, error handling, fallback mechanisms
+  - Netlify service: Alpha phase status, AWS migration plan
+  - Dev server: Start files critical rules, Docker setup
+  - GitHub: Active developers, developer tracking
+
 ## [1.3.0] - January 2026
 
 ### Changed
