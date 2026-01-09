@@ -355,6 +355,33 @@ See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for detailed contribution guideli
 
 ## 📄 Documentation
 
+### Framework Documentation
+
+- **NSR (NorthStar Rules)**: `instructions/NSR/` - **NorthStar Project Generation Framework**
+  - **Framework Type**: Project structure generation and standardization framework
+  - **Developed by**: NorthStar Team (Josef Lindbom - COO, Craig Martin - CTO)
+  - **Purpose**: Generates BitNexus-like project structures with consistent organization, documentation, and development practices
+  - **License**: MIT License (Copyright 2026 NorthStar Team)
+  - **Repository**: [https://github.com/zerwiz/NSR](https://github.com/zerwiz/NSR)
+  - **Key Features**:
+    - Project structure templates (`src/templates/project-structure-template.md`)
+    - Rules extraction and organization (`src/rules/cursor-rules-template.md`)
+    - Workflow automation for project initialization (`src/workflows/project-init-workflow.md`)
+    - Code and project standards enforcement (`src/standards/`)
+    - Reference frameworks integration (Agent OS, BMAD-METHOD in `ref/`)
+  - **Structure**:
+    - `src/templates/` - Project structure templates
+    - `src/rules/` - Extracted rules and cursor rules templates
+    - `src/workflows/` - Project initialization workflows
+    - `src/standards/` - Code and project standards
+    - `ref/` - Reference frameworks (Agent OS, BMAD-METHOD) used for development
+  - **Usage in BitNexus**: NSR framework was used to generate and standardize the BitNexus project structure
+  - **Documentation**: See `instructions/NSR/README.md` for complete NSR framework documentation
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Build-Measure-Analyze-Deploy methodology framework (referenced by NSR)
+- **Agent OS**: `instructions/.agent-os/` - Agent OS configuration and standards (referenced by NSR)
+
+### Project Documentation
+
 - **[UI Documentation](./docs/UI_DOCUMENTATION.md)** - Complete UI specifications and page inventory
 - **[Implementation Plan](./docs/IMPLEMENTATION_PLAN.md)** - Development roadmap and feature implementation
 - **[Quick Wins](./docs/QUICK_WINS_FINANCIAL_FREEDOM.md)** - High-impact features for financial freedom
@@ -456,6 +483,12 @@ BitNexus Landing Page/
 │   ├── discourse/          # Discourse forum service (planned)
 │   │   └── config/         # Discourse configuration files
 │   └── ... (other services, one folder per service)
+├── instructions/           # External frameworks and instruction sets
+│   ├── NSR/                # ⭐ NorthStar Rules (NSR) - Project generation framework
+│   │   ├── src/            # NSR framework source (templates, rules, workflows, standards)
+│   │   └── ref/            # Reference frameworks (Agent OS, BMAD-METHOD)
+│   ├── BMAD-METHOD/        # BMAD Method framework (referenced by NSR)
+│   └── .agent-os/          # Agent OS configuration (referenced by NSR)
 ├── docs/                   # Documentation
 │   ├── Product docs/       # Product documentation (organized by topic)
 │   │   ├── Pitch Deck & Presentations/  # Pitch decks and presentation materials
