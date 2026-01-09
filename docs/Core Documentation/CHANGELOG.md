@@ -18,9 +18,22 @@ Every changelog entry MUST track who made the change:
 
 ### Added
 - Initial core documentation changelog [Cursor]
+- TECH_STACK_EVALUATION.md - Tech stack evaluation document [Cursor]
+- TECH_STACK_SUGGESTIONS.md - Tech stack suggestions document [Cursor]
+- README.md - Core Documentation folder overview [Cursor]
 
 ### Changed
 - **DOCS_STRUCTURE.md**: Added CORY_TASKS.md to task tracking file list [Cursor]
+- **STRUCTURE.md**: Comprehensive update to reflect full current project structure [Cursor]
+  - Added `instructions/` folder structure (BMAD-METHOD framework)
+  - Added `rules/` folder structure (extracted framework rules)
+  - Updated Development folder to include all owner files and BMAD-METHOD planning docs
+  - Updated Services to include all current services (admin, postgresql, supabase, etc.)
+  - Updated Project Management to include all planning documents
+  - Updated frontend services to reflect current files (taskFileService, taskSyncService)
+  - Updated backend structure to include README.md and CHANGELOG.md
+  - Updated file count summary
+  - Version updated to 2.1
 
 ---
 

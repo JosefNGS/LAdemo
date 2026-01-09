@@ -43,7 +43,7 @@
   - `docs/Development/DEVELOPER_DOCS.md`
   - `docs/Development/IMPLEMENTATION_PLAN.md`
   - `docs/Development/AFFILIATE_PROGRAM_ARCHITECTURE.md`
-  - `docs/Development/Development planning docs/`
+  - `docs/Development/development Bmad Planning docs/`
   - All development planning and architecture documentation
 - **Infrastructure Documentation**:
   - `docs/Services/netlify/DEPLOYMENT.md`

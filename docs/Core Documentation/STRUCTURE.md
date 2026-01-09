@@ -2,7 +2,7 @@
 ## Complete Folder Organization & File Structure Guide
 
 **Last Updated**: January 2026  
-**Version**: 2.0  
+**Version**: 2.1  
 **Status**: Authoritative Source for Project Structure
 
 **⚠️ CRITICAL**: This document is the **MAIN SOURCE** for project structure. All files must follow this structure. No exceptions.
@@ -73,9 +73,12 @@ BitNexus Landing Page/
 │   │   ├── data/                       # Data files
 │   │   │   └── teamProfiles.ts
 │   │   ├── services/                   # API services and utilities
-│   │   │   ├── geminiService.ts
-│   │   │   ├── PostgreSQLService.ts
-│   │   │   └── taskService.ts
+│   │   │   ├── geminiService.ts       # Google Gemini AI service
+│   │   │   ├── postgresqlService.ts   # PostgreSQL database service
+│   │   │   ├── supabaseService.ts     # Supabase service (legacy)
+│   │   │   ├── taskFileService.ts     # Task file parsing service
+│   │   │   ├── taskService.ts         # Task management service
+│   │   │   └── taskSyncService.ts     # Task synchronization service
 │   │   └── utils/                      # Utility functions
 │   │       └── marketingAssets.ts
 │   ├── public/                         # Static assets
@@ -108,11 +111,15 @@ BitNexus Landing Page/
 │       └── env.example                 # Example environment variables
 │
 ├── backend/                            # Backend services (one folder per service)
+│   ├── README.md                       # Backend folder overview
+│   ├── CHANGELOG.md                    # Backend changelog
 │   ├── netlify/                        # Netlify serverless functions
+│   │   ├── README.md
+│   │   ├── CHANGELOG.md
 │   │   └── functions/                  # Serverless functions
 │   │       ├── submit-email.js
 │   │       ├── submit-email-airtable.js
-│   │       └── submit-email-PostgreSQL.js
+│   │       └── submit-email-supabase.js
 │   ├── phoenix/                        # Phoenix web framework (planned)
 │   │   └── bitnexus_api/              # Phoenix application
 │   │       ├── lib/                    # Application code
@@ -125,23 +132,65 @@ BitNexus Landing Page/
 │       ├── transactions_service/      # Transactions domain service
 │       └── ledger_client/             # Ledger integration service
 │
+├── instructions/                       # External frameworks and instruction sets
+│   ├── BMAD-METHOD/                    # BMAD Method framework
+│   │   ├── src/                        # Framework source files
+│   │   ├── docs/                       # BMAD documentation
+│   │   ├── samples/                    # Sample modules
+│   │   ├── tools/                      # Development tools
+│   │   └── website/                    # Website files
+│   └── .agent-os/                      # Agent OS configuration (if present)
+│
+├── rules/                              # Extracted rules from instruction frameworks
+│   ├── agent-os/                       # Agent OS framework rules
+│   ├── bmad-method/                    # BMAD-METHOD framework rules
+│   ├── services/                       # Service-specific rules
+│   ├── frontend/                       # Frontend rules
+│   ├── backend/                        # Backend rules
+│   ├── dev_server/                     # Development server rules
+│   ├── docs/                           # Documentation rules
+│   ├── README.md                       # Rules directory overview
+│   ├── TODO.md                         # Rules TODO
+│   └── CHANGELOG.md                    # Rules changelog
+│
 ├── docs/                               # Documentation folder
 │   ├── Core Documentation/             # Core system documentation
+│   │   ├── CHANGELOG.md                # Core documentation changelog
 │   │   ├── DOCS_STRUCTURE.md           # Documentation organization guide
+│   │   ├── README.md                   # Core documentation overview
 │   │   ├── STRUCTURE.md                # This file - Main structure reference
-│   │   └── TECH_STACK.md               # Technology stack documentation
+│   │   ├── TECH_STACK.md               # Technology stack documentation
+│   │   ├── TECH_STACK_EVALUATION.md   # Tech stack evaluation
+│   │   └── TECH_STACK_SUGGESTIONS.md  # Tech stack suggestions
 │   │
 │   ├── Development/                    # Development planning and documentation
 │   │   ├── AFFILIATE_PROGRAM_ARCHITECTURE.md
-│   │   ├── CRAIG_TASKS.md
-│   │   ├── DEVELOPER_DOCS.md
+│   │   ├── BACKEND_OWNER.md            # Backend owner responsibilities
+│   │   ├── CHANGELOG.md                # Development documentation changelog
+│   │   ├── CORY_TASKS.md               # Cory's task list
+│   │   ├── CRAIG_TASKS.md              # Craig's task list
+│   │   ├── CTO_OWNER.md                # CTO owner responsibilities
+│   │   ├── DEVELOPER_DOCS.md           # Developer documentation
+│   │   ├── FRONTEND_OWNER.md           # Frontend owner responsibilities
 │   │   ├── IMPLEMENTATION_PLAN.md
-│   │   ├── JONNE_TASKS.md
-│   │   ├── JOSEF_TASKS.md
-│   │   ├── LEE_TASKS.md
-│   │   ├── SVEIN_TASKS.md
+│   │   ├── JONNE_TASKS.md              # Jonne's task list
+│   │   ├── JOSEF_TASKS.md              # Josef's task list
+│   │   ├── LEE_TASKS.md                # Lee's task list
+│   │   ├── README.md                   # Development folder overview
+│   │   ├── SALES_OWNER.md              # Sales owner responsibilities
+│   │   ├── SECURITY_OWNER.md           # Security owner responsibilities
+│   │   ├── SVEIN_TASKS.md              # Svein's task list
 │   │   ├── TEAM_DOCUMENTATION_RESPONSIBILITIES.md
-│   │   └── Development planning docs/   # Development planning documents
+│   │   ├── TEAM_OWNER.md               # Team owner responsibilities
+│   │   └── development Bmad Planning docs/   # BMAD-METHOD planning documents
+│   │       ├── Architecture_Decision_Document.md
+│   │       ├── Epic_Breakdown.md
+│   │       ├── PRD.md                   # Product Requirements Document
+│   │       ├── Product_Brief.md
+│   │       ├── Project_Context.md
+│   │       ├── README.md                # BMAD-METHOD planning docs overview
+│   │       ├── RULES.md                 # BMAD-METHOD compliance rules
+│   │       └── UX_Design_Specification.md
 │   │
 │   ├── Product docs/                   # Product documentation (organized by topic)
 │   │   ├── Business & Strategy/        # Business planning and strategy docs
@@ -222,58 +271,99 @@ BitNexus Landing Page/
 │   │       └── NXC_CREDITS_EXPLANATION.md
 │   │
 │   ├── Project Management/            # Project tracking and status
+│   │   ├── ACADEMY_PLANNING.md        # Academy planning document
+│   │   ├── ALLIANCE_ARENA_PLANNING.md # Alliance Arena planning document
 │   │   ├── CHANGELOG.md               # Project changelog (MANDATORY updates)
+│   │   ├── CHAT_PLANNING.md           # Chat planning document
+│   │   ├── CONTENT_GENERATOR_PLANNING.md  # Content Generator planning
 │   │   ├── DOCUMENTATION_INDEX.md
+│   │   ├── MARKETPLACE_PLANNING.md   # Marketplace planning document
+│   │   ├── N8N_PLANNING.md           # n8n planning document
+│   │   ├── NEXT_STEPS.md             # Next steps document
 │   │   ├── PROJECT_STATUS.md
-│   │   └── TODO.md
+│   │   ├── SECURITY_PLANNING.md      # Security planning document
+│   │   └── TODO.md                   # Main project TODO list
 │   │
 │   ├── Services/                      # Service-specific documentation (one folder per service)
+│   │   ├── admin/                     # Admin View & Task Management service
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
 │   │   ├── discourse/                 # Discourse forum service
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SERVICE_RULES.md
-│   │   ├── erlang-ledger/             # Erlang/Elixir blockchain ledger
-│   │   │   ├── CHANGELOG.md
-│   │   │   └── SERVICE_RULES.md
-│   │   ├── phoenix/                   # Phoenix web framework service
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── SERVICE_RULES.md
-│   │   │   ├── IMPLEMENTATION_GUIDE.md
 │   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
 │   │   │   ├── INTEGRATION_GUIDE.md
-│   │   │   ├── SETUP_GUIDE.md
-│   │   │   └── README.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
 │   │   ├── elixir/                    # Elixir services & BEAM VM
-│   │   │   ├── CHANGELOG.md
-│   │   │   ├── SERVICE_RULES.md
-│   │   │   ├── IMPLEMENTATION_GUIDE.md
 │   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
 │   │   │   ├── INTEGRATION_GUIDE.md
-│   │   │   ├── SETUP_GUIDE.md
-│   │   │   └── README.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
+│   │   ├── erlang-ledger/             # Erlang/Elixir blockchain ledger
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
 │   │   ├── github/                    # GitHub service documentation
+│   │   │   ├── ARCHITECTURE.md
 │   │   │   ├── BITNEXUS_DOCS_README.md
 │   │   │   ├── BITNEXUS_DOCS_SYNC.md
+│   │   │   ├── CAPABILITIES.md
 │   │   │   ├── CHANGELOG.md
-│   │   │   ├── DEVELOPERS.md
+│   │   │   ├── DEVELOPERS.md          # Developer registry (CRITICAL)
 │   │   │   ├── GITHUB_PUSH_INSTRUCTIONS.md
 │   │   │   ├── GITHUB_PUSH_SUMMARY.md
 │   │   │   ├── GITHUB_SETUP.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
 │   │   │   ├── PUSH_CHANGE_DOCUMENTATION_TEMPLATE.md
 │   │   │   ├── SERVICE_RULES.md
+│   │   │   ├── SETUP_GUIDE.md
 │   │   │   ├── VERSION_CONTROL.md
 │   │   │   └── push-docs/             # Push change documentation
 │   │   │       ├── README.md
-│   │   │       └── 2026-01-08-165657-admin-guide-and-workflow-updates.md
+│   │   │       └── [push documentation files]
 │   │   ├── golang-api/                # Go API services
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
 │   │   │   ├── CHANGELOG.md
-│   │   │   └── SERVICE_RULES.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
 │   │   ├── n8n/                       # n8n automation service
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
 │   │   │   ├── CHANGELOG.md
-│   │   │   └── SERVICE_RULES.md
-│   │   ├── netlify/                   # Netlify service documentation
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
+│   │   ├── netlify/                   # Netlify service documentation (ALPHA PHASE)
+│   │   │   ├── ARCHITECTURE.md
 │   │   │   ├── CHANGELOG.md
 │   │   │   ├── DEPLOYMENT.md
 │   │   │   ├── DRAG_DROP_DEPLOYMENT.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
 │   │   │   ├── NETLIFY_BUILD_FIX.md
 │   │   │   ├── NETLIFY_BUILD_TROUBLESHOOTING.md
 │   │   │   ├── NETLIFY_DEPLOYMENT_CHECK.md
@@ -285,12 +375,35 @@ BitNexus Landing Page/
 │   │   │   ├── NETLIFY_SETUP.md
 │   │   │   ├── NETLIFY_VERIFICATION.md
 │   │   │   └── SERVICE_RULES.md
-│   │   └── PostgreSQL/                  # PostgreSQL service documentation
+│   │   ├── phoenix/                   # Phoenix web framework service
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CAPABILITIES.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
+│   │   ├── postgresql/                # PostgreSQL service documentation
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── PostgreSQL_QUICK_START.md
+│   │   │   ├── PostgreSQL_SETUP.md
+│   │   │   ├── PostgreSQL-migration.sql
+│   │   │   ├── README.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   └── SETUP_GUIDE.md
+│   │   └── supabase/                  # Supabase service documentation (legacy)
+│   │       ├── ARCHITECTURE.md
+│   │       ├── CAPABILITIES.md
 │   │       ├── CHANGELOG.md
+│   │       ├── IMPLEMENTATION_GUIDE.md
+│   │       ├── INTEGRATION_GUIDE.md
+│   │       ├── README.md
 │   │       ├── SERVICE_RULES.md
-│   │       ├── PostgreSQL_QUICK_START.md
-│   │       ├── PostgreSQL_SETUP.md
-│   │       └── PostgreSQL-migration.sql
+│   │       ├── SETUP_GUIDE.md
+│   │       └── supabase-migration.sql
 │   │
 │   ├── Setup & Configuration/         # Setup, configuration, and troubleshooting
 │   │   ├── API_SETUP.md
@@ -326,6 +439,52 @@ BitNexus Landing Page/
 │       ├── branch-protection.yml
 │       ├── ci.yml
 │       └── deploy.yml
+│
+├── instructions/                      # External frameworks and instruction sets
+│   ├── BMAD-METHOD/                   # BMAD Method framework
+│   │   ├── src/                       # BMAD-METHOD source files
+│   │   │   ├── core/                  # Core framework files
+│   │   │   ├── modules/               # BMAD modules (bmb, bmgd, bmm, cis)
+│   │   │   └── utility/               # Utility components
+│   │   ├── docs/                      # BMAD documentation
+│   │   ├── samples/                   # Sample modules
+│   │   ├── tools/                     # Development tools
+│   │   └── website/                   # Website files
+│   └── .agent-os/                     # Agent OS configuration (if present)
+│
+├── rules/                             # Extracted rules from instruction frameworks
+│   ├── agent-os/                      # Agent OS framework rules
+│   │   ├── best-practices.md
+│   │   ├── code-style.md
+│   │   ├── deployment.md
+│   │   ├── security.md
+│   │   ├── README.md
+│   │   └── CHANGELOG.md
+│   ├── bmad-method/                   # BMAD-METHOD framework rules
+│   │   ├── workflow.md
+│   │   ├── structure.md
+│   │   ├── README.md
+│   │   └── CHANGELOG.md
+│   ├── services/                      # Service-specific rules
+│   │   ├── admin/                     # Admin service rules
+│   │   ├── discourse/                 # Discourse service rules
+│   │   ├── elixir/                    # Elixir service rules
+│   │   ├── erlang-ledger/             # Erlang ledger rules
+│   │   ├── github/                    # GitHub service rules
+│   │   ├── golang-api/                # Golang API rules
+│   │   ├── n8n/                       # n8n service rules
+│   │   ├── netlify/                   # Netlify service rules
+│   │   ├── phoenix/                   # Phoenix service rules
+│   │   ├── postgresql/                # PostgreSQL service rules
+│   │   ├── supabase/                  # Supabase service rules (legacy)
+│   │   └── README.md
+│   ├── frontend/                      # Frontend rules
+│   ├── backend/                       # Backend rules
+│   ├── dev_server/                    # Development server rules
+│   ├── docs/                          # Documentation rules
+│   ├── README.md                      # Rules directory overview
+│   ├── TODO.md                        # Rules TODO
+│   └── CHANGELOG.md                   # Rules changelog
 │
 ├── index.html                         # Root index (legacy - should use frontend/index.html)
 ├── LICENSE                            # Project license (must match .github/LICENSE)
@@ -489,6 +648,22 @@ BitNexus Landing Page/
 - **Discourse**: Forum service (planned)
 - **Other services**: Each service gets its own folder
 
+### Instructions (`instructions/`)
+**Purpose**: External frameworks and instruction sets
+- **BMAD-METHOD**: Complete BMAD Method framework for product development
+- **.agent-os**: Agent OS configuration (if present)
+- **⚠️ CRITICAL**: These are external frameworks - do not modify internal structure
+
+### Rules (`rules/`)
+**Purpose**: Extracted rules from instruction frameworks
+- **agent-os/**: Agent OS framework rules (code style, best practices, security, deployment)
+- **bmad-method/**: BMAD-METHOD framework rules (workflow, structure)
+- **services/**: Service-specific rules (one folder per service)
+- **frontend/**, **backend/**, **dev_server/**, **docs/**: Folder-specific rules
+- **README.md**: Rules directory overview
+- **TODO.md**: Rules TODO
+- **CHANGELOG.md**: Rules changelog
+
 ### Documentation (`docs/`)
 **Purpose**: All project documentation
 
@@ -498,10 +673,21 @@ BitNexus Landing Page/
 - **TECH_STACK.md**: Technology stack documentation
 
 #### Development (`docs/Development/`)
-- **Team task files**: CRAIG_TASKS.md, JONNE_TASKS.md, JOSEF_TASKS.md, LEE_TASKS.md, SVEIN_TASKS.md
+- **Team task files**: CRAIG_TASKS.md, JONNE_TASKS.md, JOSEF_TASKS.md, LEE_TASKS.md, SVEIN_TASKS.md, CORY_TASKS.md
+- **Owner files**: BACKEND_OWNER.md, FRONTEND_OWNER.md, SECURITY_OWNER.md, CTO_OWNER.md, SALES_OWNER.md, TEAM_OWNER.md
 - **Architecture docs**: AFFILIATE_PROGRAM_ARCHITECTURE.md, IMPLEMENTATION_PLAN.md
 - **Developer docs**: DEVELOPER_DOCS.md, TEAM_DOCUMENTATION_RESPONSIBILITIES.md
-- **Development planning docs/**: Planning documents folder
+- **CHANGELOG.md**: Development documentation changelog
+- **README.md**: Development folder overview
+- **development Bmad Planning docs/**: BMAD-METHOD planning documents folder
+  - **Product_Brief.md**: Initial product analysis
+  - **PRD.md**: Product Requirements Document (100 FRs, 52 NFRs)
+  - **UX_Design_Specification.md**: User experience design
+  - **Architecture_Decision_Document.md**: Technical architecture (8 ADRs)
+  - **Epic_Breakdown.md**: Implementation epics and stories (15 epics)
+  - **Project_Context.md**: Rules and patterns for developers/AI
+  - **RULES.md**: BMAD-METHOD compliance rules
+  - **README.md**: BMAD-METHOD planning docs overview
 
 #### Product Documentation (`docs/Product docs/`)
 - **Business & Strategy**: Business planning and strategy documents
@@ -514,17 +700,32 @@ BitNexus Landing Page/
 
 #### Project Management (`docs/Project Management/`)
 - **CHANGELOG.md**: Project changelog (MANDATORY updates)
-- **TODO.md**: Project task tracking
+- **TODO.md**: Main project task tracking (1624+ lines)
 - **PROJECT_STATUS.md**: Project status and overview
 - **DOCUMENTATION_INDEX.md**: Documentation index
+- **NEXT_STEPS.md**: Next steps document
+- **Planning Documents**:
+  - **ACADEMY_PLANNING.md**: Academy planning
+  - **ALLIANCE_ARENA_PLANNING.md**: Alliance Arena planning
+  - **CHAT_PLANNING.md**: Chat planning
+  - **CONTENT_GENERATOR_PLANNING.md**: Content Generator planning
+  - **MARKETPLACE_PLANNING.md**: Marketplace planning
+  - **N8N_PLANNING.md**: n8n planning
+  - **SECURITY_PLANNING.md**: Security planning
 
 #### Services (`docs/Services/`)
-- **One folder per service**: netlify, PostgreSQL, github, n8n, discourse, erlang-ledger, golang-api
-- **Each service folder contains**:
-  - SERVICE_RULES.md (mandatory)
-  - CHANGELOG.md (mandatory)
-  - Service-specific documentation
+- **One folder per service**: admin, discourse, elixir, erlang-ledger, github, golang-api, n8n, netlify, phoenix, postgresql, supabase (legacy)
+- **Each service folder contains** (standard structure):
+  - **SERVICE_RULES.md** (mandatory) - Service-specific rules
+  - **CHANGELOG.md** (mandatory) - Service changelog
+  - **README.md** (mandatory) - Service overview
+  - **ARCHITECTURE.md** - System architecture
+  - **CAPABILITIES.md** - What the service can/cannot manage
+  - **IMPLEMENTATION_GUIDE.md** - Implementation guide
+  - **INTEGRATION_GUIDE.md** - Integration guide
+  - **SETUP_GUIDE.md** - Setup guide
 - **github/push-docs/**: Push change documentation folder
+- **Service-specific files**: Additional documentation as needed
 
 #### Setup & Configuration (`docs/Setup & Configuration/`)
 - **Setup guides**: API_SETUP.md, DOCKER_SETUP.md, SETUP_CHECKLIST.md
@@ -546,6 +747,26 @@ BitNexus Landing Page/
 - **Entrypoint**: docker-entrypoint.sh for container initialization
 - **⚠️ CRITICAL**: All development server files MUST be in this folder
 - **Location**: `C:\Users\josef\OneDrive\Skrivbord\BitNexus Landing Page\dev_server\`
+
+### Instructions (`instructions/`)
+**Purpose**: External frameworks and instruction sets
+- **BMAD-METHOD/**: Complete BMAD Method framework
+  - **src/**: Core framework source files
+  - **docs/**: BMAD documentation
+  - **samples/**: Sample modules
+  - **tools/**: Development tools
+- **.agent-os/**: Agent OS configuration (if present)
+- **⚠️ CRITICAL**: Do not modify internal structure without understanding framework
+
+### Rules (`rules/`)
+**Purpose**: Extracted rules from instruction frameworks
+- **agent-os/**: Agent OS framework rules
+- **bmad-method/**: BMAD-METHOD framework rules
+- **services/**: Service-specific rules (one folder per service)
+- **frontend/**, **backend/**, **dev_server/**, **docs/**: Folder-specific rules
+- **README.md**: Rules directory overview
+- **TODO.md**: Rules TODO
+- **CHANGELOG.md**: Rules changelog
 
 ### Root Directory
 **Purpose**: Project configuration and entry points only
@@ -594,12 +815,14 @@ BitNexus Landing Page/
 1. **Product docs** → `docs/Product docs/` (organized by topic)
 2. **Core docs** → `docs/Core Documentation/`
 3. **Development docs** → `docs/Development/`
-4. **Project management** → `docs/Project Management/`
-5. **Service docs** → `docs/Services/service-name/`
-6. **Setup docs** → `docs/Setup & Configuration/`
-7. **UI docs** → `docs/UI & Features/`
-8. **Structure reference** → Update `docs/Core Documentation/STRUCTURE.md` (this file)
-9. **Never add `.md` files to root** (except `README.md` and `START_HERE.md`)
+4. **BMAD-METHOD planning docs** → `docs/Development/development Bmad Planning docs/` (MUST follow BMAD-METHOD)
+5. **Project management** → `docs/Project Management/`
+6. **Service docs** → `docs/Services/service-name/`
+7. **Setup docs** → `docs/Setup & Configuration/`
+8. **UI docs** → `docs/UI & Features/`
+9. **Structure reference** → Update `docs/Core Documentation/STRUCTURE.md` (this file)
+10. **Never add `.md` files to root** (except `README.md` and `START_HERE.md`)
+11. **All folders MUST have README.md and CHANGELOG.md** (CRITICAL)
 
 ### Adding Investor Ready Materials
 1. **Use appropriate numbered folder** (01-15)
@@ -672,21 +895,49 @@ Before committing changes, verify:
 - **Functions**: 3 Netlify serverless functions
 
 ### Documentation
-- **Core Documentation**: 3 files
-- **Development**: 10+ files
+- **Core Documentation**: 6 files (STRUCTURE.md, DOCS_STRUCTURE.md, TECH_STACK.md, TECH_STACK_EVALUATION.md, TECH_STACK_SUGGESTIONS.md, README.md, CHANGELOG.md)
+- **Development**: 26+ files
+  - **Team task files**: 6 files (CRAIG, JONNE, JOSEF, LEE, SVEIN, CORY)
+  - **Owner files**: 6 files (BACKEND, FRONTEND, SECURITY, CTO, SALES, TEAM)
+  - **BMAD-METHOD planning docs**: 8 files (Product Brief, PRD, UX Design, Architecture, Epic Breakdown, Project Context, RULES, README)
+  - **Other docs**: AFFILIATE_PROGRAM_ARCHITECTURE.md, IMPLEMENTATION_PLAN.md, DEVELOPER_DOCS.md, TEAM_DOCUMENTATION_RESPONSIBILITIES.md, README.md, CHANGELOG.md
 - **Product docs**: 20+ files across 6 categories
-- **Investor Ready**: 15 folders with 30+ files
-- **Project Management**: 4 files
-- **Services**: 7 service folders with 40+ files
-- **Setup & Configuration**: 8 files
-- **UI & Features**: 6 files
+- **Investor Ready**: 15 folders with 72+ files
+- **Project Management**: 12 files (CHANGELOG.md, TODO.md, PROJECT_STATUS.md, DOCUMENTATION_INDEX.md, NEXT_STEPS.md, 7 planning documents)
+- **Services**: 11 service folders with 113+ files
+  - **admin**: 8 files
+  - **discourse**: 8 files
+  - **elixir**: 8 files
+  - **erlang-ledger**: 8 files
+  - **github**: 17 files (including push-docs/)
+  - **golang-api**: 8 files
+  - **n8n**: 8 files
+  - **netlify**: 19 files
+  - **phoenix**: 8 files
+  - **postgresql**: 10 files
+  - **supabase**: 11 files (legacy)
+- **Setup & Configuration**: 11 files
+- **UI & Features**: 8 files
 
-### Total Documentation Files: 120+ files
+### Instructions & Rules
+- **instructions/BMAD-METHOD/**: 1000+ files (complete framework)
+- **rules/**: 50+ files (extracted rules from frameworks)
+
+### Total Documentation Files: 200+ files
 
 ---
 
 **This document is the authoritative source for project structure. Always refer to this file when organizing files or folders.**
 
 **Last Updated**: January 2026  
-**Version**: 2.0  
+**Version**: 2.1  
 **Next Review**: February 2026
+
+**Recent Updates**:
+- Added `instructions/` folder structure (BMAD-METHOD framework)
+- Added `rules/` folder structure (extracted framework rules)
+- Updated Development folder to include all owner files and BMAD-METHOD planning docs
+- Updated Services to include all current services with standard documentation structure
+- Updated Project Management to include all planning documents
+- Updated frontend services to reflect current files
+- Updated Core Documentation to include new files

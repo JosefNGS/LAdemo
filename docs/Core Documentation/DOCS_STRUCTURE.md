@@ -62,7 +62,7 @@ docs/
 │       └── (Discourse setup docs when implemented)
 │
 ├── Development/                     # Development planning and implementation docs
-│   ├── Development planning docs/   # Planning documents
+│   ├── development Bmad Planning docs/   # BMAD-METHOD planning documents
 │   │   ├── IMPLEMENTATION_PLAN.md
 │   │   ├── AFFILIATE_PROGRAM_ARCHITECTURE.md
 │   │   └── (other planning docs)
@@ -128,7 +128,7 @@ docs/
 ### Rule 2: Development Documentation
 **MANDATORY**:
 - **ALL development planning docs MUST be in `docs/Development/`**
-- **Planning documents** go in `docs/Development/Development planning docs/`
+- **Planning documents** go in `docs/Development/development Bmad Planning docs/`
 - **Developer guides** go in `docs/Development/`
 
 ### Rule 3: Setup & Configuration
@@ -225,7 +225,7 @@ docs/
    - Never mix services in same folder
 
 2. **Development Documentation**:
-   - Planning docs → `docs/Development/Development planning docs/`
+   - Planning docs → `docs/Development/development Bmad Planning docs/`
    - Developer guides → `docs/Development/`
 
 3. **Setup Documentation**:

@@ -17,10 +17,26 @@ Every changelog entry MUST track who made the change:
 ## [Unreleased]
 
 ### Added
+- Created development Bmad Planning docs folder with BMAD-METHOD framework documents [Cursor]
+- Created Product_Brief.md - Initial product analysis and vision document [Cursor]
+- Created PRD.md - Comprehensive Product Requirements Document with 100 FRs and 52 NFRs [Cursor]
+- Created UX_Design_Specification.md - User experience and interaction design specifications [Cursor]
+- Created Architecture_Decision_Document.md - Technical architecture decisions (8 ADRs) [Cursor]
+- Created Epic_Breakdown.md - Implementation epics and stories (15 epics) [Cursor]
+- Created Project_Context.md - Critical rules and patterns for AI agents and developers [Cursor]
+- Created README.md for development Bmad Planning docs folder [Cursor]
+- Created RULES.md - Mandatory BMAD-METHOD compliance rules for development Bmad Planning docs folder [Cursor]
+- Updated README.md to emphasize BMAD-METHOD compliance requirements [Cursor]
+- Moved PRD.md to development Bmad Planning docs folder [Cursor]
+- Renamed folder from "Development planning docs" to "development Bmad Planning docs" [Cursor]
 - Created FRONTEND_OWNER.md - Frontend owner responsibilities and task tracking [Cursor]
 - Created BACKEND_OWNER.md - Backend owner responsibilities and task tracking [Cursor]
 - Created SECURITY_OWNER.md - Security owner responsibilities and task tracking [Cursor]
+- Created CTO_OWNER.md - CTO owner responsibilities and task tracking [Developer: Josef]
+- Created SALES_OWNER.md - Sales owner responsibilities and task tracking [Developer: Josef]
+- Created TEAM_OWNER.md - Team owner responsibilities and task tracking [Developer: Josef]
 - Initial development documentation changelog [Cursor]
+- Updated CHANGELOG.md to enforce developer/Cursor tracking in all entries [Developer: Josef]
 
 ---
 

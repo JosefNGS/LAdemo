@@ -15,12 +15,15 @@ This directory contains development planning, task tracking, and implementation 
   - `FRONTEND_OWNER.md` - Frontend owner responsibilities
   - `BACKEND_OWNER.md` - Backend owner responsibilities
   - `SECURITY_OWNER.md` - Security owner responsibilities
+  - `CTO_OWNER.md` - CTO owner responsibilities
+  - `SALES_OWNER.md` - Sales owner responsibilities
+  - `TEAM_OWNER.md` - Team owner responsibilities
 - **Planning Documents**:
   - `DEVELOPER_DOCS.md` - Developer responsibilities and guidelines
   - `IMPLEMENTATION_PLAN.md` - Implementation planning
   - `AFFILIATE_PROGRAM_ARCHITECTURE.md` - Affiliate program architecture
   - `TEAM_DOCUMENTATION_RESPONSIBILITIES.md` - Team documentation responsibilities
-- **Development planning docs/** - Additional planning documents
+- **development Bmad Planning docs/** - BMAD-METHOD planning documents
 
 ## Task File Synchronization
 

@@ -204,6 +204,9 @@ All team member responsibilities are synchronized with:
   - `docs/Development/FRONTEND_OWNER.md` - Frontend owner responsibilities
   - `docs/Development/BACKEND_OWNER.md` - Backend owner responsibilities
   - `docs/Development/SECURITY_OWNER.md` - Security owner responsibilities
+  - `docs/Development/CTO_OWNER.md` - CTO owner responsibilities
+  - `docs/Development/SALES_OWNER.md` - Sales owner responsibilities
+  - `docs/Development/TEAM_OWNER.md` - Team owner responsibilities
   - `docs/Development/SVEIN_TASKS.md`
   - `docs/Development/LEE_TASKS.md`
 

@@ -56,15 +56,29 @@
 - **CRITICAL**: Changelog MUST be updated for EVERY change, no matter how small
 - **CRITICAL**: Changelog entries MUST include date (Month Year format)
 - **CRITICAL**: Changelog MUST be updated BEFORE committing changes
+
+**🔴 CRITICAL - MANDATORY DEVELOPER/CURSOR TRACKING**:
 - **CRITICAL**: Changelog entries MUST track developer/Cursor who made the change
+- **MANDATORY**: Every changelog entry in ALL CHANGELOG files must include developer/Cursor tracking
+- **NO EXCEPTIONS** - This applies to:
+  - `docs/Project Management/CHANGELOG.md` (main changelog)
+  - `docs/Development/CHANGELOG.md` (development docs changelog)
+  - All service CHANGELOG.md files (e.g., `docs/Services/*/CHANGELOG.md`)
+  - All folder CHANGELOG.md files (e.g., `frontend/CHANGELOG.md`, `backend/CHANGELOG.md`)
+  - **ALL CHANGELOG files in the project**
 - **Developer Tracking Format**: Each entry must include `[Developer: Name]` or `[Cursor]` tag
+- **Developer Examples**: `[Developer: Josef]`, `[Developer: Josef Lindbom]`, `[Developer: Craig]`, `[Developer: Jonne]`
+- **Cursor/AI Examples**: `[Cursor]` (for changes made by Cursor/AI assistant)
+- **Purpose**: Accountability, tracking, audit trail, and responsibility assignment
 - **Example Format**:
   ```markdown
   ### Added
-  - New feature description [Developer: Josef Lindbom]
+  - New feature description [Developer: Josef]
   - Another feature [Cursor]
+  - Bug fix [Developer: Craig]
+  - Documentation update [Developer: Jonne]
   ```
-- **Location**: `docs/Project Management/CHANGELOG.md`
+- **Location**: `docs/Project Management/CHANGELOG.md` (and all other CHANGELOG.md files)
 - **This is MANDATORY and STRICTLY ENFORCED - NO EXCEPTIONS**
 
 **BitNexusDocs Repository Sync - CRITICAL**:
@@ -116,6 +130,9 @@
 - `docs/Development/FRONTEND_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
 - `docs/Development/BACKEND_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
 - `docs/Development/SECURITY_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/CTO_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/SALES_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/TEAM_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
 - `docs/Development/DEVELOPER_DOCS.md` - **AUTO-UPDATE REQUIRED** when team responsibilities change in TODO
 - `docs/Development/README.md` - **AUTO-UPDATE REQUIRED** when structure changes in TODO
 - `docs/Development/CHANGELOG.md` - **AUTO-UPDATE REQUIRED** when any Development doc changes
@@ -275,6 +292,42 @@
 - **UI & Features** → `docs/UI & Features/`
 - **Product docs** → `docs/Product docs/` (organized by topic)
 
+### 📋 DEVELOPMENT PLANNING DOCS - BMAD-METHOD COMPLIANCE
+**MANDATORY RULE - STRICTLY ENFORCED**:
+- **ALL documents in `docs/Development/development Bmad Planning docs/` MUST follow BMAD-METHOD framework**
+- **NO EXCEPTIONS** - This is a mandatory requirement for consistency and quality
+- **Location**: `docs/Development/development Bmad Planning docs/`
+- **Rules File**: `docs/Development/development Bmad Planning docs/RULES.md` (CRITICAL - read before creating/updating documents)
+
+**BMAD-METHOD Compliance Requirements**:
+- ✅ **ALL documents MUST follow BMAD-METHOD templates** from `instructions/BMAD-METHOD/src/modules/bmm/workflows/`
+- ✅ **ALL documents MUST include frontmatter** with `stepsCompleted`, `inputDocuments`, `workflowType`
+- ✅ **ALL documents MUST follow BMAD-METHOD workflow structure** exactly
+- ✅ **ALL updates MUST maintain BMAD-METHOD compliance** - Review templates before updating
+
+**Required Documents (BMAD-METHOD Core)**:
+1. ✅ **Product Brief** (`Product_Brief.md`) - Workflow: `1-analysis/create-product-brief/`
+2. ✅ **PRD** (`PRD.md`) - Workflow: `2-plan-workflows/prd/`
+3. ✅ **UX Design Specification** (`UX_Design_Specification.md`) - Workflow: `2-plan-workflows/create-ux-design/`
+4. ✅ **Architecture Decision Document** (`Architecture_Decision_Document.md`) - Workflow: `3-solutioning/create-architecture/`
+5. ✅ **Epic Breakdown** (`Epic_Breakdown.md`) - Workflow: `3-solutioning/create-epics-and-stories/`
+6. ✅ **Project Context** (`Project_Context.md`) - Workflow: `generate-project-context/`
+
+**Forbidden Actions**:
+- ❌ **DO NOT** create documents without following BMAD-METHOD templates
+- ❌ **DO NOT** modify document structure without referencing BMAD-METHOD workflows
+- ❌ **DO NOT** skip required sections from BMAD-METHOD templates
+- ❌ **DO NOT** create custom document formats that deviate from BMAD-METHOD
+
+**Before Creating/Updating Documents**:
+1. **Read `docs/Development/development Bmad Planning docs/RULES.md`** - Mandatory compliance rules
+2. **Review BMAD-METHOD template** from `instructions/BMAD-METHOD/src/modules/bmm/workflows/`
+3. **Follow BMAD-METHOD workflow** exactly as defined
+4. **Maintain document structure** and frontmatter
+5. **Update CHANGELOG.md** after changes
+
+**See `docs/Development/development Bmad Planning docs/RULES.md` for complete BMAD-METHOD compliance rules.**
+
 ### 📋 README AND CHANGELOG - CRITICAL REQUIREMENT
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **ALL folders MUST have README.md and CHANGELOG.md**
@@ -290,7 +343,12 @@
 **CHANGELOG.md Requirements**:
 - **Purpose**: Track all changes made within the folder
 - **Format**: Follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-- **Developer Tracking**: MANDATORY - Every entry must include `[Developer: Name]` or `[Cursor]` tag
+- **🔴 CRITICAL - Developer Tracking**: MANDATORY - Every entry must include `[Developer: Name]` or `[Cursor]` tag
+  - **Format**: `- Description of change [Developer: Name]` or `- Description of change [Cursor]`
+  - **Developer Examples**: `[Developer: Josef]`, `[Developer: Josef Lindbom]`, `[Developer: Craig]`, `[Developer: Jonne]`
+  - **Cursor/AI Examples**: `[Cursor]` (for changes made by Cursor/AI assistant)
+  - **NO EXCEPTIONS** - All entries must track who made the change
+  - **Purpose**: Accountability, tracking, audit trail, and responsibility assignment
 - **Location**: Root of each folder (e.g., `frontend/CHANGELOG.md`, `backend/CHANGELOG.md`)
 
 **Folders That MUST Have README.md and CHANGELOG.md**:
@@ -957,6 +1015,8 @@ After making responsive changes:
 - ❌ **CRITICAL**: Don't commit changes without updating CHANGELOG.md (MANDATORY - NO EXCEPTIONS)
 - ❌ **CRITICAL**: Don't skip changelog entries for "small" changes (ALL changes must be logged)
 - ❌ **CRITICAL**: Don't update changelog after committing (must be done BEFORE)
+- ❌ **CRITICAL**: Don't create changelog entries without developer/Cursor tracking (`[Developer: Name]` or `[Cursor]` tag)
+- ❌ **CRITICAL**: Don't forget to track who made the change in ALL CHANGELOG files (not just main changelog)
 - ❌ **CRITICAL**: Don't place files in root directory that don't belong there (check `docs/Core Documentation/STRUCTURE.md`)
 - ❌ **CRITICAL**: Don't create random files without following folder structure (see `docs/Core Documentation/STRUCTURE.md`)
 - ❌ **CRITICAL**: Don't place documentation files randomly (see `docs/Core Documentation/DOCS_STRUCTURE.md`)
@@ -1070,6 +1130,13 @@ After making responsive changes:
   - `Removed` - Removed features
   - `Fixed` - Bug fixes
   - `Security` - Security-related changes
+- **🔴 CRITICAL - Developer/Cursor Tracking**: 
+  - **MANDATORY**: Every changelog entry MUST include `[Developer: Name]` or `[Cursor]` tag
+  - **Applies to**: ALL CHANGELOG files in the project (main, service, folder, etc.)
+  - **Format**: `- Description of change [Developer: Josef]` or `- Description of change [Cursor]`
+  - **Developer Examples**: `[Developer: Josef]`, `[Developer: Josef Lindbom]`, `[Developer: Craig]`, `[Developer: Jonne]`
+  - **Cursor/AI Examples**: `[Cursor]` (for changes made by Cursor/AI assistant)
+  - **NO EXCEPTIONS** - All entries must track who made the change
 - **CRITICAL**: Changelog MUST be updated for:
   - Code changes
   - Documentation updates

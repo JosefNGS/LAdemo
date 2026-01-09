@@ -96,7 +96,7 @@ This document defines documentation responsibilities for each team member. All d
   - `docs/Development/DEVELOPER_DOCS.md`
   - `docs/Development/IMPLEMENTATION_PLAN.md`
   - `docs/Development/AFFILIATE_PROGRAM_ARCHITECTURE.md`
-  - `docs/Development/Development planning docs/`
+  - `docs/Development/development Bmad Planning docs/`
 - `docs/DEPLOYMENT.md`
 - `docs/TECH_STACK.md`
 - `docs/backend/n8n/` (when implemented)
