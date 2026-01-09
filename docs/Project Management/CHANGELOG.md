@@ -15,6 +15,17 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.30.0] - January 2026
+
+### Changed
+- **TODO Task Ownership Rule**: Updated `docs/Project Management/TODO.md` with mandatory task ownership requirements [Cursor]
+  - Added \"MANDATORY RULE - TASK OWNERSHIP\" under Task Assignment
+  - Every task must have a clear owner (person or role) using `[Owner: Name]` or `[Owner: Role]`
+  - New tasks must be assigned an owner immediately
+  - When tasks are moved between people, owners must be updated here and in the person’s task doc
+
+---
+
 ## [1.29.0] - January 2026
 
 ### Changed
