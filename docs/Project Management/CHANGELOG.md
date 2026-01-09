@@ -19,7 +19,9 @@ Every changelog entry MUST track who made the change:
 
 ### Added
 - **NSR (NorthStar Rules) Framework Documentation**: Added comprehensive information about NSR framework to README.md and START_HERE.md [Developer: Josef Lindbom]
-  - Added NSR framework overview to Framework Documentation section in both files [Developer: Josef Lindbom]
+  - Added NSR framework overview to Framework Documentation section in START_HERE.md [Developer: Josef Lindbom]
+  - Added NSR framework documentation to Documentation section in README.md [Developer: Josef Lindbom]
+  - Documented NSR structure, purpose, features, and usage in BitNexus project [Developer: Josef Lindbom]
   - Documented NSR structure, purpose, features, and usage in BitNexus project [Developer: Josef Lindbom]
   - Added NSR repository link and team information [Developer: Josef Lindbom]
   - Explained how NSR generates project structures and enforces standards [Developer: Josef Lindbom]
