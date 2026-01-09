@@ -1,0 +1,101 @@
+# NSR Framework Configuration
+# NorthStar Rules (NSR) - Project Generation Framework
+
+nsr_version: 1.0.0
+
+# Framework Information
+framework:
+  name: "NorthStar Rules (NSR)"
+  owner: "NorthStar Team (Nordic Global Solutions)"
+  license: "MIT License"
+  copyright: "Copyright (c) 2026 NorthStar Team"
+
+# NorthStar Team Members
+team:
+  - name: "Josef Lindbom"
+    role: "COO & Development Vision Lead"
+    email: "josef@nordicglobalsolutions.com"
+  - name: "Craig Martin"
+    role: "CTO"
+    email: "craig@nordicglobalsolutions.com"
+
+# Project Generation Settings
+project_generation:
+  # Default project structure template
+  default_template: "src/templates/project-structure-template.md"
+  
+  # Mandatory folders to create
+  mandatory_folders:
+    - "frontend"
+    - "backend"
+    - "developers"
+    - "instructions"
+    - "rules"
+    - "docs"
+  
+  # Mandatory files in every folder
+  mandatory_files:
+    - "README.md"
+    - "CHANGELOG.md"
+  
+  # Root files to generate
+  root_files:
+    - "README.md"
+    - "LICENSE"
+    - "CHANGELOG.md"
+    - ".cursorrules"
+    - ".gitignore"
+
+# Rules Configuration
+rules:
+  # Source of rules
+  source: "src/rules/"
+  
+  # Rules to include in .cursorrules generation
+  include:
+    - "cursor-rules-template.md"
+    - "project-standards.md"
+    - "code-standards.md"
+  
+  # Rules extraction from frameworks
+  extract_from:
+    - "ref/.agent-os/"
+    - "ref/BMAD-METHOD/"
+
+# Workflows Configuration
+workflows:
+  # Available workflows
+  available:
+    - "project-init-workflow.md"
+  
+  # Default workflow for new projects
+  default: "project-init-workflow.md"
+
+# Standards Configuration
+standards:
+  # Standards to apply
+  apply:
+    - "code-standards.md"
+    - "project-standards.md"
+  
+  # Standards source
+  source: "src/standards/"
+
+# Reference Frameworks
+references:
+  # Frameworks used as references
+  frameworks:
+    - name: "Agent OS"
+      path: "ref/.agent-os/"
+      purpose: "Code standards, security, deployment"
+    
+    - name: "BMAD-METHOD"
+      path: "ref/BMAD-METHOD/"
+      purpose: "Product development workflows, architecture"
+
+# License Information
+license:
+  type: "MIT"
+  copyright_holder: "NorthStar Team (Nordic Global Solutions)"
+  year: 2026
+  file: "LICENSE"

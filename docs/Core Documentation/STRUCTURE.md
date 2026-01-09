@@ -2,7 +2,7 @@
 ## Complete Folder Organization & File Structure Guide
 
 **Last Updated**: January 2026  
-**Version**: 2.1  
+**Version**: 2.4  
 **Status**: Authoritative Source for Project Structure
 
 **⚠️ CRITICAL**: This document is the **MAIN SOURCE** for project structure. All files must follow this structure. No exceptions.
@@ -71,16 +71,41 @@ BitNexus Landing Page/
 │   │   │   ├── CartContext.tsx
 │   │   │   └── NotificationContext.tsx
 │   │   ├── data/                       # Data files
-│   │   │   └── teamProfiles.ts
+│   │   │   ├── teamProfiles.ts
+│   │   │   ├── userProfiles.ts
+│   │   │   ├── README.md
+│   │   │   └── CHANGELOG.md
+│   │   ├── instructions/                # Instruction-related files
+│   │   │   ├── README.md
+│   │   │   ├── CHANGELOG.md
+│   │   │   └── NSR/                     # NSR folder in frontend
+│   │   │       ├── README.md
+│   │   │       └── CHANGELOG.md
 │   │   ├── services/                   # API services and utilities
 │   │   │   ├── geminiService.ts       # Google Gemini AI service
 │   │   │   ├── postgresqlService.ts   # PostgreSQL database service
 │   │   │   ├── supabaseService.ts     # Supabase service (legacy)
 │   │   │   ├── taskFileService.ts     # Task file parsing service
 │   │   │   ├── taskService.ts         # Task management service
-│   │   │   └── taskSyncService.ts     # Task synchronization service
-│   │   └── utils/                      # Utility functions
-│   │       └── marketingAssets.ts
+│   │   │   ├── taskSyncService.ts     # Task synchronization service
+│   │   │   ├── README.md
+│   │   │   └── CHANGELOG.md
+│   │   ├── utils/                      # Utility functions
+│   │   │   ├── marketingAssets.ts
+│   │   │   ├── profileNavigation.ts
+│   │   │   ├── README.md
+│   │   │   └── CHANGELOG.md
+│   │   ├── components/                 # Reusable components
+│   │   │   ├── README.md
+│   │   │   └── CHANGELOG.md
+│   │   ├── contexts/                   # React contexts
+│   │   │   ├── README.md
+│   │   │   └── CHANGELOG.md
+│   │   ├── pages/                      # Page components
+│   │   │   ├── README.md
+│   │   │   └── CHANGELOG.md
+│   │   ├── README.md                   # Frontend src overview
+│   │   └── CHANGELOG.md                # Frontend src changelog
 │   ├── public/                         # Static assets
 │   │   └── _redirects                  # Netlify SPA routing
 │   ├── dist/                           # Production build output (generated)
@@ -132,14 +157,44 @@ BitNexus Landing Page/
 │       ├── transactions_service/      # Transactions domain service
 │       └── ledger_client/             # Ledger integration service
 │
+├── developers/                         # Developer profiles (source of truth)
+│   ├── README.md                       # Developer profiles overview
+│   ├── CHANGELOG.md                    # Developer profiles changelog
+│   ├── JOSEF_LINDBOM.md                # Josef Lindbom's profile (portable)
+│   ├── CRAIG_MARTIN.md                 # Craig Martin's profile (portable)
+│   ├── JONNE_WASELIUS.md               # Jonne Waselius's profile (portable)
+│   └── CORY.md                         # Cory's profile (portable)
+│
 ├── instructions/                       # External frameworks and instruction sets
+│   ├── README.md                       # Instructions folder overview
+│   ├── CHANGELOG.md                    # Instructions folder changelog
 │   ├── BMAD-METHOD/                    # BMAD Method framework
 │   │   ├── src/                        # Framework source files
 │   │   ├── docs/                       # BMAD documentation
 │   │   ├── samples/                    # Sample modules
 │   │   ├── tools/                      # Development tools
 │   │   └── website/                    # Website files
-│   └── .agent-os/                      # Agent OS configuration (if present)
+│   ├── .agent-os/                      # Agent OS configuration (if present)
+│   └── NSR/                            # NorthStar Rules (Project Generation Framework)
+│       ├── README.md                   # NSR overview and framework documentation
+│       ├── LICENSE                     # MIT License (NorthStar Team)
+│       ├── CHANGELOG.md                # NSR changelog
+│       ├── config.yml                  # NSR framework configuration
+│       ├── src/                        # NSR framework source
+│       │   ├── templates/              # Project structure templates
+│       │   │   └── project-structure-template.md
+│       │   ├── rules/                  # Extracted rules
+│       │   │   └── cursor-rules-template.md
+│       │   ├── workflows/              # Project initialization workflows
+│       │   │   └── project-init-workflow.md
+│       │   └── standards/              # Code and project standards
+│       │       ├── code-standards.md
+│       │       └── project-standards.md
+│       └── ref/                        # Reference frameworks for NSR development
+│           ├── README.md               # Reference frameworks overview
+│           ├── CHANGELOG.md            # Reference frameworks changelog
+│           ├── .agent-os/              # Agent OS framework (reference copy)
+│           └── BMAD-METHOD/            # BMAD-METHOD framework (reference copy)
 │
 ├── rules/                              # Extracted rules from instruction frameworks
 │   ├── agent-os/                       # Agent OS framework rules
@@ -154,6 +209,8 @@ BitNexus Landing Page/
 │   └── CHANGELOG.md                    # Rules changelog
 │
 ├── docs/                               # Documentation folder
+│   ├── README.md                       # Documentation folder overview
+│   ├── CHANGELOG.md                    # Documentation folder changelog
 │   ├── Core Documentation/             # Core system documentation
 │   │   ├── CHANGELOG.md                # Core documentation changelog
 │   │   ├── DOCS_STRUCTURE.md           # Documentation organization guide
@@ -322,6 +379,7 @@ BitNexus Landing Page/
 │   │   │   ├── SERVICE_RULES.md
 │   │   │   └── SETUP_GUIDE.md
 │   │   ├── github/                    # GitHub service documentation
+│   │   │   ├── README.md              # GitHub service overview
 │   │   │   ├── ARCHITECTURE.md
 │   │   │   ├── BITNEXUS_DOCS_README.md
 │   │   │   ├── BITNEXUS_DOCS_SYNC.md
@@ -339,6 +397,7 @@ BitNexus Landing Page/
 │   │   │   ├── VERSION_CONTROL.md
 │   │   │   └── push-docs/             # Push change documentation
 │   │   │       ├── README.md
+│   │   │       ├── CHANGELOG.md
 │   │   │       └── [push documentation files]
 │   │   ├── golang-api/                # Go API services
 │   │   │   ├── ARCHITECTURE.md
@@ -748,14 +807,44 @@ BitNexus Landing Page/
 - **⚠️ CRITICAL**: All development server files MUST be in this folder
 - **Location**: `C:\Users\josef\OneDrive\Skrivbord\BitNexus Landing Page\dev_server\`
 
+### Developers (`developers/`)
+**Purpose**: Developer profiles as source of truth for developer information
+- **Portable Profiles**: Each developer has their own profile file that can be moved between projects
+- **Source of Truth**: These files are the authoritative source for developer information
+- **Profile Files**: 
+  - `JOSEF_LINDBOM.md` - Josef Lindbom (COO & Development Vision Lead)
+  - `CRAIG_MARTIN.md` - Craig Martin (CTO)
+  - `JONNE_WASELIUS.md` - Jonne Waselius (Backend Developer)
+  - `CORY.md` - Cory (Junior Developer)
+- **README.md**: Overview of developer profile system
+- **CHANGELOG.md**: Tracks changes to developer profiles
+- **⚠️ CRITICAL**: Referenced by `.cursorrules` pre-flight checklist for developer identity verification
+
 ### Instructions (`instructions/`)
 **Purpose**: External frameworks and instruction sets
+- **README.md**: Instructions folder overview
+- **CHANGELOG.md**: Instructions folder changelog
 - **BMAD-METHOD/**: Complete BMAD Method framework
   - **src/**: Core framework source files
   - **docs/**: BMAD documentation
   - **samples/**: Sample modules
   - **tools/**: Development tools
 - **.agent-os/**: Agent OS configuration (if present)
+- **NSR/**: NorthStar Rules (Project Generation Framework)
+  - **README.md**: NSR overview and framework documentation
+  - **LICENSE**: MIT License (NorthStar Team)
+  - **CHANGELOG.md**: NSR changelog
+  - **config.yml**: NSR framework configuration
+  - **src/**: NSR framework source
+    - **templates/**: Project structure templates
+    - **rules/**: Extracted rules for cursor rules generation
+    - **workflows/**: Project initialization workflows
+    - **standards/**: Code and project standards
+  - **ref/**: Reference frameworks for NSR development
+    - **.agent-os/**: Agent OS framework (reference copy)
+    - **BMAD-METHOD/**: BMAD-METHOD framework (reference copy)
+    - **README.md**: Reference frameworks overview
+    - **CHANGELOG.md**: Reference frameworks changelog
 - **⚠️ CRITICAL**: Do not modify internal structure without understanding framework
 
 ### Rules (`rules/`)
@@ -930,14 +1019,21 @@ Before committing changes, verify:
 **This document is the authoritative source for project structure. Always refer to this file when organizing files or folders.**
 
 **Last Updated**: January 2026  
-**Version**: 2.1  
+**Version**: 2.4  
 **Next Review**: February 2026
 
 **Recent Updates**:
-- Added `instructions/` folder structure (BMAD-METHOD framework)
-- Added `rules/` folder structure (extracted framework rules)
-- Updated Development folder to include all owner files and BMAD-METHOD planning docs
-- Updated Services to include all current services with standard documentation structure
-- Updated Project Management to include all planning documents
-- Updated frontend services to reflect current files
-- Updated Core Documentation to include new files
+- Added `developers/` folder structure (developer profiles - source of truth)
+- Added `instructions/NSR/` folder structure (NorthStar Rules - Project Generation Framework)
+- Added `instructions/NSR/src/` folder structure (NSR framework source: templates, rules, workflows, standards)
+- Added `instructions/NSR/ref/` folder structure (reference frameworks for NSR development)
+- Added README.md and CHANGELOG.md to `docs/` folder
+- Added README.md and CHANGELOG.md to `instructions/` folder
+- Added README.md to `docs/Services/github/` folder
+- Added CHANGELOG.md to `rules/services/` folder
+- Added README.md and CHANGELOG.md to `frontend/src/instructions/` folder
+- Added CHANGELOG.md to `frontend/src/instructions/NSR/` folder
+- Updated frontend src structure to include all subfolder README.md and CHANGELOG.md files
+- Updated frontend src to include `userProfiles.ts` and `profileNavigation.ts`
+- Updated frontend src subfolders (components, contexts, data, services, utils, pages) to show README.md and CHANGELOG.md
+- Updated `docs/Services/github/push-docs/` to show CHANGELOG.md

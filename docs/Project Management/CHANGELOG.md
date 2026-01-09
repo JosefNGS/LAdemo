@@ -15,6 +15,231 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.49.0] - January 2026
+
+### Added
+- **Developer Changelog Tracking**: Created individual changelog files for each developer [Cursor]
+  - Created `developers/JOSEF_LINDBOM_CHANGELOG.md` for tracking Josef's contributions [Cursor]
+  - Created `developers/CRAIG_MARTIN_CHANGELOG.md` for tracking Craig's contributions [Cursor]
+  - Created `developers/JONNE_WASELIUS_CHANGELOG.md` for tracking Jonne's contributions [Cursor]
+  - Created `developers/CORY_CHANGELOG.md` for tracking Cory's contributions [Cursor]
+  - Each developer can now track their own changes and contributions [Cursor]
+  - Updated `developers/README.md` to document developer changelog system [Cursor]
+  - Updated `developers/CHANGELOG.md` with new changelog tracking system [Cursor]
+
+## [1.48.0] - January 2026
+
+### Added
+- **NSR Mandatory Files**: Added README.md and CHANGELOG.md to all NSR src subfolders [Cursor]
+  - Created README.md and CHANGELOG.md for `instructions/NSR/src/` [Cursor]
+  - Created README.md and CHANGELOG.md for `instructions/NSR/src/templates/` [Cursor]
+  - Created README.md and CHANGELOG.md for `instructions/NSR/src/rules/` [Cursor]
+  - Created README.md and CHANGELOG.md for `instructions/NSR/src/workflows/` [Cursor]
+  - Created README.md and CHANGELOG.md for `instructions/NSR/src/standards/` [Cursor]
+  - All NSR framework folders now comply with mandatory README/CHANGELOG requirement [Cursor]
+
+## [1.47.0] - January 2026
+
+### Added
+- **NSR Framework Structure**: Created complete framework structure for project generation [Cursor]
+  - Created `src/` folder with templates, rules, workflows, and standards [Cursor]
+  - Created `src/templates/project-structure-template.md` for project structure generation [Cursor]
+  - Created `src/rules/cursor-rules-template.md` for `.cursorrules` generation [Cursor]
+  - Created `src/workflows/project-init-workflow.md` for project initialization [Cursor]
+  - Created `src/standards/code-standards.md` and `project-standards.md` [Cursor]
+  - Created `config.yml` for NSR framework configuration [Cursor]
+  - Created `LICENSE` file with MIT License (NorthStar Team) [Cursor]
+- **NSR Framework Capabilities**: NSR can now generate BitNexus-like project structures [Cursor]
+  - Project structure templates [Cursor]
+  - Rules extraction and organization [Cursor]
+  - Workflow automation [Cursor]
+  - Standards enforcement [Cursor]
+- **License Documentation**: Added MIT License with NorthStar Team copyright to NSR [Cursor]
+  - Framework ownership clearly stated [Cursor]
+  - NGS framework ownership documented [Cursor]
+
+## [1.46.0] - January 2026
+
+### Added
+- **NSR Reference Frameworks**: Created reference folder in NSR for development frameworks [Cursor]
+  - Created `instructions/NSR/ref/` folder for reference frameworks [Cursor]
+  - Created `instructions/NSR/ref/README.md` explaining reference frameworks [Cursor]
+  - Created `instructions/NSR/ref/CHANGELOG.md` for tracking changes [Cursor]
+  - Copied Agent OS framework from `instructions/.agent-os/` to `instructions/NSR/ref/.agent-os/` [Cursor]
+  - Copied BMAD-METHOD framework from `instructions/BMAD-METHOD/` to `instructions/NSR/ref/BMAD-METHOD/` [Cursor]
+  - NSR uses these frameworks as references for their development [Cursor]
+  - Updated NSR README.md to document reference frameworks structure [Cursor]
+
+## [1.45.0] - January 2026
+
+### Fixed
+- **APY Rate Corrections**: Fixed 3 APY rate discrepancies in Bot Lab to align with documented ranges [Cursor]
+  - **Arbitrage Bot Alpha**: Changed from 12.5% to 11.5% APY (now within 10-12% documented range) [Cursor]
+  - **Liquidity Pool Beta**: Changed from 8.3% to 13.0% APY (now within 12-15% documented range) [Cursor]
+  - **XRP Flash Loan Bot**: Changed from 16.5% to 14.5% APY (now within 10-15% documented range) [Cursor]
+  - **XRP Flash Loan Bot Template**: Changed from 16-22% to 14-18% APY range [Cursor]
+  - Updated earnings calculations to reflect corrected APY rates [Cursor]
+    - Arbitrage Bot Alpha: $143.75 (from $156.25)
+    - Liquidity Pool Beta: $416.00 (from $265.60)
+
+### Added
+- **APY Rate Disclaimer**: Added prominent disclaimer to Bot Lab page [Cursor]
+  - Warning about projected rates, market volatility, and inherent risks
+  - Clarifies that rates are aggregated projected yields from optimized strategies
+  - Location: `frontend/src/pages/BotLab.tsx`
+  - Yellow-bordered card with warning icon for visibility
+
+### Changed
+- **Documentation Updates**: Updated APY rate documentation [Cursor]
+  - Updated `docs/UI & Features/FRONTEND_DATA_INVENTORY.md` with corrected APY rates and earnings [Cursor]
+  - Updated `docs/UI & Features/FRONTEND_DATA_VALIDATION_REPORT.md` to mark changes as implemented [Cursor]
+  - Added APY rate source clarification to `docs/Product docs/Technical Documentation/PLATFORM_OVERVIEW.md` [Cursor]
+    - Explains aggregated projected yields, market dependency, and risk-adjusted nature
+    - Provides context for higher rates compared to real-world DeFi benchmarks
+
+## [1.44.0] - January 2026
+
+### Changed
+- **STRUCTURE.md Update**: Updated `docs/Core Documentation/STRUCTURE.md` to include all new files and folders [Cursor]
+  - Added `developers/` folder structure with all developer profile files [Cursor]
+  - Added `instructions/NSR/` folder structure [Cursor]
+  - Added README.md and CHANGELOG.md files to all folders that were missing them [Cursor]
+  - Updated frontend src structure to show all subfolder README.md and CHANGELOG.md files [Cursor]
+  - Added new frontend files (`userProfiles.ts`, `profileNavigation.ts`) [Cursor]
+  - Updated `docs/Services/github/` to show README.md [Cursor]
+  - Updated `rules/services/` to show CHANGELOG.md [Cursor]
+  - Updated `docs/Services/github/push-docs/` to show CHANGELOG.md [Cursor]
+  - Updated version to 2.2 [Cursor]
+  - Updated Recent Updates section [Cursor]
+
+## [1.43.0] - January 2026
+
+### Added
+- **Complete README.md and CHANGELOG.md Coverage**: Ensured all folders have required README.md and CHANGELOG.md files [Cursor]
+  - Created `docs/README.md` and `docs/CHANGELOG.md` [Cursor]
+  - Created `instructions/README.md` and `instructions/CHANGELOG.md` [Cursor]
+  - Created `docs/Services/github/README.md` (CHANGELOG.md already existed) [Cursor]
+  - Created `frontend/src/instructions/README.md` and `frontend/src/instructions/CHANGELOG.md` [Cursor]
+  - Created `frontend/src/instructions/NSR/CHANGELOG.md` (README.md already existed) [Cursor]
+  - Created `rules/services/CHANGELOG.md` (README.md already existed) [Cursor]
+  - Removed temporary folder `frontend/src/instructions/NSR/temp_nsr` [Cursor]
+  - **CRITICAL**: All folders now comply with mandatory README.md and CHANGELOG.md requirement [Cursor]
+
+## [1.42.0] - January 2026
+
+### Added
+- **Developer Profiles System**: Created `developers/` folder in project root as source of truth for developer information [Cursor]
+  - Created `developers/README.md` explaining the developer profile system [Cursor]
+  - Created `developers/CHANGELOG.md` for tracking changes [Cursor]
+  - Created individual developer profile files (portable, can be moved between projects):
+    - `developers/JOSEF_LINDBOM.md` - Josef Lindbom's profile [Cursor]
+    - `developers/CRAIG_MARTIN.md` - Craig Martin's profile [Cursor]
+    - `developers/JONNE_WASELIUS.md` - Jonne Waselius's profile [Cursor]
+    - `developers/CORY.md` - Cory's profile [Cursor]
+  - Each profile includes: personal info, contact info, role & responsibilities, skills & expertise, access levels, current projects, communication preferences, portable metadata [Cursor]
+  - Profiles serve as **SOURCE OF TRUTH** for developer information [Cursor]
+  - Profiles are **portable** and can be copied/moved between projects [Cursor]
+  - Updated `.cursorrules` to reference `developers/` folder as source of truth [Cursor]
+  - Updated pre-flight checklist to reference developer profiles for identity verification [Cursor]
+
+## [1.41.0] - January 2026
+
+### Added
+- **Cursor Rules - Pre-Flight Checklist**: Added critical mandatory section requiring agents to ask questions before making changes [Cursor]
+  - Added "🚨🚨🚨 CRITICAL - PRE-FLIGHT CHECKLIST" section at the very beginning of `.cursorrules`
+  - Requires agents to ask 7 categories of critical questions before making ANY changes:
+    1. Developer Identity & Authorization (who is making the request, role, email)
+    2. Change Scope & Impact (what changes, which files, purpose, dependencies)
+    3. Task Ownership & Responsibility (who owns the task, requires approval)
+    4. Documentation & Compliance (which changelogs, related docs, rules to follow)
+    5. Version Control & Branching (what branch, PR required, who reviews)
+    6. Testing & Validation (how to test, risk assessment, rollback procedures)
+    7. Context & Understanding (read relevant docs, understand architecture, find examples)
+  - Includes list of active developers (Josef Lindbom COO, Craig Martin CTO, Jonne Waselius Backend Developer)
+  - Defines mandatory workflow: STOP → ASK → WAIT → VERIFY → DOCUMENT → PROCEED
+  - Lists forbidden actions (proceeding without developer identity, unclear scope, etc.)
+  - Provides exceptions for simple, low-risk changes (with conditions)
+  - Includes example pre-flight dialogue for agents
+  - Positioned before CHANGELOG requirement section for maximum visibility
+  - **CRITICAL**: Agents are FORBIDDEN from making changes until all questions are answered
+
+## [1.40.0] - January 2026
+
+### Added
+- **NSR Folder**: Created `instructions/NSR/` folder with README.md and CHANGELOG.md [Cursor]
+  - New folder for NSR (NorthStar) related documentation and resources
+  - Follows project structure requirements (README.md and CHANGELOG.md in all folders)
+  - Location: `instructions/NSR/`
+  - Cloned NSR repository from https://github.com/zerwiz/NSR [Cursor]
+  - Updated README.md with NorthStar team information:
+    - Josef Lindbom - COO (Chief Operating Officer)
+    - Craig Martin - CTO (Chief Technology Officer)
+  - Added repository source link to README.md [Cursor]
+
+## [1.39.0] - January 2026
+
+### Changed
+- **Cursor Rules - CHANGELOG Mandatory Requirement**: Added super prominent section at the very beginning of `.cursorrules` emphasizing CHANGELOG is MANDATORY [Cursor]
+  - Added highly visible "🔴🔴🔴 MANDATORY - CHANGELOG REQUIREMENT" section at top of file
+  - Made it impossible to miss with multiple warning indicators and clear formatting
+  - Emphasized that CHANGELOG updates are required for EVERY change with NO EXCEPTIONS
+  - Added detailed instructions on when, where, and how to update CHANGELOG files
+  - Included consequences of not updating CHANGELOG (code rejection, PR blocking)
+  - Added explicit instructions for AI agents and developers
+  - Section appears before all other critical rules to ensure maximum visibility
+
+## [1.38.0] - January 2026
+
+### Added
+- **Frontend Data Validation Report**: Created comprehensive validation document for FRONTEND_DATA_INVENTORY.md [Cursor]
+  - Validated all frontend data against deep research documentation, system architecture, and online sources
+  - Identified 3 APY rate discrepancies requiring correction (Liquidity Pool Beta, Arbitrage Bot Alpha, XRP Flash Loan Bot)
+  - Confirmed conversion rate (2.4%) is industry-standard and valid
+  - Documented recommended changes with implementation priority (Phase 1: Critical, Phase 2: Documentation, Phase 3: UX)
+  - Added risk assessment for APY rate claims and regulatory compliance
+  - Created detailed change specifications with code examples
+  - Documented alignment issues between frontend data and deep research benchmarks
+  - File: `docs/UI & Features/FRONTEND_DATA_VALIDATION_REPORT.md`
+
+## [1.37.0] - January 2026
+
+### Added
+- **Frontend Data Inventory - Enhanced Sections**: Expanded FRONTEND_DATA_INVENTORY.md with comprehensive additional sections [Cursor]
+  - **Dashboard Additional Data**: Enhanced with detailed network breakdown, transparency ledger statistics, verified blocks with transaction details, network health summary, and growth projections
+  - **Verification Checklist**: Expanded with comprehensive data source verification list, critical mock data replacement priorities, and data validation requirements (real-time, historical, accuracy)
+  - **Data Integration Requirements**: Added detailed API endpoints specification (20+ endpoints with request/response formats), comprehensive database schema (15+ tables with column definitions), and phased integration priority (4 phases from critical to nice-to-have)
+  - All sections now include file references, data structure details, and integration priorities for backend development
+
+## [1.36.0] - January 2026
+
+### Added
+- **Admin View - Networks & Alliances Tab**: Added comprehensive network statistics to Admin View [Cursor]
+  - New "Networks & Alliances" tab in AdminView with full statistics overview
+  - Alliance overview cards showing: Members, Total Earnings, Monthly Earnings, Active Members, Total Clicks, Conversions, Conversion Rate
+  - Detailed alliance modal with complete member statistics
+  - Member details include: Name, Tier, Role, Join Date, Earnings, Clicks, Conversions, Network Size
+  - Network performance metrics: Total Clicks, Conversions, Conversion Rate per alliance
+  - Clickable "View Full Stats" button for each alliance to see detailed breakdown
+  - Modal view showing all alliance members with their individual performance metrics
+  - All data currently uses mock data structure matching Alliance page format
+
+## [1.35.0] - January 2026
+
+### Added
+- **CHANGELOG.md and README.md in ALL Folders**: Added CHANGELOG.md and README.md files to all folders that were missing them [Cursor]
+  - **Project Management**: Added README.md to `docs/Project Management/`
+  - **Services Main Folder**: Added README.md and CHANGELOG.md to `docs/Services/`
+  - **Dev Server Config**: Added CHANGELOG.md to `dev_server/config/`
+  - **GitHub Push Docs**: Added CHANGELOG.md to `docs/Services/github/push-docs/`
+  - **Product Docs Folders**: Added CHANGELOG.md to `docs/Product docs/Investor Ready/` and all 15 subfolders (01_PitchDeck through 15_Deep_Research)
+  - **Product Docs Subfolders**: Added CHANGELOG.md and README.md to `docs/Product docs/Legal & Compliance/`, `docs/Product docs/Pitch Deck & Presentations/`, `docs/Product docs/Technical Documentation/`, `docs/Product docs/Tokenomics/`
+  - **UI & Features**: Added CHANGELOG.md to `docs/UI & Features/Content Generation Best Practices/`
+  - **Frontend Source**: Added CHANGELOG.md and README.md to `frontend/src/` and all subfolders (components, pages, services, data, utils, contexts)
+  - **Backend Functions**: Added CHANGELOG.md and README.md to `backend/netlify/functions/`
+  - **Frontend Public**: Added CHANGELOG.md and README.md to `frontend/public/`
+  - **README.md Files**: Also added README.md files to folders that were missing them (Client Material, Costs, Revenue Model, Partnership, Product Roadmap, and all frontend/src subfolders)
+  - **Critical Rule Enforcement**: Ensured ALL folders now have BOTH CHANGELOG.md AND README.md as required by `.cursorrules` - NO EXCEPTIONS
+
 ## [1.34.0] - January 2026
 
 ### Added

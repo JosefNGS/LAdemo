@@ -35,7 +35,10 @@ import AdminView from './pages/AdminView';
 import GettingStartedModal from './components/GettingStartedModal';
 import PlatformAdminUsers from './components/PlatformAdminUsers';
 import TeamProfile from './pages/TeamProfile';
+import UserProfile from './pages/UserProfile';
 import { teamProfiles } from './data/teamProfiles';
+import { getUserProfileById, getSelectedUserProfileId } from './utils/profileNavigation';
+import { userProfiles } from './data/userProfiles';
 import { AppRoute } from './types';
 
 const App: React.FC = () => {
@@ -85,11 +88,11 @@ const App: React.FC = () => {
       case AppRoute.MY_PRODUCTS: return <MyProducts />;
       case AppRoute.ALLIANCE: return <Alliance />;
       case AppRoute.EARN: return <Earn setActiveRoute={setActiveRoute} />;
-      case AppRoute.BOT_LAB: return <BotLab />;
+      case AppRoute.BOT_LAB: return <BotLab setActiveRoute={setActiveRoute} />;
       case AppRoute.SHOP: return <TokenShop setActiveRoute={setActiveRoute} />;
       case AppRoute.ACADEMY: return <Academy setActiveRoute={setActiveRoute} />;
       case AppRoute.GETTING_STARTED: return <GettingStarted setActiveRoute={setActiveRoute} />;
-      case AppRoute.FEED: return <Feed />;
+      case AppRoute.FEED: return <Feed setActiveRoute={setActiveRoute} />;
       case AppRoute.CHAT: return <Chat />;
       case AppRoute.FORUM: return <Forum />;
       case AppRoute.AFFILIATE: return <AffiliateManager />;
@@ -110,6 +113,14 @@ const App: React.FC = () => {
       case AppRoute.PROFILE_JONNE: return <TeamProfile profile={teamProfiles.find(p => p.id === 'jonne')!} setActiveRoute={setActiveRoute} />;
       case AppRoute.PROFILE_SVEIN: return <TeamProfile profile={teamProfiles.find(p => p.id === 'svein')!} setActiveRoute={setActiveRoute} />;
       case AppRoute.PROFILE_LEE: return <TeamProfile profile={teamProfiles.find(p => p.id === 'lee')!} setActiveRoute={setActiveRoute} />;
+      case AppRoute.USER_PROFILE: {
+        const profileId = getSelectedUserProfileId();
+        const profile = profileId ? getUserProfileById(profileId) : null;
+        if (profile) {
+          return <UserProfile profile={profile} setActiveRoute={setActiveRoute} />;
+        }
+        return <div className="text-center py-12"><p className="text-gray-400">Profile not found</p></div>;
+      }
       case AppRoute.CART: return <Cart setActiveRoute={setActiveRoute} />;
       case AppRoute.CHECKOUT: return <Checkout setActiveRoute={setActiveRoute} />;
       case AppRoute.PROFILE: return (

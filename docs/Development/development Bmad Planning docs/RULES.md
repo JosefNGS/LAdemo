@@ -247,10 +247,11 @@
 
 **MANDATORY**: All changes must be tracked:
 
-- **Location**: `docs/Development/CHANGELOG.md`
+- **Location**: `docs/Development/development Bmad Planning docs/CHANGELOG.md` (this folder)
 - **Format**: Follow Keep a Changelog format
-- **Tracking**: Include developer/Cursor tracking in all entries
+- **Tracking**: Include developer/Cursor tracking in all entries (MANDATORY)
 - **Frequency**: Update for every change to documents in this folder
+- **Also Update**: `docs/Development/CHANGELOG.md` (parent folder) for significant changes
 
 **Format Example**:
 ```markdown

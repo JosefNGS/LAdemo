@@ -1,5 +1,200 @@
 # BitNexus Landing Page - Cursor Rules
 
+## 🚨🚨🚨 CRITICAL - PRE-FLIGHT CHECKLIST - MANDATORY BEFORE ANY CHANGES 🚨🚨🚨
+
+**⚠️ ABSOLUTE REQUIREMENT - NO EXCEPTIONS - STRICTLY ENFORCED - AGENTS MUST COMPLETE THIS FIRST**
+
+### 🔴 MANDATORY PRE-FLIGHT QUESTIONS - AGENTS MUST ASK BEFORE MAKING ANY CHANGES
+
+**YOU ARE FORBIDDEN FROM MAKING ANY CHANGES UNTIL YOU HAVE ASKED AND RECEIVED ANSWERS TO THESE CRITICAL QUESTIONS:**
+
+#### 1. **Developer Identity & Authorization**
+- ❓ **WHO is the developer making this request?** (Name, role, email)
+- ❓ **Is this request coming from an authorized developer?** (Check `developers/` folder for developer profiles)
+- ❓ **What is the developer's role in the project?** (Reference `developers/[DEVELOPER_NAME].md` file)
+- ❓ **Should changes be tracked as [Developer: Name] or [Cursor] in changelogs?**
+- ❓ **Have you verified the developer's identity from their profile file?** (Check `developers/` folder - **SOURCE OF TRUTH**)
+
+**Active Developers** (from `developers/` folder - **SOURCE OF TRUTH**):
+- **Josef Lindbom** (COO & Development Vision Lead) - josef@nordicglobalsolutions.com
+  - Profile: `developers/JOSEF_LINDBOM.md` (portable, can be moved between projects)
+- **Craig Martin** (CTO) - craig@nordicglobalsolutions.com
+  - Profile: `developers/CRAIG_MARTIN.md` (portable, can be moved between projects)
+- **Jonne Waselius** (Backend Developer) - Jonne@nordicglobalsolutions.com
+  - Profile: `developers/JONNE_WASELIUS.md` (portable, can be moved between projects)
+- **Cory** (Junior Developer)
+  - Profile: `developers/CORY.md` (portable, can be moved between projects)
+
+**🔴 CRITICAL**: Developer profiles in `developers/` folder are the **SOURCE OF TRUTH** for developer information. These files are **portable** and can be moved between projects. Always reference these files when verifying developer identity.
+
+#### 2. **Change Scope & Impact**
+- ❓ **What specific changes are being requested?** (Be explicit and detailed)
+- ❓ **Which files/folders will be affected?** (List all files that will be modified, created, or deleted)
+- ❓ **What is the purpose/justification for these changes?** (Why is this change needed?)
+- ❓ **Are there any dependencies or related changes needed?** (Other files, services, or systems affected)
+
+#### 3. **Task Ownership & Responsibility**
+- ❓ **Who owns this task?** (Check `docs/Project Management/TODO.md` for [Owner: ...] tags)
+- ❓ **Is this task assigned to the requesting developer?** (Verify ownership matches requestor)
+- ❓ **Does this change require approval from task owner?** (Some tasks require owner verification)
+
+#### 4. **Documentation & Compliance**
+- ❓ **Which CHANGELOG.md files need to be updated?** (Main + folder-specific changelogs)
+- ❓ **Are there related documentation files that need updates?** (README.md, service docs, etc.)
+- ❓ **Does this change affect any planning documents?** (Check `docs/Project Management/` and `docs/Development/development Bmad Planning docs/`)
+- ❓ **Are there any rules or guidelines that must be followed?** (Check `.cursorrules`, service rules, folder rules)
+
+#### 5. **Version Control & Branching**
+- ❓ **What branch should changes be made on?** (NEVER push directly to main - use feature branch)
+- ❓ **Is a Pull Request required?** (YES - all changes must go through PR workflow)
+- ❓ **Who needs to review this change?** (CTO for main branch merges, task owner for verification)
+
+#### 6. **Testing & Validation**
+- ❓ **How will these changes be tested?** (Manual testing, automated tests, validation steps)
+- ❓ **What could break if this change is made incorrectly?** (Risk assessment)
+- ❓ **Are there any rollback procedures if something goes wrong?** (Safety measures)
+
+#### 7. **Context & Understanding**
+- ❓ **Have you read the relevant documentation?** (Service rules, architecture docs, implementation guides)
+- ❓ **Do you understand the current system architecture?** (How does this change fit into the bigger picture?)
+- ❓ **Are there any similar changes in the codebase you should reference?** (Look for patterns or examples)
+
+### ⚠️ AGENT INSTRUCTIONS - MANDATORY WORKFLOW
+
+**BEFORE making ANY changes, you MUST:**
+
+1. **STOP** - Do not proceed with any code changes
+2. **ASK** - Present the critical questions above to the user/developer
+3. **WAIT** - Receive explicit answers to all questions
+4. **VERIFY** - Confirm you understand:
+   - Who is making the request (developer identity)
+   - What changes are needed (scope and purpose)
+   - Which files will be affected (impact assessment)
+   - Who owns the task (ownership verification)
+   - What documentation needs updating (compliance check)
+   - What branch to use (version control workflow)
+5. **DOCUMENT** - Note all answers before proceeding
+6. **PROCEED** - Only after all questions are answered and verified
+
+### 🔴 FORBIDDEN ACTIONS - DO NOT PROCEED IF:
+
+- ❌ **Developer identity is unknown or unclear**
+- ❌ **Change scope is vague or undefined**
+- ❌ **Task ownership is not verified**
+- ❌ **CHANGELOG update plan is not determined**
+- ❌ **Branch strategy is not confirmed**
+- ❌ **Impact assessment is incomplete**
+
+### ✅ EXCEPTIONS - WHEN TO PROCEED WITHOUT QUESTIONS:
+
+**ONLY proceed without asking questions if:**
+- The user explicitly states "proceed without questions" AND provides all required information upfront
+- The request is a simple, low-risk documentation update (e.g., fixing a typo in README)
+- The change is clearly defined with all context provided in the initial request
+
+**EVEN THEN**, you must still:
+- Identify the developer making the request
+- Determine which CHANGELOG files need updating
+- Verify task ownership if applicable
+- Confirm branch strategy
+
+### 📋 EXAMPLE PRE-FLIGHT DIALOGUE
+
+**Agent**: "Before I proceed with these changes, I need to ask some critical questions:
+
+1. **Who is making this request?** (Your name and role)
+2. **What specific changes do you need?** (Detailed description)
+3. **Which files will be affected?** (List of files)
+4. **Who owns this task?** (Check TODO.md for [Owner: ...])
+5. **Which CHANGELOG files should I update?** (Main + folder-specific)
+6. **What branch should I use?** (Feature branch name)
+
+Please provide answers to these questions so I can proceed safely and in compliance with project rules."
+
+**THIS IS CRITICAL - AGENTS MUST ASK THESE QUESTIONS BEFORE MAKING ANY CHANGES**
+
+---
+
+## 🔴🔴🔴 MANDATORY - CHANGELOG REQUIREMENT - READ THIS FIRST 🔴🔴🔴
+
+**⚠️ CRITICAL - ABSOLUTE REQUIREMENT - NO EXCEPTIONS - STRICTLY ENFORCED**:
+
+### 🚨 CHANGELOG IS MANDATORY FOR EVERY SINGLE CHANGE
+
+**YOU MUST UPDATE CHANGELOG.md FOR EVERY CHANGE YOU MAKE - NO EXCEPTIONS**
+
+**This is the #1 RULE - It applies to ALL agents, developers, and AI assistants working on this project.**
+
+#### What This Means:
+- ✅ **EVERY code change** → Update CHANGELOG.md
+- ✅ **EVERY documentation change** → Update CHANGELOG.md
+- ✅ **EVERY file creation** → Update CHANGELOG.md
+- ✅ **EVERY file deletion** → Update CHANGELOG.md
+- ✅ **EVERY file move/rename** → Update CHANGELOG.md
+- ✅ **EVERY configuration change** → Update CHANGELOG.md
+- ✅ **EVERY dependency update** → Update CHANGELOG.md
+- ✅ **EVERY bug fix** → Update CHANGELOG.md
+- ✅ **EVERY feature addition** → Update CHANGELOG.md
+- ✅ **EVERY UI/UX change** → Update CHANGELOG.md
+- ✅ **EVERY data change** → Update CHANGELOG.md
+- ✅ **EVERY rule update** → Update CHANGELOG.md
+
+**THERE ARE NO EXCEPTIONS - NO "SMALL" CHANGES - NO "MINOR" UPDATES - EVERYTHING MUST BE LOGGED**
+
+#### When to Update:
+- **BEFORE** making any changes → Check what CHANGELOG needs updating
+- **DURING** making changes → Update CHANGELOG as you work
+- **AFTER** making changes → Verify CHANGELOG is complete
+- **BEFORE** committing → CHANGELOG MUST be updated first
+- **BEFORE** pushing → CHANGELOG MUST be updated first
+
+#### Which CHANGELOG to Update:
+1. **Main Project Changelog**: `docs/Project Management/CHANGELOG.md` - **ALWAYS UPDATE THIS**
+2. **Folder-Specific Changelogs**: Update the CHANGELOG.md in the folder where changes were made
+   - `frontend/CHANGELOG.md` - For frontend changes
+   - `backend/CHANGELOG.md` - For backend changes
+   - `docs/Development/CHANGELOG.md` - For development doc changes
+   - `docs/Services/[service-name]/CHANGELOG.md` - For service-specific changes
+   - **ALL folders have CHANGELOG.md** - Update the relevant one(s)
+
+#### Developer/Cursor Tracking - MANDATORY:
+- **EVERY changelog entry MUST include** `[Developer: Name]` or `[Cursor]` tag
+- **Format**: `- Description of change [Developer: Josef]` or `- Description of change [Cursor]`
+- **NO EXCEPTIONS** - Every entry must track who made the change
+- **Purpose**: Accountability, audit trail, responsibility assignment
+
+#### Example Changelog Entry:
+```markdown
+## [1.X.X] - January 2026
+
+### Added
+- New feature description [Developer: Josef]
+- Another feature [Cursor]
+
+### Fixed
+- Bug fix description [Developer: Craig]
+
+### Changed
+- Updated documentation [Developer: Jonne]
+```
+
+#### Consequences of Not Updating CHANGELOG:
+- ❌ **Code changes will be rejected** if CHANGELOG is not updated
+- ❌ **Pull Requests will be blocked** if CHANGELOG is missing
+- ❌ **Commits will be flagged** for missing CHANGELOG entries
+- ❌ **This is a CRITICAL violation** of project standards
+
+**IF YOU ARE AN AI AGENT OR DEVELOPER WORKING ON THIS PROJECT:**
+1. **READ THIS SECTION FIRST** before making any changes
+2. **UPDATE CHANGELOG.md** as part of your workflow
+3. **NEVER skip** CHANGELOG updates, no matter how small the change
+4. **ALWAYS include** developer/Cursor tracking in entries
+5. **VERIFY** CHANGELOG is updated before completing your task
+
+**THIS IS NOT OPTIONAL - THIS IS MANDATORY - NO EXCEPTIONS - STRICTLY ENFORCED**
+
+---
+
 ## ⚠️ CRITICAL RULES - READ FIRST
 
 ### 🔐 VERSION CONTROL - MAIN BRANCH PROTECTION

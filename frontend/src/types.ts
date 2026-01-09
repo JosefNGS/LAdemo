@@ -35,7 +35,8 @@ export enum AppRoute {
   PROFILE_CRAIG = 'profile-craig',
   PROFILE_JONNE = 'profile-jonne',
   PROFILE_SVEIN = 'profile-svein',
-  PROFILE_LEE = 'profile-lee'
+  PROFILE_LEE = 'profile-lee',
+  USER_PROFILE = 'user-profile'
 }
 
 export interface Product {

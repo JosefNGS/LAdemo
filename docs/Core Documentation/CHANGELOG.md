@@ -14,7 +14,49 @@ Every changelog entry MUST track who made the change:
 - **NO EXCEPTIONS** - All entries must include developer/Cursor tracking
 - **This is MANDATORY and STRICTLY ENFORCED**
 
-## [Unreleased]
+## [2.4] - January 2026
+
+### Added
+- **STRUCTURE.md**: Added complete NSR framework structure [Cursor]
+  - NSR framework source (`src/`) with templates, rules, workflows, and standards [Cursor]
+  - NSR configuration file (`config.yml`) [Cursor]
+  - NSR license file (MIT License - NorthStar Team) [Cursor]
+  - Updated NSR to reflect project generation framework capabilities [Cursor]
+
+## [2.3] - January 2026
+
+### Added
+- **STRUCTURE.md**: Added `instructions/NSR/ref/` folder structure [Cursor]
+  - Reference frameworks folder for NSR development [Cursor]
+  - Agent OS and BMAD-METHOD reference copies [Cursor]
+  - Reference frameworks documentation [Cursor]
+
+## [2.2] - January 2026
+
+### Added
+- **STRUCTURE.md**: Added `developers/` folder structure [Cursor]
+  - Developer profiles as source of truth
+  - Portable profile files for each developer (JOSEF_LINDBOM.md, CRAIG_MARTIN.md, JONNE_WASELIUS.md, CORY.md)
+- **STRUCTURE.md**: Added `instructions/NSR/` folder structure [Cursor]
+- **STRUCTURE.md**: Added README.md and CHANGELOG.md files to various folders [Cursor]
+  - `docs/` folder
+  - `instructions/` folder
+  - `docs/Services/github/` folder
+  - `rules/services/` folder
+  - `frontend/src/instructions/` folder
+  - `frontend/src/instructions/NSR/` folder
+  - `frontend/src/` subfolders (components, contexts, data, services, utils, pages)
+  - `docs/Services/github/push-docs/` folder
+- **STRUCTURE.md**: Added new frontend files [Cursor]
+  - `userProfiles.ts` in `frontend/src/data/`
+  - `profileNavigation.ts` in `frontend/src/utils/`
+
+### Changed
+- **STRUCTURE.md**: Updated to version 2.2 [Cursor]
+- **STRUCTURE.md**: Updated frontend src structure to show all README.md and CHANGELOG.md files [Cursor]
+- **STRUCTURE.md**: Updated Recent Updates section with latest changes [Cursor]
+
+## [2.1] - January 2026
 
 ### Added
 - Initial core documentation changelog [Cursor]

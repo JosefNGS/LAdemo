@@ -16,7 +16,11 @@ interface FeedPost {
   tags?: string[];
 }
 
-const Feed: React.FC = () => {
+interface FeedProps {
+  setActiveRoute?: (route: AppRoute) => void;
+}
+
+const Feed: React.FC<FeedProps> = ({ setActiveRoute }) => {
   const [selectedPost, setSelectedPost] = useState<FeedPost | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
@@ -335,7 +339,16 @@ const Feed: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="font-bold text-lg">{selectedPost.author}</span>
+                    <button
+                      onClick={() => {
+                        if (setActiveRoute && selectedPost.author.startsWith('Agent Nexus-')) {
+                          navigateToUserProfile(selectedPost.author, setActiveRoute);
+                        }
+                      }}
+                      className="font-bold text-lg hover:text-purple-400 transition-colors cursor-pointer text-left"
+                    >
+                      {selectedPost.author}
+                    </button>
                     <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getTierColor(selectedPost.authorTier)}`}>
                       {selectedPost.authorTier}
                     </span>

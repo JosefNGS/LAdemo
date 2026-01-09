@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ICONS } from '../constants';
+import { AppRoute } from '../types';
 
-const BotLab: React.FC = () => {
+interface BotLabProps {
+  setActiveRoute?: (route: AppRoute) => void;
+}
+
+const BotLab: React.FC<BotLabProps> = ({ setActiveRoute }) => {
   const [stakeAmount, setStakeAmount] = useState(1000);
   const [apyRate, setApyRate] = useState(12);
   const nxcToUsd = 3.0;
@@ -24,15 +29,15 @@ const BotLab: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'mev' | 'xab'>('mev');
 
   const mevBots = [
-    { id: 1, name: 'Arbitrage Bot Alpha', apy: 12.5, status: 'Active', balance: 1250, earnings: 156.25, type: 'MEV' },
-    { id: 2, name: 'Liquidity Pool Beta', apy: 8.3, status: 'Active', balance: 3200, earnings: 265.60, type: 'MEV' },
+    { id: 1, name: 'Arbitrage Bot Alpha', apy: 11.5, status: 'Active', balance: 1250, earnings: 143.75, type: 'MEV' },
+    { id: 2, name: 'Liquidity Pool Beta', apy: 13.0, status: 'Active', balance: 3200, earnings: 416.00, type: 'MEV' },
     { id: 3, name: 'Flash Loan Gamma', apy: 15.2, status: 'Pending', balance: 0, earnings: 0, type: 'MEV' },
   ];
 
   const xabBots = [
     { id: 4, name: 'XRP Arbitrage Bot', apy: 14.2, status: 'Active', balance: 2100, earnings: 248.50, type: 'XAB' },
     { id: 5, name: 'XRP Liquidity Sniffer', apy: 10.8, status: 'Active', balance: 1800, earnings: 162.00, type: 'XAB' },
-    { id: 6, name: 'XRP Flash Loan Bot', apy: 16.5, status: 'Pending', balance: 0, earnings: 0, type: 'XAB' },
+    { id: 6, name: 'XRP Flash Loan Bot', apy: 14.5, status: 'Pending', balance: 0, earnings: 0, type: 'XAB' },
   ];
 
   const allBots = [...mevBots, ...xabBots];
@@ -40,9 +45,22 @@ const BotLab: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h2 className="text-3xl font-bold font-display">Bot Lab</h2>
-          <p className="text-gray-500 text-sm">MEV Bot & XAB Bot automated trading nodes for high-yield opportunities</p>
+        <div className="flex items-center gap-4">
+          {setActiveRoute && (
+            <button
+              onClick={() => setActiveRoute(AppRoute.EARN)}
+              className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all flex items-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              Back to Earn
+            </button>
+          )}
+          <div>
+            <h2 className="text-3xl font-bold font-display">Bot Lab</h2>
+            <p className="text-gray-500 text-sm">MEV Bot & XAB Bot automated trading nodes for high-yield opportunities</p>
+          </div>
         </div>
         <button className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all">
           Deploy New Bot
@@ -119,6 +137,22 @@ const BotLab: React.FC = () => {
         </div>
       </div>
 
+      {/* APY Rate Disclaimer */}
+      <div className="glass-card p-4 rounded-2xl border border-yellow-500/20 bg-yellow-500/5">
+        <div className="flex items-start gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-yellow-400 flex-shrink-0 mt-0.5">
+            <path d="M12 9v4M12 17h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+          </svg>
+          <div className="flex-1">
+            <p className="text-sm text-yellow-300 font-bold mb-1">APY Rate Disclaimer</p>
+            <p className="text-xs text-yellow-400/80 leading-relaxed">
+              APY rates are projected and subject to market volatility. Past performance is not indicative of future results. 
+              High-yield staking carries inherent risks. Rates are aggregated projected yields from optimized strategies and may vary based on market conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Passive Income Projection Calculator */}
       <div className="glass-card p-6 rounded-3xl border border-white/5">
         <h3 className="text-xl font-bold mb-4">Passive Income Projection Calculator</h3>
@@ -169,7 +203,7 @@ const BotLab: React.FC = () => {
           ] : [
             { name: 'XRP Arbitrage Bot', apy: '12-18%', risk: 'Low', desc: 'XRP price differences across exchanges' },
             { name: 'XRP Liquidity Bot', apy: '10-14%', risk: 'Medium', desc: 'XRP liquidity provision' },
-            { name: 'XRP Flash Loan Bot', apy: '16-22%', risk: 'High', desc: 'Advanced XRP arbitrage' },
+            { name: 'XRP Flash Loan Bot', apy: '14-18%', risk: 'High', desc: 'Advanced XRP arbitrage' },
           ]).map((template, i) => (
             <div key={i} className="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all">
               <div className="flex items-center justify-between mb-2">

@@ -254,9 +254,10 @@ Product Brief
 ### Change Process
 1. Identify needed changes
 2. Update relevant document(s)
-3. Update CHANGELOG.md
-4. Notify document owners
-5. Update related documents if needed
+3. **Update CHANGELOG.md** in this folder (MANDATORY)
+4. Update parent folder CHANGELOG.md (`docs/Development/CHANGELOG.md`)
+5. Notify document owners
+6. Update related documents if needed
 
 ---
 

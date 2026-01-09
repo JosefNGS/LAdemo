@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ICONS } from '../constants';
 
 interface NewsArticle {
@@ -16,6 +16,74 @@ interface NewsArticle {
 const News: React.FC = () => {
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [showShareOptions, setShowShareOptions] = useState(false);
+  const shareButtonRef = useRef<HTMLDivElement>(null);
+
+  // Close share dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (shareButtonRef.current && !shareButtonRef.current.contains(event.target as Node)) {
+        setShowShareOptions(false);
+      }
+    };
+
+    if (showShareOptions) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [showShareOptions]);
+
+  const handleShare = async (article: NewsArticle, platform?: string) => {
+    const articleUrl = `${window.location.origin}/news?article=${article.id}`;
+    const shareText = `${article.title} - ${article.excerpt}`;
+    const shareTitle = article.title;
+
+    if (platform) {
+      // Platform-specific sharing
+      const shareUrls: Record<string, string> = {
+        twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(articleUrl)}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}&quote=${encodeURIComponent(shareText)}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`,
+        copy: articleUrl, // Will be handled separately
+      };
+
+      if (platform === 'copy') {
+        try {
+          await navigator.clipboard.writeText(articleUrl);
+          alert('Article link copied to clipboard!');
+          setShowShareOptions(false);
+        } catch (error) {
+          console.error('Failed to copy:', error);
+          alert('Failed to copy link. Please try again.');
+        }
+      } else if (shareUrls[platform]) {
+        window.open(shareUrls[platform], '_blank', 'width=600,height=400');
+        setShowShareOptions(false);
+      }
+    } else {
+      // Use Web Share API if available (native sharing on mobile)
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: articleUrl,
+          });
+          setShowShareOptions(false);
+        } catch (error) {
+          // User cancelled or error occurred
+          if ((error as Error).name !== 'AbortError') {
+            console.error('Error sharing:', error);
+          }
+        }
+      } else {
+        // Fallback: show share options
+        setShowShareOptions(true);
+      }
+    }
+  };
 
   const categories = ['all', 'Platform Updates', 'Product Launches', 'Community', 'Partnerships', 'Technical'];
 
@@ -204,7 +272,10 @@ const News: React.FC = () => {
       {selectedArticle && (
         <div 
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedArticle(null)}
+          onClick={() => {
+            setSelectedArticle(null);
+            setShowShareOptions(false);
+          }}
         >
           <div 
             className="glass-card p-6 md:p-8 rounded-3xl border border-white/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
@@ -270,14 +341,72 @@ const News: React.FC = () => {
 
             <div className="mt-8 pt-6 border-t border-white/10 flex gap-4">
               <button
-                onClick={() => setSelectedArticle(null)}
+                onClick={() => {
+                  setSelectedArticle(null);
+                  setShowShareOptions(false);
+                }}
                 className="px-6 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
               >
                 Close
               </button>
-              <button className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all">
-                Share Article
-              </button>
+              <div className="relative" ref={shareButtonRef}>
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      handleShare(selectedArticle);
+                    } else {
+                      setShowShareOptions(!showShareOptions);
+                    }
+                  }}
+                  className="px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="18" cy="5" r="3"/>
+                    <circle cx="6" cy="12" r="3"/>
+                    <circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                  </svg>
+                  Share Article
+                </button>
+
+                {/* Share Options Dropdown */}
+                {showShareOptions && (
+                  <div className="absolute bottom-full right-0 mb-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl p-2 min-w-[220px] z-10 shadow-xl">
+                    <div className="space-y-1">
+                      <button
+                        onClick={() => handleShare(selectedArticle, 'twitter')}
+                        className="w-full px-4 py-2.5 text-left hover:bg-white/10 rounded-lg transition-all flex items-center gap-3 text-sm"
+                      >
+                        <span className="text-lg">🐦</span>
+                        <span className="font-bold">Share on X (Twitter)</span>
+                      </button>
+                      <button
+                        onClick={() => handleShare(selectedArticle, 'facebook')}
+                        className="w-full px-4 py-2.5 text-left hover:bg-white/10 rounded-lg transition-all flex items-center gap-3 text-sm"
+                      >
+                        <span className="text-lg">📘</span>
+                        <span className="font-bold">Share on Facebook</span>
+                      </button>
+                      <button
+                        onClick={() => handleShare(selectedArticle, 'linkedin')}
+                        className="w-full px-4 py-2.5 text-left hover:bg-white/10 rounded-lg transition-all flex items-center gap-3 text-sm"
+                      >
+                        <span className="text-lg">💼</span>
+                        <span className="font-bold">Share on LinkedIn</span>
+                      </button>
+                      <div className="border-t border-white/10 my-1"></div>
+                      <button
+                        onClick={() => handleShare(selectedArticle, 'copy')}
+                        className="w-full px-4 py-2.5 text-left hover:bg-white/10 rounded-lg transition-all flex items-center gap-3 text-sm"
+                      >
+                        <span className="text-lg">📋</span>
+                        <span className="font-bold">Copy Link</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

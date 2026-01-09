@@ -5,36 +5,92 @@ import { ICONS } from '../constants';
 const AffiliateManager: React.FC = () => {
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d'>('30d');
 
-  const stats = {
-    totalClicks: 52810,
-    conversions: 1267,
-    conversionRate: 2.4,
-    totalEarnings: 14210,
-    subAffiliates: 42,
-    activeLinks: 18,
+  // Data based on time range
+  const getStats = () => {
+    const baseStats = {
+      '7d': { totalClicks: 12450, conversions: 298, conversionRate: 2.4, totalEarnings: 3350, subAffiliates: 42, activeLinks: 18 },
+      '30d': { totalClicks: 52810, conversions: 1267, conversionRate: 2.4, totalEarnings: 14210, subAffiliates: 42, activeLinks: 18 },
+      '90d': { totalClicks: 158430, conversions: 3802, conversionRate: 2.4, totalEarnings: 42630, subAffiliates: 42, activeLinks: 18 },
+    };
+    return baseStats[timeRange];
   };
 
-  const chartData = [
-    { date: 'Mon', clicks: 1200, conversions: 28 },
-    { date: 'Tue', clicks: 1900, conversions: 45 },
-    { date: 'Wed', clicks: 3000, conversions: 72 },
-    { date: 'Thu', clicks: 2780, conversions: 67 },
-    { date: 'Fri', clicks: 1890, conversions: 45 },
-    { date: 'Sat', clicks: 2390, conversions: 57 },
-    { date: 'Sun', clicks: 3490, conversions: 84 },
-  ];
+  const stats = getStats();
 
-  const topProducts = [
-    { name: 'Nexus Node License', clicks: 15200, conversions: 456, revenue: 4560 },
-    { name: 'AI Copywriter Pro', clicks: 12400, conversions: 372, revenue: 3720 },
-    { name: 'NXC Trading Masterclass', clicks: 9800, conversions: 245, revenue: 2450 },
-  ];
+  const getChartData = () => {
+    if (timeRange === '7d') {
+      return [
+        { date: 'Mon', clicks: 1200, conversions: 28 },
+        { date: 'Tue', clicks: 1900, conversions: 45 },
+        { date: 'Wed', clicks: 3000, conversions: 72 },
+        { date: 'Thu', clicks: 2780, conversions: 67 },
+        { date: 'Fri', clicks: 1890, conversions: 45 },
+        { date: 'Sat', clicks: 2390, conversions: 57 },
+        { date: 'Sun', clicks: 3490, conversions: 84 },
+      ];
+    } else if (timeRange === '30d') {
+      return [
+        { date: 'Week 1', clicks: 12450, conversions: 298 },
+        { date: 'Week 2', clicks: 15200, conversions: 365 },
+        { date: 'Week 3', clicks: 13800, conversions: 331 },
+        { date: 'Week 4', clicks: 11360, conversions: 273 },
+      ];
+    } else {
+      return [
+        { date: 'Month 1', clicks: 52810, conversions: 1267 },
+        { date: 'Month 2', clicks: 61200, conversions: 1469 },
+        { date: 'Month 3', clicks: 44420, conversions: 1066 },
+      ];
+    }
+  };
 
-  const subAffiliates = [
-    { name: 'Agent Nexus-42', tier: 'Gold', clicks: 5200, conversions: 125, earnings: 1250, commission: 250 },
-    { name: 'Agent Nexus-88', tier: 'Silver', clicks: 3200, conversions: 77, earnings: 770, commission: 77 },
-    { name: 'Agent Nexus-15', tier: 'Platinum', clicks: 8900, conversions: 223, earnings: 2230, commission: 446 },
-  ];
+  const chartData = getChartData();
+
+  const getTopProducts = () => {
+    const baseProducts = {
+      '7d': [
+        { name: 'Nexus Node License', clicks: 3600, conversions: 108, revenue: 1080 },
+        { name: 'AI Copywriter Pro', clicks: 2900, conversions: 87, revenue: 870 },
+        { name: 'NXC Trading Masterclass', clicks: 2300, conversions: 58, revenue: 580 },
+      ],
+      '30d': [
+        { name: 'Nexus Node License', clicks: 15200, conversions: 456, revenue: 4560 },
+        { name: 'AI Copywriter Pro', clicks: 12400, conversions: 372, revenue: 3720 },
+        { name: 'NXC Trading Masterclass', clicks: 9800, conversions: 245, revenue: 2450 },
+      ],
+      '90d': [
+        { name: 'Nexus Node License', clicks: 45600, conversions: 1368, revenue: 13680 },
+        { name: 'AI Copywriter Pro', clicks: 37200, conversions: 1116, revenue: 11160 },
+        { name: 'NXC Trading Masterclass', clicks: 29400, conversions: 735, revenue: 7350 },
+      ],
+    };
+    return baseProducts[timeRange];
+  };
+
+  const topProducts = getTopProducts();
+
+  const getSubAffiliates = () => {
+    const baseSubAffiliates = {
+      '7d': [
+        { name: 'Agent Nexus-42', tier: 'Gold', clicks: 1230, conversions: 30, earnings: 295, commission: 59 },
+        { name: 'Agent Nexus-88', tier: 'Silver', clicks: 760, conversions: 18, earnings: 182, commission: 18 },
+        { name: 'Agent Nexus-15', tier: 'Platinum', clicks: 2100, conversions: 53, earnings: 527, commission: 105 },
+      ],
+      '30d': [
+        { name: 'Agent Nexus-42', tier: 'Gold', clicks: 5200, conversions: 125, earnings: 1250, commission: 250 },
+        { name: 'Agent Nexus-88', tier: 'Silver', clicks: 3200, conversions: 77, earnings: 770, commission: 77 },
+        { name: 'Agent Nexus-15', tier: 'Platinum', clicks: 8900, conversions: 223, earnings: 2230, commission: 446 },
+      ],
+      '90d': [
+        { name: 'Agent Nexus-42', tier: 'Gold', clicks: 15600, conversions: 375, earnings: 3750, commission: 750 },
+        { name: 'Agent Nexus-88', tier: 'Silver', clicks: 9600, conversions: 231, earnings: 2310, commission: 231 },
+        { name: 'Agent Nexus-15', tier: 'Platinum', clicks: 26700, conversions: 669, earnings: 6690, commission: 1338 },
+      ],
+    };
+    return baseSubAffiliates[timeRange];
+  };
+
+  const subAffiliates = getSubAffiliates();
 
   return (
     <div className="space-y-6">
@@ -93,8 +149,12 @@ const AffiliateManager: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
           <div className="p-4 bg-white/5 rounded-xl border border-white/5">
             <p className="text-xs text-gray-500 mb-1">Progress to Goal</p>
-            <p className="text-2xl font-bold text-green-400">23.7%</p>
-            <p className="text-xs text-gray-400 mt-1">$1,184 / $5,000</p>
+            <p className="text-2xl font-bold text-green-400">
+              {timeRange === '7d' ? '4.7%' : timeRange === '30d' ? '23.7%' : '71.1%'}
+            </p>
+            <p className="text-xs text-gray-400 mt-1">
+              ${timeRange === '7d' ? '235' : timeRange === '30d' ? '1,184' : '3,553'} / $5,000
+            </p>
           </div>
           <div className="p-4 bg-white/5 rounded-xl border border-white/5">
             <p className="text-xs text-gray-500 mb-1">Income Diversification</p>
@@ -104,7 +164,9 @@ const AffiliateManager: React.FC = () => {
           <div className="p-4 bg-white/5 rounded-xl border border-white/5">
             <p className="text-xs text-gray-500 mb-1">Passive Income %</p>
             <p className="text-2xl font-bold text-purple-400">25%</p>
-            <p className="text-xs text-gray-400 mt-1">$292/month</p>
+            <p className="text-xs text-gray-400 mt-1">
+              ${timeRange === '7d' ? '73' : timeRange === '30d' ? '292' : '876'}/{timeRange === '7d' ? 'week' : 'month'}
+            </p>
           </div>
           <div className="p-4 bg-white/5 rounded-xl border border-white/5">
             <p className="text-xs text-gray-500 mb-1">Time to Freedom</p>
@@ -113,21 +175,33 @@ const AffiliateManager: React.FC = () => {
           </div>
         </div>
         <div className="p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
-          <p className="text-xs font-bold text-cyan-400 mb-2">📈 Revenue Forecast</p>
+          <p className="text-xs font-bold text-cyan-400 mb-2">📈 Revenue Forecast ({timeRange})</p>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div>
-              <p className="text-gray-400 mb-1">Next Month</p>
-              <p className="font-bold text-cyan-400">$1,350</p>
+              <p className="text-gray-400 mb-1">
+                {timeRange === '7d' ? 'Next Week' : timeRange === '30d' ? 'Next Month' : 'Next Quarter'}
+              </p>
+              <p className="font-bold text-cyan-400">
+                ${timeRange === '7d' ? '380' : timeRange === '30d' ? '1,350' : '4,050'}
+              </p>
               <p className="text-xs text-green-400">+14% projected</p>
             </div>
             <div>
-              <p className="text-gray-400 mb-1">3 Months</p>
-              <p className="font-bold text-purple-400">$1,680</p>
+              <p className="text-gray-400 mb-1">
+                {timeRange === '7d' ? 'Next 2 Weeks' : timeRange === '30d' ? '3 Months' : '6 Months'}
+              </p>
+              <p className="font-bold text-purple-400">
+                ${timeRange === '7d' ? '760' : timeRange === '30d' ? '1,680' : '5,040'}
+              </p>
               <p className="text-xs text-green-400">+42% projected</p>
             </div>
             <div>
-              <p className="text-gray-400 mb-1">6 Months</p>
-              <p className="font-bold text-green-400">$2,240</p>
+              <p className="text-gray-400 mb-1">
+                {timeRange === '7d' ? 'Next Month' : timeRange === '30d' ? '6 Months' : '1 Year'}
+              </p>
+              <p className="font-bold text-green-400">
+                ${timeRange === '7d' ? '1,520' : timeRange === '30d' ? '2,240' : '6,720'}
+              </p>
               <p className="text-xs text-green-400">+89% projected</p>
             </div>
           </div>

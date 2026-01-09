@@ -41,6 +41,115 @@ interface UploadedContent {
   platform?: SocialPlatform;
 }
 
+// Best practices file paths
+const BEST_PRACTICES_FILES: Record<string, { path: string; name: string; icon: string; color: string }> = {
+  'x-twitter': {
+    path: 'docs/UI & Features/Content Generation Best Practices/X_TWITTER_TEXT_BEST_PRACTICES.md',
+    name: 'X (Twitter) Text',
+    icon: '🐦',
+    color: 'green'
+  },
+  'linkedin': {
+    path: 'docs/UI & Features/Content Generation Best Practices/LINKEDIN_TEXT_BEST_PRACTICES.md',
+    name: 'LinkedIn Text',
+    icon: '💼',
+    color: 'green'
+  },
+  'facebook-text': {
+    path: 'docs/UI & Features/Content Generation Best Practices/FACEBOOK_TEXT_BEST_PRACTICES.md',
+    name: 'Facebook Text',
+    icon: '📘',
+    color: 'green'
+  },
+  'tiktok': {
+    path: 'docs/UI & Features/Content Generation Best Practices/TIKTOK_SHORTS_BEST_PRACTICES.md',
+    name: 'TikTok Shorts',
+    icon: '🎵',
+    color: 'purple'
+  },
+  'instagram': {
+    path: 'docs/UI & Features/Content Generation Best Practices/INSTAGRAM_SHORTS_BEST_PRACTICES.md',
+    name: 'Instagram Reels',
+    icon: '📷',
+    color: 'purple'
+  },
+  'facebook-shorts': {
+    path: 'docs/UI & Features/Content Generation Best Practices/FACEBOOK_SHORTS_BEST_PRACTICES.md',
+    name: 'Facebook Shorts',
+    icon: '📘',
+    color: 'purple'
+  },
+  'youtube-short': {
+    path: 'docs/UI & Features/Content Generation Best Practices/YOUTUBE_SHORT_FORM_BEST_PRACTICES.md',
+    name: 'YouTube Short-Form (10-30 min)',
+    icon: '▶️',
+    color: 'cyan'
+  },
+  'youtube-long': {
+    path: 'docs/UI & Features/Content Generation Best Practices/YOUTUBE_LONG_FORM_BEST_PRACTICES.md',
+    name: 'YouTube Long-Form (45+ min)',
+    icon: '🎓',
+    color: 'cyan'
+  }
+};
+
+// Load best practices markdown file
+const loadBestPractice = async (filePath: string): Promise<string> => {
+  try {
+    const response = await fetch(`/${filePath}`);
+    if (!response.ok) {
+      throw new Error(`Failed to load: ${response.statusText}`);
+    }
+    return await response.text();
+  } catch (error) {
+    console.error('Error loading best practice:', error);
+    throw error;
+  }
+};
+
+// Simple markdown to HTML converter (basic)
+const formatMarkdown = (markdown: string): string => {
+  let html = markdown
+    // Code blocks first (before other processing)
+    .replace(/```[\s\S]*?```/g, (match) => {
+      const code = match.replace(/```/g, '').trim();
+      return `<pre class="bg-white/5 p-4 rounded-lg my-4 overflow-x-auto border border-white/10"><code class="text-sm text-gray-300 font-mono">${code}</code></pre>`;
+    })
+    // Headers
+    .replace(/^#### (.*$)/gim, '<h4 class="text-base font-bold mt-4 mb-2 text-white">$1</h4>')
+    .replace(/^### (.*$)/gim, '<h3 class="text-lg font-bold mt-6 mb-3 text-white">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-8 mb-4 text-white">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mt-8 mb-4 text-white">$1</h1>')
+    // Bold
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-white">$1</strong>')
+    // Italic
+    .replace(/\*(.*?)\*/g, '<em class="italic text-gray-200">$1</em>')
+    // Inline code (after code blocks)
+    .replace(/`([^`]+)`/g, '<code class="bg-white/10 px-1.5 py-0.5 rounded text-sm text-purple-300 font-mono">$1</code>')
+    // Horizontal rules
+    .replace(/^---$/gim, '<hr class="my-6 border-white/10">')
+    // Unordered lists
+    .replace(/^- (.*$)/gim, '<li class="ml-6 mb-2 text-gray-300 list-disc">$1</li>')
+    // Ordered lists
+    .replace(/^\d+\. (.*$)/gim, '<li class="ml-6 mb-2 text-gray-300 list-decimal">$1</li>')
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-purple-400 hover:text-purple-300 underline">$1</a>')
+    // Line breaks - preserve paragraphs
+    .split('\n\n')
+    .map(para => {
+      if (para.trim().startsWith('<')) {
+        return para; // Already formatted
+      }
+      if (para.trim() === '') {
+        return '';
+      }
+      return `<p class="mb-4 text-gray-300 leading-relaxed">${para.trim()}</p>`;
+    })
+    .join('');
+  
+  return html;
+};
+
 const ContentGenerator: React.FC<ContentGeneratorProps> = ({ setActiveRoute }) => {
   const [selectedProduct, setSelectedProduct] = useState<ProductWithAssets | null>(null);
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
@@ -63,6 +172,10 @@ const ContentGenerator: React.FC<ContentGeneratorProps> = ({ setActiveRoute }) =
   const [showSaveTemplateModal, setShowSaveTemplateModal] = useState(false);
   const [showSchedulePostModal, setShowSchedulePostModal] = useState(false);
   const [showAnalyticsModal, setShowAnalyticsModal] = useState(false);
+  const [showHowToModal, setShowHowToModal] = useState(false);
+  const [selectedBestPractice, setSelectedBestPractice] = useState<string | null>(null);
+  const [bestPracticeContent, setBestPracticeContent] = useState<string>('');
+  const [loadingBestPractice, setLoadingBestPractice] = useState(false);
   const [templateName, setTemplateName] = useState('');
   const [scheduledDateTime, setScheduledDateTime] = useState('');
   const [selectedPlatformForSchedule, setSelectedPlatformForSchedule] = useState<SocialPlatform>('twitter');
@@ -190,6 +303,13 @@ const ContentGenerator: React.FC<ContentGeneratorProps> = ({ setActiveRoute }) =
           <p className="text-gray-500 text-sm">Generate and share product content across social media platforms</p>
         </div>
         <div className="flex items-center gap-4">
+          <button
+            onClick={() => setShowHowToModal(true)}
+            className="px-4 py-2 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 rounded-xl font-bold text-sm transition-all"
+          >
+            <span className="mr-2">📚</span>
+            How to Generate Content
+          </button>
           <button
             onClick={() => setShowUploadModal(true)}
             className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all"
@@ -1184,6 +1304,180 @@ const ContentGenerator: React.FC<ContentGeneratorProps> = ({ setActiveRoute }) =
                 >
                   Cancel
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* How to Generate Content Modal */}
+      {showHowToModal && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold">How to Generate Content</h3>
+              <button
+                onClick={() => {
+                  setShowHowToModal(false);
+                  setSelectedBestPractice(null);
+                  setBestPracticeContent('');
+                }}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-hidden flex gap-6">
+              {/* Left Sidebar - Best Practice Buttons */}
+              <div className="w-80 flex-shrink-0 overflow-y-auto pr-4">
+                <div className="space-y-6">
+                  <div>
+                    <p className="text-gray-400 mb-4 text-sm">
+                      Select a best practices guide to view detailed strategies and tips.
+                    </p>
+                  </div>
+
+                  {/* Text-Based Content Section */}
+                  <div>
+                    <h4 className="text-lg font-bold mb-3 text-green-400">Text-Based Content</h4>
+                    <div className="space-y-2">
+                      {['x-twitter', 'linkedin', 'facebook-text'].map((key) => {
+                        const practice = BEST_PRACTICES_FILES[key];
+                        return (
+                          <button
+                            key={key}
+                            onClick={async () => {
+                              setSelectedBestPractice(key);
+                              setLoadingBestPractice(true);
+                              try {
+                                const content = await loadBestPractice(practice.path);
+                                setBestPracticeContent(content);
+                              } catch (error) {
+                                setBestPracticeContent(`Error loading ${practice.name}: ${error}`);
+                              } finally {
+                                setLoadingBestPractice(false);
+                              }
+                            }}
+                            className={`w-full p-3 text-left rounded-xl transition-all border ${
+                              selectedBestPractice === key
+                                ? 'bg-green-600/20 border-green-500/30 text-white'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{practice.icon}</span>
+                              <span className="font-bold text-sm">{practice.name}</span>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Short-Form Content Section */}
+                  <div>
+                    <h4 className="text-lg font-bold mb-3 text-purple-400">Short-Form Content</h4>
+                    <div className="space-y-2">
+                      {['tiktok', 'instagram', 'facebook-shorts'].map((key) => {
+                        const practice = BEST_PRACTICES_FILES[key];
+                        return (
+                          <button
+                            key={key}
+                            onClick={async () => {
+                              setSelectedBestPractice(key);
+                              setLoadingBestPractice(true);
+                              try {
+                                const content = await loadBestPractice(practice.path);
+                                setBestPracticeContent(content);
+                              } catch (error) {
+                                setBestPracticeContent(`Error loading ${practice.name}: ${error}`);
+                              } finally {
+                                setLoadingBestPractice(false);
+                              }
+                            }}
+                            className={`w-full p-3 text-left rounded-xl transition-all border ${
+                              selectedBestPractice === key
+                                ? 'bg-purple-600/20 border-purple-500/30 text-white'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{practice.icon}</span>
+                              <span className="font-bold text-sm">{practice.name}</span>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Long-Form Content Section */}
+                  <div>
+                    <h4 className="text-lg font-bold mb-3 text-cyan-400">Long-Form Content</h4>
+                    <div className="space-y-2">
+                      {['youtube-short', 'youtube-long'].map((key) => {
+                        const practice = BEST_PRACTICES_FILES[key];
+                        return (
+                          <button
+                            key={key}
+                            onClick={async () => {
+                              setSelectedBestPractice(key);
+                              setLoadingBestPractice(true);
+                              try {
+                                const content = await loadBestPractice(practice.path);
+                                setBestPracticeContent(content);
+                              } catch (error) {
+                                setBestPracticeContent(`Error loading ${practice.name}: ${error}`);
+                              } finally {
+                                setLoadingBestPractice(false);
+                              }
+                            }}
+                            className={`w-full p-3 text-left rounded-xl transition-all border ${
+                              selectedBestPractice === key
+                                ? 'bg-cyan-600/20 border-cyan-500/30 text-white'
+                                : 'bg-white/5 border-white/10 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-xl">{practice.icon}</span>
+                              <span className="font-bold text-sm">{practice.name}</span>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Content Area */}
+              <div className="flex-1 overflow-y-auto">
+                {loadingBestPractice ? (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center">
+                      <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500 mb-4"></div>
+                      <p className="text-gray-400">Loading best practices...</p>
+                    </div>
+                  </div>
+                ) : selectedBestPractice && bestPracticeContent ? (
+                  <div className="prose prose-invert max-w-none">
+                    <div 
+                      className="text-gray-300 space-y-4"
+                      dangerouslySetInnerHTML={{ __html: formatMarkdown(bestPracticeContent) }}
+                    />
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center text-gray-400">
+                      <p className="text-lg mb-2">Select a best practices guide</p>
+                      <p className="text-sm">Choose a guide from the left sidebar to view detailed strategies and tips.</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

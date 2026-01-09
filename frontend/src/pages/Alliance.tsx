@@ -13,6 +13,8 @@ const Alliance: React.FC = () => {
   const [showNetworkModal, setShowNetworkModal] = useState(false);
   const [selectedStat, setSelectedStat] = useState<string | null>(null);
   const [selectedProductAlliance, setSelectedProductAlliance] = useState<string | null>(null);
+  const [showMembersModal, setShowMembersModal] = useState(false);
+  const [selectedAllianceForMembers, setSelectedAllianceForMembers] = useState<any>(null);
   
   // Management tab state
   const [managementTab, setManagementTab] = useState<'Members' | 'Settings' | 'Analytics' | 'Recruitment' | 'Outreach'>('Members');
@@ -1337,7 +1339,13 @@ const Alliance: React.FC = () => {
                   >
                     Manage
                   </button>
-                  <button className="flex-1 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all">
+                  <button
+                    onClick={() => {
+                      setSelectedAllianceForMembers(alliance);
+                      setShowMembersModal(true);
+                    }}
+                    className="flex-1 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all"
+                  >
                     View Members
                   </button>
                 </div>
@@ -2285,6 +2293,151 @@ const Alliance: React.FC = () => {
             <div className="flex gap-4 pt-6 mt-6 border-t border-white/10">
               <button
                 onClick={() => setShowReferralsModal(false)}
+                className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Alliance Members Modal */}
+      {showMembersModal && selectedAllianceForMembers && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-2xl font-bold">{selectedAllianceForMembers.name} - Members</h3>
+                <p className="text-gray-500 text-sm mt-1">View and manage alliance members</p>
+              </div>
+              <button
+                onClick={() => {
+                  setShowMembersModal(false);
+                  setSelectedAllianceForMembers(null);
+                }}
+                className="p-2 hover:bg-white/10 rounded-xl transition-all"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="p-4 bg-white/5 rounded-xl">
+                <p className="text-xs text-gray-500 mb-1">Total Members</p>
+                <p className="text-2xl font-bold text-cyan-400">{selectedAllianceForMembers.members}</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl">
+                <p className="text-xs text-gray-500 mb-1">Active</p>
+                <p className="text-2xl font-bold text-green-400">{selectedAllianceForMembers.members - 5}</p>
+              </div>
+              <div className="p-4 bg-white/5 rounded-xl">
+                <p className="text-xs text-gray-500 mb-1">Total Earnings</p>
+                <p className="text-xl font-bold text-green-400">${selectedAllianceForMembers.totalEarnings.toLocaleString()}</p>
+              </div>
+            </div>
+
+            {/* Search and Filter */}
+            <div className="mb-6 flex gap-4">
+              <input
+                type="text"
+                placeholder="Search members..."
+                className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-purple-500/50"
+              />
+              <select className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-sm focus:outline-none focus:border-purple-500/50">
+                <option value="all">All Tiers</option>
+                <option value="platinum">Platinum</option>
+                <option value="gold">Gold</option>
+                <option value="silver">Silver</option>
+                <option value="bronze">Bronze</option>
+              </select>
+            </div>
+
+            {/* Members List */}
+            <div className="space-y-3 max-h-[50vh] overflow-y-auto">
+              {(() => {
+                // Generate mock members based on alliance
+                const memberCount = selectedAllianceForMembers.members;
+                const members = [];
+                const memberNames = [
+                  'Agent Nexus-15', 'Agent Nexus-42', 'Agent Nexus-88', 'Agent Nexus-33', 'Agent Nexus-91',
+                  'Agent Nexus-77', 'Agent Nexus-99', 'Agent Nexus-11', 'Agent Nexus-55', 'Agent Nexus-22',
+                  'Agent Nexus-66', 'Agent Nexus-44', 'Agent Nexus-25', 'Agent Nexus-38', 'Agent Nexus-72',
+                  'Agent Nexus-19', 'Agent Nexus-56', 'Agent Nexus-84', 'Agent Nexus-29', 'Agent Nexus-63'
+                ];
+                const tiers = ['Platinum', 'Gold', 'Silver', 'Bronze'];
+                
+                for (let i = 0; i < Math.min(memberCount, 20); i++) {
+                  const name = memberNames[i % memberNames.length] || `Agent Nexus-${100 + i}`;
+                  const tier = tiers[Math.floor(Math.random() * tiers.length)];
+                  const earnings = Math.floor(Math.random() * 5000) + 500;
+                  const network = Math.floor(Math.random() * 200) + 10;
+                  const joined = new Date(2024, Math.floor(Math.random() * 12), Math.floor(Math.random() * 28) + 1).toISOString().split('T')[0];
+                  const status = Math.random() > 0.1 ? 'Active' : 'Inactive';
+                  
+                  members.push({
+                    id: `member-${i + 1}`,
+                    name,
+                    tier,
+                    earnings,
+                    network,
+                    joined,
+                    status
+                  });
+                }
+                
+                return members;
+              })().map((member) => (
+                <div
+                  key={member.id}
+                  className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-bold">
+                        {member.name.split('-')[1] || member.name.charAt(member.name.length - 1)}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-bold">{member.name}</h4>
+                          <span className={`px-2 py-0.5 rounded text-xs font-bold ${
+                            member.tier === 'Platinum' ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20' :
+                            member.tier === 'Gold' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' :
+                            member.tier === 'Silver' ? 'bg-gray-500/10 text-gray-400 border border-gray-500/20' :
+                            'bg-orange-500/10 text-orange-400 border border-orange-500/20'
+                          }`}>
+                            {member.tier}
+                          </span>
+                          <span className={`px-2 py-0.5 rounded text-xs font-bold ${
+                            member.status === 'Active'
+                              ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                              : 'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                          }`}>
+                            {member.status}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500">Joined: {member.joined} • Network: {member.network} members</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-gray-500 mb-1">Earnings</p>
+                      <p className="font-bold text-green-400">${member.earnings.toLocaleString()}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex gap-4 pt-6 mt-6 border-t border-white/10">
+              <button
+                onClick={() => {
+                  setShowMembersModal(false);
+                  setSelectedAllianceForMembers(null);
+                }}
                 className="flex-1 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
               >
                 Close

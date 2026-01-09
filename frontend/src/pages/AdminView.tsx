@@ -16,8 +16,10 @@ interface AdminViewProps {
 const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [activeTab, setActiveTab] = useState<'vetting' | 'users' | 'reports' | 'tasks' | 'guide'>('tasks');
+  const [activeTab, setActiveTab] = useState<'vetting' | 'users' | 'reports' | 'tasks' | 'guide' | 'networks'>('tasks');
   const [selectedTeamMember, setSelectedTeamMember] = useState<string | null>(null);
+  const [selectedAlliance, setSelectedAlliance] = useState<any>(null);
+  const [showAllianceDetails, setShowAllianceDetails] = useState(false);
   const { addNotification } = useNotifications();
 
   useEffect(() => {
@@ -146,6 +148,16 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
         >
           Developer Guide
         </button>
+        <button
+          onClick={() => setActiveTab('networks')}
+          className={`px-6 py-3 font-medium transition-all border-b-2 ${
+            activeTab === 'networks'
+              ? 'border-purple-500 text-purple-400'
+              : 'border-transparent text-gray-500 hover:text-gray-300'
+          }`}
+        >
+          Networks & Alliances
+        </button>
       </div>
 
       {/* Content */}
@@ -255,6 +267,262 @@ const AdminView: React.FC<AdminViewProps> = ({ setActiveRoute }) => {
         {activeTab === 'vetting' && <Vetting />}
         {activeTab === 'users' && <Users />}
         {activeTab === 'reports' && <Reports />}
+        
+        {activeTab === 'networks' && (
+          <div className="space-y-6">
+            <div className="glass-card p-6 rounded-2xl border border-white/5">
+              <h2 className="text-2xl font-bold mb-2">Networks & Alliances Overview</h2>
+              <p className="text-gray-400 mb-6">
+                Complete statistics for all alliances including clicks, conversions, earnings, and member details.
+              </p>
+              
+              {/* Mock Alliance Data */}
+              {[
+                {
+                  id: '1',
+                  name: 'Elite Affiliates Network',
+                  members: 142,
+                  tier: 'Platinum',
+                  totalEarnings: 125000,
+                  monthlyEarnings: 15200,
+                  created: '2024-01-15',
+                  status: 'Active',
+                  totalClicks: 52810,
+                  conversions: 1267,
+                  conversionRate: 2.4,
+                  activeMembers: 89,
+                  memberDetails: [
+                    { name: 'Agent Nexus-42', tier: 'Gold', role: 'Co-Leader', joined: '2024-01-20', earnings: 1240, clicks: 3420, conversions: 82, network: 23 },
+                    { name: 'Agent Nexus-88', tier: 'Silver', role: 'Member', joined: '2024-02-15', earnings: 890, clicks: 2150, conversions: 52, network: 15 },
+                    { name: 'Agent Nexus-15', tier: 'Gold', role: 'Member', joined: '2024-03-01', earnings: 650, clicks: 1890, conversions: 45, network: 18 },
+                  ]
+                },
+                {
+                  id: '2',
+                  name: 'Crypto Masters Alliance',
+                  members: 89,
+                  tier: 'Gold',
+                  totalEarnings: 78000,
+                  monthlyEarnings: 9200,
+                  created: '2024-03-20',
+                  status: 'Active',
+                  totalClicks: 34250,
+                  conversions: 821,
+                  conversionRate: 2.4,
+                  activeMembers: 67,
+                  memberDetails: [
+                    { name: 'Agent Nexus-42', tier: 'Gold', role: 'Co-Leader', joined: '2024-01-20', earnings: 1240, clicks: 3420, conversions: 82, network: 23 },
+                    { name: 'Agent Nexus-88', tier: 'Silver', role: 'Member', joined: '2024-02-15', earnings: 890, clicks: 2150, conversions: 52, network: 15 },
+                    { name: 'Agent Nexus-15', tier: 'Gold', role: 'Member', joined: '2024-03-01', earnings: 650, clicks: 1890, conversions: 45, network: 18 },
+                  ]
+                },
+              ].map((alliance) => (
+                <div
+                  key={alliance.id}
+                  className="glass-card p-6 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all mb-4"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-xl font-bold">{alliance.name}</h3>
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                          alliance.tier === 'Platinum' ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20' :
+                          alliance.tier === 'Gold' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' :
+                          'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                        }`}>
+                          {alliance.tier} Tier
+                        </span>
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                          alliance.status === 'Active'
+                            ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                            : 'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                        }`}>
+                          {alliance.status}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-400">Created: {alliance.created}</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setSelectedAlliance(alliance);
+                        setShowAllianceDetails(true);
+                      }}
+                      className="px-4 py-2 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 text-purple-300 rounded-lg text-sm font-semibold transition-all"
+                    >
+                      View Full Stats
+                    </button>
+                  </div>
+
+                  {/* Quick Stats Grid */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Members</p>
+                      <p className="text-2xl font-bold text-cyan-400">{alliance.members}</p>
+                    </div>
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Total Earnings</p>
+                      <p className="text-xl font-bold text-green-400">${alliance.totalEarnings.toLocaleString()}</p>
+                    </div>
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Monthly</p>
+                      <p className="text-xl font-bold text-purple-400">${alliance.monthlyEarnings.toLocaleString()}</p>
+                    </div>
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Active Members</p>
+                      <p className="text-2xl font-bold text-yellow-400">{alliance.activeMembers}</p>
+                    </div>
+                  </div>
+
+                  {/* Network Performance Stats */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Total Clicks</p>
+                      <p className="text-xl font-bold text-cyan-400">{alliance.totalClicks.toLocaleString()}</p>
+                    </div>
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Conversions</p>
+                      <p className="text-xl font-bold text-green-400">{alliance.conversions.toLocaleString()}</p>
+                    </div>
+                    <div className="p-4 bg-white/5 rounded-xl">
+                      <p className="text-xs text-gray-500 mb-1">Conversion Rate</p>
+                      <p className="text-xl font-bold text-purple-400">{alliance.conversionRate}%</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Alliance Details Modal */}
+        {showAllianceDetails && selectedAlliance && (
+          <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="glass-card p-8 rounded-3xl border border-white/10 max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold">{selectedAlliance.name}</h3>
+                  <p className="text-gray-500 text-sm mt-1">Complete network statistics and member details</p>
+                </div>
+                <button
+                  onClick={() => {
+                    setShowAllianceDetails(false);
+                    setSelectedAlliance(null);
+                  }}
+                  className="p-2 hover:bg-white/10 rounded-xl transition-all"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Alliance Overview Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Members</p>
+                  <p className="text-2xl font-bold text-cyan-400">{selectedAlliance.members}</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Total Earnings</p>
+                  <p className="text-xl font-bold text-green-400">${selectedAlliance.totalEarnings.toLocaleString()}</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Monthly</p>
+                  <p className="text-xl font-bold text-purple-400">${selectedAlliance.monthlyEarnings.toLocaleString()}</p>
+                </div>
+                <div className="p-4 bg-white/5 rounded-xl">
+                  <p className="text-xs text-gray-500 mb-1">Created</p>
+                  <p className="text-sm font-bold text-yellow-400">{selectedAlliance.created}</p>
+                </div>
+              </div>
+
+              {/* Network Performance */}
+              <div className="mb-6">
+                <h4 className="font-bold text-lg mb-4">Network Performance</h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="p-4 bg-white/5 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">Total Clicks</p>
+                    <p className="text-2xl font-bold text-cyan-400">{selectedAlliance.totalClicks.toLocaleString()}</p>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">Conversions</p>
+                    <p className="text-2xl font-bold text-green-400">{selectedAlliance.conversions.toLocaleString()}</p>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-xl">
+                    <p className="text-xs text-gray-500 mb-1">Conversion Rate</p>
+                    <p className="text-2xl font-bold text-purple-400">{selectedAlliance.conversionRate}%</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Alliance Members */}
+              <div className="mb-6">
+                <h4 className="font-bold text-lg mb-4">Alliance Members</h4>
+                <div className="space-y-3">
+                  {selectedAlliance.memberDetails.map((member: any, idx: number) => (
+                    <div
+                      key={idx}
+                      className="p-4 bg-white/5 rounded-xl border border-white/5 hover:border-purple-500/30 transition-all"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-bold">
+                            {member.name.split('-')[1] || member.name.charAt(member.name.length - 1)}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <h4 className="font-bold">{member.name}</h4>
+                              <span className={`px-2 py-0.5 rounded text-xs font-bold ${
+                                member.tier === 'Platinum' ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20' :
+                                member.tier === 'Gold' ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20' :
+                                'bg-gray-500/10 text-gray-400 border border-gray-500/20'
+                              }`}>
+                                {member.tier}
+                              </span>
+                              <span className="px-2 py-0.5 rounded text-xs font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                {member.role}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-500">Joined: {member.joined} • Network: {member.network} members</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="grid grid-cols-3 gap-4 text-right">
+                            <div>
+                              <p className="text-xs text-gray-500 mb-1">Earnings</p>
+                              <p className="font-bold text-green-400">${member.earnings.toLocaleString()}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 mb-1">Clicks</p>
+                              <p className="font-bold text-cyan-400">{member.clicks.toLocaleString()}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 mb-1">Conversions</p>
+                              <p className="font-bold text-purple-400">{member.conversions}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => {
+                    setShowAllianceDetails(false);
+                    setSelectedAlliance(null);
+                  }}
+                  className="px-8 py-3 bg-purple-600 hover:bg-purple-500 rounded-xl font-bold transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         
         {activeTab === 'guide' && (
           <div className="glass-card p-8 rounded-2xl border border-white/5">
