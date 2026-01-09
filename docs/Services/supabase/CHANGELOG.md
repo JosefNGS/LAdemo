@@ -1,44 +1,38 @@
-# PostgreSQL Service Changelog
+# Supabase Service Changelog (Legacy)
 
-All notable changes to PostgreSQL configuration, database schema, authentication, and backend services will be documented in this file.
+All notable changes to Supabase service (legacy) will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+**⚠️ LEGACY**: This is legacy documentation. The active service is **PostgreSQL** (see `docs/Services/postgresql/CHANGELOG.md`).
 
-**⚠️ CRITICAL**: Every changelog entry MUST track who made the change:
+**⚠️ CRITICAL - MANDATORY DEVELOPER TRACKING**:
+Every changelog entry MUST track who made the change:
 - **Developer entries**: `[Developer: Name]` - e.g., `[Developer: Jonne Waselius]`
 - **Cursor/AI entries**: `[Cursor]` - e.g., `[Cursor]`
 
 ## [Unreleased]
 
 ### Added
-- Initial PostgreSQL service setup
-- Database schema migrations
-- Authentication configuration
-- Service rules documentation
+- **Legacy Supabase Service Documentation**: Created legacy documentation files for historical reference [Cursor]
+  - Created `README.md` - Legacy service documentation index
+  - Created `CAPABILITIES.md` - Legacy capabilities documentation
+  - Created `ARCHITECTURE.md` - Legacy architecture documentation
+  - Created `INTEGRATION_GUIDE.md` - Legacy integration guide
+  - Created `SETUP_GUIDE.md` - Legacy setup guide
+  - Created `IMPLEMENTATION_GUIDE.md` - Legacy implementation guide
+  - Created `CHANGELOG.md` - Change tracking (this file)
+  - All files marked as legacy and reference PostgreSQL service
 
 ### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
+- **Migration to PostgreSQL**: All Supabase references renamed to PostgreSQL [Cursor]
+  - Service folder renamed to `docs/Services/postgresql/`
+  - All documentation updated to PostgreSQL
+  - Legacy folder kept for historical reference
 
 ---
 
-## [1.0.0] - January 2026
+## Notes
 
-### Added
-- PostgreSQL service documentation [Cursor]
-- Database migration files [Cursor]
-- Quick start guide [Cursor]
-- Setup documentation [Cursor]
-- Service rules documentation [Cursor]
-
----
-
-**Note**: This changelog tracks changes specific to the PostgreSQL service. For overall project changes, see `docs/Project Management/CHANGELOG.md`.
-
+- **Location**: `docs/Services/supabase/CHANGELOG.md`
+- **Maintained By**: Jonne Waselius (Backend Developer)
+- **Update Frequency**: No longer maintained (legacy)
+- **Service Status**: ⚠️ **LEGACY** - Superseded by PostgreSQL service

@@ -30,7 +30,8 @@ rules/
 │   ├── admin/            # Admin View & Task Management
 │   ├── netlify/          # Netlify deployment
 │   ├── PostgreSQL/         # PostgreSQL database
-│   ├── phoenix-elixir/    # Phoenix & Elixir backend
+│   ├── phoenix/            # Phoenix web framework
+│   ├── elixir/             # Elixir services & BEAM VM
 │   ├── github/           # GitHub version control
 │   ├── n8n/              # n8n automation
 │   ├── discourse/        # Discourse forum

@@ -113,12 +113,17 @@ BitNexus Landing Page/
 │   │       ├── submit-email.js
 │   │       ├── submit-email-airtable.js
 │   │       └── submit-email-PostgreSQL.js
-│   └── phoenix-elixir/                 # Phoenix & Elixir backend (planned)
-│       └── bitnexus_api/              # Phoenix application
-│           ├── lib/                    # Application code
-│           ├── config/                 # Configuration
-│           ├── priv/repo/migrations/   # Database migrations
-│           └── test/                   # Tests
+│   ├── phoenix/                        # Phoenix web framework (planned)
+│   │   └── bitnexus_api/              # Phoenix application
+│   │       ├── lib/                    # Application code
+│   │       ├── config/                 # Configuration
+│   │       ├── priv/repo/migrations/   # Database migrations
+│   │       └── test/                   # Tests
+│   └── elixir/                        # Elixir services (planned)
+│       ├── accounts_service/          # Accounts domain service
+│       ├── products_service/          # Products domain service
+│       ├── transactions_service/      # Transactions domain service
+│       └── ledger_client/             # Ledger integration service
 │
 ├── docs/                               # Documentation folder
 │   ├── Core Documentation/             # Core system documentation
@@ -229,7 +234,15 @@ BitNexus Landing Page/
 │   │   ├── erlang-ledger/             # Erlang/Elixir blockchain ledger
 │   │   │   ├── CHANGELOG.md
 │   │   │   └── SERVICE_RULES.md
-│   │   ├── phoenix-elixir/            # Phoenix & Elixir backend service
+│   │   ├── phoenix/                   # Phoenix web framework service
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── SERVICE_RULES.md
+│   │   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   │   ├── ARCHITECTURE.md
+│   │   │   ├── INTEGRATION_GUIDE.md
+│   │   │   ├── SETUP_GUIDE.md
+│   │   │   └── README.md
+│   │   ├── elixir/                    # Elixir services & BEAM VM
 │   │   │   ├── CHANGELOG.md
 │   │   │   ├── SERVICE_RULES.md
 │   │   │   ├── IMPLEMENTATION_GUIDE.md
@@ -374,10 +387,11 @@ BitNexus Landing Page/
 
 **Backend Structure Rules**:
 1. **Netlify Functions**: `backend/netlify/functions/` - Serverless functions
-2. **Phoenix & Elixir**: `backend/phoenix-elixir/` - Phoenix/Elixir backend API (planned)
-3. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
-4. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
-5. **Future Services**: Each new service gets its own folder under `backend/`
+2. **Phoenix**: `backend/phoenix/` - Phoenix web framework (HTTP API, WebSocket) (planned)
+3. **Elixir**: `backend/elixir/` - Elixir services (business logic, BEAM VM) (planned)
+4. **n8n Automation**: `backend/n8n/` - Workflow automation service (planned)
+5. **Discourse Forum**: `backend/discourse/` - Forum service (planned)
+6. **Future Services**: Each new service gets its own folder under `backend/`
    - Example: `backend/erlang-ledger/` for blockchain ledger service
    - Example: `backend/golang-api/` for Go API services
 
@@ -394,11 +408,16 @@ BitNexus Landing Page/
 - `docs/Services/n8n/SERVICE_RULES.md` - n8n service rules
 - `docs/Services/discourse/SERVICE_RULES.md` - Discourse service rules
 - `docs/Services/erlang-ledger/SERVICE_RULES.md` - Erlang/Elixir ledger service rules
-- `docs/Services/phoenix-elixir/SERVICE_RULES.md` - Phoenix & Elixir backend service rules (CRITICAL)
-- `docs/Services/phoenix-elixir/IMPLEMENTATION_GUIDE.md` - Complete Phoenix/Elixir implementation guide
-- `docs/Services/phoenix-elixir/ARCHITECTURE.md` - Phoenix/Elixir system architecture
-- `docs/Services/phoenix-elixir/INTEGRATION_GUIDE.md` - Integration with existing system
-- `docs/Services/phoenix-elixir/SETUP_GUIDE.md` - Quick setup guide
+- `docs/Services/phoenix/SERVICE_RULES.md` - Phoenix web framework service rules (CRITICAL)
+- `docs/Services/phoenix/IMPLEMENTATION_GUIDE.md` - Complete Phoenix implementation guide
+- `docs/Services/phoenix/ARCHITECTURE.md` - Phoenix system architecture
+- `docs/Services/phoenix/INTEGRATION_GUIDE.md` - Integration with existing system
+- `docs/Services/phoenix/SETUP_GUIDE.md` - Quick setup guide
+- `docs/Services/elixir/SERVICE_RULES.md` - Elixir services & BEAM VM service rules (CRITICAL)
+- `docs/Services/elixir/IMPLEMENTATION_GUIDE.md` - Complete Elixir services implementation guide
+- `docs/Services/elixir/ARCHITECTURE.md` - Elixir services system architecture
+- `docs/Services/elixir/INTEGRATION_GUIDE.md` - Integration with existing system
+- `docs/Services/elixir/SETUP_GUIDE.md` - Quick setup guide
 - `docs/Services/golang-api/SERVICE_RULES.md` - Golang API service rules
 - `docs/Services/admin/SERVICE_RULES.md` - Admin View & Task Management service rules (CRITICAL)
 

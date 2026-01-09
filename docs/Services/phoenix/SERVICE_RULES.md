@@ -1,5 +1,5 @@
-# Phoenix & Elixir Service Rules
-## Critical Rules for Phoenix/Elixir Backend Implementation
+# Phoenix Service Rules
+## Critical Rules for Phoenix Web Framework Implementation
 
 **Last Updated**: January 2026  
 **Version**: 1.0  
@@ -16,31 +16,30 @@
 ## ⚠️ CRITICAL RULES - STRICTLY ENFORCED
 
 ### Service Location
-- **All Phoenix/Elixir service files MUST be in**: `backend/phoenix-elixir/`
+- **All Phoenix service files MUST be in**: `backend/phoenix/`
 - **One folder per service** - No mixing with other services
 - **Phoenix application structure** must follow Phoenix conventions
 
 ### File Organization
-- **Phoenix App**: `backend/phoenix-elixir/bitnexus_api/` (Phoenix application root)
-- **Configuration**: `backend/phoenix-elixir/config/`
-- **Documentation**: `docs/Services/phoenix-elixir/`
-- **Tests**: `backend/phoenix-elixir/test/`
-- **Migrations**: `backend/phoenix-elixir/priv/repo/migrations/`
+- **Phoenix App**: `backend/phoenix/bitnexus_api/` (Phoenix application root)
+- **Configuration**: `backend/phoenix/config/`
+- **Documentation**: `docs/Services/phoenix/`
+- **Tests**: `backend/phoenix/test/`
+- **Migrations**: `backend/phoenix/priv/repo/migrations/`
 
 ### Architecture Rules
 - **Phoenix Framework** for HTTP API and WebSocket channels
-- **Elixir** for business logic and concurrency
-- **BEAM VM** for process isolation and fault tolerance
-- **PostgreSQL** for primary data storage
-- **Ecto** for database access and migrations
 - **Phoenix Channels** for real-time features
 - **Phoenix LiveView** (optional, for future admin dashboards)
+- **Phoenix Controllers** for HTTP endpoints
+- **Phoenix Views** for JSON serialization
+- **Phoenix Router** for routing
 
 ### Integration Requirements
 - **RESTful API** endpoints for frontend consumption
 - **WebSocket channels** for real-time updates
-- **Integration with Erlang/Elixir ledger** (shared BEAM VM)
-- **Integration with PostgreSQL** database
+- **Integration with Elixir services** (business logic layer)
+- **Integration with PostgreSQL** database (via Ecto)
 - **Integration with existing Netlify functions** (gradual migration)
 - **Integration with Go services** (high-performance endpoints)
 
@@ -53,17 +52,14 @@
 - **Logging** - Structured logging required
 
 ### Code Standards
-- **Elixir** for all backend logic
 - **Phoenix** for HTTP/WebSocket handling
-- **Ecto** for database operations
+- **Ecto** for database operations (via Elixir services)
 - **ExUnit** for testing
-- **Credo** for code quality
-- **Dialyxir** for static analysis
 - **Error handling** required in all functions
 - **Environment variables** for configuration
 
 ### Documentation Requirements
-- **All Phoenix/Elixir docs** in `docs/Services/phoenix-elixir/`
+- **All Phoenix docs** in `docs/Services/phoenix/`
 - **API documentation** required for all endpoints
 - **Architecture documentation** required
 - **Deployment guides** must be updated
@@ -77,22 +73,17 @@
 
 **MANDATORY STRUCTURE**:
 ```
-backend/phoenix-elixir/
+backend/phoenix/
 ├── bitnexus_api/              # Phoenix application root
 │   ├── lib/
 │   │   ├── bitnexus_api/      # Application module
 │   │   │   ├── application.ex
 │   │   │   └── repo.ex
-│   │   ├── bitnexus_api_web/  # Web layer
-│   │   │   ├── controllers/   # HTTP controllers
-│   │   │   ├── channels/       # WebSocket channels
-│   │   │   ├── views/          # JSON views
-│   │   │   └── router.ex      # Routes
-│   │   └── bitnexus_api/      # Business logic
-│   │       ├── accounts/       # Account domain
-│   │       ├── products/      # Product domain
-│   │       ├── transactions/  # Transaction domain
-│   │       └── ledger/         # Ledger integration
+│   │   └── bitnexus_api_web/  # Web layer
+│   │       ├── controllers/   # HTTP controllers
+│   │       ├── channels/       # WebSocket channels
+│   │       ├── views/          # JSON views
+│   │       └── router.ex      # Routes
 │   ├── config/                # Configuration
 │   ├── priv/
 │   │   └── repo/
@@ -100,8 +91,6 @@ backend/phoenix-elixir/
 │   └── test/                  # Tests
 ├── config/                     # Service configuration
 ├── docker/                     # Docker files
-│   ├── Dockerfile
-│   └── docker-compose.yml
 └── README.md                   # Service documentation
 ```
 
@@ -116,17 +105,7 @@ backend/phoenix-elixir/
 - ✅ **CORS**: Proper CORS configuration
 - ✅ **Error Handling**: Consistent error response format
 
-### 3. Database Integration
-
-**MANDATORY RULES**:
-- ✅ **Ecto** for database access
-- ✅ **Migrations** for all schema changes
-- ✅ **Connection pooling** configured
-- ✅ **Transaction support** for data integrity
-- ✅ **Query optimization** required
-- ✅ **Database indexes** for performance
-
-### 4. Real-Time Features
+### 3. Real-Time Features
 
 **MANDATORY RULES**:
 - ✅ **Phoenix Channels** for WebSocket connections
@@ -135,15 +114,6 @@ backend/phoenix-elixir/
 - ✅ **Connection monitoring** required
 - ✅ **Graceful disconnection** handling
 
-### 5. Integration with Existing System
-
-**MANDATORY RULES**:
-- ✅ **Gradual migration** from Netlify functions
-- ✅ **API compatibility** with existing endpoints
-- ✅ **Shared authentication** with frontend
-- ✅ **Shared database** with PostgreSQL
-- ✅ **Integration with Erlang/Elixir ledger** (same BEAM VM)
-
 ---
 
 ## 🔄 Implementation Phases
@@ -151,7 +121,7 @@ backend/phoenix-elixir/
 ### Phase 1: Foundation (Weeks 1-2)
 - [ ] Set up Phoenix application structure
 - [ ] Configure development environment
-- [ ] Set up PostgreSQL connection
+- [ ] Set up PostgreSQL connection (via Elixir services)
 - [ ] Create health check endpoint
 - [ ] Set up basic routing
 - [ ] Configure logging and monitoring
@@ -159,7 +129,7 @@ backend/phoenix-elixir/
 ### Phase 2: Core API (Weeks 3-4)
 - [ ] Implement authentication system
 - [ ] Create core API endpoints
-- [ ] Set up database migrations
+- [ ] Integrate with Elixir business logic services
 - [ ] Implement error handling
 - [ ] Add API documentation
 - [ ] Write unit tests
@@ -172,7 +142,7 @@ backend/phoenix-elixir/
 - [ ] Add connection monitoring
 
 ### Phase 4: Integration (Weeks 7-8)
-- [ ] Integrate with Erlang/Elixir ledger
+- [ ] Integrate with Elixir services
 - [ ] Migrate Netlify functions to Phoenix
 - [ ] Integrate with Go services
 - [ ] Set up production deployment
@@ -182,10 +152,9 @@ backend/phoenix-elixir/
 
 ## 📋 Service-Specific Checklist
 
-Before deploying Phoenix/Elixir changes:
+Before deploying Phoenix changes:
 - [ ] Phoenix application structure follows conventions
 - [ ] All endpoints have health checks
-- [ ] Database migrations are tested
 - [ ] Error handling is implemented
 - [ ] Authentication is configured
 - [ ] Rate limiting is configured
@@ -200,12 +169,12 @@ Before deploying Phoenix/Elixir changes:
 
 ## 🔗 Related Documentation
 
+- **Elixir Services**: `docs/Services/elixir/SERVICE_RULES.md`
 - **Tech Stack**: `docs/Core Documentation/TECH_STACK.md`
-- **Implementation Guide**: `docs/Services/phoenix-elixir/IMPLEMENTATION_GUIDE.md`
-- **Architecture**: `docs/Services/phoenix-elixir/ARCHITECTURE.md`
-- **Setup Guide**: `docs/Services/phoenix-elixir/SETUP_GUIDE.md`
-- **Integration Guide**: `docs/Services/phoenix-elixir/INTEGRATION_GUIDE.md`
-- **Erlang Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
+- **Implementation Guide**: `docs/Services/phoenix/IMPLEMENTATION_GUIDE.md`
+- **Architecture**: `docs/Services/phoenix/ARCHITECTURE.md`
+- **Integration Guide**: `docs/Services/phoenix/INTEGRATION_GUIDE.md`
+- **Setup Guide**: `docs/Services/phoenix/SETUP_GUIDE.md`
 - **PostgreSQL**: `docs/Services/postgresql/SERVICE_RULES.md`
 
 ---
@@ -213,9 +182,8 @@ Before deploying Phoenix/Elixir changes:
 ## 🚨 Critical Violations
 
 **These actions are STRICTLY FORBIDDEN**:
-- ❌ **CRITICAL**: Mixing Phoenix/Elixir code with other services
+- ❌ **CRITICAL**: Mixing Phoenix code with other services
 - ❌ **CRITICAL**: Deploying without CTO approval
-- ❌ **CRITICAL**: Skipping database migrations
 - ❌ **CRITICAL**: No error handling
 - ❌ **CRITICAL**: Hardcoding configuration values
 - ❌ **CRITICAL**: No authentication on endpoints
@@ -224,4 +192,4 @@ Before deploying Phoenix/Elixir changes:
 
 ---
 
-**These rules are CRITICAL and must be followed for all Phoenix/Elixir service work.**
+**These rules are CRITICAL and must be followed for all Phoenix service work.**

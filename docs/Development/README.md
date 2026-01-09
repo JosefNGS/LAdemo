@@ -11,6 +11,10 @@ This directory contains development planning, task tracking, and implementation 
   - `SVEIN_TASKS.md` - Svein Nilsen's tasks
   - `LEE_TASKS.md` - Lee's tasks
   - `CORY_TASKS.md` - Cory's tasks
+- **Owner Files**: Role-based owner responsibilities and task tracking
+  - `FRONTEND_OWNER.md` - Frontend owner responsibilities
+  - `BACKEND_OWNER.md` - Backend owner responsibilities
+  - `SECURITY_OWNER.md` - Security owner responsibilities
 - **Planning Documents**:
   - `DEVELOPER_DOCS.md` - Developer responsibilities and guidelines
   - `IMPLEMENTATION_PLAN.md` - Implementation planning

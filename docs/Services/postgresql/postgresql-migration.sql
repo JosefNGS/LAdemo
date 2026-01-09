@@ -1,0 +1,133 @@
+-- BitNexus Supabase Database Migration
+-- Run this in Supabase SQL Editor
+
+-- ============================================
+-- Email Submissions Table
+-- ============================================
+CREATE TABLE IF NOT EXISTS email_submissions (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  phone TEXT NOT NULL,
+  source TEXT DEFAULT 'landing_page',
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'verified', 'rejected', 'active')),
+  ip_address TEXT,
+  user_agent TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for performance
+CREATE INDEX IF NOT EXISTS idx_email_submissions_email ON email_submissions(email);
+CREATE INDEX IF NOT EXISTS idx_email_submissions_status ON email_submissions(status);
+CREATE INDEX IF NOT EXISTS idx_email_submissions_created_at ON email_submissions(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_email_submissions_source ON email_submissions(source);
+
+-- Enable Row Level Security
+ALTER TABLE email_submissions ENABLE ROW LEVEL SECURITY;
+
+-- Policy: Allow anonymous inserts (for landing page form)
+CREATE POLICY "Allow anonymous inserts" ON email_submissions
+  FOR INSERT
+  TO anon
+  WITH CHECK (true);
+
+-- Policy: Allow service role to read all (for admin dashboard)
+CREATE POLICY "Allow service role read" ON email_submissions
+  FOR SELECT
+  TO service_role
+  USING (true);
+
+-- Policy: Allow service role to update (for status changes)
+CREATE POLICY "Allow service role update" ON email_submissions
+  FOR UPDATE
+  TO service_role
+  USING (true);
+
+-- Function to update updated_at timestamp
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- Trigger to auto-update updated_at
+CREATE TRIGGER update_email_submissions_updated_at
+  BEFORE UPDATE ON email_submissions
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- ============================================
+-- Users Table (Optional - for future use)
+-- ============================================
+CREATE TABLE IF NOT EXISTS users (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  email TEXT NOT NULL UNIQUE,
+  username TEXT,
+  referral_code TEXT UNIQUE,
+  referred_by UUID REFERENCES users(id),
+  tier TEXT DEFAULT 'bronze' CHECK (tier IN ('bronze', 'silver', 'gold', 'platinum', 'diamond')),
+  total_earnings DECIMAL(10, 2) DEFAULT 0,
+  network_size INTEGER DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for users
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_referral_code ON users(referral_code);
+CREATE INDEX IF NOT EXISTS idx_users_referred_by ON users(referred_by);
+CREATE INDEX IF NOT EXISTS idx_users_tier ON users(tier);
+
+-- ============================================
+-- Products Table (Optional - for marketplace)
+-- ============================================
+CREATE TABLE IF NOT EXISTS products (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  name TEXT NOT NULL,
+  description TEXT,
+  category TEXT,
+  price DECIMAL(10, 2),
+  commission_rate DECIMAL(5, 2),
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'active', 'rejected', 'archived')),
+  created_by UUID REFERENCES users(id),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for products
+CREATE INDEX IF NOT EXISTS idx_products_category ON products(category);
+CREATE INDEX IF NOT EXISTS idx_products_status ON products(status);
+CREATE INDEX IF NOT EXISTS idx_products_created_by ON products(created_by);
+
+-- ============================================
+-- Affiliate Links Table (Optional)
+-- ============================================
+CREATE TABLE IF NOT EXISTS affiliate_links (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  product_id UUID REFERENCES products(id),
+  link_code TEXT UNIQUE NOT NULL,
+  clicks INTEGER DEFAULT 0,
+  conversions INTEGER DEFAULT 0,
+  earnings DECIMAL(10, 2) DEFAULT 0,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Indexes for affiliate_links
+CREATE INDEX IF NOT EXISTS idx_affiliate_links_user_id ON affiliate_links(user_id);
+CREATE INDEX IF NOT EXISTS idx_affiliate_links_product_id ON affiliate_links(product_id);
+CREATE INDEX IF NOT EXISTS idx_affiliate_links_link_code ON affiliate_links(link_code);
+
+-- ============================================
+-- Comments
+-- ============================================
+COMMENT ON TABLE email_submissions IS 'Stores email addresses from landing page signups';
+COMMENT ON TABLE users IS 'User accounts and profiles';
+COMMENT ON TABLE products IS 'Marketplace products available for promotion';
+COMMENT ON TABLE affiliate_links IS 'Affiliate links generated by users';
+
+

@@ -23,18 +23,40 @@
 
 **CRITICAL RULE**: Task markdown files in `docs/Development/` MUST automatically sync with the database. When markdown files change, the database MUST be automatically updated. This is a **MANDATORY REQUIREMENT** with **NO EXCEPTIONS**.
 
-**Task File Locations** (MUST be kept synchronized):
-- `docs/Development/JOSEF_TASKS.md`
-- `docs/Development/CRAIG_TASKS.md`
-- `docs/Development/JONNE_TASKS.md`
-- `docs/Development/SVEIN_TASKS.md`
-- `docs/Development/LEE_TASKS.md`
-- `docs/Development/CORY_TASKS.md`
+### 🔴 CRITICAL - BIDIRECTIONAL AUTO-UPDATE: TODO ↔ Development Docs
+
+**CRITICAL RULE**: When `docs/Project Management/TODO.md` is updated, ALL relevant files in `docs/Development/` MUST be automatically updated. This is a **MANDATORY REQUIREMENT** with **NO EXCEPTIONS**.
+
+**Bidirectional Auto-Update Requirements**:
+- ✅ **MANDATORY**: When TODO.md is updated → ALL relevant Development docs MUST be automatically updated
+- ✅ **MANDATORY**: When Development docs are updated → TODO.md MUST be automatically updated
+- ✅ **MANDATORY**: This is a CRITICAL RULE - NO EXCEPTIONS
+- ✅ **MANDATORY**: System MUST auto-update Development docs when TODO is updated
+- ✅ **MANDATORY**: System MUST auto-update TODO when Development docs are updated
+- ❌ **FORBIDDEN**: Making changes to TODO without auto-updating Development docs
+- ❌ **FORBIDDEN**: Making changes to Development docs without auto-updating TODO
+- ❌ **FORBIDDEN**: Manual sync only - MUST be automated
+
+**Task File Locations** (MUST be kept synchronized and AUTO-UPDATED):
+- `docs/Development/JOSEF_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/CRAIG_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/JONNE_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/SVEIN_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/LEE_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/CORY_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/FRONTEND_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/BACKEND_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/SECURITY_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/DEVELOPER_DOCS.md` - **AUTO-UPDATE REQUIRED** when team responsibilities change in TODO
+- `docs/Development/README.md` - **AUTO-UPDATE REQUIRED** when structure changes in TODO
+- `docs/Development/CHANGELOG.md` - **AUTO-UPDATE REQUIRED** when any Development doc changes
 
 **Auto-Sync Requirements**:
 - ✅ **Auto-sync service runs every 30 seconds** when AdminView is active
 - ✅ **Force sync on tab switch** to tasks tab
 - ✅ **Sync on task file load** in TaskChecklistView
+- ✅ **TODO changes trigger Development doc updates** automatically
+- ✅ **Development doc changes trigger TODO updates** automatically
 - ✅ **Database updates automatically** when markdown files change
 - ✅ **UI reflects database state** in real-time
 - ✅ **Button alignment** - All team member buttons must be aligned and consistent
@@ -44,7 +66,10 @@
 **Implementation**:
 - `taskSyncService.ts` handles automatic synchronization
 - `autoSyncService` singleton manages periodic sync
+- **Bidirectional sync service** (to be implemented) handles TODO ↔ Development docs sync
 - Changes in markdown files are detected and synced to database
+- Changes in TODO.md are detected and synced to Development docs
+- Changes in Development docs are detected and synced to TODO.md
 - Verification status and completion metadata are preserved during sync
 
 ---

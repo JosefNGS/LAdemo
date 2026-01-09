@@ -32,7 +32,15 @@ docs/
 │   │   ├── PostgreSQL_SETUP.md
 │   │   ├── PostgreSQL_QUICK_START.md
 │   │   └── PostgreSQL-migration.sql
-│   ├── phoenix-elixir/                # Phoenix & Elixir backend service
+│   ├── phoenix/                       # Phoenix web framework service
+│   │   ├── SERVICE_RULES.md
+│   │   ├── IMPLEMENTATION_GUIDE.md
+│   │   ├── ARCHITECTURE.md
+│   │   ├── INTEGRATION_GUIDE.md
+│   │   ├── SETUP_GUIDE.md
+│   │   ├── README.md
+│   │   └── CHANGELOG.md
+│   ├── elixir/                        # Elixir services & BEAM VM
 │   │   ├── SERVICE_RULES.md
 │   │   ├── IMPLEMENTATION_GUIDE.md
 │   │   ├── ARCHITECTURE.md
@@ -106,13 +114,15 @@ docs/
 **MANDATORY**:
 - **ALL service-specific documentation MUST be in `docs/Services/service-name/`**
 - **One folder per service** - No mixing of services in the same folder
-- **Service folders should be named after the service** (e.g., `netlify/`, `PostgreSQL/`, `github/`)
+- **Service folders should be named after the service** (e.g., `netlify/`, `PostgreSQL/`, `phoenix/`, `elixir/`, `github/`)
 
 **Service Documentation Rules**:
 1. **Netlify**: All Netlify-related docs go in `docs/Services/netlify/`
 2. **PostgreSQL**: All PostgreSQL-related docs go in `docs/Services/PostgreSQL/`
-3. **GitHub**: All GitHub-related docs go in `docs/Services/github/`
-4. **n8n**: All n8n-related docs go in `docs/Services/n8n/` (when implemented)
+3. **Phoenix**: All Phoenix-related docs go in `docs/Services/phoenix/`
+4. **Elixir**: All Elixir-related docs go in `docs/Services/elixir/`
+5. **GitHub**: All GitHub-related docs go in `docs/Services/github/`
+6. **n8n**: All n8n-related docs go in `docs/Services/n8n/` (when implemented)
 5. **Discourse**: All Discourse-related docs go in `docs/Services/discourse/` (when implemented)
 
 ### Rule 2: Development Documentation

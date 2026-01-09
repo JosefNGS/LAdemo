@@ -9,11 +9,20 @@
 
 **⚠️ SYNC**: This document is synchronized with `docs/Project Management/TODO.md`. Always update both files when tasks change.
 
+**🔴 CRITICAL - BIDIRECTIONAL AUTO-UPDATE REQUIREMENT**:
+- ✅ **MANDATORY**: When this document is updated, `docs/Project Management/TODO.md` MUST be automatically updated
+- ✅ **MANDATORY**: When TODO.md is updated, this document MUST be automatically updated
+- ✅ **MANDATORY**: This is a CRITICAL RULE - NO EXCEPTIONS
+- ✅ **MANDATORY**: System MUST auto-update TODO.md when this document is updated
+- ❌ **FORBIDDEN**: Making changes to this document without updating TODO.md
+- ❌ **FORBIDDEN**: Manual sync only - MUST be automated
+
 **📋 How to Sync**:
 1. When completing a task, mark it complete in both this file AND `docs/Project Management/TODO.md`
 2. When adding a new task, add it to both files
 3. Weekly review: Compare this file with TODO.md to ensure synchronization
 4. This file focuses on Jonne-specific tasks; TODO.md contains all project tasks
+5. **CRITICAL**: All changes to this file MUST trigger automatic updates to TODO.md
 
 ---
 
@@ -193,6 +202,7 @@
 - [ ] Define migration and synchronization approach between PostgreSQL (core data) and extra Postgres/vector database
 - [ ] Document Postgres and vector database architecture in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/PostgreSQL/`
 - [ ] Create initial PoC for vector search (e.g., semantic product or document search) using Postgres + vector extension
+- [ ] Review data model sections of `MARKETPLACE_PLANNING.md`, `CONTENT_GENERATOR_PLANNING.md`, `ACADEMY_PLANNING.md`, `CHAT_PLANNING.md`, and `ALLIANCE_ARENA_PLANNING.md` for database consistency [Owner: Jonne]
 
 #### n8n API Integration
 - [ ] n8n API endpoint creation

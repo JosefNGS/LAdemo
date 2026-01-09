@@ -17,6 +17,9 @@ Every changelog entry MUST track who made the change:
 ## [Unreleased]
 
 ### Added
+- Created FRONTEND_OWNER.md - Frontend owner responsibilities and task tracking [Cursor]
+- Created BACKEND_OWNER.md - Backend owner responsibilities and task tracking [Cursor]
+- Created SECURITY_OWNER.md - Security owner responsibilities and task tracking [Cursor]
 - Initial development documentation changelog [Cursor]
 
 ---

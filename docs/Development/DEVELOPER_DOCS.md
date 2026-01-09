@@ -201,6 +201,9 @@ All team member responsibilities are synchronized with:
   - `docs/Development/JOSEF_TASKS.md`
   - `docs/Development/CRAIG_TASKS.md`
   - `docs/Development/JONNE_TASKS.md`
+  - `docs/Development/FRONTEND_OWNER.md` - Frontend owner responsibilities
+  - `docs/Development/BACKEND_OWNER.md` - Backend owner responsibilities
+  - `docs/Development/SECURITY_OWNER.md` - Security owner responsibilities
   - `docs/Development/SVEIN_TASKS.md`
   - `docs/Development/LEE_TASKS.md`
 

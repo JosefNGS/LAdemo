@@ -96,41 +96,66 @@
 - **UI and database MUST always reflect changes in markdown files**
 - **NO manual sync required** - System must auto-update
 
-**Task File Locations** (MUST be kept synchronized):
-- `docs/Development/JOSEF_TASKS.md`
-- `docs/Development/CRAIG_TASKS.md`
-- `docs/Development/JONNE_TASKS.md`
-- `docs/Development/SVEIN_TASKS.md`
-- `docs/Development/LEE_TASKS.md`
-- `docs/Development/CORY_TASKS.md`
+**🔴 CRITICAL - BIDIRECTIONAL AUTO-UPDATE REQUIREMENT**:
+- ✅ **MANDATORY**: When `docs/Project Management/TODO.md` is updated → ALL relevant files in `docs/Development/` MUST be automatically updated
+- ✅ **MANDATORY**: When files in `docs/Development/` are updated → `docs/Project Management/TODO.md` MUST be automatically updated
+- ✅ **MANDATORY**: This is a CRITICAL RULE - NO EXCEPTIONS
+- ✅ **MANDATORY**: System MUST auto-update Development docs when TODO is updated
+- ✅ **MANDATORY**: System MUST auto-update TODO when Development docs are updated
+- ❌ **FORBIDDEN**: Making changes to TODO without auto-updating Development docs
+- ❌ **FORBIDDEN**: Making changes to Development docs without auto-updating TODO
+- ❌ **FORBIDDEN**: Manual sync only - MUST be automated
+
+**Task File Locations** (MUST be kept synchronized and AUTO-UPDATED):
+- `docs/Development/JOSEF_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/CRAIG_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/JONNE_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/SVEIN_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/LEE_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/CORY_TASKS.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/FRONTEND_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/BACKEND_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/SECURITY_OWNER.md` - **AUTO-UPDATE REQUIRED** when TODO changes
+- `docs/Development/DEVELOPER_DOCS.md` - **AUTO-UPDATE REQUIRED** when team responsibilities change in TODO
+- `docs/Development/README.md` - **AUTO-UPDATE REQUIRED** when structure changes in TODO
+- `docs/Development/CHANGELOG.md` - **AUTO-UPDATE REQUIRED** when any Development doc changes
 
 **Synchronization Requirements**:
 1. **Auto-Sync Service**: `taskSyncService.ts` automatically syncs markdown files to database
-2. **Real-Time Updates**: Database updates when markdown files change
-3. **UI Alignment**: All team member buttons in AdminView must be aligned and consistent
-4. **Button Alignment**: All "View Task Checklist" buttons must align at the bottom of cards
-5. **Auto-Detection**: System detects markdown file changes and syncs automatically
-6. **Preserve State**: Verification status and completion metadata preserved during sync
-7. **Error Handling**: Sync errors must be logged but not block UI functionality
+2. **Bidirectional Sync**: TODO ↔ Development docs must sync in both directions automatically
+3. **Real-Time Updates**: Database updates when markdown files change
+4. **UI Alignment**: All team member buttons in AdminView must be aligned and consistent
+5. **Button Alignment**: All "View Task Checklist" buttons must align at the bottom of cards
+6. **Auto-Detection**: System detects markdown file changes and syncs automatically
+7. **Preserve State**: Verification status and completion metadata preserved during sync
+8. **Error Handling**: Sync errors must be logged but not block UI functionality
 
 **Implementation Rules**:
 - ✅ **Auto-sync runs every 30 seconds** when AdminView is active
 - ✅ **Force sync on tab switch** to tasks tab
 - ✅ **Sync on task file load** in TaskChecklistView
+- ✅ **TODO changes trigger Development doc updates** automatically
+- ✅ **Development doc changes trigger TODO updates** automatically
 - ✅ **Cards use flexbox** with `flex flex-col h-full` for proper alignment
 - ✅ **Buttons use `mt-auto`** to align at bottom of cards
 - ✅ **All cards same height** using grid layout
 - ✅ **Database is source of truth** for completion/verification status
 - ✅ **Markdown files are source of truth** for task definitions
 
-**CRITICAL**: When editing task markdown files, changes automatically sync to database. No manual database updates required.
+**CRITICAL**: 
+- When editing task markdown files, changes automatically sync to database. No manual database updates required.
+- When editing TODO.md, ALL relevant Development docs MUST be automatically updated. No manual updates allowed.
+- When editing Development docs, TODO.md MUST be automatically updated. No manual updates allowed.
 
 ### 📋 TASK OWNERSHIP - CRITICAL RULES
 **MANDATORY RULE - STRICTLY ENFORCED**:
 - **Every task MUST have a clear owner** (person or role) – NO unowned tasks
-- **Owners must be specified using a consistent pattern**, e.g. `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Jonne]`, `[Owner: Lee]`, `[Owner: Svein]`, `[Owner: Cory]`, or `[Owner: Role]` (e.g. `[Owner: Backend]`, `[Owner: CTO]`, `[Owner: Sales]`, `[Owner: Frontend]`, `[Owner: Team]`)
+- **Owners must be specified using a consistent pattern**: `[Owner: Person]` or `[Owner: Role]`
+  - **Person Examples**: `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Jonne]`, `[Owner: Lee]`, `[Owner: Svein]`, `[Owner: Cory]`
+  - **Role/Thing Examples**: `[Owner: Frontend]`, `[Owner: Backend]`, `[Owner: CTO]`, `[Owner: Sales]`, `[Owner: Team]`
+- **Format**: Replace `- [ ]` with `- [ ] [Owner: Josef]` (for person) or `- [ ] [Owner: Frontend]` (for role/thing)
 - **Shared tasks must list all responsible owners** or clearly state `[Owner: Shared]` with primary contact
-- **When adding a new task, you MUST assign an owner immediately**
+- **When adding a new task, you MUST assign an owner immediately** (either person or role)
 - **When moving tasks between people, update the owner tag** in both `docs/Project Management/TODO.md` and in the person's task doc (`docs/Development/[NAME]_TASKS.md`)
 
 **CRITICAL**: All tasks in `docs/Project Management/TODO.md` and individual task files MUST have explicit ownership. No task should exist without an owner assignment.

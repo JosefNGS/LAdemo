@@ -1,4 +1,4 @@
-# Phoenix & Elixir Service Documentation
+# Phoenix Service Documentation
 
 **Last Updated**: January 2026  
 **Version**: 1.0  
@@ -11,7 +11,7 @@
 
 ## Overview
 
-Phoenix and Elixir will serve as the core backend framework for BitNexus, providing high-concurrency APIs, real-time features, and seamless integration with the Erlang/Elixir blockchain ledger.
+Phoenix web framework will serve as the HTTP API and WebSocket layer for BitNexus, handling all web requests and real-time features. Business logic is handled by Elixir services.
 
 ---
 
@@ -27,8 +27,8 @@ Phoenix and Elixir will serve as the core backend framework for BitNexus, provid
 
 ### Additional Resources
 
+- **Elixir Services**: `docs/Services/elixir/SERVICE_RULES.md`
 - **Tech Stack**: `docs/Core Documentation/TECH_STACK.md`
-- **Erlang Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
 - **PostgreSQL**: `docs/Services/postgresql/SERVICE_RULES.md`
 
 ---
@@ -45,11 +45,11 @@ Phoenix and Elixir will serve as the core backend framework for BitNexus, provid
 
 ## Key Features
 
-- **High Concurrency**: BEAM VM handles millions of processes
-- **Real-Time**: Phoenix Channels for WebSocket connections
-- **Fault Tolerant**: Process isolation and supervision
-- **Scalable**: Horizontal and vertical scaling
-- **Integrated**: Seamless integration with Erlang ledger
+- **HTTP API**: RESTful API endpoints
+- **WebSocket**: Phoenix Channels for real-time features
+- **Routing**: Flexible routing system
+- **Controllers**: Request handling
+- **Views**: JSON serialization
 
 ---
 
@@ -61,7 +61,7 @@ Phoenix and Elixir will serve as the core backend framework for BitNexus, provid
 1. Set up development environment
 2. Create Phoenix application
 3. Implement core API endpoints
-4. Integrate with existing system
+4. Integrate with Elixir services
 
 ---
 
