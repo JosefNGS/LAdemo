@@ -18,6 +18,15 @@ Every changelog entry MUST track who made the change:
 ## [1.68.0] - January 2026
 
 ### Added
+- **NSR (NorthStar Rules) Framework Documentation**: Added comprehensive information about NSR framework to README.md and START_HERE.md [Developer: Josef Lindbom]
+  - Added NSR framework overview to Framework Documentation section in both files [Developer: Josef Lindbom]
+  - Documented NSR structure, purpose, features, and usage in BitNexus project [Developer: Josef Lindbom]
+  - Added NSR repository link and team information [Developer: Josef Lindbom]
+  - Explained how NSR generates project structures and enforces standards [Developer: Josef Lindbom]
+  - Updated project structure diagrams to include NSR folder [Developer: Josef Lindbom]
+  - Added NSR to Important Project Folders section in START_HERE.md [Developer: Josef Lindbom]
+  - Documented NSR's integration with reference frameworks (Agent OS, BMAD-METHOD) [Developer: Josef Lindbom]
+  - Added NSR licensing contact information [Developer: Josef Lindbom]
 - **NorthStar Structure Licensing Information**: Added comprehensive licensing information about the fundamental structure from NGS made by NorthStar [Developer: Josef Lindbom]
   - Added licensing section to START_HERE.md explaining structure ownership and usage requirements [Developer: Josef Lindbom]
   - Added contact information for structure licensing (Josef Lindbom and Craig Martin) [Developer: Josef Lindbom]

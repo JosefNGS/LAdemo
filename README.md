@@ -774,11 +774,17 @@ A signed development agreement is mandatory for any use of this codebase in deve
 - EU Copyright Directive compliance
 - DSA (Digital Services Act) compliance
 
-**For licensing inquiries or development agreements, contact:**
+**For Structure Licensing (NorthStar Structure and NSR Framework):**
+- **Josef Lindbom** (COO & NorthStar Co-Creator): josef@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request" or "NSR Framework License Request"
+- **Craig Martin** (CTO & NorthStar Co-Creator): craig@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request" or "NSR Framework License Request"
+
+**For BitNexus Code Licensing or Development Agreements:**
 - **Email**: josef@nordicglobalsolutions.com
 - **Subject**: "BitNexus Development Agreement Request"
 
-**For legal matters or IP protection:**
+**For Legal Matters or IP Protection:**
 - **Email**: josef@nordicglobalsolutions.com
 - **Subject**: "BitNexus Legal Inquiry"
 

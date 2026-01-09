@@ -257,6 +257,9 @@ BitNexus Landing Page/
 │   ├── Project Management/    # TODO, CHANGELOG
 │   └── Product docs/     # Product documentation
 ├── instructions/        # External frameworks and instruction sets
+│   ├── NSR/             # ⭐ NorthStar Rules (NSR) - Project generation framework
+│   │   ├── src/         # NSR framework source (templates, rules, workflows, standards)
+│   │   └── ref/         # Reference frameworks (Agent OS, BMAD-METHOD)
 │   ├── BMAD-METHOD/     # BMAD Method framework
 │   └── .agent-os/       # Agent OS configuration
 ├── rules/               # Extracted rules from instruction frameworks
@@ -274,7 +277,16 @@ BitNexus Landing Page/
 
 ### Important Project Folders
 
-- **`instructions/`** - External frameworks (BMAD-METHOD, .agent-os) - DO NOT modify core framework files
+- **`instructions/NSR/`** - **⭐ NorthStar Rules (NSR) Framework** - Project generation framework used to create BitNexus structure
+  - **Developed by**: NorthStar Team (Josef Lindbom - COO, Craig Martin - CTO)
+  - **Purpose**: Framework for generating consistent project structures with standardized organization, documentation, and development practices
+  - **Contains**: Templates, rules, workflows, standards, and reference frameworks
+  - **Repository**: [https://github.com/zerwiz/NSR](https://github.com/zerwiz/NSR)
+  - **License**: MIT License (Copyright 2026 NorthStar Team)
+  - **DO NOT modify** core NSR framework files without understanding the framework
+  - **See**: `instructions/NSR/README.md` for complete documentation
+- **`instructions/BMAD-METHOD/`** - BMAD Method framework (referenced by NSR)
+- **`instructions/.agent-os/`** - Agent OS configuration (referenced by NSR)
 - **`rules/`** - Extracted rules from instruction frameworks - Quick reference for framework guidelines
 - **`Dev server/`** - ALL development server files (Docker, configs, scripts) - Must be here, not in root
 
@@ -507,8 +519,39 @@ git push origin feature/your-feature-name
 
 ### Framework Documentation
 
-- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Build-Measure-Analyze-Deploy methodology framework
-- **Agent OS**: `instructions/.agent-os/` - Agent OS configuration and standards
+- **NSR (NorthStar Rules)**: `instructions/NSR/` - **NorthStar Project Generation Framework**
+  - **Framework Type**: Project structure generation and standardization framework
+  - **Developed by**: NorthStar Team (Josef Lindbom - COO, Craig Martin - CTO)
+  - **Purpose**: Generates BitNexus-like project structures with consistent organization, documentation, and development practices
+  - **License**: MIT License (Copyright 2026 NorthStar Team)
+  - **Repository**: [https://github.com/zerwiz/NSR](https://github.com/zerwiz/NSR)
+  - **What NSR Does**:
+    - Provides templates for generating consistent project structures
+    - Extracts and organizes rules from BitNexus and other frameworks
+    - Creates workflows for project initialization
+    - Enforces code and project standards
+    - Integrates reference frameworks (Agent OS, BMAD-METHOD)
+  - **NSR Structure**:
+    - `src/templates/` - Project structure templates (`project-structure-template.md`)
+    - `src/rules/` - Extracted rules (`cursor-rules-template.md`)
+    - `src/workflows/` - Project initialization workflows (`project-init-workflow.md`)
+    - `src/standards/` - Code and project standards (`code-standards.md`, `project-standards.md`)
+    - `ref/` - Reference frameworks (Agent OS, BMAD-METHOD) used for development
+  - **How NSR Works**:
+    1. Uses templates to generate consistent project folder structures
+    2. Applies rules extracted from BitNexus and framework references
+    3. Follows workflows for step-by-step project initialization
+    4. Enforces standards for code quality and project organization
+    5. References Agent OS and BMAD-METHOD for best practices
+  - **Usage in BitNexus**:
+    - BitNexus project structure was generated using NSR framework
+    - All rules, standards, and workflows follow NSR patterns
+    - Reference frameworks (Agent OS, BMAD-METHOD) are included in `instructions/NSR/ref/`
+    - NSR is actively used to maintain consistency across the project
+  - **For Framework Licensing**: See "Fundamental Structure License & Usage" section above
+  - **Documentation**: See `instructions/NSR/README.md` for complete NSR framework documentation
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Build-Measure-Analyze-Deploy methodology framework (referenced by NSR in `instructions/NSR/ref/BMAD-METHOD/`)
+- **Agent OS**: `instructions/.agent-os/` - Agent OS configuration and standards (referenced by NSR in `instructions/NSR/ref/.agent-os/`)
 - **Rules Reference**: `rules/` - Quick reference for framework rules extracted from instructions
 
 ### Developer Resources
@@ -717,10 +760,11 @@ The office Discord setup includes a comprehensive reporting system for all funct
 ---
 
 **Last Updated**: January 2026  
-**Version**: 1.2  
+**Version**: 1.3  
 **Maintained by**: Development Team  
-**Structure Framework**: NorthStar (Josef Lindbom & Craig Martin)  
-**Structure License**: Licensed to NorthStar - Contact for usage permissions
+**Structure Framework**: NorthStar Rules (NSR) - Developed by NorthStar Team (Josef Lindbom & Craig Martin)  
+**NSR Repository**: [https://github.com/zerwiz/NSR](https://github.com/zerwiz/NSR)  
+**Structure License**: Licensed to NorthStar - Contact Josef or Craig for usage permissions
 
 ---
 
