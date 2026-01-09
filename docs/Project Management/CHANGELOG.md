@@ -15,6 +15,17 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.33.0] - January 2026
+
+### Changed
+- **Rules Folder Comprehensive Update**: Updated all rules files in `rules/` folder with detailed information from `docs/` [Cursor]
+  - **Admin Service Rules**: Expanded with real-time sync requirements, error handling, fallback mechanisms, and critical violations
+  - **Netlify Service Rules**: Added alpha phase status, AWS migration plan, and comprehensive deployment rules
+  - **Development Server Rules**: Added mandatory start files rules (exactly TWO start files), start file definitions, and forbidden actions
+  - **GitHub Service Rules**: Enhanced with active developers section, developer tracking requirements, and service checklist
+  - All service rules now include comprehensive information from their respective SERVICE_RULES.md files
+  - Rules files now serve as complete quick references with links to full documentation
+
 ## [1.32.0] - January 2026
 
 ### Changed
