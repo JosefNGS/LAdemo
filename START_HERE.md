@@ -63,6 +63,15 @@ Before making ANY changes, you MUST understand these critical rules:
    - **Report blockers** in Discord if tasks cannot be completed
    - **Task files location**: `docs/Development/[YOUR_NAME]_TASKS.md`
 
+8. **TASK OWNERSHIP - MANDATORY**
+   - **Every task MUST have a clear owner** (person or role) – NO unowned tasks
+   - **Owners must use consistent pattern**: `[Owner: Name]` or `[Owner: Role]`
+   - **Examples**: `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Sales]`, `[Owner: Frontend]`, `[Owner: Team]`
+   - **When adding a new task**, you MUST assign an owner immediately
+   - **When moving tasks** between people, update the owner tag in both `docs/Project Management/TODO.md` and the person's task doc
+   - **Shared tasks** must list all owners or use `[Owner: Shared]` with primary contact
+   - **CRITICAL**: All tasks in TODO.md and individual task files MUST have explicit ownership
+
 ### 📌 WORKFLOW STANDARDIZATION
 
 **This is how we work. This document defines our standard workflow and processes.**
@@ -156,13 +165,38 @@ BitNexus Landing Page/
 │   ├── Development/     # Developer docs and tasks
 │   ├── Project Management/    # TODO, CHANGELOG
 │   └── Product docs/     # Product documentation
+├── instructions/        # External frameworks and instruction sets
+│   ├── BMAD-METHOD/     # BMAD Method framework
+│   └── .agent-os/       # Agent OS configuration
+├── rules/               # Extracted rules from instruction frameworks
+│   ├── agent-os/        # Agent OS framework rules
+│   ├── bmad-method/     # BMAD-METHOD framework rules
+│   ├── services/        # Service-specific rules
+│   └── (other rule folders)
 ├── .github/             # GitHub files (LICENSE, README)
 ├── package.json         # Dependencies
-├── netlify.toml         # Netlify config
+├── netlify.toml         # Netlify config (⚠️ ALPHA PHASE - AWS migration planned)
 └── .cursorrules         # Coding standards
 ```
 
 **For complete structure, see**: `docs/Core Documentation/STRUCTURE.md`
+
+### Important Project Folders
+
+- **`instructions/`** - External frameworks (BMAD-METHOD, .agent-os) - DO NOT modify core framework files
+- **`rules/`** - Extracted rules from instruction frameworks - Quick reference for framework guidelines
+- **`Dev server/`** - ALL development server files (Docker, configs, scripts) - Must be here, not in root
+
+### README & CHANGELOG Requirement
+
+**CRITICAL**: Every folder MUST have `README.md` and `CHANGELOG.md` files. This is mandatory for all folders:
+- Main folders (`frontend/`, `backend/`, `docs/`, etc.)
+- Service folders (`backend/netlify/`, `docs/Services/admin/`, etc.)
+- Rules folders (`rules/agent-os/`, `rules/services/`, etc.)
+- All other folders
+
+**When creating a new folder**: Immediately create `README.md` and `CHANGELOG.md`
+**When finding a folder without these files**: Create them immediately
 
 ---
 
@@ -369,11 +403,20 @@ git push origin feature/your-feature-name
 
 ### Service Documentation
 
-- **Netlify**: `docs/Services/netlify/SERVICE_RULES.md`
+- **Netlify**: `docs/Services/netlify/SERVICE_RULES.md` (⚠️ **ALPHA PHASE** - Migration to AWS planned)
 - **GitHub**: `docs/Services/github/SERVICE_RULES.md`
 - **Supabase**: `docs/Services/supabase/SERVICE_RULES.md`
 - **n8n**: `docs/Services/n8n/SERVICE_RULES.md`
 - **Discourse**: `docs/Services/discourse/SERVICE_RULES.md`
+- **Admin View & Task Management**: `docs/Services/admin/SERVICE_RULES.md` (CRITICAL - UI/Database sync rules)
+- **Erlang/Elixir Ledger**: `docs/Services/erlang-ledger/SERVICE_RULES.md`
+- **Golang API**: `docs/Services/golang-api/SERVICE_RULES.md`
+
+### Framework Documentation
+
+- **BMAD-METHOD**: `instructions/BMAD-METHOD/` - Build-Measure-Analyze-Deploy methodology framework
+- **Agent OS**: `instructions/.agent-os/` - Agent OS configuration and standards
+- **Rules Reference**: `rules/` - Quick reference for framework rules extracted from instructions
 
 ### Developer Resources
 
@@ -383,7 +426,11 @@ git push origin feature/your-feature-name
   - **Update task status** as you complete work
   - **Follow task priorities** and deadlines
 - **Tech Stack**: `docs/Core Documentation/TECH_STACK.md`
-- **TODO**: `docs/Project Management/TODO.md` - Project-wide todo list
+  - **Current**: React, TypeScript, Tailwind CSS, Netlify (alpha phase)
+  - **Planned**: Phoenix/Elixir backend, PostgreSQL with vector extensions (pgvector), AWS migration
+- **Tech Stack Evaluation**: `docs/Core Documentation/TECH_STACK_EVALUATION.md` - Technology decision framework
+- **Tech Stack Suggestions**: `docs/Core Documentation/TECH_STACK_SUGGESTIONS.md` - Technology recommendations
+- **TODO**: `docs/Project Management/TODO.md` - Project-wide todo list (⚠️ All tasks must have owners)
 - **Troubleshooting**: `docs/Setup & Configuration/TROUBLESHOOTING.md`
 
 **⚠️ CRITICAL - FOLLOW TODOLISTS**:
@@ -408,7 +455,12 @@ git push origin feature/your-feature-name
 
 - **Jonne Waselius** (Backend Developer)
   - Email: Jonne@nordicglobalsolutions.com
-  - Responsibilities: Real-time hosting, auth, backend, n8n, API, ports, Google Sync
+  - Responsibilities: Real-time hosting, auth, backend, n8n, API, ports, Google Sync, PostgreSQL & vector database
+
+- **Cory** (Junior Developer)
+  - Email: (To be added)
+  - Mentor: Jonne Waselius
+  - Responsibilities: Junior development, code implementation, testing, documentation, learning & growth
 
 **Developer Registry**: `docs/Services/github/DEVELOPERS.md`
 
@@ -457,6 +509,9 @@ The office Discord setup includes a comprehensive reporting system for all funct
 - ❌ **Don't commit broken or untested code**
 - ❌ **Don't commit API keys or sensitive data**
 - ❌ **Don't update changelog after committing** (must be done BEFORE)
+- ❌ **Don't create tasks without owners** - Every task MUST have `[Owner: Name]` or `[Owner: Role]`
+- ❌ **Don't create folders without README.md and CHANGELOG.md** - This is mandatory
+- ❌ **Don't modify core framework files** in `instructions/` without understanding the framework
 
 ### ✅ DO THESE
 
@@ -473,6 +528,10 @@ The office Discord setup includes a comprehensive reporting system for all funct
 - ✅ **Always update documentation** when making changes
 - ✅ **Always follow coding standards** (`.cursorrules`)
 - ✅ **Always take responsibility** for following rules and maintaining structure
+- ✅ **Always assign owners to tasks** - Use `[Owner: Name]` or `[Owner: Role]` pattern
+- ✅ **Always create README.md and CHANGELOG.md** when creating new folders
+- ✅ **Always check framework rules** in `rules/` folder when working with frameworks
+- ✅ **Always reference `instructions/`** for complete framework documentation
 
 ---
 
@@ -494,8 +553,9 @@ The office Discord setup includes a comprehensive reporting system for all funct
 
 4. **Contact Team**
    - **Josef Lindbom**: josef@nordicglobalsolutions.com (UX/UI, platform logic)
-   - **Craig Martin**: craig@nordicglobalsolutions.com (CTO, technical issues)
-   - **Jonne Waselius**: Jonne@nordicglobalsolutions.com (Backend, API)
+   - **Craig Martin**: craig@nordicglobalsolutions.com (CTO, technical issues, Phoenix/Elixir)
+   - **Jonne Waselius**: Jonne@nordicglobalsolutions.com (Backend, API, PostgreSQL/vector DB)
+   - **Cory**: (To be added) (Junior Developer, mentored by Jonne)
 
 ---
 
@@ -564,6 +624,53 @@ The office Discord setup includes a comprehensive reporting system for all funct
 ---
 
 **Last Updated**: January 2026  
-**Version**: 1.0  
+**Version**: 1.1  
 **Maintained by**: Development Team
+
+---
+
+## 📌 Recent System Updates (New Team Members Should Know)
+
+### Task Ownership System (v1.31.0)
+- **Every task MUST have an owner** - No unowned tasks allowed
+- Use pattern: `[Owner: Josef]`, `[Owner: Craig]`, `[Owner: Sales]`, `[Owner: Frontend]`, etc.
+- Shared tasks use `[Owner: Shared]` with primary contact
+- See `.cursorrules` for complete task ownership rules
+
+### New Team Member: Cory (Junior Developer)
+- Added to team with mentorship under Jonne Waselius
+- Task file: `docs/Development/CORY_TASKS.md`
+- Focus: Junior development, learning, and growth
+
+### Instructions & Rules Folders (v1.20.0+)
+- **`instructions/`** - External frameworks (BMAD-METHOD, .agent-os)
+  - DO NOT modify core framework files without understanding the framework
+  - Reference these for complete framework documentation
+- **`rules/`** - Extracted rules from instruction frameworks
+  - Quick reference for framework guidelines
+  - Organized by framework, service, and folder
+  - All rule folders have README.md and CHANGELOG.md
+
+### Netlify Alpha Phase & AWS Migration (v1.29.0)
+- **Netlify is in ALPHA PHASE** - Temporary hosting solution
+- **AWS migration planned** - Production will move to AWS servers (EC2, ECS, Lambda, CloudFront, RDS)
+- See `docs/Core Documentation/TECH_STACK.md` for migration plan
+
+### Planned Technologies (v1.23.0+)
+- **Phoenix/Elixir Backend** - Planned for high-concurrency APIs and ledger services
+  - Craig Martin responsible for evaluation and implementation
+- **PostgreSQL with Vector Extensions** - Planned for embeddings and similarity search
+  - Jonne Waselius responsible for Postgres strategy and vector DB evaluation
+  - Craig Martin must validate and approve final vector database choice (CRITICAL)
+
+### Admin View & Task Management (v1.13.0)
+- Real-time synchronization between UI and database
+- Automatic task file sync from markdown files
+- Task files auto-update database when markdown files change
+- See `docs/Services/admin/SERVICE_RULES.md` for complete rules
+
+### README/CHANGELOG Requirement (v1.22.0)
+- **ALL folders MUST have README.md and CHANGELOG.md**
+- This is mandatory for every folder in the project
+- Create these files immediately when creating new folders
 

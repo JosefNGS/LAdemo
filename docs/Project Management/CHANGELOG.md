@@ -15,6 +15,23 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.32.0] - January 2026
+
+### Changed
+- **START_HERE.md Comprehensive Update**: Updated `START_HERE.md` with all recent system changes for new team members [Cursor]
+  - Added Cory (Junior Developer) to team information
+  - Added Task Ownership mandatory rules section
+  - Added Instructions & Rules folders documentation
+  - Added Netlify alpha phase status and AWS migration plan
+  - Added planned technologies (Phoenix/Elixir, PostgreSQL with vector)
+  - Added README/CHANGELOG requirement for all folders
+  - Added Admin View & Task Management information
+  - Added new "Recent System Updates" section summarizing key changes
+  - Updated project structure overview with instructions/ and rules/ folders
+  - Updated service documentation list with all services
+  - Updated team contact information
+  - Updated common mistakes and best practices sections
+
 ## [1.31.0] - January 2026
 
 ### Added
