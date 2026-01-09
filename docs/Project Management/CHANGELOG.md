@@ -15,6 +15,17 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.27.0] - January 2026
+
+### Added
+- **TODO List - Erlang/Elixir Stack Tasks**: Updated `docs/Project Management/TODO.md` with comprehensive Erlang/Elixir stack tasks [Cursor]
+  - Added "Phoenix & Elixir Backend Stack (Planned)" section with tasks for evaluating, designing, and implementing Phoenix/Elixir services
+  - Added "PostgreSQL & Vector Database Stack (Planned)" section with tasks for Postgres strategy, vector DB evaluation, schema patterns, migration approach, and PoC
+  - Updated "Backend Service Structure" section to include `backend/phoenix-elixir/` folder structure
+  - Tasks align with TECH_STACK roadmap and individual team member responsibilities (Craig for Phoenix/Elixir, Jonne for Postgres/vector)
+
+---
+
 ## [1.26.0] - January 2026
 
 ### Added
