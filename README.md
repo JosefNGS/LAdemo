@@ -2,6 +2,70 @@
 
 A modern, interactive landing page with a React-based demo dashboard for BitNexus, a decentralized affiliate revenue platform.
 
+## 🔐 FUNDAMENTAL STRUCTURE LICENSE & USAGE
+
+### ⚠️ CRITICAL - STRUCTURE LICENSING INFORMATION
+
+**This system uses the fundamental structure from Nordic Global Solutions (NGS), made by NorthStar.**
+
+**🔴 PROPRIETARY STRUCTURE - LICENSED TO NORTHSTAR**
+
+The fundamental project structure, organization framework, and architectural patterns used in this system are:
+- **Licensed to NorthStar** (a team within Nordic Global Solutions)
+- **Developed by**: NorthStar Team (Josef Lindbom - COO, Craig Martin - CTO)
+- **NOT FOR USE** without explicit written permission and a signed contract
+
+**What's Protected:**
+- Project folder structure and organization patterns
+- Documentation organization framework
+- Development workflow standards
+- Task management system structure
+- Framework integration patterns (BMAD-METHOD, Agent OS, NSR)
+- Version control and change management workflows
+- Service organization patterns
+
+### Contract Requirements for Structure Use
+
+**MANDATORY: A signed written contract is required for:**
+- ❌ Using this fundamental structure in other projects
+- ❌ Copying the organizational framework to other codebases
+- ❌ Adapting the structure patterns for other systems
+- ❌ Using the workflow standards in other projects
+- ❌ Any commercial or commercial-related use of the structure
+- ❌ Any use of the structure without explicit written permission
+
+**PERMITTED (No Contract Required):**
+- ✅ Viewing the structure for reference or educational purposes (personal learning only)
+- ✅ Contributing to this project (subject to approval and project CLA)
+
+### Contact for Structure Licensing
+
+**To obtain permission to use this fundamental structure:**
+
+**Primary Contacts:**
+- **Josef Lindbom** (COO & Development Vision Lead, NorthStar Co-Creator)
+  - Email: josef@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request"
+  
+- **Craig Martin** (CTO & NorthStar Co-Creator)
+  - Email: craig@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request"
+
+**Required Information:**
+- Purpose of use
+- Project details
+- Intended scope of structure adoption
+- Commercial vs. non-commercial use
+- Timeline and duration
+
+**⚠️ IMPORTANT**: Without a signed written contract from NorthStar, any use of this fundamental structure in other projects is strictly prohibited and may result in legal action.
+
+**NorthStar Structure Repository**: [https://github.com/zerwiz/NSR](https://github.com/zerwiz/NSR)  
+**NorthStar Team**: Josef Lindbom (COO) & Craig Martin (CTO)  
+**License Holder**: NorthStar / Nordic Global Solutions
+
+---
+
 ## ⚠️ LICENSE AND USAGE TERMS
 
 **PROPRIETARY SOFTWARE - PROTECTED BY MULTIPLE LAYERS OF INTELLECTUAL PROPERTY LAW**
@@ -113,11 +177,17 @@ BitNexus is protected by comprehensive legal protections:
 
 ### Contact Information
 
-**For licensing inquiries, development agreements, or usage permissions:**
+**For Structure Licensing (NorthStar Structure):**
+- **Josef Lindbom** (COO & NorthStar Co-Creator): josef@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request"
+- **Craig Martin** (CTO & NorthStar Co-Creator): craig@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request"
+
+**For BitNexus Code Licensing, Development Agreements, or Usage Permissions:**
 - **Email**: josef@nordicglobalsolutions.com
 - **Subject**: "BitNexus Development Agreement Request"
 
-**For legal matters or IP protection inquiries:**
+**For Legal Matters or IP Protection Inquiries:**
 - **Email**: josef@nordicglobalsolutions.com
 - **Subject**: "BitNexus Legal Inquiry"
 

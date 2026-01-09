@@ -1,8 +1,99 @@
-# 🚀 START HERE - Developer Guide
+# 🚀 START HERE - Project Guide
 
 **Welcome to the BitNexus Landing Page project!**
 
-This guide will help you get started, understand the critical rules, and learn how to work with this codebase effectively.
+This guide provides essential information for developers, stakeholders, contributors, and anyone working with this codebase.
+
+---
+
+## 🔐 FUNDAMENTAL STRUCTURE LICENSE & USAGE
+
+### ⚠️ CRITICAL - STRUCTURE LICENSING INFORMATION
+
+**This system uses the fundamental structure from Nordic Global Solutions (NGS), made by NorthStar.**
+
+**🔴 PROPRIETARY STRUCTURE - LICENSED TO NORTHSTAR**
+
+The fundamental project structure, organization framework, and architectural patterns used in this system are:
+- **Licensed to NorthStar** (a team within Nordic Global Solutions)
+- **Developed by**: NorthStar Team (Josef Lindbom - COO, Craig Martin - CTO)
+- **NOT FOR USE** without explicit written permission and a signed contract
+
+**What's Protected:**
+- Project folder structure and organization patterns
+- Documentation organization framework
+- Development workflow standards
+- Task management system structure
+- Framework integration patterns (BMAD-METHOD, Agent OS, NSR)
+- Version control and change management workflows
+- Service organization patterns
+
+### Contract Requirements for Structure Use
+
+**MANDATORY: A signed written contract is required for:**
+- ❌ Using this fundamental structure in other projects
+- ❌ Copying the organizational framework to other codebases
+- ❌ Adapting the structure patterns for other systems
+- ❌ Using the workflow standards in other projects
+- ❌ Any commercial or commercial-related use of the structure
+- ❌ Any use of the structure without explicit written permission
+
+**PERMITTED (No Contract Required):**
+- ✅ Viewing the structure for reference or educational purposes (personal learning only)
+- ✅ Contributing to this project (subject to approval and project CLA)
+
+### Contact for Structure Licensing
+
+**To obtain permission to use this fundamental structure:**
+
+**Primary Contacts:**
+- **Josef Lindbom** (COO & Development Vision Lead)
+  - Email: josef@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request"
+  
+- **Craig Martin** (CTO & NorthStar Co-Creator)
+  - Email: craig@nordicglobalsolutions.com
+  - Subject: "NorthStar Structure License Request"
+
+**Required Information:**
+- Purpose of use
+- Project details
+- Intended scope of structure adoption
+- Commercial vs. non-commercial use
+- Timeline and duration
+
+**⚠️ IMPORTANT**: Without a signed written contract from NorthStar, any use of this fundamental structure in other projects is strictly prohibited and may result in legal action.
+
+**NorthStar Structure Repository**: [https://github.com/zerwiz/NSR](https://github.com/zerwiz/NSR)  
+**NorthStar Team**: Josef Lindbom (COO) & Craig Martin (CTO)  
+**License Holder**: NorthStar / Nordic Global Solutions
+
+---
+
+## 📖 Who Should Read This Guide
+
+### For Developers
+This guide contains comprehensive development information, coding standards, workflow procedures, and technical documentation. Read the entire document, especially the "Development Setup" and "How to Make Changes" sections.
+
+### For Project Managers & Stakeholders
+Focus on:
+- "Critical Rules" section (understanding project standards)
+- "Team Information" section (who to contact)
+- "Project Structure Overview" section (understanding organization)
+- "Getting Help" section (how to communicate with the team)
+
+### For Contributors & Contributors
+Read:
+- "Critical Rules" section (must understand before contributing)
+- "Quick Start Checklist" (first-time setup)
+- "How to Make Changes" section (contribution workflow)
+- "Contact Information" section (who to reach out to)
+
+### For Anyone Working with This Project
+Everyone should read:
+- "Fundamental Structure License & Usage" section (CRITICAL - licensing information)
+- "Critical Rules" section (understanding mandatory requirements)
+- "Team Information" section (knowing who to contact)
 
 ---
 
@@ -626,8 +717,10 @@ The office Discord setup includes a comprehensive reporting system for all funct
 ---
 
 **Last Updated**: January 2026  
-**Version**: 1.1  
-**Maintained by**: Development Team
+**Version**: 1.2  
+**Maintained by**: Development Team  
+**Structure Framework**: NorthStar (Josef Lindbom & Craig Martin)  
+**Structure License**: Licensed to NorthStar - Contact for usage permissions
 
 ---
 
