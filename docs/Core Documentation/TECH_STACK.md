@@ -37,6 +37,8 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 - **Automation**: n8n (workflow automation and integrations)
 - **Blockchain Ledger**: Erlang/Elixir + BEAM VM (custom transparency ledger)
 - **Database**: Supabase (PostgreSQL)
+- **Planned Backend Framework**: Elixir + Phoenix for high-concurrency API and ledger services
+- **Planned Vector Database**: Additional PostgreSQL instance with vector support (e.g., `pgvector`) for embeddings and similarity search
 - **AI**: Google Gemini API
 - **Deployment**: Netlify (CI/CD, hosting, functions)
 - **Build**: esbuild (on-the-fly TypeScript transpilation)
@@ -330,6 +332,25 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Background job processing
   - Webhook handlers
   - Integration services
+
+#### Elixir + Phoenix (Planned)
+- **Purpose**: High-concurrency web framework for APIs, real-time features, and ledger-facing services
+- **Status**: Planned (for backend services tightly coupled to the Erlang/Elixir ledger stack)
+- **Technology**:
+  - **Language**: Elixir (on BEAM VM)
+  - **Framework**: Phoenix
+  - **Runtime**: BEAM VM (shared with custom ledger)
+- **Use Cases**:
+  - Public/partner APIs backed by the transparency ledger
+  - Real-time dashboards and channels
+  - Backoffice/admin endpoints for ledger operations
+  - Services that benefit from BEAM’s fault tolerance and concurrency
+- **Advantages**:
+  - ✅ **Tight Integration**: Shares runtime with Erlang/Elixir ledger services
+  - ✅ **Concurrency**: BEAM processes for massive concurrency
+  - ✅ **Real-Time**: Phoenix Channels and LiveView (future consideration)
+  - ✅ **Fault Tolerance**: OTP supervision trees
+  - ✅ **Developer Experience**: Productive functional language and ecosystem
 
 ### Blockchain Ledger Service
 
@@ -686,6 +707,23 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Email collection
   - Alliance data
   - Analytics data
+
+### Planned Vector Database
+
+#### PostgreSQL + Vector Extension (Planned)
+- **Type**: Dedicated PostgreSQL instance with vector search extension (e.g., `pgvector`)
+- **Status**: Planned
+- **Purpose**:
+  - Store embeddings for AI features (recommendations, semantic search)
+  - Enable similarity search over users, products, content, and transactions
+- **Use Cases**:
+  - AI-powered product recommendations
+  - Semantic search across docs and knowledge base
+  - Clustering and segmentation of users and affiliates
+  - Anomaly detection and pattern analysis
+- **Notes**:
+  - Operates alongside Supabase as an additional specialized database
+  - Designed for read-heavy, vector-search workloads
 
 ### Data Models (Inferred)
 
@@ -1211,6 +1249,18 @@ frontend/dist/
 - **Benefits**: Fast execution, excellent concurrency, single binary deployment
 - **Use Cases**: API gateways, data processing, blockchain services, webhook handlers
 
+#### Phoenix + Elixir Services
+- **Status**: Planned
+- **Purpose**: High-concurrency web and API layer running on BEAM, close to the custom ledger
+- **Benefits**:
+  - Native BEAM concurrency and fault tolerance
+  - Tight integration with Erlang/Elixir-based ledger components
+  - Real-time features (Phoenix Channels/LiveView in future)
+- **Use Cases**:
+  - Public and partner APIs for ledger data
+  - Real-time dashboards and notification channels
+  - Admin and operational tools for ledger management
+
 #### Mobile Applications
 - **iOS App**: Native iOS app (Swift/SwiftUI)
 - **Android App**: Native Android app (Kotlin/Jetpack Compose)
@@ -1235,6 +1285,8 @@ frontend/dist/
 - **Custom Blockchain Ledger**: Implement Erlang/Elixir transparency ledger (~200 lines test chain)
 - **n8n Integration**: Set up workflow automation platform for API integrations and automation
 - **Go Services**: Implement high-performance backend services (API gateway, data processing)
+- **Phoenix + Elixir Services**: Begin implementing Phoenix-based APIs and services on top of the BEAM ledger stack
+- **Vector Database**: Add dedicated PostgreSQL instance with vector extension (e.g., `pgvector`) for embeddings and similarity search
 - **Mobile App Development**: Begin iOS/Android development
 - **API Expansion**: Develop public API
 - **Performance Monitoring**: Add performance monitoring tools

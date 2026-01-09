@@ -15,6 +15,16 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.23.0] - January 2026
+
+### Added
+- **Tech Stack - Planned Backend & Database Enhancements**: Updated `docs/Core Documentation/TECH_STACK.md` with planned Phoenix/Elixir and vector database stack [Cursor]
+  - Added Elixir + Phoenix as a planned backend framework for high-concurrency APIs and ledger services
+  - Added a planned dedicated PostgreSQL instance with vector extension (e.g., `pgvector`) for embeddings and similarity search
+  - Documented Phoenix + Elixir services and vector database in Future Technology Considerations and Technology Roadmap
+
+---
+
 ## [1.22.0] - January 2026
 
 ### Added
