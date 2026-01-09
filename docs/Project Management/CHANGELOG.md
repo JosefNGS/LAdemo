@@ -17,6 +17,17 @@ Every changelog entry MUST track who made the change:
 
 ## [1.68.0] - January 2026
 
+### Added
+- **User Profiles for All Users**: Created complete user profiles for all 10 users in AllUsers page [Developer: Josef Lindbom]
+  - Added Agent Nexus-66 and Agent Nexus-22 profiles to userProfiles.ts [Developer: Josef Lindbom]
+  - Updated existing user data to match current platform statistics [Developer: Josef Lindbom]
+  - All users now have complete profiles with bio, achievements, and top products [Developer: Josef Lindbom]
+- **Clickable User Cards**: Made all user cards in AllUsers page clickable to navigate to full profile [Developer: Josef Lindbom]
+  - Clicking anywhere on user card navigates to UserProfile page [Developer: Josef Lindbom]
+  - "View" button also navigates to profile [Developer: Josef Lindbom]
+  - User cards now use data from userProfiles.ts instead of hardcoded values [Developer: Josef Lindbom]
+  - Avatar display now uses profile avatar field [Developer: Josef Lindbom]
+
 ### Fixed
 - **User Profile Avatar**: Changed Agent Nexus-77 avatar from '77' to 'AN' for more professional appearance [Developer: Josef Lindbom]
 - **Netlify Build Error**: Fixed missing dependency error in submit-email-supabase.js [Developer: Josef Lindbom]

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ICONS } from '../constants';
 import { AppRoute } from '../types';
+import { userProfiles, getUserProfileByName } from '../data/userProfiles';
+import { navigateToUserProfile } from '../utils/profileNavigation';
 
 interface AllUsersProps {
   setActiveRoute?: (route: AppRoute) => void;
@@ -27,18 +29,19 @@ const AllUsers: React.FC<AllUsersProps> = ({ setActiveRoute }) => {
   const [reportReason, setReportReason] = useState<string>('');
   const [reportDetails, setReportDetails] = useState<string>('');
 
-  const users: PlatformUser[] = [
-    { id: '1', name: 'Agent Nexus-77', email: 'nexus77@example.com', tier: 'Platinum', status: 'Online', joined: '2024-01-15', earnings: 14210, networkSize: 342, mutualConnections: 12 },
-    { id: '2', name: 'Agent Nexus-42', email: 'nexus42@example.com', tier: 'Gold', status: 'Online', joined: '2024-02-20', earnings: 8920, networkSize: 189, mutualConnections: 8 },
-    { id: '3', name: 'Agent Nexus-88', email: 'nexus88@example.com', tier: 'Silver', status: 'Offline', joined: '2024-03-10', earnings: 3200, networkSize: 67, mutualConnections: 3 },
-    { id: '4', name: 'Agent Nexus-15', email: 'nexus15@example.com', tier: 'Platinum', status: 'Online', joined: '2023-12-05', earnings: 25600, networkSize: 512, mutualConnections: 25 },
-    { id: '5', name: 'Agent Nexus-99', email: 'nexus99@example.com', tier: 'Gold', status: 'Offline', joined: '2024-04-01', earnings: 5600, networkSize: 124, mutualConnections: 5 },
-    { id: '6', name: 'Agent Nexus-33', email: 'nexus33@example.com', tier: 'Silver', status: 'Online', joined: '2024-05-12', earnings: 2100, networkSize: 45, mutualConnections: 2 },
-    { id: '7', name: 'Agent Nexus-55', email: 'nexus55@example.com', tier: 'Bronze', status: 'Online', joined: '2024-06-20', earnings: 850, networkSize: 12, mutualConnections: 1 },
-    { id: '8', name: 'Agent Nexus-11', email: 'nexus11@example.com', tier: 'Platinum', status: 'Online', joined: '2023-11-18', earnings: 18900, networkSize: 428, mutualConnections: 18 },
-    { id: '9', name: 'Agent Nexus-66', email: 'nexus66@example.com', tier: 'Gold', status: 'Offline', joined: '2024-07-05', earnings: 7200, networkSize: 156, mutualConnections: 7 },
-    { id: '10', name: 'Agent Nexus-22', email: 'nexus22@example.com', tier: 'Silver', status: 'Online', joined: '2024-08-10', earnings: 3400, networkSize: 78, mutualConnections: 4 },
-  ];
+  // Convert userProfiles to PlatformUser format
+  const users: PlatformUser[] = userProfiles.map(profile => ({
+    id: profile.id,
+    name: profile.name,
+    email: profile.email,
+    tier: profile.tier,
+    status: profile.status,
+    joined: profile.joined,
+    earnings: profile.earnings,
+    networkSize: profile.networkSize,
+    avatar: profile.avatar,
+    mutualConnections: profile.mutualConnections || 0
+  }));
 
   const filteredUsers = users.filter(user => {
     const matchesSearch = user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -114,13 +117,18 @@ const AllUsers: React.FC<AllUsersProps> = ({ setActiveRoute }) => {
         {filteredUsers.map((user) => (
           <div
             key={user.id}
-            className="glass-card p-6 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all"
+            onClick={() => {
+              if (setActiveRoute) {
+                navigateToUserProfile(user.name, setActiveRoute);
+              }
+            }}
+            className="glass-card p-6 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all cursor-pointer"
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-bold">
-                    {user.name.charAt(user.name.length - 1)}
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-bold text-sm">
+                    {user.avatar || user.name.charAt(user.name.length - 1)}
                   </div>
                   {user.status === 'Online' && (
                     <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#030712]" />
@@ -173,7 +181,12 @@ const AllUsers: React.FC<AllUsersProps> = ({ setActiveRoute }) => {
                 Message
               </button>
               <button
-                onClick={() => setSelectedUser(user)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (setActiveRoute) {
+                    navigateToUserProfile(user.name, setActiveRoute);
+                  }
+                }}
                 className="flex-1 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold text-sm transition-all"
               >
                 View
@@ -191,7 +204,7 @@ const AllUsers: React.FC<AllUsersProps> = ({ setActiveRoute }) => {
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-cyan-500 flex items-center justify-center font-bold text-xl">
-                    {selectedUser.name.charAt(selectedUser.name.length - 1)}
+                    {selectedUser.avatar || selectedUser.name.charAt(selectedUser.name.length - 1)}
                   </div>
                   {selectedUser.status === 'Online' && (
                     <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-[#030712]" />
@@ -259,12 +272,14 @@ const AllUsers: React.FC<AllUsersProps> = ({ setActiveRoute }) => {
               </button>
               <button
                 onClick={() => {
+                  if (setActiveRoute) {
+                    navigateToUserProfile(selectedUser.name, setActiveRoute);
+                  }
                   setSelectedUser(null);
-                  setActiveRoute && setActiveRoute(AppRoute.FRIENDS);
                 }}
                 className="flex-1 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-bold transition-all"
               >
-                Add Friend
+                View Profile
               </button>
               <button
                 onClick={() => setShowReportModal(true)}
