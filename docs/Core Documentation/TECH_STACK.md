@@ -33,14 +33,14 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 **Key Technologies**:
 - **Frontend**: React 19.2.3 + TypeScript + Tailwind CSS
-- **Backend**: Netlify Serverless Functions (Node.js 20), Go (Golang) for high-performance services
+- **Backend**: Netlify Serverless Functions (Node.js 20) - **ALPHA PHASE**, Planned: AWS servers + Phoenix/Elixir + Go (Golang) for high-performance services
 - **Automation**: n8n (workflow automation and integrations)
 - **Blockchain Ledger**: Erlang/Elixir + BEAM VM (custom transparency ledger)
 - **Database**: Supabase (PostgreSQL)
 - **Planned Backend Framework**: Elixir + Phoenix for high-concurrency API and ledger services
 - **Planned Vector Database**: Additional PostgreSQL instance with vector support (e.g., `pgvector`) for embeddings and similarity search
 - **AI**: Google Gemini API
-- **Deployment**: Netlify (CI/CD, hosting, functions)
+- **Deployment**: Netlify (CI/CD, hosting, functions) - **ALPHA PHASE**, Planned: AWS infrastructure
 - **Build**: esbuild (on-the-fly TypeScript transpilation)
 
 **Architecture Pattern**: Serverless, CDN-based, ES Modules, Custom Blockchain Ledger
@@ -476,8 +476,9 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 ### Hosting Platform
 
-#### Netlify
-- **Purpose**: Hosting, serverless functions, CI/CD
+#### Netlify (ALPHA PHASE)
+- **Status**: ⚠️ **ALPHA PHASE** - Current hosting platform, migration to AWS planned
+- **Purpose**: Hosting, serverless functions, CI/CD (temporary solution)
 - **Configuration**: `netlify.toml`
 - **Build Settings**:
   - Build Command: `npm run build`
@@ -496,6 +497,10 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Branch Deploys
   - Preview Deploys
   - Rollback Support
+- **Migration Plan**: ⚠️ **Planned migration to AWS servers** - Netlify is temporary alpha-phase solution
+  - AWS infrastructure will provide more control and scalability
+  - Migration timeline: TBD (after alpha phase completion)
+  - AWS services under consideration: EC2, ECS, Lambda, CloudFront, RDS
 
 ### CDN (Content Delivery Network)
 
@@ -515,9 +520,10 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
 
 ### Server Infrastructure (Future)
 
-#### Dedicated Server
-- **Status**: ⏳ **Planned for Future**
-- **Purpose**: Self-hosted server infrastructure for enhanced control and scalability
+#### AWS Server Infrastructure (Planned Migration)
+- **Status**: ⏳ **Planned Migration** - Will replace Netlify (currently in alpha phase)
+- **Purpose**: Self-hosted server infrastructure on AWS for enhanced control, scalability, and production readiness
+- **Migration Reason**: Netlify is temporary alpha-phase solution, AWS provides better control and scalability for production
 - **Use Cases**:
   - Custom API endpoints
   - Database hosting
@@ -527,12 +533,15 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Real-time services
   - WebSocket connections
   - Background job processing
-- **Potential Technologies**:
-  - **VPS/Cloud Server**: AWS EC2, DigitalOcean, Linode, Hetzner
-  - **Container Platform**: Docker, Kubernetes
-  - **Reverse Proxy**: Nginx, Caddy
-  - **Process Manager**: PM2, systemd, Supervisor
-  - **Load Balancer**: Nginx, HAProxy, Cloudflare
+- **AWS Services Under Consideration**:
+  - **Compute**: AWS EC2 (for Phoenix/Elixir services), ECS/EKS (container orchestration), Lambda (serverless)
+  - **Storage**: S3 (static assets), EBS (block storage)
+  - **Database**: RDS (PostgreSQL), ElastiCache (Redis)
+  - **Networking**: CloudFront (CDN), ALB (Application Load Balancer), VPC
+  - **Monitoring**: CloudWatch, X-Ray
+  - **Container Platform**: Docker, ECS/EKS
+  - **Reverse Proxy**: Nginx, ALB
+  - **Process Manager**: systemd, Supervisor, ECS task management
 - **Benefits**:
   - ✅ Full control over infrastructure
   - ✅ Custom server configurations
@@ -548,7 +557,8 @@ BitNexus is built on a modern, scalable tech stack that prioritizes developer ex
   - Monitoring and logging
   - Scaling strategies
   - Cost vs. serverless trade-offs
-- **Timeline**: Medium to long-term (2027+)
+- **Timeline**: Migration planned after alpha phase (2026-2027)
+- **Current Phase**: Netlify (Alpha) → AWS (Production)
 
 ### Routing
 

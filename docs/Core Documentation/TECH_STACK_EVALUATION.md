@@ -116,21 +116,32 @@
 
 ### Backend Stack
 
-#### Netlify Serverless Functions (Node.js 20)
-**Evaluation Score**: ⭐⭐⭐⭐ (4/5)
+#### Netlify Serverless Functions (Node.js 20) - ALPHA PHASE
+**Evaluation Score**: ⭐⭐⭐ (3/5) - **ALPHA PHASE ONLY**
+
+**Status**: ⚠️ **ALPHA PHASE** - Temporary solution, migration to AWS planned
 
 **Strengths**:
 - ✅ Easy deployment
 - ✅ Auto-scaling
 - ✅ No server management
 - ✅ Integrated CI/CD
+- ✅ Good for alpha/prototype phase
 
 **Weaknesses**:
 - ⚠️ Cold start latency
 - ⚠️ Execution time limits
 - ⚠️ Limited to Node.js runtime
+- ⚠️ Less control over infrastructure
+- ⚠️ Vendor lock-in concerns
+- ⚠️ Limited customization options
 
-**Recommendation**: ✅ **KEEP** - Good for current needs, consider Phoenix/Elixir for high-concurrency services
+**Migration Plan**: 
+- ⚠️ **Planned migration to AWS servers** after alpha phase
+- AWS will provide better control, scalability, and production capabilities
+- Timeline: TBD (after alpha phase completion)
+
+**Recommendation**: ⚠️ **TEMPORARY** - Use for alpha phase, migrate to AWS for production
 
 #### Supabase (PostgreSQL)
 **Evaluation Score**: ⭐⭐⭐⭐⭐ (5/5)

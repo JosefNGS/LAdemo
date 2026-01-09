@@ -35,11 +35,13 @@
 **Stack Components**:
 1. **Frontend**: React 19 + TypeScript + Tailwind CSS (current - keep)
 2. **Backend API**: Phoenix + Elixir (new - for high-concurrency services)
-3. **Serverless**: Netlify Functions (current - keep for simple endpoints)
-4. **Primary Database**: Supabase PostgreSQL (current - keep)
-5. **Vector Database**: PostgreSQL + pgvector (new - for semantic search)
-6. **Blockchain Ledger**: Erlang/Elixir + BEAM VM (new - for transparency)
-7. **Automation**: n8n (planned - for workflows)
+3. **Hosting**: Netlify (current - **ALPHA PHASE**, migrate to AWS servers)
+4. **Serverless**: Netlify Functions (current - **ALPHA PHASE**, migrate to AWS Lambda/ECS)
+5. **Primary Database**: Supabase PostgreSQL (current - keep)
+6. **Vector Database**: PostgreSQL + pgvector (new - for semantic search)
+7. **Blockchain Ledger**: Erlang/Elixir + BEAM VM (new - for transparency)
+8. **Automation**: n8n (planned - for workflows)
+9. **Production Infrastructure**: AWS (planned - EC2, ECS, Lambda, CloudFront, RDS)
 
 ---
 
@@ -99,27 +101,36 @@
 
 ---
 
-### Option 3: Node.js + Express (Current) ⭐⭐⭐
+### Option 3: Node.js + Express (Current - ALPHA PHASE) ⭐⭐⭐
 
-**Best For**: Simple APIs, serverless functions, rapid development
+**Status**: ⚠️ **ALPHA PHASE** - Temporary solution via Netlify Functions
+
+**Best For**: Simple APIs, serverless functions, rapid development (alpha phase)
 
 **Advantages**:
 - ✅ Familiar to team
 - ✅ Large ecosystem
 - ✅ Easy deployment (Netlify Functions)
 - ✅ Good for simple endpoints
+- ✅ Good for alpha/prototype phase
 
 **Disadvantages**:
 - ⚠️ Limited concurrency compared to BEAM VM
 - ⚠️ No native integration with Erlang/Elixir ledger
 - ⚠️ Less suitable for high-concurrency services
+- ⚠️ Netlify limitations (alpha phase only)
 
 **Use Cases**:
-- Simple serverless functions
-- Email collection endpoints
-- Basic API endpoints
+- Simple serverless functions (alpha phase)
+- Email collection endpoints (alpha phase)
+- Basic API endpoints (alpha phase)
 
-**Recommendation**: ✅ **KEEP** - Continue for simple endpoints, use Phoenix for complex services
+**Migration Plan**: 
+- ⚠️ **Planned migration to AWS servers** after alpha phase
+- AWS Lambda or ECS for serverless/containerized services
+- Phoenix/Elixir for high-concurrency services
+
+**Recommendation**: ⚠️ **TEMPORARY** - Use for alpha phase, migrate to AWS + Phoenix for production
 
 ---
 
