@@ -141,6 +141,13 @@
 - [ ] Document Phoenix/Elixir stack in `docs/Core Documentation/TECH_STACK.md` and related service docs
 - [ ] Create initial Phoenix proof-of-concept service (API + simple real-time channel)
 
+#### Vector Database Choice (CRITICAL)
+- [ ] **CRITICAL**: Validate and approve the official vector database technology for BitNexus (e.g., `pgvector` on PostgreSQL or alternative) based on scalability, security, and ecosystem
+- [ ] Review Jonne's proposed PostgreSQL/vector designs and ensure alignment with `docs/Core Documentation/TECH_STACK.md`
+- [ ] Decide on self-hosted vs managed vector database approach and document the decision
+- [ ] Define production readiness checklist for the chosen vector database (backups, monitoring, security, performance)
+- [ ] Document final vector database choice and rationale in `docs/Core Documentation/TECH_STACK.md` and `docs/Services/supabase/`
+
 #### Discourse (Forum) Setup
 - [ ] Create `backend/discourse/` folder structure
 - [ ] Discourse installation and configuration

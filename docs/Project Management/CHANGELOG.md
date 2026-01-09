@@ -15,6 +15,15 @@ Every changelog entry MUST track who made the change:
 - **This is MANDATORY and STRICTLY ENFORCED**
 
 
+## [1.26.0] - January 2026
+
+### Added
+- **Craig Tasks - Critical Vector Database Validation**: Updated `docs/Development/CRAIG_TASKS.md` with a CRITICAL vector database validation section [Cursor]
+  - Added \"Vector Database Choice (CRITICAL)\" tasks for Craig to validate and approve the official vector DB (e.g., PostgreSQL + `pgvector` or alternative)
+  - Tasks cover reviewing Jonne's Postgres/vector design, deciding self-hosted vs managed approach, defining production readiness checklist, and documenting final choice and rationale
+
+---
+
 ## [1.25.0] - January 2026
 
 ### Added
