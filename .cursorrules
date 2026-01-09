@@ -995,12 +995,14 @@ After making responsive changes:
 - Static files are copied to dist folder
 - Ready for deployment to Netlify or other static hosts
 
-### Netlify Deployment
+### Netlify Deployment (ALPHA PHASE)
+- **Status**: ⚠️ **ALPHA PHASE** - Temporary hosting solution, migration to AWS servers planned
 - **Configuration**: `netlify.toml` defines build settings
 - **Build Command**: `npm run build`
 - **Publish Directory**: `dist`
 - **Environment**: Node.js 18
 - **SPA Routing**: All routes redirect to `index.html` for client-side routing
+- **Migration Plan**: Planned migration to AWS servers (EC2, ECS, Lambda, CloudFront, RDS) after alpha phase
 - See `docs/DEPLOYMENT.md` for detailed deployment instructions
 
 ### API Configuration
