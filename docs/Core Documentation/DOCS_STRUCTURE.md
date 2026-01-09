@@ -58,6 +58,7 @@ docs/
 │   ├── JONNE_TASKS.md               # Jonne's task tracking (synced with TODO.md)
 │   ├── SVEIN_TASKS.md               # Svein's task tracking (synced with TODO.md)
 │   ├── LEE_TASKS.md                 # Lee's task tracking (synced with TODO.md)
+│   ├── CORY_TASKS.md                # Cory's task tracking (synced with TODO.md)
 │   └── (development-related docs)
 │
 ├── Setup & Configuration/           # Setup, configuration, and troubleshooting

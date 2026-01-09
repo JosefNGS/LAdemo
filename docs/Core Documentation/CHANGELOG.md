@@ -19,6 +19,9 @@ Every changelog entry MUST track who made the change:
 ### Added
 - Initial core documentation changelog [Cursor]
 
+### Changed
+- **DOCS_STRUCTURE.md**: Added CORY_TASKS.md to task tracking file list [Cursor]
+
 ---
 
 ## Notes
